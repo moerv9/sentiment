@@ -26,7 +26,7 @@ nav:
 
   - Notebooks: 
     - 'Get Tweets from Elon Musk': 'jupyter_notebooks/getElonsTweets.ipynb'
-    - 'Test Notebook': 'jupyter_notebooks/testNotebook.ipynb'
+    - 'Get Tweets for Hashtag': 'jupyter_notebooks/getTweets.ipynb'
   - Approach: 
     - 'Introduction' : 'approach/introduction.md'
     - 'Find the right Cryptocurrency': 'approach/coins.ipynb'
