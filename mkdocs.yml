@@ -1,0 +1,46 @@
+site_name: Sentiment Trading
+
+#repo_url: https://github.com/moerv9/sentiment-trading
+#repo_name: moerv9/sentiment-trading
+
+theme: 
+  name: material
+  palette: 
+    scheme: slate
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    #- navigation.sections
+    - toc.integrate
+    - navigation.top
+    - navigation.indexes
+
+
+markdown_extensions:
+  - tables
+
+nav:
+  - Getting Started: index.md
+
+  - Notebooks: 
+    - 'Get Tweets from Elon Musk': 'jupyter_notebooks/getElonsTweets.ipynb'
+    - 'Test Notebook': 'jupyter_notebooks/testNotebook.ipynb'
+  - Approach: 
+    - 'Introduction' : 'approach/introduction.md'
+    - 'Find the right Cryptocurrency': 'approach/coins.ipynb'
+  - Helpful:
+    - 'Dependencies': dependencies.md
+    - 'Commands List': importantCode.md
+  #- About:
+
+plugins:
+  - search
+  - mkdocs-jupyter:
+      theme: dark
+      execute: True
+
+
+
+# Link: https://squidfunk.github.io/mkdocs-material/
