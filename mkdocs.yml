@@ -25,14 +25,15 @@ nav:
   - Getting Started: index.md
 
   - Notebooks: 
-    - 'Get Tweets from Elon Musk': 'jupyter_notebooks/getElonsTweets.ipynb'
-    - 'Get Tweets for Hashtag': 'jupyter_notebooks/getTweets.ipynb'
+    - 'Get Tweets from Elon Musk' : 'jupyter_notebooks/getElonsTweets.ipynb'
+    - 'Get Tweets for Hashtag' : 'jupyter_notebooks/getTweets.ipynb'
   - Approach: 
-    - 'Introduction' : 'approach/introduction.md'
-    - 'Find the right Cryptocurrency': 'approach/coins.ipynb'
+    - 'Introduction' : 'approach/Introduction.md'
+    - 'Find the right Cryptocurrency' : 'approach/Coins.ipynb'
+    - 'Social Media Analysis' : 'approach/SocialMedia.ipynb'
   - Helpful:
-    - 'Dependencies': dependencies.md
-    - 'Commands List': importantCode.md
+    - 'Dependencies' : dependencies.md
+    - 'Commands List' : 'jupyter_notebooks/SavedCodeSnippets.ipynb'
   #- About:
 
 plugins:

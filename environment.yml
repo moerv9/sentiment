@@ -69,6 +69,7 @@ dependencies:
   - parso=0.8.3=pyhd3eb1b0_0
   - pexpect=4.8.0=pyhd3eb1b0_3
   - pickleshare=0.7.5=pyhd3eb1b0_1003
+  - pip
   - prompt-toolkit=3.0.20=pyhd3eb1b0_0
   - psutil=5.8.0=py39h9ed2024_1
   - ptyprocess=0.7.0=pyhd3eb1b0_2
