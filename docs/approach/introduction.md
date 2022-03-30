@@ -1,13 +1,21 @@
 # Introduction 
 
 ## My Approach
+
+### Research
+My research will include the following
+- [Analysis of Top 5 Cryptocurrencies](Coins.ipynb)
+- [Analysis of Social Media Platforms](SocialMedia.ipynb)
+- [How to get the Sentiment](Sentiment.ipynb)
+
+### Programming
 ![Concept as Flow Diagram](../../img/concept.png)
+
 
 ## Abstract
 
 
-
-## Proposal
+## My initial Proposal
 
 My Thesis is supposed to cover two topics:
 It will analyse specific signals in social networks and their impact on trading digital assets, specifically cryptocurrency. This research will be used in a real-world test with the development of a bot that automatically trades cryptocurrency while considering the analysis of social signals.
@@ -41,7 +49,6 @@ For the development of the trading bot I am going to compare different programmi
 I am going to focus on one social network, one cryptocurrency and one language so I can get the best results in the time I have at hand. My guess is, that I will most likely use Twitter (because of their good documentation), Bitcoin or Ether (the two most used currencies) and Python (good for handling big data and automation). I will not go into too much detail of mathematic formulas or trading techniques. The result could either be a list about what trades the bot could’ve made and their outcome or a real-world-simulation. It would also be great if the bot can learn and adapt it’s trading (Machine Learning).
 
 **Action Plan**
-
 The following numbered list could be a possible action plan and structure for my thesis:
 1. Research
 	1. Social Network
