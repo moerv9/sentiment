@@ -2,6 +2,7 @@ site_name: Sentiment Trading
 
 repo_url: https://github.com/moerv9/sentiment
 repo_name: moerv9/sentiment
+edit_uri: ""
 
 theme: 
   name: material
