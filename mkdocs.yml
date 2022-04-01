@@ -5,7 +5,7 @@ repo_name: moerv9/sentiment
 edit_uri: ""
 
 theme: 
-  name: material
+  name: readthedocs
   palette: 
     scheme: slate
   features:
