@@ -4,7 +4,7 @@
 
 ### Research
 My research will include the following
-- [Analysis of Top 5 Cryptocurrencies](Coins.ipynb)
+- [Analysis of Top 5 Cryptocurrencies](coins.ipynb)
 - [Analysis of Social Media Platforms](SocialMedia.ipynb)
 - [How to get the Sentiment](Sentiment.ipynb)
 

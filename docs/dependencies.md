@@ -1,4 +1,0 @@
-# Dependencies
-
-* Links
-* openpyxl
