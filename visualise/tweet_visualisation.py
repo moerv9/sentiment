@@ -32,7 +32,6 @@ def getTweetHistory(amount_tweets) -> pd.DataFrame:
     historical_tweets = tweets.SearchTwitterHistory().filter_by_keywords("search_tweets","mixed",keywords,amount_tweets)
     tm = tweets.TweetManipulation()
     df = tm.listToDataFrame(historical_tweets)
-    #cleanedDF = df.apply(tm.cleanTweets)
     return df
 
 # def getTweetStream(amount_tweets) -> pd.DataFrame:
@@ -57,7 +56,7 @@ if submit_button:
         pass
         #resultDF = getTweetStream(amount_tweets)
     st.subheader("Tweet Data")
-    st.dataframe(resultDF, width=1800, height=600)
+    st.dataframe(resultDF)
     st.markdown("""---""")
     st.subheader("Sentiment Analysis")
     st.dataframe(sentimentAnalysis())

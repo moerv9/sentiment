@@ -7,9 +7,9 @@
 # %%
 # import sys
 # sys.path.append('../../')
-# import logging
-# logging.basicConfig(level=logging.INFO)
-# logger = logging.getLogger()
+import logging
+logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%d/%m/%Y %I:%M:%S %p: ', filename="tweet_logs.log",level=logging.INFO)
+log = logging.getLogger()
 
 # Import Twitter API TOKEN
 from config import ConfigAPI
@@ -43,11 +43,12 @@ class TweetManipulation():
         self.word_blacklist = set(["giveaway","nft"])
 
     def listToDataFrame(self,list):
-        pd.set_option("display.max_columns",100)
+        pd.set_option("display.max_columns",200)
         self.df = pd.DataFrame(list, columns = self.columns)
         self.df = self.df.applymap(self.cleanDates)
         self.df["Tweet"] = self.df["Tweet"].apply(lambda a: self.cleanTweets(a)) 
-        
+        print(self.df["Tweet"])
+        #self.df["Tweet"] = self.df["Tweet"].apply(lambda a: self.checkBlacklist(a))      
         return self.df
 
     def export(self,type="Excel",file_name="exported_DataFrame"):
@@ -91,19 +92,41 @@ class TweetManipulation():
         """
         text = re.sub(r'@[A-Za-z0-9]+','',text) #removes @mentions / r tells python that it is a raw stream (regex)
         #text = re.sub(r'#+','',text) #removes # 
-        text = re.sub(r':',"",text)
-        text = demoji.replace(text, "")
+        text = re.sub(r':',"",text) #removes ':'
+        text = demoji.replace(text, "") #removes emojis
         text = re.sub(r'\n+','',text) #removes \n 
         text = re.sub(r'&amp;+','',text) #removes &amp;
         text = re.sub(r'RT[\s]+','',text) #removes retweets
         text = re.sub(r'https?:\/\/\S+','',text) #removes hyperlink, the '?' matches 0 or 1 reps of the preceding 's'
+        
         return text
     
-    def checkBlacklist(self,text):
+"""
+#TODO: not working yet
+def checkBlacklist(self, text):
+        Checks the pandas column for forbidden or not relevant words and drops the row
+
+        Args:
+            text (_type_): _description_
+
+        Returns:
+            str: text
+        
+        #ind_drop = df[df['Tweet'].apply(lambda x: x.startswith('Keyword'))].index
         split_text = set(text.split())
+        # ind_drop = self.df[self.df['Tweet'].apply(lambda x: True if self.word_blacklist in x.split() else False)].index
+        # log.info(ind_drop)
         if self.word_blacklist.intersection(split_text):
-            self.df.drop()
+            log.info(self.df["Tweet"])
+            idx = self.df["Tweet"].index
+            log.info(f"Dropped row {idx} for containing blacklist word: " +str(text))
+            self.df["Tweet"].drop(idx,inplace=True)
         return " ".join(split_text)
+
+    def checkDuplicates(self):
+        dupl_rows = self.df.duplicated(subset="Tweet")
+        return dupl_rows
+"""
 
 # %% [markdown]
 # ### Class: Real-Time Listener for Tweets
@@ -228,7 +251,10 @@ class SearchTwitterHistory():
 
 # %% 
 ### Test: ListToDF
-# history_list= SearchTwitterHistory().filter_by_keywords("search_tweets","mixed",["btc","#btc"],50)
-# tm = TweetManipulation()
-# df = tm.listToDataFrame(history_list)
+history_list= SearchTwitterHistory().filter_by_keywords("search_tweets","mixed",["btc","#btc"],200)
+tm = TweetManipulation()
+df = tm.listToDataFrame(history_list)
+# print("FIRST DF")
 # print(df["Tweet"].to_string())
+# df["duplicate"]=tm.checkDuplicates()
+# print(df["duplicate"].to_string())
