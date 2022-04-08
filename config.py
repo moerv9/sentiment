@@ -52,3 +52,12 @@ class ConfigAPI():
     def getBearerToken(self):
         logger.info("got Bearertoken")
         return self.BEARER_TOKEN
+
+
+'''
+# Test for getting the Tokens
+conf = ConfigAPI()
+api=conf.create_api("auth1")
+print(conf.getKeys())
+print(conf.getBearerToken())
+'''
