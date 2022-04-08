@@ -2,6 +2,7 @@
 import streamlit as st
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+from wordcloud import WordCloud
 import pandas as pd
 import numpy as np
 import sys
@@ -70,6 +71,14 @@ def pieChart(neg,pos,neut):
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
     st.pyplot(fig1)
 
+def wordCloud(df):
+    all_words = ' '.join([tweets for tweets in df['Tweet']])
+    word_cloud = WordCloud(width=500, height=300, random_state=21, max_font_size=119).generate(all_words)
+
+    plt.imshow(word_cloud, interpolation="bilinear")
+    plt.axis('off')
+    st.pyplot(plt)
+    
 # main
 if submit_button:
     if tweet_kind == "History":
@@ -81,7 +90,7 @@ if submit_button:
     st.dataframe(resultDF)
     st.markdown("""---""")
     st.subheader("Sentiment Analysis")
-    col1,col2 = st.columns(2)
+    col1,col2,col3 = st.columns(3)
     with col1:
         st.dataframe(sentimentAnalysis()["Dataframe"])
     with col2:
@@ -90,5 +99,7 @@ if submit_button:
         neut=sentimentAnalysis()["neutral Tweets"]
         st.write(f"Negative: {neg}, Positive: {pos}, Neutral: {neut}")
         pieChart(neg,pos,neut)
+    with col3:
+        wordCloud(resultDF)
     
     
