@@ -1,5 +1,6 @@
 # Imports
 import streamlit as st
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
@@ -44,6 +45,7 @@ def getTweetHistory(amount_tweets) -> pd.DataFrame:
 #     stream_tweets = tw.SearchStream().filter_by_keywords([keywords])
 #     df = tw.TweetManipulation().listToDataFrame(stream_tweets)
 #     return df
+
 @st.cache
 def sentimentAnalysis():
     sent = sentiment.Sentiment()
@@ -54,17 +56,18 @@ def sentimentAnalysis():
     neg,pos,neut = sent.negative_count,sent.positive_count,sent.neutral_count
     return {"Dataframe" : df, "negative Tweets" : neg, "positive Tweets" : pos, "neutral Tweets" : neut}
     
-def pieChart():
+def pieChart(neg,pos,neut):
     # Pie chart, where the slices will be ordered and plotted counter-clockwise:
-    labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
-    sizes = [15, 30, 45, 10] 
-    explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
+    labels = 'Negative', 'Positive', 'Neutral'
+    sizes = [neg, pos, neut] 
+    colors = ["orangered",'mediumseagreen',"tab:gray"]
+    explode = (0, 0.1, 0) 
 
     fig1, ax1 = plt.subplots()
+    fig1.patch.set_alpha(0)
     ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
-        shadow=True, startangle=90)
+        shadow=True,colors=colors,textprops={'color':"w"})
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-
     st.pyplot(fig1)
 
 # main
@@ -78,17 +81,14 @@ if submit_button:
     st.dataframe(resultDF)
     st.markdown("""---""")
     st.subheader("Sentiment Analysis")
-
-    st.dataframe(sentimentAnalysis()["Dataframe"])
-    st.write("Negative: {neg}, Positive: {pos}, Neutral: {neut}".format(
-        neg=sentimentAnalysis()["negative Tweets"],
-        pos=sentimentAnalysis()["positive Tweets"],
-        neut=sentimentAnalysis()["neutral Tweets"]))
-    
-
-
-
-    
-    
+    col1,col2 = st.columns(2)
+    with col1:
+        st.dataframe(sentimentAnalysis()["Dataframe"])
+    with col2:
+        neg=sentimentAnalysis()["negative Tweets"]
+        pos=sentimentAnalysis()["positive Tweets"]
+        neut=sentimentAnalysis()["neutral Tweets"]
+        st.write(f"Negative: {neg}, Positive: {pos}, Neutral: {neut}")
+        pieChart(neg,pos,neut)
     
     
