@@ -47,7 +47,6 @@ class TweetManipulation():
         self.df = pd.DataFrame(list, columns = self.columns)
         self.df = self.df.applymap(self.cleanDates)
         self.df["Tweet"] = self.df["Tweet"].apply(lambda a: self.cleanTweets(a)) 
-        print(self.df["Tweet"])
         #self.df["Tweet"] = self.df["Tweet"].apply(lambda a: self.checkBlacklist(a))      
         return self.df
 
@@ -251,10 +250,8 @@ class SearchTwitterHistory():
 
 # %% 
 ### Test: ListToDF
-history_list= SearchTwitterHistory().filter_by_keywords("search_tweets","mixed",["btc","#btc"],200)
-tm = TweetManipulation()
-df = tm.listToDataFrame(history_list)
-# print("FIRST DF")
-# print(df["Tweet"].to_string())
+# history_list= SearchTwitterHistory().filter_by_keywords("search_tweets","mixed",["btc","#btc"],200)
+# tm = TweetManipulation()
+# df = tm.listToDataFrame(history_list)
+
 # df["duplicate"]=tm.checkDuplicates()
-# print(df["duplicate"].to_string())
