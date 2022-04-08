@@ -5,13 +5,13 @@
 # ### Import Twitter Token
 
 # %%
-# Import Twitter API TOKEN
 # import sys
 # sys.path.append('../../')
+# import logging
+# logging.basicConfig(level=logging.INFO)
+# logger = logging.getLogger()
 
-import logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger()
+# Import Twitter API TOKEN
 from config import ConfigAPI
 newconf = ConfigAPI()
 api = newconf.create_api("auth1")
@@ -23,8 +23,10 @@ api = newconf.create_api("auth1")
 import tweepy
 import pandas as pd
 import datetime
+import re
+import demoji
 
-class ListToDF():
+class TweetManipulation():
     """Converts a list to pandas Dataframe
 
     Args:
@@ -36,12 +38,17 @@ class ListToDF():
 
         cleanDates(date=date): makes the date timezone unware so it can be exported to excel
     """
-    columns = ["Tweet", "Timestamp of Tweet", "Retweets", "Following", "Verified", "User created"]
+    def __init__(self):
+        self.columns = ["Tweet", "Timestamp of Tweet", "Retweets", "Following", "Verified", "User created"]
+        self.word_blacklist = set(["giveaway","nft"])
 
-    def __init__(self,list):
+    def listToDataFrame(self,list):
         pd.set_option("display.max_columns",100)
         self.df = pd.DataFrame(list, columns = self.columns)
         self.df = self.df.applymap(self.cleanDates)
+        self.df["Tweet"] = self.df["Tweet"].apply(lambda a: self.cleanTweets(a)) 
+        
+        return self.df
 
     def export(self,type="Excel",file_name="exported_DataFrame"):
         """exports the Dataframe to Json or Excel
@@ -72,9 +79,31 @@ class ListToDF():
             self.date = self.date.tz_localize(None)
             self.date = datetime.datetime.strftime(date,"%d-%m-%Y %H:%M")
         return self.date
+    
+    def cleanTweets(self, text):
+        """Removes unnecessary information from tweets
 
-#TODO: Export this to a new File called DataHandling.py
+        Args:
+            text (str): input text
 
+        Returns:
+            str: cleaned text
+        """
+        text = re.sub(r'@[A-Za-z0-9]+','',text) #removes @mentions / r tells python that it is a raw stream (regex)
+        #text = re.sub(r'#+','',text) #removes # 
+        text = re.sub(r':',"",text)
+        text = demoji.replace(text, "")
+        text = re.sub(r'\n+','',text) #removes \n 
+        text = re.sub(r'&amp;+','',text) #removes &amp;
+        text = re.sub(r'RT[\s]+','',text) #removes retweets
+        text = re.sub(r'https?:\/\/\S+','',text) #removes hyperlink, the '?' matches 0 or 1 reps of the preceding 's'
+        return text
+    
+    def checkBlacklist(self,text):
+        split_text = set(text.split())
+        if self.word_blacklist.intersection(split_text):
+            self.df.drop()
+        return " ".join(split_text)
 
 # %% [markdown]
 # ### Class: Real-Time Listener for Tweets
@@ -128,10 +157,6 @@ class SearchStream():
                 data.append([tweet.extended_tweet, tweet.created_at, tweet.retweet_count, tweet.user.followers_count, tweet.user.verified, tweet.user.created_at])
         return data
 
-
-
-
-
 # %% [markdown]
 # ### Test: Get Realtime Tweets, filter and export to Dataframe & Excel
 
@@ -179,12 +204,12 @@ class SearchTwitterHistory():
             for tweet in tweepy.Cursor(api.search_tweets, result_type=result_type, tweet_mode="extended",q=keywords,lang="en").items(return_count):
                 data.append([tweet.full_text, tweet.created_at,tweet.retweet_count, tweet.user.followers_count, tweet.user.verified, tweet.user.created_at])
         elif kind_of_search == "search_30_day":
+            print("30DAYS")
             for tweet in tweepy.Cursor(api.search_30_day, result_type=result_type, tweet_mode="extended",q=keywords,lang="en").items(return_count):
                 data.append([tweet.full_text, tweet.created_at,tweet.retweet_count, tweet.user.followers_count, tweet.user.verified, tweet.user.created_at])
         elif kind_of_search == "search_full_archive":
             for tweet in tweepy.Cursor(api.search_full_archive, result_type=result_type, tweet_mode="extended",q=keywords,lang="en").items(return_count):
                     data.append([tweet.full_text, tweet.created_at,tweet.retweet_count, tweet.user.followers_count, tweet.user.verified, tweet.user.created_at])
-            
         return data
 
 
@@ -197,13 +222,13 @@ class SearchTwitterHistory():
 # columns=["Tweet", "Timestamp of Tweet", "Retweets", "Following", "Verified", "User created"]
 # keywords=["btc","#btc","$btc"]
 # history_search= SearchTwitterHistory().filter_by_keywords("search_tweetsª",keywords,15)
-# df= ListToDF(history_search,columns=columns)
+# df= TweetManipulation.listToDataFrame(history_search,columns=columns)
 # df.df
 
 
 # %% 
 ### Test: ListToDF
-# history_search= SearchTwitterHistory().filter_by_keywords("search_tweets",["btc","#btc"],50)
-# newList = ListToDF(history_search)
-# newList.df.applymap(newList.cleanDates)
-# print(newList.df.shape)
+# history_list= SearchTwitterHistory().filter_by_keywords("search_tweets","mixed",["btc","#btc"],50)
+# tm = TweetManipulation()
+# df = tm.listToDataFrame(history_list)
+# print(df["Tweet"].to_string())
