@@ -1,10 +1,5 @@
-# Import Twitter API TOKEN
-from config import ConfigAPI
-newconf = ConfigAPI()
-api = newconf.create_api("auth1")
 
 ## Imports
-import tweepy
 import pandas as pd
 from textblob import TextBlob
 from wordcloud import WordCloud

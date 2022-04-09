@@ -6,9 +6,9 @@ from wordcloud import WordCloud
 import pandas as pd
 import numpy as np
 import sys
-sys.path.append("../")
+sys.path.append("../sent/")
 import tweets
-import sentiment 
+import sentiment
 
 # Page Settings
 st.set_page_config(
@@ -101,5 +101,3 @@ if submit_button:
         pieChart(neg,pos,neut)
     with col3:
         wordCloud(resultDF)
-    
-    

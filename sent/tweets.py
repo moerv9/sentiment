@@ -5,13 +5,13 @@
 # ### Import Twitter Token
 
 # %%
-# import sys
-# sys.path.append('../../')
+import sys
 import logging
 logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%d/%m/%Y %I:%M:%S %p: ', filename="tweet_logs.log",level=logging.INFO)
 log = logging.getLogger()
 
 # Import Twitter API TOKEN
+sys.path.append('../')
 from config import ConfigAPI
 newconf = ConfigAPI()
 api = newconf.create_api("auth1")
