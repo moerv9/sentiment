@@ -1,6 +1,6 @@
 matplotlib==3.5.1
 numpy==1.21.2
-pandas==1.4.1
+pandas>=1.4.0
 sentiment==0.0.1
 streamlit==1.8.1
 wordcloud==1.8.1
@@ -8,3 +8,8 @@ numpy==1.22.3
 openpyxl==3.0.9
 regex==2022.3.15
 pyOpenSSL==22.0.0
+wordcloud==1.8.1
+textblob==0.17.1
+demoji==1.1.0
+python-dateutil==2.8.2
+python-dotenv=0.19.2
