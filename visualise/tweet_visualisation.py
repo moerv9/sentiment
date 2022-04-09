@@ -8,6 +8,7 @@ import numpy as np
 import sys
 sys.path.append("../sent/")
 import tweets
+from ..sent import tweets
 import sentiment
 
 # Page Settings
