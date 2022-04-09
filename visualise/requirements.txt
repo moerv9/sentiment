@@ -1,6 +1,6 @@
+pandas==1.4.2
 matplotlib==3.5.1
 numpy==1.21.2
-pandas>=1.4.0
 sentiment==0.0.1
 streamlit==1.8.1
 wordcloud==1.8.1
