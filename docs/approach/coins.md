@@ -1,6 +1,6 @@
 # Cryptocurrency Analysis
 
-![Coinmarketcap from the 5.3.2022](../../img/coinmcap_532022.jpeg)
+![Coinmarketcap from the 5.3.2022](../img/coinmcap_532022.jpeg)
 
 ## Choosing which Coins to analyse
 

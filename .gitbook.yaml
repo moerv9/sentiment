@@ -1,0 +1,5 @@
+root: ./docs/
+​structure:  
+    start: index.md  
+    summary: SUMMARY.md​
+    introduction: Approach/introduction.md

@@ -9,7 +9,7 @@ My research will include the following
 - [How to get the Sentiment](Sentiment.ipynb)
 
 ### Programming
-![Concept as Flow Diagram](../../img/concept.png)
+![Concept as Flow Diagram](../img/concept.png)
 
 
 ## Abstract
