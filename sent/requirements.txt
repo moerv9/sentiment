@@ -13,4 +13,3 @@ demoji
 python-dateutil
 python-dotenv
 tweepy
-tweets
