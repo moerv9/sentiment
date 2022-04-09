@@ -1,0 +1,11 @@
+matplotlib==3.5.1
+numpy==1.21.2
+pandas==1.4.1
+sentiment==0.0.1
+streamlit==1.8.1
+wordcloud==1.8.1
+numpy=1.21.2=py39h4b4dc7a_0
+numpy-base=1.21.2=py39he0bd621_0
+openpyxl=3.0.9=pyhd8ed1ab_0
+regex=2022.3.15=py39hca72f7f_0
+openssl=1.1.1n=hca72f7f_0
