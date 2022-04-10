@@ -4,9 +4,7 @@ import pandas as pd
 from textblob import TextBlob
 from wordcloud import WordCloud
 import numpy as np
-import re
 import matplotlib.pyplot as plt
-import tweets
 plt.style.use("fivethirtyeight")
 
 class Sentiment():
