@@ -7,9 +7,11 @@ numpy
 openpyxl
 regex
 pyOpenSSL
-wordcloud
 textblob
 demoji
 python-dateutil
 python-dotenv
 tweepy
+SQLAlchemy
+vaderSentiment
+psycopg2-binary

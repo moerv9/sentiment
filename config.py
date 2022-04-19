@@ -52,6 +52,11 @@ class ConfigAPI():
         logger.info("got Bearertoken")
         return self.BEARER_TOKEN
 
+class ConfigDB:
+    USER = os.environ.get("DB_USER")
+    PASS = os.environ.get("DB_PASS")
+    HOST = os.environ.get("DB_HOST")
+
 
 '''
 # Test for getting the Tokens
