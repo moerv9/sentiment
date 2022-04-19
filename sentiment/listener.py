@@ -77,7 +77,6 @@ class StreamListener(tweepy.Stream):
         tweet = Tweet(body = cleaned_tweet, keyword= keyword, tweet_date= status.created_at, location= status.user.location,
                     verified_user= status.user.verified, followers= status.user.followers_count,
                     user_since= status.user.created_at, sentiment= sentiment)
-
         self.insert_tweet(tweet)
 
     def on_error(self,status_code):
@@ -95,7 +94,6 @@ class StreamListener(tweepy.Stream):
         """
         try:
             with session_scope() as sess:
-                logger.info(f"Tweet ({tweet.getID()}) inserted into DB")
                 sess.add(tweet)
         except Exception as e:
             logger.warning(f"Unable to insert tweet: {e}")
@@ -109,7 +107,11 @@ class StreamListener(tweepy.Stream):
         Returns:
             String: returns keyword or None
         """
-        for keyword in self.keywords:
+        
+        if re.search(rf"\b{self.keywords[0]}\b", body, re.IGNORECASE):
+            return self.keywords[0]
+        
+        for keyword in self.keywords[1:]:
             if keyword.lower() in body:
                 return keyword
         return None
@@ -138,7 +140,7 @@ class StreamListener(tweepy.Stream):
             str: cleaned text
         """
         text = re.sub(r'@[A-Za-z0-9]+',"",text,flags=re.IGNORECASE) #removes @mentions / r tells python that it is a raw stream (regex)
-        text = re.sub(r'#+','',text, flags=re.IGNORECASE) #removes # 
+        text = re.sub(r'#[A-Za-z0-9]+',"",text, flags=re.IGNORECASE) #removes # 
         text = re.sub(r':',"",text,) #removes ':'
         text = demoji.replace(text, "") #removes emojis
         text = re.sub(r'\n+',"",text) #removes \n 
