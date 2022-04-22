@@ -2,6 +2,7 @@ import os, logging, datetime, argparse
 from logging.handlers import RotatingFileHandler
 from listener import StreamListener
 
+
 #Config
 os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
 from config import ConfigAPI
@@ -9,7 +10,6 @@ newconf = ConfigAPI()
 
 
 log_dir = 'Logs'
-os.chdir("sentiment")
 if not os.path.exists(log_dir):
     os.mkdir(log_dir)
 log_name = '{}_stream.log'.format(datetime.date.today().strftime('%Y%m%d'))
@@ -32,5 +32,9 @@ if __name__ == '__main__':
     listener = StreamListener(newconf.getKeys()[0],newconf.getKeys()[1],newconf.getKeys()[2],newconf.getKeys()[3],keywords)
     logging.info(f"Starting stream: {keywords}")
     print("Stream running...")
-    listener.filter(track = keywords,languages=["en","de"])
-    logging.info("Stream closed")
+    try: 
+        listener.filter(track = keywords,languages=["en","de"],threaded = True)
+    except KeyboardInterrupt:
+        os.sys.exit(0)
+    #print(f"Avg Sentiment: {listener.sent_avg}")
+    

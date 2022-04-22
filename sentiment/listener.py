@@ -9,6 +9,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import re
 import demoji
 from datetime import datetime
+from time import sleep
 
 
 #Config
@@ -30,11 +31,14 @@ class StreamListener(tweepy.Stream):
         init_db()
         self.keywords = keywords
         self.sentiment_model = SentimentIntensityAnalyzer()
+        self.sent_lst = []
+        self.sent_avg = 0
             
         if self.running:
             self.disconnect()
 
     def on_status(self, status):
+        sleep(0.1)
         """Called when Status/Tweet is received
         Args:
             status (Status): Received Status
@@ -44,7 +48,7 @@ class StreamListener(tweepy.Stream):
         tz_info = status.user.created_at.tzinfo #gets the timezone 
         diff = datetime.now(tz_info) - status.user.created_at #adding the timezone info to now() so they can be subtracted
         if diff.days < 60:
-            logger.info(f"User only {diff.days} Days on Twitter. Ignored!")
+            #logger.info(f"User only {diff.days} Days on Twitter. Ignored!")
             return
         
         # Ingores retweets
@@ -66,7 +70,8 @@ class StreamListener(tweepy.Stream):
         if location:
             location = str(status.user.location)
             
-        sentiment = self.sentiment_model.polarity_scores(text).get("compound")
+        tweet_sentiment = self.sentiment_model.polarity_scores(text).get("compound")
+        self.calc_avg_sentiment(tweet_sentiment)
         
         # Ignore tweets which do not contain the keyword
         keyword = self.check_keyword(text)
@@ -76,13 +81,30 @@ class StreamListener(tweepy.Stream):
         cleaned_tweet = self.cleanTweets(text)
         tweet = Tweet(body = cleaned_tweet, keyword= keyword, tweet_date= status.created_at, location= status.user.location,
                     verified_user= status.user.verified, followers= status.user.followers_count,
-                    user_since= status.user.created_at, sentiment= sentiment)
+                    user_since= status.user.created_at, sentiment= tweet_sentiment)
+        
+        print(f"User followers: {status.user.followers_count}")
+        
+        # self.tweet_lst = self.tweet_lst[:20]
+        # if not tweet.body in self.tweet_lst and self.tweet_lst:
+        #     self.tweet_lst.insert(0,tweet.body)
+        # else:
+        #     logger.warning(f"Duplicate Tweet: {tweet.body}")
+        #     return
+        
+        
+        #self.tweet_metrics_lst.append([cleaned_tweet,keyword,status.created_at,status.user.location,status.user.verified,status.user.followers_count,status.user.created_at,tweet_sentiment])
         self.insert_tweet(tweet)
 
+    def calc_avg_sentiment(self, tweet_sentiment):
+        self.sent_lst = self.sent_lst[:100]
+        self.sent_lst.insert(0,tweet_sentiment)
+        self.sent_avg = sum(self.sent_lst) / len(self.sent_lst)
+        #logger.info(f"Avg Sentiment Log: {self.sent_avg}")
+        
     def on_error(self,status_code):
         if status_code == 420:
-            #Streamlimit reached -> close Stream
-            logger.warning("Limit Stream. Closing stream...")
+            logger.warning("Streamlimit reached. Closing stream...")
             return False
         logger.warning(f"Streaming error (status code {status_code})")
         
@@ -128,7 +150,7 @@ class StreamListener(tweepy.Stream):
         blacklist = ["giveaway","free"]
         for word in blacklist:
             if word in body:
-                logger.info(f"Blacklisted word: {word}, Removed Tweet: {body}")
+                #logger.info(f"Blacklisted word: {word}, Removed Tweet: {body}")
                 return True
             
     
