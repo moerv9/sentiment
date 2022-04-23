@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 import tweepy
 import logging
-logger = logging.getLogger()
+logger = logging.getLogger(__name__)
 
 class ConfigAPI():
     def __init__(self):

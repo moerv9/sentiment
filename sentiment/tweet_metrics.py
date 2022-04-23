@@ -21,7 +21,7 @@ class Tweet(Base):
         self.tweet_date = tweet_date
         self.location = location
         self.verified_user = verified_user
-        self.followewrs = followers
+        self.followers = followers
         self.user_since = user_since
         self.sentiment = sentiment
         # self.sentiment_subj = sentiment_subj

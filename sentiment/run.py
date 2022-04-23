@@ -32,9 +32,7 @@ if __name__ == '__main__':
     listener = StreamListener(newconf.getKeys()[0],newconf.getKeys()[1],newconf.getKeys()[2],newconf.getKeys()[3],keywords)
     logging.info(f"Starting stream: {keywords}")
     print("Stream running...")
-    try: 
-        listener.filter(track = keywords,languages=["en","de"],threaded = True)
-    except KeyboardInterrupt:
-        os.sys.exit(0)
+    listener.filter(track = keywords, languages=["en","de"], threaded = True)
+
     #print(f"Avg Sentiment: {listener.sent_avg}")
     

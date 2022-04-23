@@ -33,7 +33,8 @@ class StreamListener(tweepy.Stream):
         self.sentiment_model = SentimentIntensityAnalyzer()
         self.sent_lst = []
         self.sent_avg = 0
-            
+        self.sent_result = ""
+        
         if self.running:
             self.disconnect()
 
@@ -82,8 +83,7 @@ class StreamListener(tweepy.Stream):
         tweet = Tweet(body = cleaned_tweet, keyword= keyword, tweet_date= status.created_at, location= status.user.location,
                     verified_user= status.user.verified, followers= status.user.followers_count,
                     user_since= status.user.created_at, sentiment= tweet_sentiment)
-        
-        print(f"User followers: {status.user.followers_count}")
+    
         
         # self.tweet_lst = self.tweet_lst[:20]
         # if not tweet.body in self.tweet_lst and self.tweet_lst:
@@ -95,11 +95,22 @@ class StreamListener(tweepy.Stream):
         
         #self.tweet_metrics_lst.append([cleaned_tweet,keyword,status.created_at,status.user.location,status.user.verified,status.user.followers_count,status.user.created_at,tweet_sentiment])
         self.insert_tweet(tweet)
+        
+    def on_limit(self,status):
+        print("Rate Limit Exceeded, Sleep for 1 Min")
+        sleep(60)
+        return True
 
     def calc_avg_sentiment(self, tweet_sentiment):
         self.sent_lst = self.sent_lst[:100]
         self.sent_lst.insert(0,tweet_sentiment)
         self.sent_avg = sum(self.sent_lst) / len(self.sent_lst)
+        if self.sent_avg > 0:
+            self.sent_result = "Positive"
+        elif self.sent_avg == 0:
+            self.sent_result =  "Neutral"
+        else:
+            self.sent_result =  "Negative"
         #logger.info(f"Avg Sentiment Log: {self.sent_avg}")
         
     def on_error(self,status_code):
