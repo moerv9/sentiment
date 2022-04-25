@@ -31,9 +31,7 @@ class StreamListener(tweepy.Stream):
         init_db()
         self.keywords = keywords
         self.sentiment_model = SentimentIntensityAnalyzer()
-        self.sent_lst = []
-        self.sent_avg = 0
-        self.sent_result = ""
+        self.tw_list = []
         
         if self.running:
             self.disconnect()
@@ -72,7 +70,12 @@ class StreamListener(tweepy.Stream):
             location = str(status.user.location)
             
         tweet_sentiment = self.sentiment_model.polarity_scores(text).get("compound")
-        self.calc_avg_sentiment(tweet_sentiment)
+        if tweet_sentiment > 0.1:
+            tweet_sent_meaning = "Positive"
+        elif tweet_sentiment< -0.1:
+            tweet_sent_meaning =  "Negative"
+        else:
+            tweet_sent_meaning = "Neutral"
         
         # Ignore tweets which do not contain the keyword
         keyword = self.check_keyword(text)
@@ -80,10 +83,10 @@ class StreamListener(tweepy.Stream):
             return
 
         cleaned_tweet = self.cleanTweets(text)
-        tweet = Tweet(body = cleaned_tweet, keyword= keyword, tweet_date= status.created_at, location= status.user.location,
+        '''tweet = Tweet(body = cleaned_tweet, keyword= keyword, tweet_date= status.created_at, location= status.user.location,
                     verified_user= status.user.verified, followers= status.user.followers_count,
-                    user_since= status.user.created_at, sentiment= tweet_sentiment)
-    
+                    user_since= status.user.created_at, sentiment= tweet_sentiment, sentiment_meaning = tweet_sent_meaning)
+        '''
         
         # self.tweet_lst = self.tweet_lst[:20]
         # if not tweet.body in self.tweet_lst and self.tweet_lst:
@@ -92,25 +95,22 @@ class StreamListener(tweepy.Stream):
         #     logger.warning(f"Duplicate Tweet: {tweet.body}")
         #     return
         
+        self.tw_list.append([cleaned_tweet,keyword,status.created_at,status.user.location,status.user.verified,status.user.followers_count,status.user.created_at,tweet_sentiment, tweet_sent_meaning])
         
-        #self.tweet_metrics_lst.append([cleaned_tweet,keyword,status.created_at,status.user.location,status.user.verified,status.user.followers_count,status.user.created_at,tweet_sentiment])
-        self.insert_tweet(tweet)
+        #self.insert_tweet(tweet)
         
     def on_limit(self,status):
         print("Rate Limit Exceeded, Sleep for 1 Min")
         sleep(60)
         return True
+    
+    def get_latest_df(self):
+        df = pd.DataFrame(self.tw_list,columns=["Tweet", "Keyword", "Time", "Location","Verified","Followers","User created", "Sentiment Score", "Sentiment is"])
+        return df
 
-    def calc_avg_sentiment(self, tweet_sentiment):
-        self.sent_lst = self.sent_lst[:100]
-        self.sent_lst.insert(0,tweet_sentiment)
-        self.sent_avg = sum(self.sent_lst) / len(self.sent_lst)
-        if self.sent_avg > 0:
-            self.sent_result = "Positive"
-        elif self.sent_avg == 0:
-            self.sent_result =  "Neutral"
-        else:
-            self.sent_result =  "Negative"
+    def clean_list(self):
+        self.tw_list = []
+
         #logger.info(f"Avg Sentiment Log: {self.sent_avg}")
         
     def on_error(self,status_code):

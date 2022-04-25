@@ -1,7 +1,8 @@
 import os, logging, datetime, argparse
 from logging.handlers import RotatingFileHandler
 from listener import StreamListener
-
+from IPython.display import display
+import pandas as pd
 
 #Config
 os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
@@ -33,6 +34,4 @@ if __name__ == '__main__':
     logging.info(f"Starting stream: {keywords}")
     print("Stream running...")
     listener.filter(track = keywords, languages=["en","de"], threaded = True)
-
     #print(f"Avg Sentiment: {listener.sent_avg}")
-    

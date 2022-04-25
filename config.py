@@ -41,15 +41,15 @@ class ConfigAPI():
         except Exception as e:
             logger.error("Error creating API", exc_info=True)
             raise e
-        logger.info("API created")
+        #logger.info("API created")
         return api
     
     def getKeys(self):
-        logger.info("got Keys")
+        #logger.info("got Keys")
         return self.API_KEY, self.API_SECRET,self.ACCESS_TOKEN, self.ACCESS_SECRET
     
     def getBearerToken(self):
-        logger.info("got Bearertoken")
+        #logger.info("got Bearertoken")
         return self.BEARER_TOKEN
 
 class ConfigDB:

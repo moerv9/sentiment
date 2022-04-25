@@ -74,7 +74,7 @@ def job():
     return df, st_avg , result_avg
 
 btn = st.button("Refresh")
-if btn:
+if btn: 
     df, st_avg, result_avg = job()
     st.dataframe(df)
     st.write(f"Sentiment Average: {st_avg} = {result_avg}")
