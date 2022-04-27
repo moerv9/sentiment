@@ -28,12 +28,12 @@ def export_to_excel(list):
     sheet_name = calc_avg_sentiment(df["Sentiment Score"])
     
     if not os.path.exists(file_name):
-        print(f"..created new file: {file_name}")
-        df.to_excel(file_name)
+        logging.info(f"..created new file: {file_name}")
+        df.to_excel(file_name, sheet_name= str(sheet_name))
     else:
         with pd.ExcelWriter(file_name, mode='a', engine="openpyxl",if_sheet_exists="overlay",) as writer:
             df.to_excel(writer, sheet_name=str(sheet_name))
-        print(f"...appended to file {file_name} with sheet {sheet_name}")
+        logging.info(f"...appended to file {file_name} with sheet {sheet_name}")
     
 def cleanDates(date):
     if isinstance(date, datetime):
@@ -49,10 +49,10 @@ def calc_avg_sentiment(sentiment_col):
     
 def func():
     tweets = listener.tw_list
-    print(f"...collected {len(tweets)} new Tweets")
-    export_to_excel(tweets)
-    listener.clean_list()
-    
+    if tweets:
+        logging.info(f"...collected {len(tweets)} new Tweets")
+        export_to_excel(tweets)
+        listener.clean_list()
     
 
 if __name__ == '__main__':
@@ -62,7 +62,7 @@ if __name__ == '__main__':
     print("Stream running...")
     listener.filter(track = keywords, languages=["en","de"], threaded = True)
     
-    schedule.every(30).seconds.do(func)
+    schedule.every(10).minutes.do(func)
 
     while True:
         schedule.run_pending()
