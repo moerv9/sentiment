@@ -13,8 +13,8 @@ from time import sleep
 
 
 #Config
-sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
-from config import ConfigAPI
+#sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
+from config_sent import ConfigAPI
 newconf = ConfigAPI()
 api = newconf.create_api("auth1")
 

@@ -7,8 +7,8 @@ from contextlib import contextmanager
 import sys
 
 #Config
-sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment")
-from config import ConfigAPI, ConfigDB
+#sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment")
+from config_sent import ConfigAPI, ConfigDB
 newconf = ConfigAPI()
 api = newconf.create_api("auth1")
 

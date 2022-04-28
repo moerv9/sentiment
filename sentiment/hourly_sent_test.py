@@ -5,8 +5,8 @@ import pandas as pd
 from datetime import datetime,timezone,date
 
 #Config
-os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
-from config import ConfigAPI
+#os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
+from config_sent import ConfigAPI
 newconf = ConfigAPI()
 
 #Logging

@@ -5,8 +5,8 @@ from IPython.display import display
 import pandas as pd
 
 #Config
-os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
-from config import ConfigAPI
+#os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
+from config_sent import ConfigAPI
 newconf = ConfigAPI()
 
 

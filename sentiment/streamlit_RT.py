@@ -5,11 +5,10 @@ import pandas as pd
 import numpy as np
 from sqlalchemy import create_engine
 import os, datetime, logging, time
-from listener import StreamListener
 from logging.handlers import RotatingFileHandler
 
-os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment")
-from config import ConfigAPI, ConfigDB
+#os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment")
+from config_sent import ConfigAPI, ConfigDB
 newconf = ConfigAPI()
 api = newconf.create_api("auth1")
 
