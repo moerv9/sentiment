@@ -15,4 +15,3 @@ tweepy
 SQLAlchemy
 vaderSentiment
 psycopg2-binary
-tk
