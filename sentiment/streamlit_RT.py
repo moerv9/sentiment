@@ -81,6 +81,7 @@ def add_together(tabs):
 #print(add_together(tabs))
     
 if st.slider:
+    st.text(f"Rows: {len(df)}")
     st.subheader = "Metrics"
     st.metric("Sentiment is",sent_avg_eval,f"{sent_avg:5f}")
     #st.line_chart(tabs)

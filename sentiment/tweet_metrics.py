@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, DateTime, Boolean, Float
 from database import Base
 
 class Tweet(Base):
-    __tablename__ = "tweets"
+    __tablename__ = "hourly_tweets"
     id = Column(Integer, primary_key=True)
     body = Column(String(2000), nullable=False)
     keyword = Column(String(256), nullable=False)
@@ -26,8 +26,6 @@ class Tweet(Base):
         self.user_since = user_since
         self.sentiment = sentiment
         self.sentiment_meaning = sentiment_meaning
-        # self.sentiment_subj = sentiment_subj
-        # self.sentiment_pol = sentiment_pol
         
     def __repr__(self):
         return "<Tweet %r>" %self.body

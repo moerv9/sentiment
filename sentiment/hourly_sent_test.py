@@ -1,6 +1,6 @@
 import os, time, logging, schedule
 from logging.handlers import RotatingFileHandler
-from listener import StreamListener
+from listener import StreamListener, Keywords
 import pandas as pd
 from datetime import datetime,timezone,date
 
@@ -21,10 +21,16 @@ logging.basicConfig(handlers=[log_handler], level=logging.INFO,
 
 def export_to_excel(list):
     columns=["Tweet", "Keyword", "Time", "Location","Verified","Followers","User created", "Sentiment Score", "Sentiment is"]
-    pd.set_option("display.max_columns",200)
+    #pd.set_option("display.max_columns",200)
     df = pd.DataFrame(list, columns = columns)
     df = df.applymap(cleanDates)
-    file_name = '{}_stream.xlsx'.format(date.today().strftime('%d-%m-%Y'))
+    
+    excel_dir = 'Excel_Logs'
+    if not os.path.exists(excel_dir):
+        os.mkdir(excel_dir)
+    
+    excel_file = '{}_stream.xlsx'.format(date.today().strftime('%d-%m-%Y'))
+    file_name = os.path.join(excel_dir,excel_file)
     sheet_name = calc_avg_sentiment(df["Sentiment Score"])
     
     if not os.path.exists(file_name):
@@ -51,18 +57,24 @@ def func():
     tweets = listener.tw_list
     if tweets:
         logging.info(f"...collected {len(tweets)} new Tweets")
+        print(f"...collected {len(tweets)} new Tweets")
         export_to_excel(tweets)
         listener.clean_list()
     
+keyword_dict = {
+    "btc": ["btc","#btc","$btc","bitcoin"],
+    "ada": ["ada","#ada","$ada","cardano"],
+    "eth": ["eth","#eth","$eth","ether","ethereum","etherum"],
+    "bnb": ["bnb","#bnb","$bnb","binance coin"],
+    "xrp": ["xrp","#xrp","$xrp","ripple"],
+}
 
 if __name__ == '__main__':
-    keywords = ["$btc","#btc","#bitcoin"]
-    listener = StreamListener(newconf.getKeys()[0],newconf.getKeys()[1],newconf.getKeys()[2],newconf.getKeys()[3],keywords)
-    logging.info(f"Starting stream: {keywords}")
+    keyword_obj = Keywords(keyword_dict)
+    listener = StreamListener(newconf.getKeys()[0],newconf.getKeys()[1],newconf.getKeys()[2],newconf.getKeys()[3],keyword_dict)
     print("Stream running...")
-    listener.filter(track = keywords, languages=["en","de"], threaded = True)
-    
-    schedule.every(10).minutes.do(func)
+    listener.filter(track = keyword_obj.keyword_lst, languages=["en","de"], threaded = True)
+    schedule.every(20).minutes.do(func)
 
     while True:
         schedule.run_pending()

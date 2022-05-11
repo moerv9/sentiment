@@ -26,11 +26,12 @@ logger = logging.getLogger(__name__)
 # %%
 #TODO: Add my own sentiment analysis -> blob and ML
 class StreamListener(tweepy.Stream):
-    def __init__(self,api_key, api_secret, access_token, access_secret, keywords):
+    def __init__(self,api_key, api_secret, access_token, access_secret, keyword_obj):
         super().__init__(api_key, api_secret, access_token, access_secret)
         init_db()
-        self.keywords = keywords
         self.sentiment_model = SentimentIntensityAnalyzer()
+        self.keyword_obj = keyword_obj
+        logging.info(f"Starting stream: {self.keyword_obj.keyword_lst}")
         self.tw_list = []
         
         if self.running:
@@ -78,15 +79,22 @@ class StreamListener(tweepy.Stream):
             tweet_sent_meaning = "Neutral"
         
         # Ignore tweets which do not contain the keyword
-        keyword = self.check_keyword(text)
+        keyword = self.keyword_obj.check_keyword(text)
         if not keyword:
             return
-
+        
+        self.keyword_obj.build_tweet_lists(keyword)
+        
         cleaned_tweet = self.cleanTweets(text)
-        '''tweet = Tweet(body = cleaned_tweet, keyword= keyword, tweet_date= status.created_at, location= status.user.location,
+        
+
+
+        self.tw_list.append([cleaned_tweet,keyword,status.created_at,status.user.location,status.user.verified,status.user.followers_count,status.user.created_at,tweet_sentiment, tweet_sent_meaning])
+
+        tweet = Tweet(body = cleaned_tweet, keyword= keyword, tweet_date= status.created_at, location= status.user.location,
                     verified_user= status.user.verified, followers= status.user.followers_count,
                     user_since= status.user.created_at, sentiment= tweet_sentiment, sentiment_meaning = tweet_sent_meaning)
-        '''
+        
         
         # self.tweet_lst = self.tweet_lst[:20]
         # if not tweet.body in self.tweet_lst and self.tweet_lst:
@@ -94,10 +102,8 @@ class StreamListener(tweepy.Stream):
         # else:
         #     logger.warning(f"Duplicate Tweet: {tweet.body}")
         #     return
-        
-        self.tw_list.append([cleaned_tweet,keyword,status.created_at,status.user.location,status.user.verified,status.user.followers_count,status.user.created_at,tweet_sentiment, tweet_sent_meaning])
-        
-        #self.insert_tweet(tweet)
+
+        self.insert_tweet(tweet)
         
     def on_limit(self,status):
         print("Rate Limit Exceeded, Sleep for 1 Min")
@@ -131,23 +137,7 @@ class StreamListener(tweepy.Stream):
         except Exception as e:
             logger.warning(f"Unable to insert tweet: {e}")
         
-    def check_keyword(self,body):
-        """Check Tweet for keywords
 
-        Args:
-            body (String): Tweet Text
-
-        Returns:
-            String: returns keyword or None
-        """
-        
-        if re.search(rf"\b{self.keywords[0]}\b", body, re.IGNORECASE):
-            return self.keywords[0]
-        
-        for keyword in self.keywords[1:]:
-            if keyword.lower() in body:
-                return keyword
-        return None
     
     def check_blacklist(self, body):
         """Check Tweet for forbidden Words like "Giveaway"
@@ -182,3 +172,54 @@ class StreamListener(tweepy.Stream):
         #text = re.sub(r'https?:\/\/\S+',"",text) #removes hyperlink, the '?' matches 0 or 1 reps of the preceding 's'
         text = re.sub(r"http\S+","",text,flags=re.IGNORECASE)
         return text
+
+#This whole keyword class could be improved and the check_keyword function from inside on_status should be in here but it works for now
+class Keywords():
+    def __init__(self,keyword_dict):
+        self.keyword_dict = keyword_dict
+        #self.key_list= {key: None for key in self.keyword_dict.keys()}
+        self.keyword_lst = self.build_keyword_list()
+        
+    def build_keyword_list(self):
+        """Build a list of keywords from a dictionary. Appends the values after the key
+
+        Returns:
+            list: comma separated list of keywords. 
+        """
+        new_list = []
+        # for key, val in self.keyword_dict.items():
+        #     new_list.append(key)
+        #     for i in val:
+        #         new_list.append(i)
+        # return new_list
+        for val in self.keyword_dict.values():
+            for i in val:
+                new_list.append(i)
+        print(f"NewList: {new_list}")
+        return new_list
+        
+    def check_keyword(self,body):
+        """Check Tweet for keywords
+
+        Args:
+            body (String): Tweet Text
+
+        Returns:
+            String: returns keyword or None
+        """
+        # for key, val in self.keyword_dict.items():
+        #     if re.search(rf"\b{key}\b", body, re.IGNORECASE):  
+        #         return key
+        #     for keyword in val:
+        #         if keyword.lower() in body:
+        #             return keyword
+        # return None
+        for val in self.keyword_dict.values():
+            print(f"firstkeyword: {list(self.keyword_dict.values())[0]}")
+            if re.search(rf"\b{list(self.keyword_dict.values())[0]}\b", body, re.IGNORECASE):  
+                return self.keyword_dict[0]
+            for keyword in val:
+                if keyword.lower() in body:
+                    return keyword
+        return None
+        

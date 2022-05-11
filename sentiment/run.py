@@ -1,6 +1,6 @@
 import os, logging, datetime, argparse
 from logging.handlers import RotatingFileHandler
-from listener import StreamListener
+from listener import StreamListener, Keywords
 from IPython.display import display
 import pandas as pd
 
@@ -20,18 +20,19 @@ logging.basicConfig(handlers=[log_handler], level=logging.INFO,
                     datefmt='%d-%m-%Y T%H:%M:%S')
 
 
-keywords = {
-    "btc": ["btc","#btc","$btc","bitcoin"],
-    "ada": ["ada","#ada","$ada","cardano"],
-    "eth": ["eth","#eth","$eth","ether","ethereum","etherum"],
-    "bnb": ["bnb","#bnb","$bnb","binance coin"],
-    "xrp": ["xrp","#xrp","$xrp","ripple"],
-}
+keyword_dict = [
+["btc","#btc","$btc","bitcoin"],
+["ada","#ada","$ada","cardano"],
+["eth","#eth","$eth","ether","ethereum","etherum"],
+["bnb","#bnb","$bnb","binance coin"],
+["xrp","#xrp","$xrp","ripple"],
+]
 
+
+    
 if __name__ == '__main__':
-    keywords = keywords["btc"]
-    listener = StreamListener(newconf.getKeys()[0],newconf.getKeys()[1],newconf.getKeys()[2],newconf.getKeys()[3],keywords)
-    logging.info(f"Starting stream: {keywords}")
+    #keywords = keywords["btc"]
+    keyword_obj = Keywords(keyword_dict)
+    listener = StreamListener(newconf.getKeys()[0],newconf.getKeys()[1],newconf.getKeys()[2],newconf.getKeys()[3],keyword_obj)
     print("Stream running...")
-    listener.filter(track = keywords, languages=["en","de"], threaded = True)
-    #print(f"Avg Sentiment: {listener.sent_avg}")
+    listener.filter(track = keyword_obj.keyword_lst, languages=["en","de"], threaded = True)
