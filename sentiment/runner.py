@@ -4,6 +4,7 @@ from listener import StreamListener, Keywords
 from IPython.display import display
 import pandas as pd
 
+
 #Config
 #os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
 from config_sent import ConfigAPI
@@ -20,19 +21,18 @@ logging.basicConfig(handlers=[log_handler], level=logging.INFO,
                     datefmt='%d-%m-%Y T%H:%M:%S')
 
 
-keyword_dict = {
-"btc":["#btc","$btc","bitcoin"],
-"ada":["#ada","$ada","cardano"],
-"eth":["#eth","$eth","ether","ethereum","etherum"],
-"bnb":["#bnb","$bnb","binance coin"],
-"xrp":["#xrp","$xrp","ripple"],
-}
+class Runner():
+    keyword_dict = {
+        "btc":["#btc","$btc","bitcoin"],
+        "ada":["#ada","$ada","cardano"],
+        "eth":["#eth","$eth","ether","ethereum","etherum"],
+        "bnb":["#bnb","$bnb","binance coin"],
+        "xrp":["#xrp","$xrp","ripple"],
+        }
 
-
-    
-if __name__ == '__main__':
-    #keywords = keywords["btc"]
-    keyword_obj = Keywords(keyword_dict)
-    listener = StreamListener(newconf.getKeys()[0],newconf.getKeys()[1],newconf.getKeys()[2],newconf.getKeys()[3],keyword_obj)
-    print("Stream running...")
-    listener.filter(track = keyword_obj.keyword_lst, languages=["en","de"], threaded = True)
+    def run(self):
+        keyword_obj = Keywords(self.keyword_dict)
+        listener = StreamListener(newconf.getKeys()[0],newconf.getKeys()[1],newconf.getKeys()[2],newconf.getKeys()[3],keyword_obj)
+        print("Stream running...")
+        listener.filter(track = keyword_obj.keyword_lst, languages=["en","de"], threaded = True)
+        return listener

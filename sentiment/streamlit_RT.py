@@ -5,7 +5,6 @@ import pandas as pd
 import numpy as np
 from sqlalchemy import create_engine
 import os, datetime, logging, time
-from logging.handlers import RotatingFileHandler
 
 #os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment")
 from config_sent import ConfigAPI, ConfigDB
@@ -13,32 +12,25 @@ newconf = ConfigAPI()
 api = newconf.create_api("auth1")
 
 
-log_dir = 'Logs'
-if not os.path.exists(log_dir):
-    os.mkdir(log_dir)
-log_name = '{}_stream.log'.format(datetime.date.today().strftime('%Y%m%d'))
-log_handler = RotatingFileHandler(filename=os.path.join(log_dir, log_name), maxBytes=20000, backupCount=5)
-logging.basicConfig(handlers=[log_handler], level=logging.INFO,
-                    format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
-                    datefmt='%d-%m-%Y T%H:%M:%S')
+logger = logging.getLogger(__name__)
 
 st.set_page_config(
     page_title="RealTime Tweet Data", 
     )
 st.title("View Dataset from Livestream")
 
-@st.cache(allow_output_mutation=True, show_spinner=False)
-def get_con():
-    return create_engine('postgresql://{}:{}@{}/tweets'.format(ConfigDB.USER, ConfigDB.PASS, ConfigDB.HOST),convert_unicode=True)
+# @st.cache(allow_output_mutation=True, show_spinner=False)
+# def get_con():
+#     return create_engine('postgresql://{}:{}@{}/tweets'.format(ConfigDB.USER, ConfigDB.PASS, ConfigDB.HOST),convert_unicode=True)
 
-@st.cache(allow_output_mutation=True,show_spinner=False, ttl=5*60)
-def get_data():
-    timestamp = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    df = pd.read_sql_table("tweets",get_con())
-    df = df.rename(columns={"body": "Tweet", "tweet_date":"Timestamp", 
-        "followers": "Followers", "sentiment": "Sentiment", "keyword": "Keyword",
-        "verified_user": "User verified"})
-    return df, timestamp
+# @st.cache(allow_output_mutation=True,show_spinner=False, ttl=5*60)
+# def get_data():
+#     timestamp = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+#     df = pd.read_sql_table("tweets",get_con())
+#     df = df.rename(columns={"body": "Tweet", "tweet_date":"Timestamp", 
+#         "followers": "Followers", "sentiment": "Sentiment", "keyword": "Keyword",
+#         "verified_user": "User verified"})
+#     return df, timestamp
 
 def wordCloud(df):
     try:
@@ -52,7 +44,6 @@ def wordCloud(df):
     plt.axis('off')
     st.pyplot(plt)
     
-
 
 #get excel and sheet names, sheet name = sentiment average
 tabs:list = pd.ExcelFile("26-04-2022_stream.xlsx").sheet_names
