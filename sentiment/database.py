@@ -30,4 +30,5 @@ def session_scope():
         session.close()
         
 def init_db():
-    Base.metadata.create_all(bind=engine)
+    Base.metadata.create_all(bind=engine,checkfirst=True)
+    

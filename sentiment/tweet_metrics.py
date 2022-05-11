@@ -1,8 +1,11 @@
 from sqlalchemy import Column, Integer, String, DateTime, Boolean, Float
 from database import Base
 
+
 class Tweet(Base):
     __tablename__ = "hourly_tweets"
+    #__tablename__ = tablename
+    __table_args__ = {'extend_existing': True}
     id = Column(Integer, primary_key=True)
     body = Column(String(2000), nullable=False)
     keyword = Column(String(256), nullable=False)
@@ -29,4 +32,6 @@ class Tweet(Base):
         
     def __repr__(self):
         return "<Tweet %r>" %self.body
+    
+
     

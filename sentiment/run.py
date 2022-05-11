@@ -20,13 +20,13 @@ logging.basicConfig(handlers=[log_handler], level=logging.INFO,
                     datefmt='%d-%m-%Y T%H:%M:%S')
 
 
-keyword_dict = [
-["btc","#btc","$btc","bitcoin"],
-["ada","#ada","$ada","cardano"],
-["eth","#eth","$eth","ether","ethereum","etherum"],
-["bnb","#bnb","$bnb","binance coin"],
-["xrp","#xrp","$xrp","ripple"],
-]
+keyword_dict = {
+"btc":["#btc","$btc","bitcoin"],
+"ada":["#ada","$ada","cardano"],
+"eth":["#eth","$eth","ether","ethereum","etherum"],
+"bnb":["#bnb","$bnb","binance coin"],
+"xrp":["#xrp","$xrp","ripple"],
+}
 
 
     

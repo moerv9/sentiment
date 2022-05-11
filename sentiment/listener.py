@@ -1,5 +1,7 @@
 #Imports
 import sys
+
+from regex import R
 from database import session_scope, init_db
 from tweet_metrics import Tweet
 import tweepy
@@ -10,6 +12,9 @@ import re
 import demoji
 from datetime import datetime
 from time import sleep
+
+from collections import defaultdict
+
 
 
 #Config
@@ -31,8 +36,10 @@ class StreamListener(tweepy.Stream):
         init_db()
         self.sentiment_model = SentimentIntensityAnalyzer()
         self.keyword_obj = keyword_obj
+        self.tweet_dict = defaultdict(list)
         logging.info(f"Starting stream: {self.keyword_obj.keyword_lst}")
-        self.tw_list = []
+        #self.tw_list = []
+
         
         if self.running:
             self.disconnect()
@@ -79,21 +86,25 @@ class StreamListener(tweepy.Stream):
             tweet_sent_meaning = "Neutral"
         
         # Ignore tweets which do not contain the keyword
-        keyword = self.keyword_obj.check_keyword(text)
+        keyword, crypto_identifier = self.keyword_obj.check_keyword(text)
         if not keyword:
             return
         
-        self.keyword_obj.build_tweet_lists(keyword)
-        
         cleaned_tweet = self.cleanTweets(text)
+        metrics = [cleaned_tweet,keyword,status.created_at,status.user.location,status.user.verified,status.user.followers_count,status.user.created_at,tweet_sentiment, tweet_sent_meaning]
         
+        try:
+            if crypto_identifier:
+                self.tweet_dict[crypto_identifier].append(metrics)
+        except:
+            raise Exception
+        #self.tw_list.append(metrics)
 
-
-        self.tw_list.append([cleaned_tweet,keyword,status.created_at,status.user.location,status.user.verified,status.user.followers_count,status.user.created_at,tweet_sentiment, tweet_sent_meaning])
-
-        tweet = Tweet(body = cleaned_tweet, keyword= keyword, tweet_date= status.created_at, location= status.user.location,
-                    verified_user= status.user.verified, followers= status.user.followers_count,
-                    user_since= status.user.created_at, sentiment= tweet_sentiment, sentiment_meaning = tweet_sent_meaning)
+        #For Posgres
+        # tweet = Tweet(body = cleaned_tweet, keyword= keyword, tweet_date= status.created_at, location= status.user.location,
+        #         verified_user= status.user.verified, followers= status.user.followers_count,
+        #         user_since= status.user.created_at, sentiment= tweet_sentiment, sentiment_meaning = tweet_sent_meaning)
+        # self.insert_tweet(tweet)
         
         
         # self.tweet_lst = self.tweet_lst[:20]
@@ -103,7 +114,6 @@ class StreamListener(tweepy.Stream):
         #     logger.warning(f"Duplicate Tweet: {tweet.body}")
         #     return
 
-        self.insert_tweet(tweet)
         
     def on_limit(self,status):
         print("Rate Limit Exceeded, Sleep for 1 Min")
@@ -177,25 +187,23 @@ class StreamListener(tweepy.Stream):
 class Keywords():
     def __init__(self,keyword_dict):
         self.keyword_dict = keyword_dict
-        #self.key_list= {key: None for key in self.keyword_dict.keys()}
+        
         self.keyword_lst = self.build_keyword_list()
         
     def build_keyword_list(self):
         """Build a list of keywords from a dictionary. Appends the values after the key
-
+        Needed for the Tweet Listener.Filter
+        
         Returns:
             list: comma separated list of keywords. 
         """
         new_list = []
-        # for key, val in self.keyword_dict.items():
-        #     new_list.append(key)
-        #     for i in val:
-        #         new_list.append(i)
-        # return new_list
-        for val in self.keyword_dict.values():
+        for key, val in self.keyword_dict.items():
+            new_list.append(key)
             for i in val:
                 new_list.append(i)
         print(f"NewList: {new_list}")
+
         return new_list
         
     def check_keyword(self,body):
@@ -207,19 +215,28 @@ class Keywords():
         Returns:
             String: returns keyword or None
         """
-        # for key, val in self.keyword_dict.items():
-        #     if re.search(rf"\b{key}\b", body, re.IGNORECASE):  
-        #         return key
-        #     for keyword in val:
-        #         if keyword.lower() in body:
-        #             return keyword
-        # return None
-        for val in self.keyword_dict.values():
-            print(f"firstkeyword: {list(self.keyword_dict.values())[0]}")
-            if re.search(rf"\b{list(self.keyword_dict.values())[0]}\b", body, re.IGNORECASE):  
-                return self.keyword_dict[0]
+        i =0 
+        for key, val in list(self.keyword_dict.items()):
+            if re.search(rf"\b{key}\b", body, re.IGNORECASE):  
+                return key, list(self.keyword_dict.keys())[i]
             for keyword in val:
                 if keyword.lower() in body:
-                    return keyword
-        return None
+                    return keyword, list(self.keyword_dict.keys())[i]
+            #print(f"KEY: {list(self.keyword_dict.keys())[i]}")
+            i+=1
+        # return None
+        
+            
+        
+        # for key in self.keyword_dict.keys():
+        #     if re.search(rf"\b{key}\b", body, re.IGNORECASE): 
+        #         logger.info(f"Key: {key}") 
+        #         return key
+        
+        # for val in self.keyword_dict.values():
+        #     for keyword in val:
+        #         if keyword.lower() in body:
+        #             logger.info(f"Keyword: {keyword}")
+        #             return keyword
+        return None, None
         
