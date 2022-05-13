@@ -11,7 +11,7 @@ from config_sent import ConfigAPI
 newconf = ConfigAPI()
 
 
-log_dir = 'Logs'
+log_dir = 'sentiment/Logs'
 if not os.path.exists(log_dir):
     os.mkdir(log_dir)
 log_name = '{}_stream.log'.format(datetime.date.today().strftime('%Y%m%d'))
@@ -20,8 +20,7 @@ logging.basicConfig(handlers=[log_handler], level=logging.INFO,
                     format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
                     datefmt='%d-%m-%Y T%H:%M:%S')
 
-
-class Runner():
+class StartListener():
     keyword_dict = {
         "btc":["#btc","$btc","bitcoin"],
         "ada":["#ada","$ada","cardano"],
@@ -36,3 +35,7 @@ class Runner():
         print("Stream running...")
         listener.filter(track = keyword_obj.keyword_lst, languages=["en","de"], threaded = True)
         return listener
+
+if __name__=="__main__":
+    listener = StartListener().run()
+    

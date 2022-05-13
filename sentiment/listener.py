@@ -38,9 +38,8 @@ class StreamListener(tweepy.Stream):
         self.keyword_obj = keyword_obj
         self.tweet_dict = defaultdict(list)
         logging.info(f"Starting stream: {self.keyword_obj.keyword_lst}")
-        #self.tw_list = []
+        self.sum_collected_tweets = 0
 
-        
         if self.running:
             self.disconnect()
 
@@ -95,10 +94,10 @@ class StreamListener(tweepy.Stream):
         
         try:
             if crypto_identifier:
+                self.sum_collected_tweets +=1
                 self.tweet_dict[crypto_identifier].append(metrics)
         except:
             raise Exception
-        #self.tw_list.append(metrics)
 
         #For Posgres
         # tweet = Tweet(body = cleaned_tweet, keyword= keyword, tweet_date= status.created_at, location= status.user.location,
@@ -120,14 +119,12 @@ class StreamListener(tweepy.Stream):
         sleep(60)
         return True
     
-    def get_latest_df(self):
-        df = pd.DataFrame(self.tw_list,columns=["Tweet", "Keyword", "Time", "Location","Verified","Followers","User created", "Sentiment Score", "Sentiment is"])
-        return df
+    # def get_latest_df(self):
+    #     df = pd.DataFrame(self.tw_list,columns=["Tweet", "Keyword", "Time", "Location","Verified","Followers","User created", "Sentiment Score", "Sentiment is"])
+    #     return df
 
-    def clean_list(self):
-        self.tw_list = []
-
-        #logger.info(f"Avg Sentiment Log: {self.sent_avg}")
+    def clean_dict(self):
+        self.tweet_dict = []
         
     def on_error(self,status_code):
         if status_code == 420:
@@ -202,7 +199,6 @@ class Keywords():
             new_list.append(key)
             for i in val:
                 new_list.append(i)
-        print(f"NewList: {new_list}")
 
         return new_list
         
@@ -224,19 +220,6 @@ class Keywords():
                     return keyword, list(self.keyword_dict.keys())[i]
             #print(f"KEY: {list(self.keyword_dict.keys())[i]}")
             i+=1
-        # return None
         
-            
-        
-        # for key in self.keyword_dict.keys():
-        #     if re.search(rf"\b{key}\b", body, re.IGNORECASE): 
-        #         logger.info(f"Key: {key}") 
-        #         return key
-        
-        # for val in self.keyword_dict.values():
-        #     for keyword in val:
-        #         if keyword.lower() in body:
-        #             logger.info(f"Keyword: {keyword}")
-        #             return keyword
         return None, None
         
