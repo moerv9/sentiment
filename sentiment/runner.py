@@ -3,6 +3,7 @@ from logging.handlers import RotatingFileHandler
 from listener import StreamListener, Keywords
 from IPython.display import display
 import pandas as pd
+from exporter import Export
 
 
 #Config
@@ -38,4 +39,5 @@ class StartListener():
 
 if __name__=="__main__":
     listener = StartListener().run()
+    export = Export(listener,0.1)
     

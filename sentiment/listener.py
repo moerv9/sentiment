@@ -213,8 +213,9 @@ class Keywords():
         """
         i =0 
         for key, val in list(self.keyword_dict.items()):
-            if re.search(rf"\b{key}\b", body, re.IGNORECASE):  
-                return key, list(self.keyword_dict.keys())[i]
+            # This looks for keyword like "btc" or "ada" -> results in lots of unrelated tweets 
+            # if re.search(rf"\b{key}\b", body, re.IGNORECASE):  
+            #     return key, list(self.keyword_dict.keys())[i]
             for keyword in val:
                 if keyword.lower() in body:
                     return keyword, list(self.keyword_dict.keys())[i]

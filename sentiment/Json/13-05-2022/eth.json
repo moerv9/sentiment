@@ -1,0 +1,24 @@
+{
+    "0":{
+        "Tweet":"  is going to pump on a quantum level! too another time zoooooone!              tg  ",
+        "Keyword":"#eth",
+        "Time":"13-05-2022 15:08",
+        "Location":null,
+        "Verified":false,
+        "Followers":48,
+        "User created":"05-11-2021 13:27",
+        "Sentiment Score":0.0,
+        "Sentiment is":"Neutral"
+    },
+    "1":{
+        "Tweet":"_7767 _alfa11      __crypto     ready for a trip to another galaxy where you can use your  that you have earned from ?                 ",
+        "Keyword":"#eth",
+        "Time":"13-05-2022 15:08",
+        "Location":null,
+        "Verified":false,
+        "Followers":103,
+        "User created":"14-03-2022 00:45",
+        "Sentiment Score":0.3612,
+        "Sentiment is":"Positive"
+    }
+}
