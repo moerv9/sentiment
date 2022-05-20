@@ -1,13 +1,15 @@
+import signal
 import streamlit as st
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import pandas as pd
 import numpy as np
 from sqlalchemy import create_engine
-import os, logging
+import sys,os, logging
 from datetime import date, time 
 from logging.handlers import RotatingFileHandler
-from runner import Runner
+import subprocess
+import shlex
 
 from time import sleep
 
@@ -16,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 
 st.set_page_config(
-    page_title="Twitter Streaming", 
+    page_title="Sentiment", 
     layout="wide", 
     )
 st.title("Dashboard for Twitter Sentiment-Streaming")
@@ -35,7 +37,7 @@ st.title("Dashboard for Twitter Sentiment-Streaming")
 #     return df, timestamp
 
 def show_wordCloud(df):
-    print(len(df["Tweet"]))
+
     try:
         all_words = ' '.join([tweets for tweets in df['Tweet']])
     except:
@@ -52,9 +54,9 @@ def get_json_data():
     dataframes = {}
     if os.path.exists(dir):
         for filename in os.listdir(dir):
-            f = os.path.join(dir,filename)
-            if os.path.isfile(f):
-                df = pd.read_json(f,orient="index")
+            file_path = os.path.join(dir,filename)
+            if os.path.isfile(file_path):
+                df = pd.read_json(file_path,orient="index")
                 dataframes.update({filename : df})
         return dataframes
 
@@ -74,22 +76,36 @@ dataframes = get_json_data()
 with st.sidebar:
     st.subheader("Mission Control")
     coin_selection = st.multiselect("What Coins do you want to listen to?",["btc","eth","ada","bnb","xrp"],default="btc")
-    btn_start_listener = st.button("Start Listener")
+    export_interval = st.number_input("Interval to get new Data",min_value=0.5,max_value=120.0,value=0.5,step=0.5,help="Value in Min.",format="%f")
+    btn_start_runner = st.button("Start Listener")
+    btn_stop_runner = st.button("Stop Listener")
     
-if btn_start_listener:
+if btn_start_runner:
     with st.spinner('Wait for it...'):
         try:
-            Runner(coin_selection,0.5)
+            command = shlex.split(f"python3 runner.py -k \"{coin_selection}\" -i \"{export_interval}\"")
+            process = subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+            process_id = process.pid
+            st.session_state.process_id = process_id
         except:
             Exception("Error")
-        sleep(5)
-    st.success('Listening to tweets now..!') 
+        sleep(3)
+    st.success('Listening to Tweets now..!') 
+
+    
+if btn_stop_runner:
+    subprocess.os.kill(st.session_state.process_id,signal.SIGTERM)
+    del st.session_state.process_id 
+    
+
 
 st.markdown("---")
 st.subheader("Overall Sentiment")
-st.subheader("Last Tweets:")
+st.subheader("View Datasets:")
 try:
     for key, df in dataframes.items():
+        #len_tweets = len(df["Tweet"])
+        #print(f"Amount of Tweets for {key[:-5]}: {len_tweets}")
         with st.expander(key[:-5]):
             st.dataframe(df.tail(5))
             col1,col2,col3 = st.columns(3)

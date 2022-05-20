@@ -52,7 +52,7 @@ class Export():
                 df_read = pd.read_json(json_file,orient="index")
                 df_read = pd.concat([df_read,df_to_append],ignore_index=True)
                 df_read.drop_duplicates(inplace=True)
-                df_read.to_json(json_file,orient="index",indent=4)
+                df_read.to_json(json_file,orient="index",indent=4,force_ascii=False)
             else:
                 df_to_append.to_json(json_file,orient="index",indent=4) #records= kein Index,
 
@@ -61,7 +61,7 @@ class Export():
     def repeat_func(self):
         self.tweet_dict = self.listener.tweet_dict
         if self.tweet_dict:
-            logging.info(f"{self.listener.sum_collected_tweets} Tweets collected")
+            logger.info(f"{self.listener.sum_collected_tweets} Tweets collected")
             # export_to_excel(tweets)
             self.export_to_json()
             # listener.clean_list()

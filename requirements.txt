@@ -16,3 +16,4 @@ SQLAlchemy
 vaderSentiment
 psycopg2-binary
 collections
+subprocess.run
