@@ -15,6 +15,5 @@ tweepy
 SQLAlchemy
 vaderSentiment
 psycopg2-binary
-collections
 subprocess.run
 streamlit_autorefresh
