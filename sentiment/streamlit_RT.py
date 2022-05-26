@@ -1,53 +1,47 @@
 import signal
+from regex import W
 import streamlit as st
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import pandas as pd
 import numpy as np
 from sqlalchemy import create_engine
-import sys,os, logging
+import os, logging
 from datetime import date, time 
 from logging.handlers import RotatingFileHandler
-import subprocess
-import shlex
-
+import subprocess, shlex, psutil
 from time import sleep
+from streamlit_autorefresh import st_autorefresh 
+from collections import Counter
 
-
+##PAGE SETUP
 logger = logging.getLogger(__name__)
-
-
 st.set_page_config(
     page_title="Sentiment", 
     layout="wide", 
     )
-st.title("Dashboard for Twitter Sentiment-Streaming")
+st.subheader(f"Twitter Sentiment-Streaming for {date.today().strftime('%d-%m-%Y')}")
 
-# @st.cache(allow_output_mutation=True, show_spinner=False)
-# def get_con():
-#     return create_engine('postgresql://{}:{}@{}/tweets'.format(ConfigDB.USER, ConfigDB.PASS, ConfigDB.HOST),convert_unicode=True)
+with open("style.css") as f:
+    st.markdown(f"<style>{f.read()}</style",unsafe_allow_html=True)
 
-# @st.cache(allow_output_mutation=True,show_spinner=False, ttl=5*60)
-# def get_data():
-#     timestamp = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-#     df = pd.read_sql_table("tweets",get_con())
-#     df = df.rename(columns={"body": "Tweet", "tweet_date":"Timestamp", 
-#         "followers": "Followers", "sentiment": "Sentiment", "keyword": "Keyword",
-#         "verified_user": "User verified"})
-#     return df, timestamp
-
+## FUNCTIONS
 def show_wordCloud(df):
-
     try:
         all_words = ' '.join([tweets for tweets in df['Tweet']])
     except:
         print(Exception)
         pass
-    word_cloud = WordCloud(width=500, height=250, random_state=21, max_font_size=100).generate(all_words)
-
+    word_cloud = WordCloud(width=500, height=250, random_state=21, max_font_size=100,colormap="Spectral").generate(all_words)
+    plt.figure(figsize=(20,10),facecolor="k")
     plt.imshow(word_cloud, interpolation="bilinear")
     plt.axis('off')
+    plt.tight_layout(pad=0)
     st.pyplot(plt)
+    word_list = [i for item in df['Tweet'] for i in item.split()]
+    freq = Counter(word_list).most_common(10)
+    print(freq)
+
 
 def get_json_data():
     dir = "Json/"+ date.today().strftime('%d-%m-%Y')
@@ -59,67 +53,113 @@ def get_json_data():
                 df = pd.read_json(file_path,orient="index")
                 dataframes.update({filename : df})
         return dataframes
-
     
 def get_sentiment_on_all_data(sentiment_col):
     sent_avg = sentiment_col.sum() / len(sentiment_col)
-    if sent_avg >0.1:
+    if sent_avg >0.2:
         sent_avg_eval = "Positive"
-    elif sent_avg <-0.1:
+    elif sent_avg <-0.2:
         sent_avg_eval = "Negative"
     else:
         sent_avg_eval = "Neutral"
     return sent_avg, sent_avg_eval 
 
-dataframes = get_json_data()
+# @st.cache()
+# def set_process_id(id=5):
+#     process_id = id
+#     st.session_state.process_id = process_id
+#     logger.info(f"process id: {process_id}")
+#     return process_id
+# process_id = set_process_id()
 
-with st.sidebar:
-    st.subheader("Mission Control")
-    coin_selection = st.multiselect("What Coins do you want to listen to?",["btc","eth","ada","bnb","xrp"],default="btc")
-    export_interval = st.number_input("Interval to get new Data",min_value=0.5,max_value=120.0,value=0.5,step=0.5,help="Value in Min.",format="%f")
-    btn_start_runner = st.button("Start Listener")
-    btn_stop_runner = st.button("Stop Listener")
-    
-if btn_start_runner:
-    with st.spinner('Wait for it...'):
+def find_pid():
+    for proc in psutil.process_iter():
         try:
-            command = shlex.split(f"python3 runner.py -k \"{coin_selection}\" -i \"{export_interval}\"")
-            process = subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-            process_id = process.pid
-            st.session_state.process_id = process_id
+            pinfo = proc.as_dict( attrs=['pid', 'name','cmdline'])
+            if "runner" in str(pinfo["cmdline"]):
+                logger.info(f"Process {pinfo} running...")
+                return pinfo["pid"]
+            else:
+                continue
         except:
-            Exception("Error")
-        sleep(3)
-    st.success('Listening to Tweets now..!') 
+            return None
+        
+def show_data():
+    try:
+        i=0
+        cols= st.columns(len(dataframes.keys()))
+        for key, df in dataframes.items():
+            with cols[i]:
+                with st.expander(key[:-5].upper(),expanded=True):
+                    sent_avg, sent_avg_eval = get_sentiment_on_all_data(df["Sentiment Score"])
+                    st.metric("Sentiment is:",sent_avg_eval, f"{sent_avg:5f}")
+                    show_wordCloud(df)
+            i+=1
+    except:
+        logger.info(f"No Data for {date.today().strftime('%d-%m-%Y')}")
+        st.write(f"No Data for {date.today().strftime('%d-%m-%Y')}")
 
-    
-if btn_stop_runner:
-    subprocess.os.kill(st.session_state.process_id,signal.SIGTERM)
-    del st.session_state.process_id 
-    
+#Sidebar
+st.sidebar.subheader("Mission Control")
+coin_selection = st.sidebar.multiselect("What Coins do you want to listen to?",["btc","eth","ada","bnb","xrp"],default="btc")
+refresh_rate = st.sidebar.number_input("Refresh Interval",min_value=0.5,max_value=120.0,value=0.5,step=0.5,help="This refreshes the Page and reads the Data in given Interval.\nValue in Min.",format="%f") #the page should also be refreshed in that rate
+
+#Starting & Stopping the Process
+process_status_text = f'<h3 style="color:Orange;">OFFLINE</h3>'
+if find_pid() is not None:
+    process_status_text = f'<h3 style="color:Green;">RUNNING</h3>'
+    btn_stop_runner = st.sidebar.button("Stop Listening")
+    if btn_stop_runner:
+        pid = find_pid()
+        print(f"Killed Process with PID:{find_pid()}")
+        subprocess.os.kill(pid,signal.SIGTERM)
+else:
+    btn_start_runner = st.sidebar.button("Start Listening")
+    if btn_start_runner:
+        
+        with st.spinner('Wait for it...'):
+            try:
+                command = shlex.split(f"python3 runner.py -k \"{coin_selection}\" -i \"{refresh_rate}\"")
+                process = subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+                #process_id = set_process_id(process.pid)
+            except:
+                Exception("Error")
+            sleep(3)
+        st.sidebar.success('Listening to Tweets now..!') 
+        st.sidebar.warning("The page will refresh in 30 seconds. Please wait")
 
 
-st.markdown("---")
-st.subheader("Overall Sentiment")
-st.subheader("View Datasets:")
-try:
-    for key, df in dataframes.items():
-        #len_tweets = len(df["Tweet"])
-        #print(f"Amount of Tweets for {key[:-5]}: {len_tweets}")
-        with st.expander(key[:-5]):
-            st.dataframe(df.tail(5))
-            col1,col2,col3 = st.columns(3)
-            with col2:
-                show_wordCloud(df)
-            with col3:
-                sent_avg, sent_avg_eval = get_sentiment_on_all_data(df["Sentiment Score"])
-                st.metric("Sentiment is",sent_avg_eval, f"{sent_avg:5f}")
-except:
-    logger.info(f"No Data for {date.today().strftime('%d-%m-%Y')}")
-    st.write(f"No Data for {date.today().strftime('%d-%m-%Y')}")
+#Show the actual Status of the Process in Sidebar
+st.sidebar.markdown(process_status_text,unsafe_allow_html=True)
 
+page_refresh_rate=st_autorefresh(interval= refresh_rate*60*1000, key="page_refresh_rate")
 
+## Call functions
+dataframes = get_json_data()
+find_pid()
+show_data()
 
+#A Button for Explanation
+st.sidebar.markdown("---")
+btn_whats_this = st.sidebar.button("What's this?")
+if btn_whats_this:
+    with st.expander("What's this?"):
+        st.write("This is a Programm that listens to the Sentiment of Tweets from Twitter and visualises it. Createdy by Moerv")
+        img_to_my_pic = '<div align="center"><a href="https://github.com/moerv9/sentiment"><img src="https://github.com/moerv9.png" alt="Github Profile" width="200"></div>'
+        st.markdown(img_to_my_pic,unsafe_allow_html=True)
+        
+## Show the Tables of Data for each Coin             
+btn_show_datasets = st.sidebar.button("Show Datasets")
+if btn_show_datasets:
+    try:
+        st.markdown("---")
+        st.subheader("Datasets")
+        for key, df in dataframes.items():
+            with st.expander(f"Tweet Data for {key[:-5].upper()}"):
+                st.dataframe(df.tail(5))
+    except:
+        Exception("Can't display data for right now")
+        
 
 
 ## BACKUP FOR EXCEL DATA
@@ -136,15 +176,23 @@ except:
 # df.style.hide(level = 1)  
 # st.markdown("---")
 
-# def add_together(tabs):
-#     list = [names for names in tabs]
-#     return list
-
-# #print(add_together(tabs))
-    
+## BACKUP FOR SQL 
 # if st.slider:
 #     st.text(f"Rows: {len(df)}")
 #     st.subheader = "Metrics"
 #     st.metric("Sentiment is",sent_avg_eval,f"{sent_avg:5f}")
 #     #st.line_chart(tabs)
 #     wordCloud(df)
+
+# @st.cache(allow_output_mutation=True, show_spinner=False)
+# def get_con():
+#     return create_engine('postgresql://{}:{}@{}/tweets'.format(ConfigDB.USER, ConfigDB.PASS, ConfigDB.HOST),convert_unicode=True)
+
+# @st.cache(allow_output_mutation=True,show_spinner=False, ttl=5*60)
+# def get_data():
+#     timestamp = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+#     df = pd.read_sql_table("tweets",get_con())
+#     df = df.rename(columns={"body": "Tweet", "tweet_date":"Timestamp", 
+#         "followers": "Followers", "sentiment": "Sentiment", "keyword": "Keyword",
+#         "verified_user": "User verified"})
+#     return df, timestamp
