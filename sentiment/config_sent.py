@@ -27,8 +27,6 @@ class ConfigAPI():
             VerificationError: Error creating the API
         """
 
-
-
         if bearer_token == "bearer":
             auth = tweepy.OAuth2BearerHandler(self.BEARER_TOKEN)
         elif bearer_token == "auth1":

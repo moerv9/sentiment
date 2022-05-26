@@ -1,0 +1,79 @@
+{
+    "0":{
+        "Tweet":"_cvi  why not bring that market interface to cardano?  also how about some ada options to protect shen?",
+        "Keyword":"cardano",
+        "Time":"18-05-2022 16:26",
+        "Location":null,
+        "Verified":false,
+        "Followers":19,
+        "User created":"27-05-2016 09:37",
+        "Sentiment Score":0.4515,
+        "Sentiment is":"Positive"
+    },
+    "1":{
+        "Tweet":" forget $luna buy $ada ",
+        "Keyword":"$ada",
+        "Time":"18-05-2022 16:26",
+        "Location":null,
+        "Verified":false,
+        "Followers":18,
+        "User created":"06-10-2021 10:21",
+        "Sentiment Score":-0.2263,
+        "Sentiment is":"Negative"
+    },
+    "2":{
+        "Tweet":"[seed]  new 1 minted blockpool performance was quite good for the last few epochs  blocks in epoch (339) 2 estimated blocks in whole epoch 2.9 total blocks 679     more info ",
+        "Keyword":"#ada",
+        "Time":"18-05-2022 16:27",
+        "Location":null,
+        "Verified":false,
+        "Followers":332,
+        "User created":"24-10-2021 11:41",
+        "Sentiment Score":-0.1779,
+        "Sentiment is":"Negative"
+    },
+    "3":{
+        "Tweet":" cardano is always open for you guys",
+        "Keyword":"cardano",
+        "Time":"18-05-2022 16:27",
+        "Location":null,
+        "Verified":false,
+        "Followers":0,
+        "User created":"20-08-2021 08:11",
+        "Sentiment Score":0.0,
+        "Sentiment is":"Neutral"
+    },
+    "8":{
+        "Tweet":" $ada over all these tbh",
+        "Keyword":"$ada",
+        "Time":"18-05-2022 16:27",
+        "Location":null,
+        "Verified":false,
+        "Followers":3264,
+        "User created":"25-02-2016 17:21",
+        "Sentiment Score":0.0,
+        "Sentiment is":"Neutral"
+    },
+    "9":{
+        "Tweet":"charles hoskinson takes a swipe at aragon co-founder, says \u201cso much to learn from\u00a0cardano\u201d ",
+        "Keyword":"cardano",
+        "Time":"18-05-2022 16:27",
+        "Location":null,
+        "Verified":false,
+        "Followers":1274,
+        "User created":"27-02-2022 16:55",
+        "Sentiment Score":0.0,
+        "Sentiment is":"Neutral"
+    },
+    "10":{
+        "Tweet":"$ada                  _nfts  check out this nfts!!!web site ",
+        "Keyword":"$ada",
+        "Time":"18-05-2022 16:27",
+        "Location":null,
+        "Verified":false,
+        "Followers":4,
+        "User created":"03-10-2021 17:01",
+        "Sentiment Score":0.9582,
+        "Sentiment is":"Positive"
+    }
+}
