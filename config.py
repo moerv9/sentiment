@@ -6,7 +6,8 @@ import tweepy
 import logging
 logger = logging.getLogger(__name__)
 
-class ConfigAPI():
+# Get Twitter API Token and Secret
+class Config():
     def __init__(self):
         self.API_KEY = os.getenv('API_KEY')
         self.API_SECRET = os.getenv('API_SECRET')
@@ -26,9 +27,6 @@ class ConfigAPI():
         Raises:
             VerificationError: Error creating the API
         """
-
-
-
         if bearer_token == "bearer":
             auth = tweepy.OAuth2BearerHandler(self.BEARER_TOKEN)
         elif bearer_token == "auth1":
@@ -52,11 +50,27 @@ class ConfigAPI():
         #logger.info("got Bearertoken")
         return self.BEARER_TOKEN
 
+#Keys for Posgres Database
 class ConfigDB:
     USER = os.environ.get("DB_USER")
     PASS = os.environ.get("DB_PASS")
     HOST = os.environ.get("DB_HOST")
 
+# Config for Binance API
+class ConfigBinance:
+    def __init__(self) -> None:
+        self.BINANCE_API_KEY = os.getenv("BINANCE_API_KEY")
+        self.BINANCE_API_SECRET = os.getenv("BINANCE_API_SECRET")
+        self.BINANCE_TESTNET_API_KEY = os.getenv("BINANCE_TESTNET_API_KEY")
+        self.BINANCE_TESTNET_API_SECRET = os.getenv("BINANCE_TESTNET_API_SECRET")
+        
+    def getKeys(self,testnet:bool=False):
+        if testnet:
+            logger.info("Retrieve Binance Testnet Keys")
+            return self.BINANCE_TESTNET_API_KEY,self.BINANCE_TESTNET_API_SECRET
+        else:
+            logger.info("Retrieve Binance API Keys")
+            return self.BINANCE_API_KEY,self.BINANCE_API_SECRET
 
 '''
 # Test for getting the Tokens

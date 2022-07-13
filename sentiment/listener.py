@@ -1,28 +1,23 @@
 #Imports
-import sys
 
-from regex import R
-from database import session_scope, init_db
-from tweet_metrics import Tweet
+#import regex
+#from config.database import session_scope, init_db
+#from config.tweet_data_db import Tweet
 import tweepy
 import logging
-import pandas as pd 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import re
 import demoji
 from datetime import datetime
 from time import sleep
-
 from collections import defaultdict
 
-
-
 #Config
-#sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
-from config_sent import ConfigAPI
-newconf = ConfigAPI()
+import sys
+sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
+from config import Config
+newconf = Config()
 api = newconf.create_api("auth1")
-
 
 logger = logging.getLogger(__name__)
 # %% [markdown]
@@ -33,7 +28,7 @@ logger = logging.getLogger(__name__)
 class StreamListener(tweepy.Stream):
     def __init__(self,api_key, api_secret, access_token, access_secret, keyword_obj):
         super().__init__(api_key, api_secret, access_token, access_secret)
-        init_db()
+        #init_db()
         self.sentiment_model = SentimentIntensityAnalyzer()
         self.keyword_obj = keyword_obj
         self.tweet_dict = defaultdict(list)
@@ -132,17 +127,17 @@ class StreamListener(tweepy.Stream):
             return False
         logger.warning(f"Streaming error (status code {status_code})")
         
-    
-    def insert_tweet(self,tweet):
-        """Insert Tweet into Database
-        Args:
-            tweet (Tweet): Tweet Object
-        """
-        try:
-            with session_scope() as sess:
-                sess.add(tweet)
-        except Exception as e:
-            logger.warning(f"Unable to insert tweet: {e}")
+    # For database connection
+    # def insert_tweet(self,tweet):
+    #     """Insert Tweet into Database
+    #     Args:
+    #         tweet (Tweet): Tweet Object
+    #     """
+    #     try:
+    #         with session_scope() as sess:
+    #             sess.add(tweet)
+    #     except Exception as e:
+    #         logger.warning(f"Unable to insert tweet: {e}")
         
 
     

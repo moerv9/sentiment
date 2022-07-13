@@ -1,12 +1,11 @@
 import os, time, logging, schedule
 import pandas as pd
 from datetime import datetime,timezone,date
-import json
 
 #Config
 #os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
-from config_sent import ConfigAPI
-newconf = ConfigAPI()
+from config import Config
+newconf = Config()
 
 #Logging
 logger = logging.getLogger(__name__)
@@ -21,15 +20,12 @@ class Export():
         
     def cleanDates(self,date):
         """Mandatory for Excel. Converts date to local timeformat.
-
         Args:
             date (_type_): date
-
         Returns:
             date: astimezone and seconds stripped
         """
         if isinstance(date, datetime):
-
             date = date.astimezone(datetime.now().astimezone().tzinfo)
             #date = date.tz_localize(None)
             date = datetime.strftime(date,"%d-%m-%Y %H:%M")
@@ -57,7 +53,7 @@ class Export():
                 df_to_append.to_json(json_file,orient="index",indent=4) #records= kein Index,
 
 
-        
+    #The function exporting to json will be repeated in the schedule 
     def repeat_func(self):
         self.tweet_dict = self.listener.tweet_dict
         if self.tweet_dict:
@@ -66,6 +62,7 @@ class Export():
             self.export_to_json()
             # listener.clean_list()
         
+    #Method for schedule task execution
     def schedule(self,interval=60):
             schedule.every(interval).minutes.do(self.repeat_func)
             while True:
