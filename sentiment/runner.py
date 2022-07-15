@@ -89,14 +89,12 @@ def parse_args():
     
 #for test purposes the script can be executed from the terminal. 
 # run python3 runner.py -k "btc,eth,ada" -i 5
-if __name__=="__main__":
-    keywords = parse_args().keywords.split(",")
-    keywords = [word.strip(" []'") for word in keywords]
-    interval = parse_args().interval
-    # Format for dict
-    # dict = {
-    #     "btc":["#btc","$btc"],
-    #     "ada":["#ada","$ada"],
-    # }
-    listener = Runner(keywords,interval)
+# if __name__=="__main__":
+#     keywords = parse_args().keywords.split(",")
+#     keywords = [word.strip(" []'") for word in keywords]
+#     print(f"Keywords: {keywords}")
     
+#     interval = parse_args().interval
+#     listener = Runner(keywords,interval)
+    
+listener = Runner(['btc', 'ada'],1)
