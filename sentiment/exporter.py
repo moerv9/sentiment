@@ -32,7 +32,8 @@ class Export():
         return date
     
     def export_to_json(self):
-        json_dir = 'Json/'
+        #Changed this to "sentiment/Json" for heroku. normally would just say "Json" -> could catch that
+        json_dir = 'sentiment/Json/'
         date_dir = date.today().strftime('%d-%m-%Y')
         final_dir = os.path.join(json_dir,date_dir)
         if not os.path.exists(final_dir):
