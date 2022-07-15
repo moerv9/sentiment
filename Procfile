@@ -1,1 +1,1 @@
-worker: python3 sentiment/runner.py -k "btc,eth,ada" -i 10
+worker: python sentiment/runner.py -k "btc,eth,ada" -i 5
