@@ -63,13 +63,11 @@ class Export():
             # listener.clean_list()
         
     #Method for schedule task execution
-    def schedule(self,interval=60):
+    def schedule(self,interval=5):
             schedule.every(interval).minutes.do(self.repeat_func)
             while True:
                 schedule.run_pending()
                 time.sleep(1)
-
-
 
 
 
