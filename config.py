@@ -23,6 +23,7 @@ class Config():
             self.BEARER_TOKEN = os.getenv('BEARER_TOKEN')
             self.ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
             self.ACCESS_SECRET = os.getenv('ACCESS_SECRET')
+            self.create_api("auth1")
         
     def create_api(self,bearer_token:String):
         """Returns api
