@@ -14,6 +14,8 @@ from time import sleep
 from streamlit_autorefresh import st_autorefresh 
 from collections import Counter
 
+from streamlit_data import StreamlitFunctions
+
 ##PAGE SETUP
 logger = logging.getLogger(__name__)
 st.set_page_config(
@@ -22,57 +24,10 @@ st.set_page_config(
     )
 st.subheader(f"Twitter Sentiment-Streaming for {date.today().strftime('%d-%m-%Y')}")
 
+#Init Helperfunctions Class
+utils = StreamlitFunctions()
 
-## FUNCTIONS
-def show_wordCloud(df):
-    try:
-        all_words = ' '.join([tweets for tweets in df['Tweet']])
-    except:
-        print(Exception)
-        pass
-    word_cloud = WordCloud(width=500, height=250, random_state=21, max_font_size=100,colormap="Spectral").generate(all_words)
-    plt.figure(figsize=(20,10),facecolor="k")
-    plt.imshow(word_cloud, interpolation="bilinear")
-    plt.axis('off')
-    plt.tight_layout(pad=0)
-    st.pyplot(plt)
-    word_list = [i for item in df['Tweet'] for i in item.split()]
-    freq = Counter(word_list).most_common(10)
-    print(freq)
-
-def get_json_data():
-    dir = "Json/"+ date.today().strftime('%d-%m-%Y')
-    dataframes = {}
-    if os.path.exists(dir):
-        for filename in os.listdir(dir):
-            file_path = os.path.join(dir,filename)
-            if os.path.isfile(file_path):
-                df = pd.read_json(file_path,orient="index")
-                dataframes.update({filename : df})
-        return dataframes
-    
-def get_sentiment_on_all_data(sentiment_col):
-    sent_avg = sentiment_col.sum() / len(sentiment_col)
-    if sent_avg >0.2:
-        sent_avg_eval = "Positive"
-    elif sent_avg <-0.2:
-        sent_avg_eval = "Negative"
-    else:
-        sent_avg_eval = "Neutral"
-    return sent_avg, sent_avg_eval 
-
-def find_pid():
-    for proc in psutil.process_iter():
-        try:
-            pinfo = proc.as_dict( attrs=['pid', 'name','cmdline'])
-            if "runner" in str(pinfo["cmdline"]):
-                logger.info(f"Process {pinfo} running...")
-                return pinfo["pid"]
-            else:
-                continue
-        except:
-            return None
-        
+#Wordcloud for all Coins
 def show_data():
     try:
         i=0
@@ -80,9 +35,9 @@ def show_data():
         for key, df in dataframes.items():
             with cols[i]:
                 with st.expander(key[:-5].upper(),expanded=True):
-                    sent_avg, sent_avg_eval = get_sentiment_on_all_data(df["Sentiment Score"])
+                    sent_avg, sent_avg_eval = utils.get_sentiment_on_all_data(df["Sentiment Score"])
                     st.metric("Sentiment is:",sent_avg_eval, f"{sent_avg:5f}")
-                    show_wordCloud(df)
+                    utils.show_wordCloud(df)
             i+=1
     except:
         logger.info(f"No Data for {date.today().strftime('%d-%m-%Y')}")
@@ -95,28 +50,24 @@ refresh_rate = st.sidebar.number_input("Refresh Interval",min_value=0.5,max_valu
 
 #Starting & Stopping the Process
 process_status_text = f'<h3 style="color:Orange;">OFFLINE</h3>'
-if find_pid() is not None:
+if utils.find_pid() is not None:
     process_status_text = f'<h3 style="color:Green;">RUNNING</h3>'
     btn_stop_runner = st.sidebar.button("Stop Listening")
     if btn_stop_runner:
-        pid = find_pid()
-        print(f"Killed Process with PID:{find_pid()}")
+        pid = utils.find_pid()
+        print(f"Killed Process with PID:{utils.find_pid()}")
         subprocess.os.kill(pid,signal.SIGTERM)
 else:
     btn_start_runner = st.sidebar.button("Start Listening")
     if btn_start_runner:
-        
         with st.spinner('Wait for it...'):
             try:
-                command = shlex.split(f"python3 runner.py -k \"{coin_selection}\" -i \"{refresh_rate}\"")
-                process = subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-                #process_id = set_process_id(process.pid)
+                utils.start_local_process(coin_selection,refresh_rate)
             except:
                 Exception("Error")
             sleep(3)
         st.sidebar.success('Listening to Tweets now..!') 
         st.sidebar.warning("The page will refresh in 30 seconds. Please wait")
-
 
 #Show the actual Status of the Process in Sidebar
 st.sidebar.markdown(process_status_text,unsafe_allow_html=True)
@@ -124,8 +75,8 @@ st.sidebar.markdown(process_status_text,unsafe_allow_html=True)
 page_refresh_rate=st_autorefresh(interval= refresh_rate*60*1000, key="page_refresh_rate")
 
 ## Call functions
-dataframes = get_json_data()
-find_pid()
+dataframes = utils.get_json_data()
+utils.find_pid()
 show_data()
 
 #A Button for Explanation
