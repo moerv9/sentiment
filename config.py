@@ -13,7 +13,7 @@ from boto.s3.connection import S3Connection
 # k.key = 'foobar'
 # k.get_contents_as_string()
 
-s3_handler = S3Connection(os.environ['API_KEY'], os.environ['API_SECRET'],os.getenv['ACCESS_TOKEN'],os.getenv['ACCESS_SECRET'])
+s3_handler = S3Connection(os.environ['API_KEY'], os.environ['API_SECRET'],os.environ['ACCESS_TOKEN'],os.environ['ACCESS_SECRET'])
 
 # Get Twitter API Token and Secret
 class Config():
