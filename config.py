@@ -5,16 +5,25 @@ load_dotenv()
 import tweepy
 import logging
 logger = logging.getLogger(__name__)
+from boto.s3.connection import S3Connection
+# import boto
+# conn = boto.connect_s3()
+# from boto.s3.key import Key
+# k = Key(b)
+# k.key = 'foobar'
+# k.get_contents_as_string()
+
+s3_handler = S3Connection(os.environ['API_KEY'], os.environ['API_SECRET'],os.getenv['ACCESS_TOKEN'],os.getenv['ACCESS_SECRET'])
 
 # Get Twitter API Token and Secret
 class Config():
     def __init__(self):
-        self.API_KEY = os.getenv('API_KEY')
-        self.API_SECRET = os.getenv('API_SECRET')
-        self.BEARER_TOKEN = os.getenv('BEARER_TOKEN')
-        self.ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
-        self.ACCESS_SECRET = os.getenv('ACCESS_SECRET')
-    
+            self.API_KEY = os.getenv('API_KEY')
+            self.API_SECRET = os.getenv('API_SECRET')
+            self.BEARER_TOKEN = os.getenv('BEARER_TOKEN')
+            self.ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
+            self.ACCESS_SECRET = os.getenv('ACCESS_SECRET')
+        
     def create_api(self,bearer_token:String):
         """Returns api
 

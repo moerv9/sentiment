@@ -2,10 +2,6 @@ import os, time, logging, schedule
 import pandas as pd
 from datetime import datetime,timezone,date
 
-#Config
-#os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
-from config import Config
-newconf = Config()
 
 #Logging
 logger = logging.getLogger(__name__)

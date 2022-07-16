@@ -19,10 +19,9 @@ logging.basicConfig(handlers=[log_handler], level=logging.INFO,
 logger = logging.getLogger(__name__)
 
 #Config
-#os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
+os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
 from config import Config
 newconf = Config()
-
 
 logger = logging.getLogger(__name__)
 
