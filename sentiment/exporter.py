@@ -1,8 +1,6 @@
 import os, time, logging, schedule
 import pandas as pd
-from datetime import datetime,timezone,date
-
-
+from datetime import datetime,date
 #Logging
 logger = logging.getLogger(__name__)
 
