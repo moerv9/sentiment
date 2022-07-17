@@ -19,3 +19,4 @@ subprocess.run
 streamlit_autorefresh
 boto
 schedule
+PyGithub

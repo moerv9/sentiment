@@ -1,5 +1,4 @@
 import os
-from tokenize import String
 from dotenv import load_dotenv
 load_dotenv()
 import tweepy
@@ -13,7 +12,7 @@ from boto.s3.connection import S3Connection
 # k.key = 'foobar'
 # k.get_contents_as_string()
 
-s3_handler = S3Connection(os.environ['API_KEY'], os.environ['API_SECRET'],os.environ['ACCESS_TOKEN'],os.environ['ACCESS_SECRET'])
+s3_handler = S3Connection(os.environ['API_KEY'], os.environ['API_SECRET'],os.environ['ACCESS_TOKEN'],os.environ['ACCESS_SECRET'],os.environ['HEROKU_DATABASE_URL'])
 
 # Get Twitter API Token and Secret
 class Config():
@@ -25,7 +24,7 @@ class Config():
             self.ACCESS_SECRET = os.getenv('ACCESS_SECRET')
             self.create_api("auth1")
         
-    def create_api(self,bearer_token:String):
+    def create_api(self,bearer_token):
         """Returns api
 
         Args:
@@ -62,9 +61,15 @@ class Config():
 
 #Keys for Posgres Database
 class ConfigDB:
-    USER = os.environ.get("DB_USER")
-    PASS = os.environ.get("DB_PASS")
-    HOST = os.environ.get("DB_HOST")
+    def __init__(self):
+        self.USER = os.environ.get("DB_USER")
+        self.PASS = os.environ.get("DB_PASS")
+        self.HOST = os.environ.get("DB_HOST")
+        self.HEROKU_DATABASE_URL = os.environ.get["HEROKU_DATABASE_URL"]
+    
+    def getKeys(self):
+        #logger.info("got Keys")
+        return self.USER, self.PASS,self.HOST, self.HEROKU_DATABASE_URL
 
 # Config for Binance API
 class ConfigBinance:
