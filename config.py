@@ -6,7 +6,19 @@ import logging
 logger = logging.getLogger(__name__)
 from boto.s3.connection import S3Connection
 
-s3_handler = S3Connection(os.environ['API_KEY'], os.environ['API_SECRET'],os.environ['ACCESS_TOKEN'],os.environ['ACCESS_SECRET'],os.environ['HEROKU_DATABASE_URL'])
+s3_handler = S3Connection(
+    os.environ['API_KEY'],
+    os.environ['API_SECRET'],
+    os.environ['ACCESS_TOKEN'],
+    os.environ['ACCESS_SECRET'],
+    os.environ['HEROKU_DATABASE_URL'],
+    os.environ['HEROKU_CONNECTION_STRING'],
+    os.environ['HEROKU_DBNAME'],
+    os.environ['HEROKU_HOST'],
+    os.environ['HEROKU_PORT'],
+    os.environ['HEROKU_USER'],
+    os.environ['HEROKU_PASSWORD'],
+    )
 
 # Get Twitter API Token and Secret
 class Config():
@@ -56,14 +68,17 @@ class Config():
 #Keys for Posgres Database
 class ConfigDB:
     def __init__(self):
-        self.USER = os.environ.get("DB_USER")
-        self.PASS = os.environ.get("DB_PASS")
-        self.HOST = os.environ.get("DB_HOST")
-        self.HEROKU_DATABASE_URL = os.environ["HEROKU_DATABASE_URL"]
-    
-    def getKeys(self):
-        #logger.info("got Keys")
-        return self.USER, self.PASS,self.HOST, self.HEROKU_DATABASE_URL
+            self.USER = os.environ.get("DB_USER")
+            self.PASS = os.environ.get("DB_PASS")
+            self.HOST = os.environ.get("DB_HOST")
+            self.HEROKU_DATABASE_URL = os.environ["HEROKU_DATABASE_URL"]
+            self.HEROKU_CONNECTION_STRING = os.environ["HEROKU_CONNECTION_STRING"]
+            self.HEROKU_DBNAME = os.environ["HEROKU_DBNAME"]
+            self.HEROKU_HOST = os.environ["HEROKU_HOST"]
+            self.HEROKU_PORT = os.environ["HEROKU_PORT"]
+            self.HEROKU_USER = os.environ["HEROKU_USER"]
+            self.HEROKU_PASSWORD = os.environ["HEROKU_PORT"]
+            
 
 # Config for Binance API
 class ConfigBinance:

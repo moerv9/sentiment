@@ -1,8 +1,16 @@
 import os, time, logging, schedule
 import pandas as pd
+import psycopg2
 from datetime import datetime,date
 #Logging
 logger = logging.getLogger(__name__)
+
+#Config
+os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
+from config import ConfigDB
+conf = ConfigDB()
+# Connect to your HEROKU postgres DB
+conn = psycopg2.connect(conf.HEROKU_CONNECTION_STRING)
 
 class Export():
     def __init__(self,listener,interval):
@@ -47,14 +55,24 @@ class Export():
             else:
                 df_to_append.to_json(json_file,orient="index",indent=4) #records= kein Index,
 
+    def export_to_DB(self):
+        cur = conn.cursor()
+
+        df = pd.DataFrame.from_dict(self.tweet_dict,orient="columns")
+        df = df.transpose()
+        df = df.applymap(self.cleanDates)
+        logger.info(df.columns)
+        # for col in df.columns:
+        #     logger.info(col)
+            
 
     #The function exporting to json will be repeated in the schedule 
     def repeat_func(self):
         self.tweet_dict = self.listener.tweet_dict
         if self.tweet_dict:
             logger.info(f"{self.listener.sum_collected_tweets} Tweets collected")
-            # export_to_excel(tweets)
-            self.export_to_json()
+            #self.export_to_json() #UNCOMMENT IF YOU WANT TO EXPORT LOCALLY TO JSON
+            self.export_to_DB()  #UNCOMMENT WHEN USING HEROKU DB
             # listener.clean_list()
         
     #Method for schedule task execution
@@ -67,7 +85,7 @@ class Export():
 
 
 
-    # def export_to_excel(self,list):
+    #def export_to_excel(self,list):
     #     #pd.set_option("display.max_columns",200)
     #     df = pd.DataFrame(list, columns = self.columns)
     #     df = df.applymap(self.cleanDates)

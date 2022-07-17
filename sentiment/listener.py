@@ -1,8 +1,9 @@
 #Imports
 
-#import regex
-#from config.database import session_scope, init_db
-#from config.tweet_data_db import Tweet
+from cmath import log
+import regex
+from posgres.database import session_scope, init_db #Uncomment when using PosgresDB
+from posgres.Tweet import Tweet #Uncomment when using PosgresDB
 import tweepy
 import logging
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
@@ -21,7 +22,8 @@ logger = logging.getLogger(__name__)
 class StreamListener(tweepy.Stream):
     def __init__(self,api_key, api_secret, access_token, access_secret, keyword_obj):
         super().__init__(api_key, api_secret, access_token, access_secret)
-        #init_db()
+        
+        init_db() #Comment out when using PosgresDB
         self.sentiment_model = SentimentIntensityAnalyzer()
         self.keyword_obj = keyword_obj
         self.tweet_dict = defaultdict(list)
@@ -86,12 +88,13 @@ class StreamListener(tweepy.Stream):
                 self.tweet_dict[crypto_identifier].append(metrics)
         except:
             raise Exception
+        
 
-        #For Posgres
-        # tweet = Tweet(body = cleaned_tweet, keyword= keyword, tweet_date= status.created_at, location= status.user.location,
-        #         verified_user= status.user.verified, followers= status.user.followers_count,
-        #         user_since= status.user.created_at, sentiment= tweet_sentiment, sentiment_meaning = tweet_sent_meaning)
-        # self.insert_tweet(tweet)
+        #Comment out when using PosgresDB
+        tweet = Tweet(body = cleaned_tweet, keyword= keyword, tweet_date= status.created_at, location= status.user.location,
+                verified_user= status.user.verified, followers= status.user.followers_count,
+                user_since= status.user.created_at, sentiment= tweet_sentiment, sentiment_meaning = tweet_sent_meaning)
+        self.insert_tweet(tweet)
         
         
         # self.tweet_lst = self.tweet_lst[:20]
@@ -99,7 +102,6 @@ class StreamListener(tweepy.Stream):
         #     self.tweet_lst.insert(0,tweet.body)
         # else:
         #     logger.warning(f"Duplicate Tweet: {tweet.body}")
-        #     return
 
         
     def on_limit(self,status):
@@ -120,17 +122,17 @@ class StreamListener(tweepy.Stream):
             return False
         logger.warning(f"Streaming error (status code {status_code})")
         
-    # For database connection
-    # def insert_tweet(self,tweet):
-    #     """Insert Tweet into Database
-    #     Args:
-    #         tweet (Tweet): Tweet Object
-    #     """
-    #     try:
-    #         with session_scope() as sess:
-    #             sess.add(tweet)
-    #     except Exception as e:
-    #         logger.warning(f"Unable to insert tweet: {e}")
+    # For database connection #Comment out when using PosgresDB
+    def insert_tweet(self,tweet):
+        """Insert Tweet into Database
+        Args:
+            tweet (Tweet): Tweet Object
+        """
+        try:
+            with session_scope() as sess:
+                sess.add(tweet)
+        except Exception as e:
+            logger.warning(f"Unable to insert tweet: {e}")
         
 
     
