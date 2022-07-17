@@ -5,12 +5,6 @@ import tweepy
 import logging
 logger = logging.getLogger(__name__)
 from boto.s3.connection import S3Connection
-# import boto
-# conn = boto.connect_s3()
-# from boto.s3.key import Key
-# k = Key(b)
-# k.key = 'foobar'
-# k.get_contents_as_string()
 
 s3_handler = S3Connection(os.environ['API_KEY'], os.environ['API_SECRET'],os.environ['ACCESS_TOKEN'],os.environ['ACCESS_SECRET'],os.environ['HEROKU_DATABASE_URL'])
 
@@ -65,7 +59,7 @@ class ConfigDB:
         self.USER = os.environ.get("DB_USER")
         self.PASS = os.environ.get("DB_PASS")
         self.HOST = os.environ.get("DB_HOST")
-        self.HEROKU_DATABASE_URL = os.environ.get["HEROKU_DATABASE_URL"]
+        self.HEROKU_DATABASE_URL = os.environ["HEROKU_DATABASE_URL"]
     
     def getKeys(self):
         #logger.info("got Keys")
