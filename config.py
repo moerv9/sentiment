@@ -11,13 +11,10 @@ s3_handler = S3Connection(
     os.environ['API_SECRET'],
     os.environ['ACCESS_TOKEN'],
     os.environ['ACCESS_SECRET'],
-    os.environ['HEROKU_DATABASE_URL'],
-    os.environ['HEROKU_CONNECTION_STRING'],
-    os.environ['HEROKU_DBNAME'],
-    os.environ['HEROKU_HOST'],
-    os.environ['HEROKU_PORT'],
-    os.environ['HEROKU_USER'],
-    os.environ['HEROKU_PASSWORD'],
+    os.environ['DBNAME_HEROKU'],
+    os.environ['HOST_HEROKU'],
+    os.environ['USER_HEROKU'],
+    os.environ['PASS_HEROKU'],
     )
 
 # Get Twitter API Token and Secret
@@ -71,13 +68,12 @@ class ConfigDB:
             self.USER = os.environ.get("DB_USER")
             self.PASS = os.environ.get("DB_PASS")
             self.HOST = os.environ.get("DB_HOST")
-            self.HEROKU_DATABASE_URL = os.environ["HEROKU_DATABASE_URL"]
-            self.HEROKU_CONNECTION_STRING = os.environ["HEROKU_CONNECTION_STRING"]
-            self.HEROKU_DBNAME = os.environ["HEROKU_DBNAME"]
-            self.HEROKU_HOST = os.environ["HEROKU_HOST"]
-            self.HEROKU_PORT = os.environ["HEROKU_PORT"]
-            self.HEROKU_USER = os.environ["HEROKU_USER"]
-            self.HEROKU_PASSWORD = os.environ["HEROKU_PORT"]
+            #self.HEROKU_DATABASE_URL = os.environ["HEROKU_DATABASE_URL"]
+            #self.HEROKU_CONNECTION_STRING = os.environ["HEROKU_CONNECTION_STRING"]
+            self.DBNAME_HEROKU = os.environ["DBNAME_HEROKU"]
+            self.HOST_HEROKU = os.environ["HOST_HEROKU"]
+            self.USER_HEROKU = os.environ["USER_HEROKU"]
+            self.PASS_HEROKU = os.environ["PASS_HEROKU"]
             
 
 # Config for Binance API

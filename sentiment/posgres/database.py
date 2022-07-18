@@ -16,7 +16,7 @@ conf = ConfigDB()
 #Init DB Connection
 #Format: dialect+driver://username:password@host:port/database
 #engine = create_engine('postgresql://{}:{}@{}/tweets'.format(ConfigDB.USER, ConfigDB.PASS, ConfigDB.HOST),convert_unicode=True) #'postgresql://scott:tiger@localhost/mydatabase'
-engine=create_engine(f"postgresql://{conf.HEROKU_USER}:{conf.HEROKU_PASSWORD}@{conf.HEROKU_HOST}:{conf.HEROKU_PORT}/tweets",convert_unicode=True)
+engine=create_engine(f"postgresql://{conf.USER_HEROKU}:{conf.PASS_HEROKU}@{conf.HOST_HEROKU}:5432/tweets",convert_unicode=True)
 Session = scoped_session(sessionmaker(autocommit=False, bind=engine))
 
 
