@@ -9,8 +9,7 @@ logger = logging.getLogger(__name__)
 os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
 from config import ConfigDB
 conf = ConfigDB()
-# Connect to your HEROKU postgres DB
-conn = psycopg2.connect(conf.HEROKU_CONNECTION_STRING)
+
 
 class Export():
     def __init__(self,listener,interval):
