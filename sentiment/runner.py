@@ -96,4 +96,4 @@ def parse_args():
 #     interval = parse_args().interval
 #     listener = Runner(keywords,interval)
     
-listener = Runner(['btc', 'ada'],0.5)
+listener = Runner(['btc', 'ada'],1)
