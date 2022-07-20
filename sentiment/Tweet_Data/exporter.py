@@ -54,8 +54,9 @@ class Export():
             else:
                 df_to_append.to_json(json_file,orient="index",indent=4) #records= kein Index,
 
+#TODO
     def export_to_DB(self):
-        cur = conn.cursor()
+        #cur = conn.cursor()
 
         df = pd.DataFrame.from_dict(self.tweet_dict,orient="columns")
         df = df.transpose()

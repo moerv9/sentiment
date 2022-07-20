@@ -5,7 +5,7 @@ from listener import StreamListener, Keywords
 from datetime import datetime,date, time 
 from IPython.display import display
 import pandas as pd
-from exporter import Export
+from Tweet_Data.exporter import Export
 
 #Changed this to "sentiment/Logs" for heroku. normally would just say "Logs"
 log_dir = 'sentiment/Logs'
@@ -38,7 +38,7 @@ class Runner():
         """The Runner starts the listener & exporter with given keyword dictionary
 
         Args:
-            keyword_dict (dict, optional): Dictonairy for Keyowrds.             
+            keyword_dict (dict, optional): Dictionary for Keyowrds.             
             Format for dict:
                 dict = {
                     "btc":["#btc","$btc"],
@@ -86,14 +86,13 @@ def parse_args():
     args = parser.parse_args()
     return args
     
-#for test purposes the script can be executed from the terminal. 
 # run python3 runner.py -k "btc,eth,ada" -i 5
-# if __name__=="__main__":
-#     keywords = parse_args().keywords.split(",")
-#     keywords = [word.strip(" []'") for word in keywords]
-#     print(f"Keywords: {keywords}")
-    
-#     interval = parse_args().interval
-#     listener = Runner(keywords,interval)
-    
-listener = Runner(['btc', 'ada'],1)
+if __name__=="__main__":
+    keywords = parse_args().keywords.split(",")
+    keywords = [word.strip(" []'") for word in keywords]
+    print(f"Keywords: {keywords}")
+    interval = parse_args().interval
+    Runner(keywords,interval)
+
+
+#Runner(['btc', 'ada'],1)

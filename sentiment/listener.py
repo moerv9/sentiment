@@ -2,8 +2,8 @@
 
 from cmath import log
 import regex
-from posgres.database import session_scope, init_db #Uncomment when using PosgresDB
-from posgres.Tweet import Tweet #Uncomment when using PosgresDB
+from Tweet_Data.database import session_scope, init_db #Uncomment when using PosgresDB
+from Tweet_Data.Tweet import Tweet #Uncomment when using PosgresDB
 import tweepy
 import logging
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
