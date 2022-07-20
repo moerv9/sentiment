@@ -75,7 +75,7 @@ class ConfigDB:
             self.HOST_HEROKU = os.environ["HOST_HEROKU"]
             self.USER_HEROKU = os.environ["USER_HEROKU"]
             self.PASS_HEROKU = os.environ["PASS_HEROKU"]
-            self.DATABASE_URL = os.environ["DB_URL"]
+            self.DB_URL = os.environ["DB_URL"]
             
 
 # Config for Binance API
