@@ -15,6 +15,7 @@ s3_handler = S3Connection(
     os.environ['HOST_HEROKU'],
     os.environ['USER_HEROKU'],
     os.environ['PASS_HEROKU'],
+    os.environ['DATABASE_URL']
     )
 
 # Get Twitter API Token and Secret
@@ -74,6 +75,7 @@ class ConfigDB:
             self.HOST_HEROKU = os.environ["HOST_HEROKU"]
             self.USER_HEROKU = os.environ["USER_HEROKU"]
             self.PASS_HEROKU = os.environ["PASS_HEROKU"]
+            self.DATABASE_URL = os.environ["DATABASE_URL"]
             
 
 # Config for Binance API
