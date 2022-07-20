@@ -20,3 +20,4 @@ streamlit_autorefresh
 boto
 schedule
 PyGithub
+postgres
