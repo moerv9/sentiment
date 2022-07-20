@@ -3,7 +3,6 @@ from .database import Base
 
 class Tweet(Base):
     __tablename__ = "tweet_data"
-    #__tablename__ = tablename
     __table_args__ = {'extend_existing': True}
     id = Column(Integer, primary_key=True)
     body = Column(String(2000), nullable=False)
@@ -14,11 +13,9 @@ class Tweet(Base):
     followers = Column(Integer)
     user_since = Column(DateTime,nullable=False)
     sentiment = Column(Float)
-    sentiment_meaning = Column(String)
-    # sentiment_subj = Column(Float)
-    # sentiment_pol = Column(Float)
     
-    def __init__(self, body, keyword, tweet_date, location, verified_user, followers, user_since, sentiment,sentiment_meaning):
+    def __init__(self,tablename, body, keyword, tweet_date, location, verified_user, followers, user_since, sentiment):
+        __tablename__ = tablename
         self.body = body
         self.keyword = keyword
         self.tweet_date = tweet_date
@@ -27,7 +24,6 @@ class Tweet(Base):
         self.followers = followers
         self.user_since = user_since
         self.sentiment = sentiment
-        self.sentiment_meaning = sentiment_meaning
         
     def __repr__(self):
         return "<Tweet %r>" %self.body

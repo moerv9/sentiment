@@ -67,12 +67,6 @@ class StreamListener(tweepy.Stream):
             location = str(status.user.location)
             
         tweet_sentiment = self.sentiment_model.polarity_scores(text).get("compound")
-        if tweet_sentiment > 0.1:
-            tweet_sent_meaning = "Positive"
-        elif tweet_sentiment< -0.1:
-            tweet_sent_meaning =  "Negative"
-        else:
-            tweet_sent_meaning = "Neutral"
         
         # Ignore tweets which do not contain the keyword
         keyword, crypto_identifier = self.keyword_obj.check_keyword(text)
@@ -80,29 +74,19 @@ class StreamListener(tweepy.Stream):
             return
         
         cleaned_tweet = self.cleanTweets(text)
-        metrics = [cleaned_tweet,keyword,status.created_at,status.user.location,status.user.verified,status.user.followers_count,status.user.created_at,tweet_sentiment, tweet_sent_meaning]
+        metrics = [cleaned_tweet,keyword,status.created_at,status.user.location,status.user.verified,status.user.followers_count,status.user.created_at,tweet_sentiment]
         
         try:
             if crypto_identifier:
                 self.sum_collected_tweets +=1
-                self.tweet_dict[crypto_identifier].append(metrics)
+                #self.tweet_dict[crypto_identifier].append(metrics)
+                #Comment out when using PosgresDB
+                tweet = Tweet(tablename= crypto_identifier,body = cleaned_tweet, keyword= keyword, tweet_date= status.created_at, location= status.user.location,
+                        verified_user= status.user.verified, followers= status.user.followers_count,
+                        user_since= status.user.created_at, sentiment= tweet_sentiment)
+                self.insert_tweet(tweet)
         except:
             raise Exception
-        
-
-        #Comment out when using PosgresDB
-        tweet = Tweet(body = cleaned_tweet, keyword= keyword, tweet_date= status.created_at, location= status.user.location,
-                verified_user= status.user.verified, followers= status.user.followers_count,
-                user_since= status.user.created_at, sentiment= tweet_sentiment, sentiment_meaning = tweet_sent_meaning)
-        self.insert_tweet(tweet)
-        
-        
-        # self.tweet_lst = self.tweet_lst[:20]
-        # if not tweet.body in self.tweet_lst and self.tweet_lst:
-        #     self.tweet_lst.insert(0,tweet.body)
-        # else:
-        #     logger.warning(f"Duplicate Tweet: {tweet.body}")
-
         
     def on_limit(self,status):
         print("Rate Limit Exceeded, Sleep for 1 Min")

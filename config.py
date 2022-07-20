@@ -66,9 +66,9 @@ class Config():
 #Keys for Posgres Database
 class ConfigDB:
     def __init__(self):
-            self.USER = os.environ.get("DB_USER")
-            self.PASS = os.environ.get("DB_PASS")
-            self.HOST = os.environ.get("DB_HOST")
+            self.USER = os.environ["DB_USER"]
+            self.PASS = os.environ["DB_PASS"]
+            self.HOST = os.environ["DB_HOST"]
             #self.HEROKU_DATABASE_URL = os.environ["HEROKU_DATABASE_URL"]
             #self.HEROKU_CONNECTION_STRING = os.environ["HEROKU_CONNECTION_STRING"]
             self.DBNAME_HEROKU = os.environ["DBNAME_HEROKU"]
