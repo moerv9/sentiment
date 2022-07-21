@@ -1,9 +1,31 @@
-# Welcome to Moervs Sentiment Trading Docs
-# Getting Started
+# Documentation 
 
-Version: 1.0
+- [Introduction](approach/introduction.md)
+- Abstract (Aufgabenstellung, Lösungsweg und erreichte Ziele werden mit wenigen Sätzen umrissen)
+- Table of Contents
+- Projektbeschreibung
+    - Motivation
+    - Ziel
+    - Action Plan
+    - Context
+- Anforderungsanalyse
+- Umsetzung
+    - Konzept
+    - Herausforderungen
+    - Erkenntnisse
+    - Entwicklung
+- Ergebnisse
+    - Einordnung in wissenschaftlichen Kontext
+    - Fazit
+    - Vorführung des Produkts (Video/Bilder)
+    - Ausblick
+- technische Vorgehensweise
+    - Dependencies / Bibliotheken
+    - Klassenbeschreibung (UML-DIagramme)
+    - Installation / Usage
+- Links/References/Literatur/Quellen
 
-Full Code on [github.](https://github.com/moerv9/)
+
 
 ## Install
 
@@ -29,3 +51,4 @@ https://www.pythonlikeyoumeanit.com/Module5_OddsAndEnds/Writing_Good_Code.html
 Start with the [Introduction](approach/introduction.md)
 
 ## License
+
