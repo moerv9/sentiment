@@ -25,7 +25,6 @@ class StreamListener(tweepy.Stream):
         logging.info(f"Starting stream: {self.keyword_obj.keyword_lst}")
         self.sum_collected_tweets = 0
 
-
         if self.running:
             self.disconnect()
 

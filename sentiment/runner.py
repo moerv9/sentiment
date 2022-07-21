@@ -25,16 +25,9 @@ newconf = Config()
 
 logger = logging.getLogger(__name__)
 
-default_keyword_dict ={
-                "btc":["#btc","$btc","bitcoin"],
-                "ada":["#ada","$ada","cardano"],
-                "eth":["#eth","$eth","ether","ethereum","etherum"],
-                "bnb":["#bnb","$bnb","binance coin"],
-                "xrp":["#xrp","$xrp","ripple"],
-}
 
 class Runner():
-    def __init__(self,keyword_dict=None,export_interval=10):
+    def __init__(self,keywords=None,export_interval=10):
         """The Runner starts the listener & exporter with given keyword dictionary
 
         Args:
@@ -46,35 +39,12 @@ class Runner():
                 Defaults to None.
             export_interval (int, optional): Exporting the Data to Json every Interval. Defaults to 10. In Minutes.
         """
-        self.keyword_dict = {}
-        if keyword_dict is None: 
-            self.keyword_dict = default_keyword_dict
-        else:
-            if isinstance(keyword_dict, dict):
-                for key in keyword_dict.keys():
-                    if key in default_keyword_dict:
-                        self.keyword_dict[key] = default_keyword_dict[key]
-                print("Self keyword dict:\n")
-                print(self.keyword_dict)
-            elif isinstance(keyword_dict, list):
-                print(f"Keyword dict: {keyword_dict}")
-                for word in keyword_dict:
-                    if word in keyword_dict:
-                        self.keyword_dict[word] = default_keyword_dict[word]
-                print("Self keyword dict from List:\n")
-                print(self.keyword_dict)
-        listener = self.listen()
+        keyword_obj = Keywords(keywords)
+        listener = StreamListener(newconf.getKeys()[0],newconf.getKeys()[1],newconf.getKeys()[2],newconf.getKeys()[3],keyword_obj)
+        listener.filter(track = keyword_obj.keyword_lst, languages=["en","de"], threaded = True)
         print("Listener initiated...")
         logger.info(f"Listener initiated...")
         Export(listener, export_interval)
-
-    def listen(self):
-        keyword_obj = Keywords(self.keyword_dict)
-        listener = StreamListener(newconf.getKeys()[0],newconf.getKeys()[1],newconf.getKeys()[2],newconf.getKeys()[3],keyword_obj)
-        print("Stream running...")
-        logger.info("Stream running...")
-        listener.filter(track = keyword_obj.keyword_lst, languages=["en","de"], threaded = True)
-        return listener
     
 #Method to allow the script to be executed via terminal
 def parse_args():
@@ -87,12 +57,11 @@ def parse_args():
     return args
     
 # run python3 runner.py -k "btc,eth,ada" -i 5
-if __name__=="__main__":
-    keywords = parse_args().keywords.split(",")
-    keywords = [word.strip(" []'") for word in keywords]
-    print(f"Keywords: {keywords}")
-    interval = parse_args().interval
-    Runner(keywords,interval)
+# if __name__=="__main__":
+#     keywords = parse_args().keywords.split(",")
+#     keywords = [word.strip(" []'") for word in keywords]
+#     interval = parse_args().interval
+#     Runner(keywords,interval)
 
 
-#Runner(['btc', 'ada'],1)
+Runner(['btc', 'ada'],1)
