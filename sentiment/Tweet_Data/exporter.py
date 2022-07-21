@@ -19,22 +19,21 @@ class Export():
         self.listener = listener
         self.schedule(interval)
         
-    def cleanDates(self,date):
-        """Mandatory for Excel. Converts date to local timeformat.
-        Args:
-            date (_type_): date
-        Returns:
-            date: astimezone and seconds stripped
-        """
-        if isinstance(date, datetime):
-            date = date.astimezone(datetime.now().astimezone().tzinfo)
-            #date = date.tz_localize(None)
-            date = datetime.strftime(date,"%d-%m-%Y %H:%M")
-        return date
+    #TODO
+    def export_to_DB(self):
+        #cur = conn.cursor()
+
+        df = pd.DataFrame.from_dict(self.tweet_dict,orient="columns")
+        df = df.transpose()
+        df = df.applymap(self.cleanDates)
+        logger.info(df.columns)
+        # for col in df.columns:
+        #     logger.info(col)
+        
     
     def export_to_json(self):
         #Changed this to "sentiment/Json" for heroku. normally would just say "Json" -> could catch that
-        json_dir = 'sentiment/Json/'
+        json_dir = 'sentiment/Logs/Json/'
         date_dir = date.today().strftime('%d-%m-%Y')
         final_dir = os.path.join(json_dir,date_dir)
         if not os.path.exists(final_dir):
@@ -54,18 +53,46 @@ class Export():
             else:
                 df_to_append.to_json(json_file,orient="index",indent=4) #records= kein Index,
 
-#TODO
-    def export_to_DB(self):
-        #cur = conn.cursor()
-
-        df = pd.DataFrame.from_dict(self.tweet_dict,orient="columns")
-        df = df.transpose()
+    def export_to_excel(self,list):
+        #pd.set_option("display.max_columns",200)
+        df = pd.DataFrame(list, columns = self.columns)
         df = df.applymap(self.cleanDates)
-        logger.info(df.columns)
-        # for col in df.columns:
-        #     logger.info(col)
+        
+        excel_dir = 'Logs/Excel'
+        if not os.path.exists(excel_dir):
+            os.mkdir(excel_dir)
+        
+        excel_file = '{}_stream.xlsx'.format(date.today().strftime('%d-%m-%Y'))
+        file_name = os.path.join(excel_dir,excel_file)
+        sheet_name = calc_avg_sentiment(df["Sentiment Score"])
+        
+        if not os.path.exists(file_name):
+            logging.info(f"..created new file: {file_name}")
+            df.to_excel(file_name, sheet_name= str(sheet_name))
+        else:
+            with pd.ExcelWriter(file_name, mode='a', engine="openpyxl",if_sheet_exists="overlay",) as writer:
+                df.to_excel(writer, sheet_name=str(sheet_name))
+            logging.info(f"...appended to file {file_name} with sheet {sheet_name}")
             
+            # Used to calculate the avg sentiment to save as excel sheetname
+        def calc_avg_sentiment(sentiment_col):
+            sent_avg = sentiment_col.sum() / len(sentiment_col)
+            return sent_avg  
+        
+    def cleanDates(self,date):
+        """Mandatory for Excel. Converts date to local timeformat.
+        Args:
+            date (_type_): date
+        Returns:
+            date: astimezone and seconds stripped
+        """
+        if isinstance(date, datetime):
+            date = date.astimezone(datetime.now().astimezone().tzinfo)
+            #date = date.tz_localize(None)
+            date = datetime.strftime(date,"%d-%m-%Y %H:%M")
+        return date 
 
+    ## SCHEDULER
     #The function exporting to json will be repeated in the schedule 
     def repeat_func(self):
         self.tweet_dict = self.listener.tweet_dict
@@ -74,39 +101,9 @@ class Export():
             #self.export_to_json() #UNCOMMENT IF YOU WANT TO EXPORT LOCALLY TO JSON
             self.export_to_DB()  #UNCOMMENT WHEN USING HEROKU DB
             # listener.clean_list()
-        
     #Method for schedule task execution
     def schedule(self,interval=5):
             schedule.every(interval).minutes.do(self.repeat_func)
             while True:
                 schedule.run_pending()
                 time.sleep(1)
-
-
-
-
-    #def export_to_excel(self,list):
-    #     #pd.set_option("display.max_columns",200)
-    #     df = pd.DataFrame(list, columns = self.columns)
-    #     df = df.applymap(self.cleanDates)
-        
-    #     excel_dir = 'Excel_Logs'
-    #     if not os.path.exists(excel_dir):
-    #         os.mkdir(excel_dir)
-        
-    #     excel_file = '{}_stream.xlsx'.format(date.today().strftime('%d-%m-%Y'))
-    #     file_name = os.path.join(excel_dir,excel_file)
-    #     sheet_name = calc_avg_sentiment(df["Sentiment Score"])
-        
-    #     if not os.path.exists(file_name):
-    #         logging.info(f"..created new file: {file_name}")
-    #         df.to_excel(file_name, sheet_name= str(sheet_name))
-    #     else:
-    #         with pd.ExcelWriter(file_name, mode='a', engine="openpyxl",if_sheet_exists="overlay",) as writer:
-    #             df.to_excel(writer, sheet_name=str(sheet_name))
-    #         logging.info(f"...appended to file {file_name} with sheet {sheet_name}")
-            
-    #         # Used to calculate the avg sentiment to save as excel sheetname
-    #     def calc_avg_sentiment(sentiment_col):
-    #         sent_avg = sentiment_col.sum() / len(sentiment_col)
-    #         return sent_avg  

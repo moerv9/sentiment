@@ -60,7 +60,6 @@ class Keywords():
             for keyword in val:
                 if keyword.lower() in body:
                     return keyword, list(self.keyword_dict.keys())[i]
-            #print(f"KEY: {list(self.keyword_dict.keys())[i]}")
             i+=1
         
         return None, None

@@ -8,7 +8,7 @@ from IPython.display import display
 from Tweet_Data.exporter import Export
 
 #Changed this to "sentiment/Logs" for heroku. normally would just say "Logs"
-log_dir = 'sentiment/Logs'
+log_dir = 'sentiment/Logs/Logs'
 if not os.path.exists(log_dir):
     os.mkdir(log_dir)
 log_name = '{}_stream.log'.format(date.today().strftime('%Y%m%d'))
@@ -31,12 +31,7 @@ class Runner():
         """The Runner starts the listener & exporter with given keyword dictionary
 
         Args:
-            keyword_dict (dict, optional): Dictionary for Keyowrds.             
-            Format for dict:
-                dict = {
-                    "btc":["#btc","$btc"],
-                    "ada":["#ada","$ada"],}
-                Defaults to None.
+            keywords (list optional): List of Keywords
             export_interval (int, optional): Exporting the Data to Json every Interval. Defaults to 10. In Minutes.
         """
         keyword_obj = Keywords(keywords)

@@ -57,10 +57,12 @@ class StreamListener(tweepy.Stream):
         if filter.check_blacklist(text):
             return
             
+        #Gets Location
         location = status.user.location
         if location:
             location = str(status.user.location)
             
+        #Gets Sentiment
         tweet_sentiment = self.sentiment_model.polarity_scores(text).get("compound")
         
         # Ignore tweets which do not contain the keyword
@@ -68,13 +70,12 @@ class StreamListener(tweepy.Stream):
         if not keyword:
             return
         
-        cleaned_tweet = filter.cleanTweets(text)
-        metrics = [cleaned_tweet,keyword,status.created_at,status.user.location,status.user.verified,status.user.followers_count,status.user.created_at,tweet_sentiment]
-        
         try:
             if crypto_identifier:
                 self.sum_collected_tweets +=1
+                cleaned_tweet = filter.cleanTweets(text)
                 #Uncomment for local export to json
+                #metrics = [cleaned_tweet,keyword,status.created_at,status.user.location,status.user.verified,status.user.followers_count,status.user.created_at,tweet_sentiment]
                 #self.tweet_dict[crypto_identifier].append(metrics)
                 
                 #Uncomment when using PosgresDB
@@ -94,8 +95,10 @@ class StreamListener(tweepy.Stream):
         sleep(60)
         return True
 
-    def clean_dict(self):
-        self.tweet_dict = []
+    #Uncomment for local export to json
+    #Maybe needed to regularly clean the Expanding list...
+    # def clean_dict(self):
+    #     self.tweet_dict = []
         
     def on_error(self,status_code):
         if status_code == 420:
