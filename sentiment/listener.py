@@ -5,14 +5,13 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from datetime import datetime
 from time import sleep
 from collections import defaultdict
-from filter import Filter
+from filter import check_blacklist,cleanTweets,datetime_from_utc_to_local
 from Tweet_Data.database import session_scope, init_db #Uncomment when using PosgresDB
 from Tweet_Data.Tweet import Tweet #Uncomment when using PosgresDB
 from keywords import Keywords
 logger = logging.getLogger(__name__)
 # %% [markdown]
 # ### Class: Real-Time Listener for Tweets
-filter = Filter()
 # %%
 #TODO: Add my own sentiment analysis -> blob and ML
 class StreamListener(tweepy.Stream):
@@ -41,9 +40,10 @@ class StreamListener(tweepy.Stream):
         if diff.days < 60:
             #logger.info(f"User only {diff.days} Days on Twitter. Ignored!")
             return
-        
-        # Ingores retweets
-        if status.retweeted or "RT @" in status.text:
+
+        # Ignores retweets 
+        # Ignores Tweets with forbidden words 
+        if status.retweeted or "RT @" in status.text or check_blacklist(text):
             return
         
         # Gets Text
@@ -52,16 +52,7 @@ class StreamListener(tweepy.Stream):
         else:
             text = status.text
         text = text.lower()
-        
-        # Ignores Tweets with forbidden words 
-        if filter.check_blacklist(text):
-            return
-            
-        #Gets Location
-        location = status.user.location
-        if location:
-            location = str(status.user.location)
-            
+
         #Gets Sentiment
         tweet_sentiment = self.sentiment_model.polarity_scores(text).get("compound")
         
@@ -72,15 +63,17 @@ class StreamListener(tweepy.Stream):
         else:
             try:
                 self.sum_collected_tweets +=1
-                cleaned_tweet = filter.cleanTweets(text)
+                cleaned_tweet = cleanTweets(text)
+                status_created_at = datetime_from_utc_to_local(status.created_at)  
+                user_created_at = datetime_from_utc_to_local(status.user.created_at)
                 #Uncomment for local export to json
                 #metrics = [cleaned_tweet,keyword,status.created_at,status.user.location,status.user.verified,status.user.followers_count,status.user.created_at,tweet_sentiment]
                 #self.tweet_dict[crypto_identifier].append(metrics)
                 
                 #Uncomment when using PosgresDB
-                tweet = Tweet(body = cleaned_tweet, keyword= keyword, tweet_date= status.created_at, location= status.user.location,
+                tweet = Tweet(body = cleaned_tweet, keyword= keyword, tweet_date= status_created_at, location= str(status.user.location),
                         verified_user= status.user.verified, followers= status.user.followers_count,
-                        user_since= status.user.created_at, sentiment= tweet_sentiment)
+                        user_since= user_created_at, sentiment= tweet_sentiment)
                 with session_scope() as sess:
                     sess.add(tweet)
 
