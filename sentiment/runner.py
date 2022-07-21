@@ -8,7 +8,7 @@ from IPython.display import display
 from Tweet_Data.exporter import Export
 
 #Changed this to "sentiment/Logs" for heroku. normally would just say "Logs"
-log_dir = 'sentiment/Logs/Logs'
+log_dir = 'sentiment/Logs/'
 if not os.path.exists(log_dir):
     os.mkdir(log_dir)
 log_name = '{}_stream.log'.format(date.today().strftime('%Y%m%d'))
