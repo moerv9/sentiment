@@ -66,12 +66,11 @@ class StreamListener(tweepy.Stream):
         tweet_sentiment = self.sentiment_model.polarity_scores(text).get("compound")
         
         # Ignore tweets which do not contain the keyword
-        keyword, crypto_identifier = self.keyword_obj.check_keyword(text)
+        keyword = self.keyword_obj.check_keyword(text)
         if not keyword:
             return
-        
-        try:
-            if crypto_identifier:
+        else:
+            try:
                 self.sum_collected_tweets +=1
                 cleaned_tweet = filter.cleanTweets(text)
                 #Uncomment for local export to json
@@ -79,16 +78,14 @@ class StreamListener(tweepy.Stream):
                 #self.tweet_dict[crypto_identifier].append(metrics)
                 
                 #Uncomment when using PosgresDB
-                tweet = Tweet(tablename= crypto_identifier,body = cleaned_tweet, keyword= keyword, tweet_date= status.created_at, location= status.user.location,
+                tweet = Tweet(body = cleaned_tweet, keyword= keyword, tweet_date= status.created_at, location= status.user.location,
                         verified_user= status.user.verified, followers= status.user.followers_count,
                         user_since= status.user.created_at, sentiment= tweet_sentiment)
-                try:
-                    with session_scope() as sess:
-                        sess.add(tweet)
-                except Exception as e:
-                    logger.warning(f"Unable to insert tweet: {e}")
-        except:
-            raise Exception
+                with session_scope() as sess:
+                    sess.add(tweet)
+
+            except Exception as e:
+                logger.warning(f"Unable to insert tweet: {e}")
         
     def on_limit(self,status):
         print("Rate Limit Exceeded, Sleep for 1 Min")
