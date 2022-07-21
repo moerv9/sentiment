@@ -1,1 +1,1 @@
-worker: python3 sentiment/runner.py -k "btc" -i 30
+worker: python3 sentiment/runner.py -k "btc" -i 3
