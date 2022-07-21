@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 import os, logging, argparse
 from logging.handlers import RotatingFileHandler
-from listener import StreamListener, Keywords
+from listener import StreamListener
+from keywords import Keywords
 from datetime import datetime,date, time 
 from IPython.display import display
-import pandas as pd
 from Tweet_Data.exporter import Export
 
 #Changed this to "sentiment/Logs" for heroku. normally would just say "Logs"

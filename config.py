@@ -11,10 +11,6 @@ s3_handler = S3Connection(
     os.environ['API_SECRET'],
     os.environ['ACCESS_TOKEN'],
     os.environ['ACCESS_SECRET'],
-    os.environ['DBNAME_HEROKU'],
-    os.environ['HOST_HEROKU'],
-    os.environ['USER_HEROKU'],
-    os.environ['PASS_HEROKU'],
     os.environ['DB_URL']
     )
 
@@ -66,16 +62,15 @@ class Config():
 #Keys for Posgres Database
 class ConfigDB:
     def __init__(self):
-            self.USER = os.environ["DB_USER"]
-            self.PASS = os.environ["DB_PASS"]
-            self.HOST = os.environ["DB_HOST"]
-            #self.HEROKU_DATABASE_URL = os.environ["HEROKU_DATABASE_URL"]
-            #self.HEROKU_CONNECTION_STRING = os.environ["HEROKU_CONNECTION_STRING"]
-            self.DBNAME_HEROKU = os.environ["DBNAME_HEROKU"]
-            self.HOST_HEROKU = os.environ["HOST_HEROKU"]
-            self.USER_HEROKU = os.environ["USER_HEROKU"]
-            self.PASS_HEROKU = os.environ["PASS_HEROKU"]
-            self.DB_URL = os.environ["DB_URL"]
+            # Uncomment for local Postgres DB
+            # self.USER = os.environ["DB_USER"]
+            # self.PASS = os.environ["DB_PASS"]
+            # self.HOST = os.environ["DB_HOST"]
+            # self.DBNAME_HEROKU = os.environ["DBNAME_HEROKU"]
+            # self.HOST_HEROKU = os.environ["HOST_HEROKU"]
+            # self.USER_HEROKU = os.environ["USER_HEROKU"]
+            # self.PASS_HEROKU = os.environ["PASS_HEROKU"]
+            self.DB_URL = os.environ.get("DB_URL")
             
 
 # Config for Binance API
