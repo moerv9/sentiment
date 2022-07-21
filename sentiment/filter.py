@@ -6,7 +6,7 @@ from dateutil import tz
 
 
     
-def check_blacklist(self, body):
+def check_blacklist(body):
     """Check Tweet for forbidden Words like "Giveaway"
     Args:
         body (String): Tweet Text
@@ -19,7 +19,7 @@ def check_blacklist(self, body):
             #logger.info(f"Blacklisted word: {word}, Removed Tweet: {body}")
             return True
         
-def cleanTweets(self, text):
+def cleanTweets(text):
     """Removes unnecessary information from tweets
     Args:
         text (str): input text
@@ -37,7 +37,7 @@ def cleanTweets(self, text):
     text = re.sub(r"http\S+","",text,flags=re.IGNORECASE)
     return text
 
-def datetime_from_utc_to_local(self,utc_datetime):
+def datetime_from_utc_to_local(utc_datetime):
     # Get local timezone
     local_zone = tz.tzlocal()
     # Convert UTC to local time zone

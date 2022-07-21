@@ -43,7 +43,7 @@ class StreamListener(tweepy.Stream):
 
         # Ignores retweets 
         # Ignores Tweets with forbidden words 
-        if status.retweeted or "RT @" in status.text or check_blacklist(text):
+        if status.retweeted or "RT @" in status.text:
             return
         
         # Gets Text
@@ -52,6 +52,9 @@ class StreamListener(tweepy.Stream):
         else:
             text = status.text
         text = text.lower()
+        
+        if check_blacklist(text):
+            return
 
         #Gets Sentiment
         tweet_sentiment = self.sentiment_model.polarity_scores(text).get("compound")
