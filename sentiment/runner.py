@@ -59,4 +59,4 @@ def parse_args():
 #     Runner(keywords,interval)
 
 
-Runner(['btc', 'ada'],1)
+Runner(['btc', 'ada'],0.5)

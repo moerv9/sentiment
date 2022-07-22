@@ -14,8 +14,7 @@ class Tweet(Base):
     user_since = Column(DateTime,nullable=False)
     sentiment = Column(Float)
     
-    def __init__(self,tablename, body, keyword, tweet_date, location, verified_user, followers, user_since, sentiment):
-        __tablename__ = tablename
+    def __init__(self, body, keyword, tweet_date, location, verified_user, followers, user_since, sentiment):
         self.body = body
         self.keyword = keyword
         self.tweet_date = tweet_date

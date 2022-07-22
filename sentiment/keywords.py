@@ -52,15 +52,19 @@ class Keywords():
         Returns:
             String: returns keyword or None, crypto_identifier from dict
         """
-        i =0 
-        for val in list(self.keyword_dict.items()):
+        # i =0 
+        # for val in list(self.keyword_dict.items()):
             # This looks for keyword like "btc" or "ada" -> results in lots of unrelated tweets 
             # if re.search(rf"\b{key}\b", body, re.IGNORECASE):  
             #     return key, list(self.keyword_dict.keys())[i]
-            for keyword in val:
-                if keyword.lower() in body:
-                    return keyword, list(self.keyword_dict.keys())[i]
-            i+=1
-        
-        return None, None
-        
+            # for keyword in val:
+            #     if keyword.lower() in body:
+            #         return keyword, list(self.keyword_dict.keys())[i]
+            # i+=1
+            
+        for val in self.keyword_lst:
+            if val.lower() in body:
+                return val
+            else:
+                return None
+                
