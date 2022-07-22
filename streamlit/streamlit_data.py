@@ -1,3 +1,4 @@
+import datetime
 import signal
 from regex import W
 import streamlit as st
@@ -13,6 +14,7 @@ import subprocess, shlex, psutil
 from time import sleep
 from streamlit_autorefresh import st_autorefresh 
 from collections import Counter
+from dateutil import tz
 
 logger = logging.getLogger(__name__)
 
@@ -90,5 +92,29 @@ def get_Heroku_DB(limit=1000000):
     conn = psycopg2.connect(DB_URL,sslmode="require")
     cur = conn.cursor()
     query = f"select * from tweet_data order by id desc limit {limit};"
-    results = pd.read_sql(query, conn)
-    return results
+    df = pd.read_sql(query, conn)
+    columns = {"body" : "Tweet",
+            "keyword" : "Keyword",
+            "tweet_date" : "Timestamp",
+            "location": "Location",
+            "verified_user" : "User verified",
+            "followers" : "Followers",
+            "user_since" : "User created",
+            "sentiment" : "Sentiment Score",
+            "sentiment_meaning" : "Null"}
+    df = df.drop(columns=["sentiment_meaning"])
+    df = df.rename(columns=columns)
+    df["Timestamp"] = df["Timestamp"] + datetime.timedelta(hours=2) #Needed because the conversion to local time does not work - database is in utc timezone
+    return df
+
+def get_mean_Sentiment(df):
+    df = df.filter(items=["Timestamp","Sentiment Score"])
+    #df_unique = df["Time"].unique()
+    #df = df.set_index("id")
+    #df.index = pd.to_datetime(df.index)
+    df["Timestamp"] = pd.to_datetime(df["Timestamp"])#,format="%d-%m-%Y %H:%M:%S")
+    df["Timestamp"] = df["Timestamp"].dt.strftime("%d-%m-%Y  %H:%M")
+    #df =  df.resample("1T",on="Timestamp").transform("Mean")
+    df = df.groupby(["Timestamp"]).mean()
+    newdf = pd.DataFrame(df)
+    return newdf
