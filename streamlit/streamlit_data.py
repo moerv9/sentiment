@@ -112,9 +112,15 @@ def get_mean_Sentiment(df):
     #df_unique = df["Time"].unique()
     #df = df.set_index("id")
     #df.index = pd.to_datetime(df.index)
+
     df["Timestamp"] = pd.to_datetime(df["Timestamp"])#,format="%d-%m-%Y %H:%M:%S")
     df["Timestamp"] = df["Timestamp"].dt.strftime("%d-%m-%Y  %H:%M")
+    df = df.join(df["Timestamp"].str.split(" ",1,expand=True).rename(columns={0:"Date",1:"Time"}))
+    df = df.drop(columns=["Timestamp"])
+    df = df.reindex(columns=["Date","Time","Sentiment Score"])
     #df =  df.resample("1T",on="Timestamp").transform("Mean")
-    df = df.groupby(["Timestamp"]).mean()
+    day = str(df["Date"].iloc[0])
+
+    df = df.groupby(["Time"]).mean()
     newdf = pd.DataFrame(df)
-    return newdf
+    return newdf, day
