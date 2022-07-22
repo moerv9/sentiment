@@ -2,19 +2,15 @@ import signal
 from regex import W
 import streamlit as st
 import matplotlib.pyplot as plt
-from wordcloud import WordCloud
 import pandas as pd
 import numpy as np
-from sqlalchemy import create_engine
 import os, logging
 from datetime import date, time 
-from logging.handlers import RotatingFileHandler
 import subprocess, shlex, psutil
 from time import sleep
 from streamlit_autorefresh import st_autorefresh 
-from collections import Counter
 
-from streamlit_data import StreamlitFunctions
+from streamlit_data import show_wordCloud, get_json_data, start_local_process,find_pid,get_sentiment_on_all_data
 
 ##PAGE SETUP
 logger = logging.getLogger(__name__)
@@ -24,8 +20,7 @@ st.set_page_config(
     )
 st.subheader(f"Twitter Sentiment-Streaming for {date.today().strftime('%d-%m-%Y')}")
 
-#Init Helperfunctions Class
-utils = StreamlitFunctions()
+
 
 #Wordcloud for all Coins
 def show_data():
@@ -35,9 +30,9 @@ def show_data():
         for key, df in dataframes.items():
             with cols[i]:
                 with st.expander(key[:-5].upper(),expanded=True):
-                    sent_avg, sent_avg_eval = utils.get_sentiment_on_all_data(df["Sentiment Score"])
+                    sent_avg, sent_avg_eval = get_sentiment_on_all_data(df["Sentiment Score"])
                     st.metric("Sentiment is:",sent_avg_eval, f"{sent_avg:5f}")
-                    utils.show_wordCloud(df)
+                    show_wordCloud(df)
             i+=1
     except:
         logger.info(f"No Data for {date.today().strftime('%d-%m-%Y')}")
@@ -50,19 +45,19 @@ refresh_rate = st.sidebar.number_input("Refresh Interval",min_value=0.5,max_valu
 
 #Starting & Stopping the Process
 process_status_text = f'<h3 style="color:Orange;">OFFLINE</h3>'
-if utils.find_pid() is not None:
+if find_pid() is not None:
     process_status_text = f'<h3 style="color:Green;">RUNNING</h3>'
     btn_stop_runner = st.sidebar.button("Stop Listening")
     if btn_stop_runner:
-        pid = utils.find_pid()
-        print(f"Killed Process with PID:{utils.find_pid()}")
+        pid = find_pid()
+        print(f"Killed Process with PID:{find_pid()}")
         subprocess.os.kill(pid,signal.SIGTERM)
 else:
     btn_start_runner = st.sidebar.button("Start Listening")
     if btn_start_runner:
         with st.spinner('Wait for it...'):
             try:
-                utils.start_local_process(coin_selection,refresh_rate)
+                start_local_process(coin_selection,refresh_rate)
             except:
                 Exception("Error")
             sleep(3)
@@ -75,18 +70,18 @@ st.sidebar.markdown(process_status_text,unsafe_allow_html=True)
 page_refresh_rate=st_autorefresh(interval= refresh_rate*60*1000, key="page_refresh_rate")
 
 ## Call functions
-dataframes = utils.get_json_data()
-utils.find_pid()
+dataframes = get_json_data()
+find_pid()
 show_data()
 
 #A Button for Explanation
-st.sidebar.markdown("---")
-btn_whats_this = st.sidebar.button("What's this?")
-if btn_whats_this:
-    with st.expander("What's this?"):
-        st.write("This is a Programm that listens to the Sentiment of Tweets from Twitter and visualises it. Createdy by Moerv")
-        img_to_my_pic = '<div align="center"><a href="https://github.com/moerv9/sentiment"><img src="https://github.com/moerv9.png" alt="Github Profile" width="200"></div>'
-        st.markdown(img_to_my_pic,unsafe_allow_html=True)
+# st.sidebar.markdown("---")
+# btn_whats_this = st.sidebar.button("What's this?")
+# if btn_whats_this:
+#     with st.expander("What's this?"):
+#         st.write("This is a Programm that listens to the Sentiment of Tweets from Twitter and visualises it. Createdy by Moerv")
+#         img_to_my_pic = '<div align="center"><a href="https://github.com/moerv9/sentiment"><img src="https://github.com/moerv9.png" alt="Github Profile" width="200"></div>'
+#         st.markdown(img_to_my_pic,unsafe_allow_html=True)
         
 ## Show the Tables of Data for each Coin             
 btn_show_datasets = st.sidebar.button("Show Datasets")

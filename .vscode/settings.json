@@ -2,6 +2,9 @@
     "python.defaultInterpreterPath": "/Users/marvinottersberg/opt/anaconda3/envs/dontbesentimental/bin/python3.9",
     "python.terminal.activateEnvironment": true,
     "python.analysis.extraPaths": [
-        "./sent"
+        "./sentiment"
+    ],
+    "python.autoComplete.extraPaths": [
+        "./sentiment"
     ]
 }
