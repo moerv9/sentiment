@@ -86,7 +86,7 @@ def show_wordCloud(df):
     #word_list = [i for item in df['Tweet'] for i in item.split()]
     #freq = Counter(word_list).most_common(10)
     
-def get_Heroku_DB(limit):
+def get_Heroku_DB(limit=1000000):
     conn = psycopg2.connect(DB_URL,sslmode="require")
     cur = conn.cursor()
     query = f"select * from tweet_data order by id desc limit {limit};"

@@ -11,5 +11,5 @@ st.set_page_config(
     )
 st.subheader(f"Twitter Sentiment-Streaming for {date.today().strftime('%d-%m-%Y')}")
 
+df = get_Heroku_DB()
 
-st.dataframe(get_Heroku_DB(10))
