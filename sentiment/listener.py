@@ -58,10 +58,9 @@ class StreamListener(tweepy.Stream):
 
         #Gets Sentiment
         tweet_sentiment = self.sentiment_model.polarity_scores(text).get("compound")
-        
         # Ignore tweets which do not contain the keyword
         keyword = self.keyword_obj.check_keyword(text)
-        if not keyword:
+        if keyword == None:
             return
         else:
             try:

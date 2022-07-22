@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 import os, logging, argparse
 from logging.handlers import RotatingFileHandler
+import re
 
 logger = logging.getLogger(__name__)
 default_keyword_dict ={
-                "btc":["#btc","$btc","bitcoin","#bitcoin"],
+                "btc":["$btc","#btc","bitcoin","#bitcoin"],
                 "ada":["#ada","$ada","cardano"],
                 "eth":["#eth","$eth","ether","ethereum","etherum"],
                 "bnb":["#bnb","$bnb","binance coin"],
@@ -61,10 +62,11 @@ class Keywords():
             #     if keyword.lower() in body:
             #         return keyword, list(self.keyword_dict.keys())[i]
             # i+=1
-            
+        # if any([key in body for key in self.keyword_lst]):
+        #     print(body)
         for val in self.keyword_lst:
-            if val.lower() in body:
+            if val in body:
                 return val
-            else:
-                return None
+        else:
+            return None
                 
