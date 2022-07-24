@@ -7,7 +7,7 @@ import os
 #Config
 import sys
 sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
-from config import ConfigBinance
+from streamlit.config import ConfigBinance
 conf = ConfigBinance().getKeys()
 
 #Init Binance Client

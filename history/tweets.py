@@ -12,7 +12,7 @@ log = logging.getLogger()
 
 # Import Twitter API TOKEN
 sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
-from config import ConfigAPI
+from streamlit.config import ConfigAPI
 newconf = ConfigAPI()
 api = newconf.create_api("auth1")
 
