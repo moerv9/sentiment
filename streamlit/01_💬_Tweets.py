@@ -27,6 +27,12 @@ if st.button("Refresh Database"):
 with st.sidebar:
     lookback_hours = st.slider("How many hours to look back?",min_value=1,max_value=24,value=4)
     group_by_min = st.select_slider("Group Timestamps by Minutes",options=[1,5,10,15,30,60],value=5)
+    with st.expander("See explanation"):
+        st.write("The sentiment score is a number between -1 and 1. "
+            "Negative values indicates negative Sentiment."
+            "Around zero is neutral Sentiment (+-0.2)."
+            )
+
     
 
 df = loading_data_from_heroku_database()
