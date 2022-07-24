@@ -10,8 +10,23 @@ st.set_page_config(
     )
 st.subheader("Datasets")
 
-rows = st.slider("Rows to retrieve:",step=5,min_value=5,max_value=500)
-btn = st.button("Show")
+@st.cache(ttl=60*5)
+def loading_data_from_heroku_database():
+    return get_Heroku_DB()
+
+rows = st.slider("Rows to retrieve:",step=5,min_value=5,max_value=500,value=5)
+btn = st.button("Refresh Database")
 if btn:
-    df = get_Heroku_DB(rows)
-    st.dataframe(df)
+    loading_data_from_heroku_database()
+    
+df = loading_data_from_heroku_database()
+
+btc_df = df[df["Keyword"].isin(["#btc","$btc","bitcoin"])]
+ada_df = df[df["Keyword"].isin(["#ada","$ada","cardano"])]
+
+
+st.subheader("Bitcoin")
+st.dataframe(btc_df.head(rows))
+
+st.subheader("Cardano")
+st.dataframe(ada_df.head(rows))

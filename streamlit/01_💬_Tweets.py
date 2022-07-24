@@ -1,13 +1,14 @@
-from datetime import date
+from ast import Mult
+from datetime import date, datetime, timedelta
 import os, logging
 import streamlit as st
-from streamlit_data import get_Heroku_DB,get_mean_Sentiment
-import matplotlib.pyplot as plt
-import altair as alt
-from matplotlib.ticker import (MultipleLocator,
-                            FormatStrFormatter,
-                            AutoMinorLocator)
+from streamlit_data import get_Heroku_DB,get_mean_Sentiment,get_Sentiment_Chart,show_wordCloud
 
+from matplotlib.collections import LineCollection
+from matplotlib.colors import ListedColormap, BoundaryNorm
+import numpy as np
+import matplotlib.colors as mcolors
+import pandas as pd
 ##PAGE SETUP
 logger = logging.getLogger(__name__)
 st.set_page_config(
@@ -16,35 +17,36 @@ st.set_page_config(
     )
 st.subheader(f"Twitter Sentiment-Streaming for {date.today().strftime('%d-%m-%Y')}")
 
-@st.cache()
-def get_db():
+@st.cache(ttl=60*5)
+def loading_data_from_heroku_database():
     return get_Heroku_DB()
 #st.dataframe(df)
+if st.button("Refresh Database"):
+    loading_data_from_heroku_database()
+    
+with st.sidebar:
+    lookback_hours = st.slider("How many hours to look back?",min_value=1,max_value=24,value=4)
+    group_by_min = st.select_slider("Group Timestamps by Minutes",options=[1,5,10,15,30,60],value=5)
+    
 
-df = get_db()
-
-df_mean_byMinute, day = get_mean_Sentiment(df.head(3000))
-#st.dataframe(df_mean_byMinute)
-
-
-fig, ax = plt.subplots(figsize=(12, 6))
-ax.set_title(day)
-ax.set_xlabel("Time")
-ax.set_ylabel("Sentiment Score")
-ax.xaxis.set_major_locator(MultipleLocator(10))
-ax.xaxis.set_minor_locator(MultipleLocator(5))
-ax.set_xlim(auto=True)
-ax.xaxis.label.set_size(20)
-ax.plot(df_mean_byMinute)
-plt.gcf().autofmt_xdate()
-#plt.tick_params('x')   
-plt.tight_layout()
-st.pyplot(fig)
+df = loading_data_from_heroku_database()
 
 
+#Get Dataframes
+btc_df = df[df["Keyword"].isin(["#btc","$btc","bitcoin"])]
+ada_df = df[df["Keyword"].isin(["#ada","$ada","cardano"])]
+mean_btc_by_Minute= get_mean_Sentiment(btc_df,lookback_hours,group_by_min)
+mean_ada_by_Minute= get_mean_Sentiment(ada_df,lookback_hours,group_by_min)
 
-#st.line_chart(df_mean_byMinute)
-#filtered_df= df.query("tweet_date == bitcoin or tweet_date == #btc")
-#st.dataframe(filtered_df)
-#mean_df= df.query("tweet_date == bitcoin or tweet_date == #btc")['sentiment'].mean()
-#st.text(f"Sentiment Mean: {mean_df}")
+
+col1,col2 = st.columns(2)
+with col1:
+    st.subheader("Bitcoin")
+    get_Sentiment_Chart(mean_btc_by_Minute,"btc","k")
+    show_wordCloud(btc_df,lookback_hours)
+with col2:
+    st.subheader("Cardano")
+    get_Sentiment_Chart(mean_ada_by_Minute,"ada","c")
+    show_wordCloud(ada_df,lookback_hours)
+    
+    
