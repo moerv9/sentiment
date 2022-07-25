@@ -5,10 +5,14 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from datetime import datetime
 from time import sleep
 from collections import defaultdict
-from filter import check_blacklist,cleanTweets,datetime_from_utc_to_local
-from Tweet_Data.database import session_scope, init_db #Uncomment when using PosgresDB
-from Tweet_Data.Tweet import Tweet #Uncomment when using PosgresDB
-from keywords import Keywords
+
+#Config
+import sys
+sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
+from streamlit.config import Config
+newconf = Config()
+api = newconf.create_api("auth1")
+
 logger = logging.getLogger(__name__)
 # %% [markdown]
 # ### Class: Real-Time Listener for Tweets
