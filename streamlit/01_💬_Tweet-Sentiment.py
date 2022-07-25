@@ -3,7 +3,7 @@ from datetime import date, datetime, timedelta
 from logging.handlers import RotatingFileHandler
 import os, logging
 import streamlit as st
-from streamlit_data import get_Heroku_DB,calc_mean_sent,get_Sentiment_Chart,show_wordCloud, get_word_insights,split_DF_by_time
+from streamlit_data import get_Heroku_DB,calc_mean_sent,show_sentiment_chart,show_wordCloud, get_word_insights,split_DF_by_time
 
 from matplotlib.collections import LineCollection
 from matplotlib.colors import ListedColormap, BoundaryNorm
@@ -44,7 +44,6 @@ btc_df, ada_df = get_data()
 past_h_btc_df = split_DF_by_time(btc_df,lookback_hours)
 past_h_ada_df = split_DF_by_time(ada_df,lookback_hours)
 
-
 mean_btc = calc_mean_sent(past_h_btc_df,min_range) #Gets the average/mean sentiment for timesranges by [min_range] 
 mean_ada = calc_mean_sent(past_h_ada_df,min_range) 
 # df_btc_word_count = get_word_insights(btc_df,lookback_hours)
@@ -53,25 +52,30 @@ mean_ada = calc_mean_sent(past_h_ada_df,min_range)
 #Get Dataframes
 
 #st.dataframe(df_btc_word_count)
-st.text("Total Tweets")
 col1,col2 = st.columns(2)
 with col1:
     st.subheader("Bitcoin")
-    st.metric(label="past 24h", value=split_DF_by_time(btc_df,24).shape[0])
-    st.metric(label="past 1h", value=split_DF_by_time(btc_df,1).shape[0])
 with col2:
     st.subheader("Cardano")
-    st.metric(label="past 24h", value=split_DF_by_time(ada_df,24).shape[0])
-    st.metric(label="past 1h", value=split_DF_by_time(ada_df,1).shape[0])
+
+col1,col2,col3,col4 = st.columns(4)
+with col1:
+    st.metric(label="Tweets in the last 24h", value=split_DF_by_time(btc_df,24).shape[0])
+with col2:
+    st.metric(label="last 1h", value=split_DF_by_time(btc_df,1).shape[0])
+with col3:
+    st.metric(label="Tweets in the last 24h", value=split_DF_by_time(ada_df,24).shape[0])
+with col4:
+    st.metric(label="last 1h", value=split_DF_by_time(ada_df,1).shape[0])
     
 
 col1,col2 = st.columns(2)
 with col1:
-    get_Sentiment_Chart(mean_btc,"btc","k")
-    # show_wordCloud(word_cloud_btc)
+    show_sentiment_chart(mean_btc,"btc","k")
+    show_wordCloud(past_h_btc_df)
 with col2:
 
-    get_Sentiment_Chart(mean_ada,"ada","c")
-    # show_wordCloud(word_cloud_ada)
+    show_sentiment_chart(mean_ada,"ada","c")
+    show_wordCloud(past_h_ada_df)
     
     

@@ -4,7 +4,7 @@ import signal
 from regex import W
 import streamlit as st
 import matplotlib.pyplot as plt
-from wordcloud import WordCloud
+from wordcloud import WordCloud,STOPWORDS
 import pandas as pd
 import numpy as np
 from sqlalchemy import create_engine
@@ -27,6 +27,7 @@ logger = logging.getLogger(__name__)
 os.sys.path.insert(0, "/Users/marvinottersberg/Documents/GitHub/sentiment")
 from config import ConfigDB
 DB_URL = ConfigDB().DB_URL
+
 
 # For local setup
 def get_json_data():
@@ -83,10 +84,12 @@ def get_sentiment_on_all_data(sentiment_col):
 
 def show_wordCloud(df):
     all_words = ' '.join([tweets for tweets in df['Tweet']])
-    stopwords=["amp", "cardano", "bitcoin"]
-    word_cloud = WordCloud(stopwords=stopwords,
-                        width=500, height=250, random_state=21, max_font_size=100, colormap="Spectral").generate(all_words)
-    plt.figure(figsize=(20, 10), facecolor="k")
+    my_stopwords={"amp", "cardano", "bitcoin","ada","btc"}
+    my_stopwords.update(STOPWORDS) 
+    print(my_stopwords)
+    word_cloud = WordCloud(max_words=50,stopwords=my_stopwords,
+                        width=500, height=250,collocations=False, random_state=1, max_font_size=100, background_color="black",colormap="viridis_r").generate(all_words)
+    plt.figure(figsize=(20, 10))
     plt.imshow(word_cloud, interpolation="bilinear")
     plt.axis('off')
     plt.tight_layout(pad=0)
@@ -95,7 +98,7 @@ def show_wordCloud(df):
     
 def split_DF_by_time(df,total_past_time):
     df.index = df["Timestamp"]
-    
+
     df.index = pd.to_datetime(df.index)
     timedelt = datetime.now() - timedelta(hours=total_past_time)
     mask = (df.index > timedelt)
@@ -138,24 +141,13 @@ def get_Heroku_DB(limit=100000):
 
 def calc_mean_sent(df, min_range):
     df = df.filter(items=["Sentiment Score"])
-    # ,format="%d-%m-%Y %H:%M:%S")
-    #df["Timestamp"] = pd.to_datetime(df["Timestamp"])
-    #df["Timestamp"] = df["Timestamp"].dt.strftime("%d-%m-%Y  %H:%M")
-    #print(df.index)
-    #df = df.join(df.index.str.split(" ", 1, expand=True).rename(columns={0: "Date", 1: "Time"}))
-    # If I want to split Date and Time
-    #df = df.drop(columns=["Timestamp"])
-    #df = df.reindex(columns=["Date","Time","Sentiment Score"])
-    #df =  df.resample("1T",on="Timestamp").transform("Mean")
     df = df.groupby(df.index, dropna=True).mean()
     df = df.resample(f"{min_range}T").mean()
-    #df = df.query("index > @filter_time")
-    newdf = pd.DataFrame(df)
     print("Getting Sentiment Mean...")
-    return newdf
+    return pd.DataFrame(df)
 
 
-def get_Sentiment_Chart(df, label, color):
+def show_sentiment_chart(df, label, color):
     fig, ax = plt.subplots(figsize=(12, 8))
     ax.set_title(label)
     ax.set_xlabel("Time")
@@ -164,7 +156,6 @@ def get_Sentiment_Chart(df, label, color):
     ax.xaxis.set_minor_locator(MultipleLocator(1))
     ax.set_xlim(auto=True)
     # ax.set_ylim(-1,1)
-    # markerfacecolor = 'red', markersize = 12
     ax.plot(df, label=label, color=color, marker=".", markersize=4)
     plt.gcf().autofmt_xdate()
     plt.tight_layout()
