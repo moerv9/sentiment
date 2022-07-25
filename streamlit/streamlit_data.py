@@ -81,7 +81,11 @@ def get_sentiment_on_all_data(sentiment_col):
     return sent_avg, sent_avg_eval
 
 
-def show_wordCloud(word_cloud):
+def show_wordCloud(df):
+    all_words = ' '.join([tweets for tweets in df['Tweet']])
+    stopwords=["amp", "cardano", "bitcoin"]
+    word_cloud = WordCloud(stopwords=stopwords,
+                        width=500, height=250, random_state=21, max_font_size=100, colormap="Spectral").generate(all_words)
     plt.figure(figsize=(20, 10), facecolor="k")
     plt.imshow(word_cloud, interpolation="bilinear")
     plt.axis('off')
@@ -89,16 +93,18 @@ def show_wordCloud(word_cloud):
     st.pyplot(plt)
     print("showing wordcloud")
     
-
-def get_word_insights(df,total_past_time):
-    print("Getting word insights...")
-    df.set_index("Timestamp")
+def split_DF_by_time(df,total_past_time):
+    df.index = df["Timestamp"]
+    
     df.index = pd.to_datetime(df.index)
-    df = df.last(f"{total_past_time}H")
+    timedelt = datetime.now() - timedelta(hours=total_past_time)
+    mask = (df.index > timedelt)
+    df = df.loc[mask]
+    return df
+
+def get_word_insights():
     all_words = ' '.join([tweets for tweets in df['Tweet']])
     stopwords=["amp", "cardano", "bitcoin"]
-    word_cloud = WordCloud(stopwords=stopwords,
-                        width=500, height=250, random_state=21, max_font_size=100, colormap="Spectral").generate(all_words)
     words = list(set(all_words.split(" ")))
     set_words = [i for i in words if i not in stopwords]
     #print(f"SetWords \n{set_words}")
@@ -106,13 +112,13 @@ def get_word_insights(df,total_past_time):
     df = pd.DataFrame(zip(set_words,counts),columns=["Words","Count"])
     df.sort_values("Count",inplace=True,ascending=False)
     df.reset_index(drop=True, inplace=True)
-    return word_cloud, df
+    print("Getting word insights...")
+    return df
 
 
-def get_Heroku_DB(limit=1000000):
+def get_Heroku_DB(limit=100000):
     conn = psycopg2.connect(DB_URL, sslmode="require")
-    cur = conn.cursor()
-    query = f"select * from tweet_data order by id desc limit {limit};"
+    query = f"select * from tweet_data where Tweet_Date > current_date order by id desc limit {limit};"
     df = pd.read_sql(query, conn)
     columns = {"body": "Tweet",
                 "keyword": "Keyword",
@@ -130,21 +136,19 @@ def get_Heroku_DB(limit=1000000):
     return df
 
 
-def get_mean_Sentiment(df, total_past_time, resample_minutes):
-    df = df.filter(items=["Timestamp", "Sentiment Score"])
+def calc_mean_sent(df, min_range):
+    df = df.filter(items=["Sentiment Score"])
     # ,format="%d-%m-%Y %H:%M:%S")
-    df["Timestamp"] = pd.to_datetime(df["Timestamp"])
-    df["Timestamp"] = df["Timestamp"].dt.strftime("%d-%m-%Y  %H:%M")
-    df = df.join(df["Timestamp"].str.split(
-        " ", 1, expand=True).rename(columns={0: "Date", 1: "Time"}))
+    #df["Timestamp"] = pd.to_datetime(df["Timestamp"])
+    #df["Timestamp"] = df["Timestamp"].dt.strftime("%d-%m-%Y  %H:%M")
+    #print(df.index)
+    #df = df.join(df.index.str.split(" ", 1, expand=True).rename(columns={0: "Date", 1: "Time"}))
     # If I want to split Date and Time
     #df = df.drop(columns=["Timestamp"])
     #df = df.reindex(columns=["Date","Time","Sentiment Score"])
     #df =  df.resample("1T",on="Timestamp").transform("Mean")
-    df = df.groupby(["Timestamp"], dropna=True).mean()
-    df.index = pd.to_datetime(df.index)
-    df = df.resample(f"{resample_minutes}T").mean()
-    df = df.last(f"{total_past_time}H")
+    df = df.groupby(df.index, dropna=True).mean()
+    df = df.resample(f"{min_range}T").mean()
     #df = df.query("index > @filter_time")
     newdf = pd.DataFrame(df)
     print("Getting Sentiment Mean...")
