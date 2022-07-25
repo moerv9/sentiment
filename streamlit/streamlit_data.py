@@ -86,7 +86,6 @@ def show_wordCloud(df):
     all_words = ' '.join([tweets for tweets in df['Tweet']])
     my_stopwords={"amp", "cardano", "bitcoin","ada","btc"}
     my_stopwords.update(STOPWORDS) 
-    print(my_stopwords)
     word_cloud = WordCloud(max_words=50,stopwords=my_stopwords,
                         width=500, height=250,collocations=False, random_state=1, max_font_size=100, background_color="black",colormap="viridis_r").generate(all_words)
     plt.figure(figsize=(20, 10))
@@ -105,7 +104,7 @@ def split_DF_by_time(df,total_past_time):
     df = df.loc[mask]
     return df
 
-def get_word_insights():
+def get_word_insights(df):
     all_words = ' '.join([tweets for tweets in df['Tweet']])
     stopwords=["amp", "cardano", "bitcoin"]
     words = list(set(all_words.split(" ")))
