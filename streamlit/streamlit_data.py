@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 
 # Config
 os.sys.path.insert(0, "/Users/marvinottersberg/Documents/GitHub/sentiment")
-from config import ConfigDB
+from streamlit.config import ConfigDB
 DB_URL = ConfigDB().DB_URL
 
 
