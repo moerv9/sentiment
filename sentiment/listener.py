@@ -15,7 +15,7 @@ from collections import defaultdict
 #Config
 import sys
 sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
-from streamlit.config import Config
+from config import Config
 newconf = Config()
 api = newconf.create_api("auth1")
 

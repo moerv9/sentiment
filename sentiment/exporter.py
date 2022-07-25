@@ -4,7 +4,7 @@ from datetime import datetime,timezone,date
 
 #Config
 #os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
-from streamlit.config import Config
+from config import Config
 newconf = Config()
 
 #Logging
