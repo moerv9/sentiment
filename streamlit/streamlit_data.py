@@ -17,7 +17,6 @@ import shlex
 import psutil
 from time import sleep
 from streamlit_autorefresh import st_autorefresh
-from collections import Counter
 from dateutil import tz
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
@@ -82,20 +81,32 @@ def get_sentiment_on_all_data(sentiment_col):
     return sent_avg, sent_avg_eval
 
 
-def show_wordCloud(df,total_past_time):
-    df.set_index("Timestamp")
-    df.index = pd.to_datetime(df.index)
-    df = df.last(f"{total_past_time}H")
-    all_words = ' '.join([tweets for tweets in df['Tweet']])
-    word_cloud = WordCloud(stopwords=["amp", "cardano", "bitcoin"],
-                        width=500, height=250, random_state=21, max_font_size=100, colormap="Spectral").generate(all_words)
+def show_wordCloud(word_cloud):
     plt.figure(figsize=(20, 10), facecolor="k")
     plt.imshow(word_cloud, interpolation="bilinear")
     plt.axis('off')
     plt.tight_layout(pad=0)
     st.pyplot(plt)
-    #word_list = [i for item in df['Tweet'] for i in item.split()]
-    #freq = Counter(word_list).most_common(10)
+    print("showing wordcloud")
+    
+
+def get_word_insights(df,total_past_time):
+    print("Getting word insights...")
+    df.set_index("Timestamp")
+    df.index = pd.to_datetime(df.index)
+    df = df.last(f"{total_past_time}H")
+    all_words = ' '.join([tweets for tweets in df['Tweet']])
+    stopwords=["amp", "cardano", "bitcoin"]
+    word_cloud = WordCloud(stopwords=stopwords,
+                        width=500, height=250, random_state=21, max_font_size=100, colormap="Spectral").generate(all_words)
+    words = list(set(all_words.split(" ")))
+    set_words = [i for i in words if i not in stopwords]
+    #print(f"SetWords \n{set_words}")
+    counts = [words.count(i) for i in set_words]
+    df = pd.DataFrame(zip(set_words,counts),columns=["Words","Count"])
+    df.sort_values("Count",inplace=True,ascending=False)
+    df.reset_index(drop=True, inplace=True)
+    return word_cloud, df
 
 
 def get_Heroku_DB(limit=1000000):
@@ -136,6 +147,7 @@ def get_mean_Sentiment(df, total_past_time, resample_minutes):
     df = df.last(f"{total_past_time}H")
     #df = df.query("index > @filter_time")
     newdf = pd.DataFrame(df)
+    print("Getting Sentiment Mean...")
     return newdf
 
 
@@ -154,3 +166,4 @@ def get_Sentiment_Chart(df, label, color):
     plt.tight_layout()
     #plt.legend()
     st.pyplot(fig)
+    print("Showing Sentiment Chart...")
