@@ -1,29 +1,32 @@
 # Documentation 
 
 - [Introduction](approach/introduction.md)
-- Abstract (Aufgabenstellung, Lösungsweg und erreichte Ziele werden mit wenigen Sätzen umrissen)
+
+
+- Abstract (Task, Approach and achieved goals in a few words)
 - Table of Contents
-- Projektbeschreibung
+- Project Description
     - Motivation
-    - Ziel
+    - Goal
     - Action Plan
     - Context
-- Anforderungsanalyse
-- Umsetzung
-    - Konzept
-    - Herausforderungen
-    - Erkenntnisse
-    - Entwicklung
-- Ergebnisse
-    - Einordnung in wissenschaftlichen Kontext
-    - Fazit
-    - Vorführung des Produkts (Video/Bilder)
-    - Ausblick
-- technische Vorgehensweise
-    - Dependencies / Bibliotheken
-    - Klassenbeschreibung (UML-DIagramme)
-    - Installation / Usage
-- Links/References/Literatur/Quellen
+- Requirements analysis
+- Development
+    - Concept
+    - Classes (UML-Diagram)
+    - Challenges
+    - Insights
+- Results
+    - (Placement in the scientific/financial context)
+    - Conclusion
+    - Usage Examples: Video/Pictures
+    - Outlook
+- Technical Overview
+    - Installation 
+    - Tools / Libraries
+        - (Reason for choosing those tools?(Robert?))
+    - Code Examples
+- Links/References/Literature
 
 
 
