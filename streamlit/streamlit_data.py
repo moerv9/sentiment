@@ -24,8 +24,8 @@ from matplotlib.ticker import MultipleLocator
 logger = logging.getLogger(__name__)
 
 # Config
-os.sys.path.insert(0, "/Users/marvinottersberg/Documents/GitHub/sentiment")
-from streamlit.config import ConfigDB
+# os.sys.path.insert(0, "/Users/marvinottersberg/Documents/GitHub/sentiment")
+# from streamlit.config import ConfigDB
 DB_URL = st.secrets["DB_URL"]
 
 
