@@ -3,7 +3,7 @@ from datetime import date, datetime, timedelta
 from logging.handlers import RotatingFileHandler
 import os, logging
 import streamlit as st
-from streamlit_data import get_Heroku_DB,calc_mean_sent,show_sentiment_chart,show_wordCloud, get_word_insights,split_DF_by_time
+from streamlit_data import get_Heroku_DB,calc_mean_sent,show_sentiment_chart,show_wordCloud, get_word_insights,split_DF_by_time, getFrequencyDictForText
 
 from matplotlib.collections import LineCollection
 from matplotlib.colors import ListedColormap, BoundaryNorm
@@ -73,7 +73,9 @@ col1,col2 = st.columns(2)
 with col1:
     show_sentiment_chart(mean_btc,"btc","k")
     show_wordCloud(past_h_btc_df)
-    st.dataframe(get_word_insights(past_h_btc_df))
+    #st.dataframe(get_word_insights(past_h_btc_df))
+    
+    st.dataframe()
 with col2:
 
     show_sentiment_chart(mean_ada,"ada","c")

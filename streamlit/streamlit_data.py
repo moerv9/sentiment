@@ -1,3 +1,5 @@
+import re
+import multidict
 import psycopg2
 import os
 import signal
@@ -82,13 +84,30 @@ def get_sentiment_on_all_data(sentiment_col):
         sent_avg_eval = "Neutral"
     return sent_avg, sent_avg_eval
 
+def getFrequencyDictForText(df):
+    all_words = ' '.join([tweets for tweets in df['Tweet']])
+    set_words = [i for i in all_words if i not in my_stopwords]    
+    cleaned_words = [x for x in set_words if not bool(re.search('\d|_|\$', x))]
+    fullTermsDict = multidict.MultiDict()
+    tmpDict = {}
+
+    # making dict for counting frequencies
+    for text in cleaned_words.split(" "):
+        if re.match("a|the|an|the|to|in|for|of|or|by|with|is|on|that|be", text):
+            continue
+        val = tmpDict.get(text, 0)
+        tmpDict[text.lower()] = val + 1
+    for key in tmpDict:
+        fullTermsDict.add(key, tmpDict[key])
+    
+    return fullTermsDict
 
 def show_wordCloud(df):
-    all_words = ' '.join([tweets for tweets in df['Tweet']])
-    word_cloud = WordCloud(max_words=50,stopwords=my_stopwords,
-                        width=500, height=250,collocations=False, random_state=1, max_font_size=100, background_color="black",colormap="viridis_r").generate(all_words)
+    freq_words = getFrequencyDictForText(df)
+    words = WordCloud(relative_scaling=0.5,max_words=50,stopwords=my_stopwords,
+                        width=500, height=250,collocations=False, random_state=1, max_font_size=100, background_color="black",colormap="viridis_r").generate_from_frequencies(freq_words)
     plt.figure(figsize=(20, 10))
-    plt.imshow(word_cloud, interpolation="bilinear")
+    plt.imshow(words, interpolation="bilinear")
     plt.axis('off')
     plt.tight_layout(pad=0)
     st.pyplot(plt)
@@ -102,19 +121,21 @@ def split_DF_by_time(df,total_past_time):
     return df
 
 def get_word_insights(df):
-    all_words = [tweets for tweets in df['Tweet']]
-    print(all_words)
+    all_words = " ".join([tweets for tweets in df['Tweet']])
     words = list(set(all_words.split(" ")))
-    set_words = [i for i in words if i not in my_stopwords]
-    counts = [words.count(i) for i in set_words]
-    df = pd.DataFrame(zip(set_words,counts),columns=["Words","Count"])
+    set_words = [i for i in words if i not in my_stopwords]    
+    cleaned_words = [x for x in set_words if not bool(re.search('\d|_|\$', x))]
+    #counts = [cleaned_words.count(i) for i in cleaned_words]
+    counts = pd.value_counts(np.array(cleaned_words))
+    # duplicates = [number for number in cleaned_words if cleaned_words.count(number) > 1]
+    # unique_duplicates = list(set(duplicates))    
+    df = pd.DataFrame(zip(cleaned_words,counts),columns=["Words","Count"])
     df.sort_values("Count",inplace=True,ascending=False)
-    df.reset_index(drop=True, inplace=True)
     print("Getting word insights...")
     return df
 
 
-def get_Heroku_DB(limit=100000):
+def get_Heroku_DB(limit=200000):
     conn = psycopg2.connect(DB_URL, sslmode="require")
     query = f"select * from tweet_data where Tweet_Date > current_date order by id desc limit {limit};"
     df = pd.read_sql(query, conn)
