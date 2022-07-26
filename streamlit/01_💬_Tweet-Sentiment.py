@@ -73,7 +73,7 @@ col1,col2 = st.columns(2)
 with col1:
     show_sentiment_chart(mean_btc,"btc","k")
     show_wordCloud(past_h_btc_df)
-    #st.dataframe(get_word_insights(past_h_btc_df))
+    st.dataframe(get_word_insights(past_h_btc_df))
 with col2:
 
     show_sentiment_chart(mean_ada,"ada","c")

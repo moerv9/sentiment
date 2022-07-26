@@ -27,7 +27,8 @@ logger = logging.getLogger(__name__)
 # os.sys.path.insert(0, "/Users/marvinottersberg/Documents/GitHub/sentiment")
 # from streamlit.config import ConfigDB
 DB_URL = st.secrets["DB_URL"]
-
+my_stopwords={"amp", "cardano", "bitcoin","ada","btc"}
+my_stopwords.update(STOPWORDS) 
 
 # For local setup
 def get_json_data():
@@ -84,8 +85,6 @@ def get_sentiment_on_all_data(sentiment_col):
 
 def show_wordCloud(df):
     all_words = ' '.join([tweets for tweets in df['Tweet']])
-    my_stopwords={"amp", "cardano", "bitcoin","ada","btc"}
-    my_stopwords.update(STOPWORDS) 
     word_cloud = WordCloud(max_words=50,stopwords=my_stopwords,
                         width=500, height=250,collocations=False, random_state=1, max_font_size=100, background_color="black",colormap="viridis_r").generate(all_words)
     plt.figure(figsize=(20, 10))
@@ -93,11 +92,9 @@ def show_wordCloud(df):
     plt.axis('off')
     plt.tight_layout(pad=0)
     st.pyplot(plt)
-    print("showing wordcloud")
     
 def split_DF_by_time(df,total_past_time):
     df.index = df["Timestamp"]
-
     df.index = pd.to_datetime(df.index)
     timedelt = datetime.now() - timedelta(hours=total_past_time)
     mask = (df.index > timedelt)
@@ -105,11 +102,10 @@ def split_DF_by_time(df,total_past_time):
     return df
 
 def get_word_insights(df):
-    all_words = ' '.join([tweets for tweets in df['Tweet']])
-    stopwords=["amp", "cardano", "bitcoin"]
+    all_words = [tweets for tweets in df['Tweet']]
+    print(all_words)
     words = list(set(all_words.split(" ")))
-    set_words = [i for i in words if i not in stopwords]
-    #print(f"SetWords \n{set_words}")
+    set_words = [i for i in words if i not in my_stopwords]
     counts = [words.count(i) for i in set_words]
     df = pd.DataFrame(zip(set_words,counts),columns=["Words","Count"])
     df.sort_values("Count",inplace=True,ascending=False)
@@ -142,7 +138,6 @@ def calc_mean_sent(df, min_range):
     df = df.filter(items=["Sentiment Score"])
     df = df.groupby(df.index, dropna=True).mean()
     df = df.resample(f"{min_range}T").mean()
-    print("Getting Sentiment Mean...")
     return pd.DataFrame(df)
 
 
@@ -160,4 +155,3 @@ def show_sentiment_chart(df, label, color):
     plt.tight_layout()
     #plt.legend()
     st.pyplot(fig)
-    print("Showing Sentiment Chart...")
