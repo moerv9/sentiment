@@ -40,6 +40,9 @@ class StreamListener(tweepy.Stream):
         if diff.days < 60:
             #logger.info(f"User only {diff.days} Days on Twitter. Ignored!")
             return
+        
+        if int(status.user.followers_count) < 500:
+            return
 
         # Ignores retweets 
         # Ignores Tweets with forbidden words 
