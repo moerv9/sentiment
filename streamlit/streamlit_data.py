@@ -22,6 +22,7 @@ from streamlit_autorefresh import st_autorefresh
 from dateutil import tz
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 logger = logging.getLogger(__name__)
 
@@ -29,8 +30,8 @@ logger = logging.getLogger(__name__)
 # os.sys.path.insert(0, "/Users/marvinottersberg/Documents/GitHub/sentiment")
 # from streamlit.config import ConfigDB
 DB_URL = st.secrets["DB_URL"]
-my_stopwords={"amp", "cardano", "bitcoin","ada","btc"}
-my_stopwords.update(STOPWORDS) 
+my_stopwords={"amp"}
+sentiment_model = SentimentIntensityAnalyzer()
 
 # For local setup
 def get_json_data():
@@ -74,33 +75,48 @@ def find_pid():
             return None
 
 
-def get_sentiment_on_all_data(sentiment_col):
-    sent_avg = sentiment_col.sum() / len(sentiment_col)
-    if sent_avg > 0.2:
-        sent_avg_eval = "Positive"
-    elif sent_avg < -0.2:
-        sent_avg_eval = "Negative"
+def get_sent_meaning(sent_list):
+    sent_meaning_list = []
+    for num in sent_list:
+        sent_meaning_list.append(conv_sent_score_to_meaning(num))
+    mean_avg = sum(sent_list) / len(sent_list)
+    return mean_avg, sent_meaning_list
+
+def conv_sent_score_to_meaning(num):
+    if num > 0.2 and num < 0.6:
+        return("Positive")
+    elif num > 0.6:
+        return("Very Positive")
+    elif num < - 0.2 and num > -0.6:
+        return("Negative")
+    elif num < - 0.6 :
+        return("Very Negative")
     else:
-        sent_avg_eval = "Neutral"
-    return sent_avg, sent_avg_eval
+        return("Neutral")
 
 def getFrequencyDictForText(df):
     all_words = ' '.join([tweets for tweets in df['Tweet']])
-    set_words = [i for i in all_words if i not in my_stopwords]    
-    cleaned_words = [x for x in set_words if not bool(re.search('\d|_|\$', x))]
+    words = list(set(all_words.split(" ")))
+    #set_words = [i for i in words if i not in my_stopwords] #if not bool(re.search('\d|_|\$', i)
+    cleaned_words = [x for x in words if not bool(re.search('\d|_|\$|\amp', x))]
+    cleaned_words = [re.sub(r"\.|\!|\,|\(|\)|\-|\?|\;|\\|\'","",x) for x in cleaned_words]
     fullTermsDict = multidict.MultiDict()
     tmpDict = {}
-
     # making dict for counting frequencies
-    for text in cleaned_words.split(" "):
+    for text in cleaned_words:
         if re.match("a|the|an|the|to|in|for|of|or|by|with|is|on|that|be", text):
             continue
         val = tmpDict.get(text, 0)
         tmpDict[text.lower()] = val + 1
     for key in tmpDict:
         fullTermsDict.add(key, tmpDict[key])
-    
-    return fullTermsDict
+    del fullTermsDict[""]
+    df = pd.DataFrame.from_dict(fullTermsDict,orient="index",columns=["Count"])
+    sent_list = [sentiment_model.polarity_scores(words).get("compound") for words in df.index]
+    mean_avg,sent_meaning_list = get_sent_meaning(sent_list)
+    df["Sentiment"] = sent_meaning_list
+    df = df.sort_values(by=["Count","Sentiment"],ascending=False)
+    return df
 
 def show_wordCloud(df):
     freq_words = getFrequencyDictForText(df)
@@ -119,21 +135,6 @@ def split_DF_by_time(df,total_past_time):
     mask = (df.index > timedelt)
     df = df.loc[mask]
     return df
-
-def get_word_insights(df):
-    all_words = " ".join([tweets for tweets in df['Tweet']])
-    words = list(set(all_words.split(" ")))
-    set_words = [i for i in words if i not in my_stopwords]    
-    cleaned_words = [x for x in set_words if not bool(re.search('\d|_|\$', x))]
-    #counts = [cleaned_words.count(i) for i in cleaned_words]
-    counts = pd.value_counts(np.array(cleaned_words))
-    # duplicates = [number for number in cleaned_words if cleaned_words.count(number) > 1]
-    # unique_duplicates = list(set(duplicates))    
-    df = pd.DataFrame(zip(cleaned_words,counts),columns=["Words","Count"])
-    df.sort_values("Count",inplace=True,ascending=False)
-    print("Getting word insights...")
-    return df
-
 
 def get_Heroku_DB(limit=200000):
     conn = psycopg2.connect(DB_URL, sslmode="require")

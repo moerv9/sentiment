@@ -10,7 +10,7 @@ import subprocess, shlex, psutil
 from time import sleep
 from streamlit_autorefresh import st_autorefresh 
 
-from streamlit_data import show_wordCloud, get_json_data, start_local_process,find_pid,get_sentiment_on_all_data
+from streamlit_data import show_wordCloud, get_json_data, start_local_process,find_pid,sent_meaning
 
 ##PAGE SETUP
 logger = logging.getLogger(__name__)
@@ -30,7 +30,7 @@ def show_data():
         for key, df in dataframes.items():
             with cols[i]:
                 with st.expander(key[:-5].upper(),expanded=True):
-                    sent_avg, sent_avg_eval = get_sentiment_on_all_data(df["Sentiment Score"])
+                    sent_avg, sent_avg_eval = sent_meaning(df["Sentiment Score"])
                     st.metric("Sentiment is:",sent_avg_eval, f"{sent_avg:5f}")
                     show_wordCloud(df)
             i+=1
