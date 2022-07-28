@@ -18,6 +18,7 @@ from streamlit_autorefresh import st_autorefresh
 from dateutil import tz
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
+import matplotlib.dates as mdates
 from words import get_sent_meaning
 
 logger = logging.getLogger(__name__)
@@ -113,16 +114,30 @@ def calc_mean_sent(df, min_range):
     return pd.DataFrame(df), sent_appearances_df
 
 
-def show_sentiment_chart(df, label, color):
+def show_sentiment_chart(df, label, color,intervals):
+    #setup
     fig, ax = plt.subplots(figsize=(12, 8))
-    ax.set_title(label)
-    ax.set_xlabel("Time")
-    ax.set_ylabel("Sentiment Score")
-    # ax.xaxis.set_major_locator(MultipleLocator(5))
-    ax.xaxis.set_minor_locator(MultipleLocator(1))
-    ax.set_xlim(auto=True)
-    # ax.set_ylim(-1,1)
-    ax.plot(df, label=label, color=color, marker=".", markersize=4)
+    ax.set_title(f"Average Sentiment for {intervals} Min. Intervals")
+    ax.set_xlabel("Time",fontsize=12)
+    ax.set_ylabel("Sentiment Score",fontsize=12)
+    #xaxis 
+    locator = mdates.AutoDateLocator()
+    formatter = mdates.ConciseDateFormatter(locator)
+    ax.xaxis.set_major_locator(locator)
+    ax.xaxis.set_major_formatter(formatter)
+    #colors
+    ax.title.set_color("white")
+    ax.xaxis.label.set_color('white') 
+    ax.yaxis.label.set_color('white')
+    ax.tick_params(axis='x', colors='white')
+    ax.tick_params(axis='y', colors='white')
+    ax.spines["left"].set_color('white') 
+    ax.spines["bottom"].set_color('white') 
+    fig.patch.set_alpha(0)
+    ax.set_facecolor(color="b")
+    ax.patch.set_alpha(0)
+    #plot
+    ax.plot(df, label=label, color=color, markersize=4) #markerfacecolor="white")
     plt.gcf().autofmt_xdate()
     plt.tight_layout()
     #plt.legend()
@@ -133,15 +148,28 @@ def show_cake_diagram(df):
     sizes = [i for i in df["Percentage"]]
     colors = ['#99ff99','#66b3ff','#ff9999','#ffcc99','#ff99cc']
     fig1, ax1 = plt.subplots()
-    plt.rcParams['figure.facecolor'] = (0, 0.0, 0.0, 0)
-    patches,texts, autotexts = ax1.pie(sizes, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90,colors=colors,radius=.5)#textprops=dict(color="w"))
+    patches,texts, autotexts = ax1.pie(sizes, labels=labels, autopct='%1.1f%%',  startangle=90,colors=colors,radius=.3)#textprops=dict(color="w"),shadow=True,
     for text in texts:
         text.set_color('white')
     for autotext in autotexts:
         autotext.set_color('grey')
+    #plt.rcParams['figure.facecolor'] = (0.5, 0.0, 0.0, 0.5)
+    #fig1.set_facecolor(color=None)
+    fig1.patch.set_alpha(0)
     ax1.axis('equal')
-    ax1.set_title("")
+    ax1.set_title("Positive Tweets")
     plt.setp(autotexts, size=14, weight="bold")
     plt.tight_layout()
     #plt.show()
     st.pyplot(plt)
+    
+#TODO
+# def show_bar_chart(df):
+#     sizes = [i for i in df["Percentage"]]
+#     labels = [i for i in df["Sentiment"]]
+#     plt.rcParams['figure.facecolor'] = (0, 0.0, 0.0, 0)
+#     fig1, ax = plt.subplots()
+#     ax.bar(1,sizes[0])
+#     ax.bar(1,sizes[1])
+#     plt.tight_layout()
+#     st.pyplot(plt)

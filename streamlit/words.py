@@ -6,7 +6,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import matplotlib.pyplot as plt
 import streamlit as st
 
-my_stopwords={"amp"}
+my_stopwords={"amp","bitcoin","bitcoins","cardano"}
 sentiment_model = SentimentIntensityAnalyzer()
 
 def get_sent_meaning(sent_list):
@@ -63,8 +63,9 @@ def conv_FrequenciesToDF(freq_Dict):
 def show_wordCloud(df):
     freq_words = getFrequencies_Sentiment(df)[0]
     words = WordCloud(relative_scaling=0.5,max_words=50,stopwords=my_stopwords,
-                        width=500, height=250,collocations=False, random_state=1, max_font_size=100, background_color="black",colormap="viridis_r").generate_from_frequencies(freq_words)
-    plt.figure(figsize=(20, 10))
+                        width=500, height=250,collocations=False, random_state=1, max_font_size=100, background_color=None,colormap="viridis_r").generate_from_frequencies(freq_words)
+    fig1 = plt.figure(figsize=(20, 10))
+    fig1.patch.set_alpha(0)
     plt.imshow(words, interpolation="bilinear")
     plt.axis('off')
     plt.tight_layout(pad=0)
