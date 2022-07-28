@@ -70,12 +70,20 @@ def find_pid():
             return None
 
 
-def split_DF_by_time(df,total_past_time):
+def split_DF_by_time(df,time_frame):
+    """Returns Dataframe for the past hours specified in time_frame
+
+    Args:
+        df (_type_): Dataframe to split
+        time_frame (_type_): timeframe to look at
+
+    Returns:
+        DataFrame: in the given timeframe
+    """
     if "Timestamp" in df.columns:
         df.index = df["Timestamp"]
-    print(df)
     df.index = pd.to_datetime(df.index)
-    timedelt = datetime.now() - timedelta(hours=total_past_time,minutes=15)
+    timedelt = datetime.now() - timedelta(hours=time_frame,minutes=15)
     mask = (df.index > timedelt)
     df = df.loc[mask]
     return df
@@ -87,7 +95,7 @@ def get_Heroku_DB(today=True):
         query = f"select * from tweet_data where Tweet_Date > current_date order by id desc limit {limit};"
     else:
         st.info("This may take a while...")
-        query = f"select * from tweet_data order by id desc limit 500000;"
+        query = f"select * from tweet_data order by id desc limit 1000000;"
     df = pd.read_sql(query, conn)
     columns = {"body": "Tweet",
                 "keyword": "Keyword",
@@ -122,7 +130,7 @@ def calc_mean_sent(df, min_range):
 
 def show_sentiment_chart(df, label, color,intervals):
     #setup
-    fig, ax = plt.subplots(figsize=(12, 8))
+    fig, ax = plt.subplots(figsize=(10, 4))
     ax.set_title(f"Average Sentiment for {intervals} Min. Intervals")
     ax.set_xlabel("Time",fontsize=12)
     ax.set_ylabel("Sentiment Score",fontsize=12)
@@ -137,19 +145,22 @@ def show_sentiment_chart(df, label, color,intervals):
     ax.yaxis.label.set_color('white')
     ax.tick_params(axis='x', colors='white')
     ax.tick_params(axis='y', colors='white')
-    ax.spines["left"].set_color('white') 
+    ax.spines["left"].set_color('white')
     ax.spines["bottom"].set_color('white') 
+    ax.spines["top"].set_alpha(0)
+    ax.spines["right"].set_alpha(0)
     fig.patch.set_alpha(0)
     ax.set_facecolor(color="b")
     ax.patch.set_alpha(0)
     #plot
     ax.plot(df, label=label, color=color, markersize=4) #markerfacecolor="white")
-    plt.gcf().autofmt_xdate()
+    #plt.gcf().autofmt_xdate()
     plt.tight_layout()
     #plt.legend()
     st.pyplot(fig)
 
 def show_cake_diagram(df):
+    print(df)
     labels = [i for i in df["Sentiment"]]
     sizes = [i for i in df["Percentage"]]
     colors = ['#99ff99','#66b3ff','#ff9999','#ffcc99','#ff99cc']
@@ -179,3 +190,4 @@ def show_cake_diagram(df):
 #     ax.bar(1,sizes[1])
 #     plt.tight_layout()
 #     st.pyplot(plt)
+

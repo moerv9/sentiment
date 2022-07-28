@@ -5,6 +5,7 @@ import pandas as pd
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import matplotlib.pyplot as plt
 import streamlit as st
+import numpy as np
 
 my_stopwords={"amp","bitcoin","bitcoins","cardano"}
 sentiment_model = SentimentIntensityAnalyzer()
