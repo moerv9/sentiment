@@ -62,11 +62,11 @@ def conv_FrequenciesToDF(freq_Dict):
 
 def show_wordCloud(df):
     freq_words = getFrequencies_Sentiment(df)[0]
-    words = WordCloud(relative_scaling=0.5,max_words=50,stopwords=my_stopwords,
+    wordcloud1 = WordCloud(relative_scaling=0.5,max_words=50,stopwords=my_stopwords,
                         width=500, height=250,collocations=False, random_state=1, max_font_size=100, background_color=None,colormap="viridis_r").generate_from_frequencies(freq_words)
     fig1 = plt.figure(figsize=(20, 10))
     fig1.patch.set_alpha(0)
-    plt.imshow(words, interpolation="bilinear")
+    plt.imshow(wordcloud1, interpolation="bilinear")
     plt.axis('off')
     plt.tight_layout(pad=0)
     st.pyplot(plt)

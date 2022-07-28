@@ -73,15 +73,21 @@ def find_pid():
 def split_DF_by_time(df,total_past_time):
     if "Timestamp" in df.columns:
         df.index = df["Timestamp"]
+    print(df)
     df.index = pd.to_datetime(df.index)
     timedelt = datetime.now() - timedelta(hours=total_past_time,minutes=15)
     mask = (df.index > timedelt)
     df = df.loc[mask]
     return df
 
-def get_Heroku_DB(limit=200000):
+def get_Heroku_DB(today=True):
     conn = psycopg2.connect(DB_URL, sslmode="require")
-    query = f"select * from tweet_data where Tweet_Date > current_date order by id desc limit {limit};"
+    if today:
+        limit=60000
+        query = f"select * from tweet_data where Tweet_Date > current_date order by id desc limit {limit};"
+    else:
+        st.info("This may take a while...")
+        query = f"select * from tweet_data order by id desc limit 500000;"
     df = pd.read_sql(query, conn)
     columns = {"body": "Tweet",
                 "keyword": "Keyword",
@@ -99,10 +105,10 @@ def get_Heroku_DB(limit=200000):
     return df
 
 def calc_mean_sent(df, min_range):
+    sent_meaning_list = get_sent_meaning(df["Sentiment Score"])
     df = df.filter(items=["Sentiment Score"])
     df = df.groupby(df.index, dropna=True).mean()
     df = df.resample(f"{min_range}T").mean()
-    sent_meaning_list = get_sent_meaning(df["Sentiment Score"])
     sent_meaning_df = pd.Series(sent_meaning_list)
     sent_appearances = pd.DataFrame(sent_meaning_df.value_counts())
     sent_appearances["Sentiment"] = sent_appearances.index

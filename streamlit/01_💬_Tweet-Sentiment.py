@@ -17,9 +17,9 @@ st.set_page_config(
     )
 
 
-@st.cache(ttl=60*10,allow_output_mutation=True,show_spinner=True)
+@st.cache(ttl=60*10,allow_output_mutation=True,show_spinner=True,suppress_st_warning=True)
 def loading_data_from_heroku_database():
-    df = get_Heroku_DB()
+    df = get_Heroku_DB(today=False)
     print("Retrieved new Data from Database...")
     return df
 
@@ -27,12 +27,11 @@ def loading_data_from_heroku_database():
 def get_data():
     return df[df["Keyword"].isin(["#btc","$btc","bitcoin"])], df[df["Keyword"].isin(["#ada","$ada","cardano"])]
 
-#st.dataframe(df)
     
 with st.sidebar:
     btc_or_ada = st.radio(label="Show Coin", options=("Bitcoin","Cardano"))
     hide_Wordcloud_and_TweetSent = st.checkbox(label="Hide Tweet Analysis",value=True)
-    lookback_hours = st.slider("Timeframe: Last X hours",min_value=1,max_value=24,value=4)
+    lookback_hours = st.slider("Timeframe: Last X hours",min_value=1,max_value=48,value=4)
     intervals = st.select_slider("Group Timestamps by X Intervals",options=[1,5,10,15,30,60],value=5)
     with st.expander("See explanation"):
         st.write("The sentiment score is a number between -1 and 1. "
@@ -45,6 +44,7 @@ st.subheader(f"{date.today().strftime('%d-%m-%Y')}: {btc_or_ada}")
 df  = loading_data_from_heroku_database()
 #splits the DataFrame for each coin
 btc_df, ada_df = get_data() 
+st.dataframe(btc_df.tail(10))
 
 if btc_or_ada == "Bitcoin":
     #gets dataframes for the past time specified in lookback_hours (Default: last 4 hours)
@@ -60,15 +60,18 @@ if btc_or_ada == "Bitcoin":
         if not hide_Wordcloud_and_TweetSent:
             st.text("Most used Words")
             show_wordCloud(past_btc_df_for_timerange)
+        st.dataframe(mean_btc)
     with col2:
-
         st.metric(label="last 24h", value=split_DF_by_time(btc_df,24).shape[0])
         if not hide_Wordcloud_and_TweetSent:
             st.text("Sentiment of all Tweets")
             show_cake_diagram(percentage_btc_df)
-        
+        st.dataframe(percentage_btc_df)
+    
     show_sentiment_chart(mean_btc,"btc","g",intervals)
     #st.dataframe(word_freq_and_sent_btc)
+
+
 
 
 elif btc_or_ada =="Cardano":
