@@ -1,12 +1,8 @@
-import re
-import multidict
 import psycopg2
 import os
 import signal
-from regex import W
 import streamlit as st
 import matplotlib.pyplot as plt
-from wordcloud import WordCloud,STOPWORDS
 import pandas as pd
 import numpy as np
 from sqlalchemy import create_engine
@@ -22,16 +18,14 @@ from streamlit_autorefresh import st_autorefresh
 from dateutil import tz
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from words import get_sent_meaning
 
 logger = logging.getLogger(__name__)
 
 # Config
-# os.sys.path.insert(0, "/Users/marvinottersberg/Documents/GitHub/sentiment")
+#os.sys.path.insert(0, "/Users/marvinottersberg/Documents/GitHub/sentiment/streamlit")
 # from streamlit.config import ConfigDB
 DB_URL = st.secrets["DB_URL"]
-my_stopwords={"amp"}
-sentiment_model = SentimentIntensityAnalyzer()
 
 # For local setup
 def get_json_data():
@@ -75,63 +69,11 @@ def find_pid():
             return None
 
 
-def get_sent_meaning(sent_list):
-    sent_meaning_list = []
-    for num in sent_list:
-        sent_meaning_list.append(conv_sent_score_to_meaning(num))
-    mean_avg = sum(sent_list) / len(sent_list)
-    return mean_avg, sent_meaning_list
-
-def conv_sent_score_to_meaning(num):
-    if num > 0.2 and num < 0.6:
-        return("Positive")
-    elif num > 0.6:
-        return("Very Positive")
-    elif num < - 0.2 and num > -0.6:
-        return("Negative")
-    elif num < - 0.6 :
-        return("Very Negative")
-    else:
-        return("Neutral")
-
-def getFrequencyDictForText(df):
-    all_words = ' '.join([tweets for tweets in df['Tweet']])
-    words = list(set(all_words.split(" ")))
-    #set_words = [i for i in words if i not in my_stopwords] #if not bool(re.search('\d|_|\$', i)
-    cleaned_words = [x for x in words if not bool(re.search('\d|_|\$|\amp', x))]
-    cleaned_words = [re.sub(r"\.|\!|\,|\(|\)|\-|\?|\;|\\|\'","",x) for x in cleaned_words]
-    fullTermsDict = multidict.MultiDict()
-    tmpDict = {}
-    # making dict for counting frequencies
-    for text in cleaned_words:
-        if re.match("a|the|an|the|to|in|for|of|or|by|with|is|on|that|be", text):
-            continue
-        val = tmpDict.get(text, 0)
-        tmpDict[text.lower()] = val + 1
-    for key in tmpDict:
-        fullTermsDict.add(key, tmpDict[key])
-    del fullTermsDict[""]
-    df = pd.DataFrame.from_dict(fullTermsDict,orient="index",columns=["Count"])
-    sent_list = [sentiment_model.polarity_scores(words).get("compound") for words in df.index]
-    mean_avg,sent_meaning_list = get_sent_meaning(sent_list)
-    df["Sentiment"] = sent_meaning_list
-    df = df.sort_values(by=["Count","Sentiment"],ascending=False)
-    return df
-
-def show_wordCloud(df):
-    freq_words = getFrequencyDictForText(df)
-    words = WordCloud(relative_scaling=0.5,max_words=50,stopwords=my_stopwords,
-                        width=500, height=250,collocations=False, random_state=1, max_font_size=100, background_color="black",colormap="viridis_r").generate_from_frequencies(freq_words)
-    plt.figure(figsize=(20, 10))
-    plt.imshow(words, interpolation="bilinear")
-    plt.axis('off')
-    plt.tight_layout(pad=0)
-    st.pyplot(plt)
-    
 def split_DF_by_time(df,total_past_time):
-    df.index = df["Timestamp"]
+    if "Timestamp" in df.columns:
+        df.index = df["Timestamp"]
     df.index = pd.to_datetime(df.index)
-    timedelt = datetime.now() - timedelta(hours=total_past_time)
+    timedelt = datetime.now() - timedelta(hours=total_past_time,minutes=15)
     mask = (df.index > timedelt)
     df = df.loc[mask]
     return df
@@ -155,12 +97,20 @@ def get_Heroku_DB(limit=200000):
     df["Timestamp"] = df["Timestamp"] + timedelta(hours=2)
     return df
 
-
 def calc_mean_sent(df, min_range):
     df = df.filter(items=["Sentiment Score"])
     df = df.groupby(df.index, dropna=True).mean()
     df = df.resample(f"{min_range}T").mean()
-    return pd.DataFrame(df)
+    sent_meaning_list = get_sent_meaning(df["Sentiment Score"])
+    sent_meaning_df = pd.Series(sent_meaning_list)
+    sent_appearances = pd.DataFrame(sent_meaning_df.value_counts())
+    sent_appearances["Sentiment"] = sent_appearances.index
+    sent_appearances.rename(columns={0:"Tweets"},inplace=True)
+    sent_appearances = sent_appearances[["Sentiment","Tweets"]]
+    sent_percentages = pd.Series([int((num/len(sent_meaning_df))*100) for num in sent_appearances["Tweets"]])
+    sent_appearances_df = pd.concat([sent_appearances.reset_index(drop=True),sent_percentages.reset_index(drop=True)],axis=1)
+    sent_appearances_df.rename(columns={0:"Percentage"},inplace=True)
+    return pd.DataFrame(df), sent_appearances_df
 
 
 def show_sentiment_chart(df, label, color):
@@ -177,3 +127,21 @@ def show_sentiment_chart(df, label, color):
     plt.tight_layout()
     #plt.legend()
     st.pyplot(fig)
+
+def show_cake_diagram(df):
+    labels = [i for i in df["Sentiment"]]
+    sizes = [i for i in df["Percentage"]]
+    colors = ['#99ff99','#66b3ff','#ff9999','#ffcc99','#ff99cc']
+    fig1, ax1 = plt.subplots()
+    plt.rcParams['figure.facecolor'] = (0, 0.0, 0.0, 0)
+    patches,texts, autotexts = ax1.pie(sizes, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90,colors=colors,radius=.5)#textprops=dict(color="w"))
+    for text in texts:
+        text.set_color('white')
+    for autotext in autotexts:
+        autotext.set_color('grey')
+    ax1.axis('equal')
+    ax1.set_title("")
+    plt.setp(autotexts, size=14, weight="bold")
+    plt.tight_layout()
+    #plt.show()
+    st.pyplot(plt)
