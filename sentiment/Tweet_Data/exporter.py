@@ -1,7 +1,7 @@
 import os, time, logging, schedule
 import pandas as pd
 import psycopg2
-from datetime import datetime,date
+from datetime import datetime,date, timedelta
 #Logging
 logger = logging.getLogger(__name__)
 
@@ -19,18 +19,6 @@ class Export():
         self.listener = listener
         self.schedule(interval)
         
-    #TODO
-    def export_to_DB(self):
-        #cur = conn.cursor()
-
-        df = pd.DataFrame.from_dict(self.tweet_dict,orient="columns")
-        df = df.transpose()
-        df = df.applymap(self.cleanDates)
-        logger.info(df.columns)
-        # for col in df.columns:
-        #     logger.info(col)
-        
-    
     def export_to_json(self):
         #Changed this to "sentiment/Json" for heroku. normally would just say "Json" -> could catch that
         json_dir = 'sentiment/Logs/Json/'
@@ -79,6 +67,33 @@ class Export():
             sent_avg = sentiment_col.sum() / len(sentiment_col)
             return sent_avg  
         
+    def dump_database(self):
+        conn = psycopg2.connect(conf.DB_URL,sslmode="require")
+        query = f"select * from tweet_data where Tweet_Date < (current_date - Integer '1') order by id desc;"
+        df = pd.read_sql(query,conn)
+        columns = {"body": "Tweet",
+                    "keyword": "Keyword",
+                    "tweet_date": "Timestamp",
+                    "location": "Location",
+                    "verified_user": "User verified",
+                    "followers": "Followers",
+                    "user_since": "User created",
+                    "sentiment": "Sentiment Score",
+                    "sentiment_meaning": "Null"}
+        df = df.drop(columns=["sentiment_meaning"])
+        df = df.rename(columns=columns)
+        df["Timestamp"] = df["Timestamp"] + timedelta(hours=2)
+        json_dir = 'sentiment/Logs/Json/'
+        date_dir = date.today().strftime('%d-%m-%Y')
+        final_dir = os.path.join(json_dir,date_dir)
+        if not os.path.exists(final_dir):
+            os.mkdir(final_dir)
+            print(f"Created new Directory for {date_dir}")
+            logger.info(f"Created new Directory for {date_dir}")
+        json_file = os.path.join(final_dir,f"{date_dir}_dbdump.json")
+        df.to_json(json_file,orient="index",indent=4) 
+
+        
     def cleanDates(self,date):
         """Mandatory for Excel. Converts date to local timeformat.
         Args:
@@ -95,15 +110,16 @@ class Export():
     ## SCHEDULER
     #The function exporting to json will be repeated in the schedule 
     def repeat_func(self):
-        self.tweet_dict = self.listener.tweet_dict
-        if self.tweet_dict:
-            logger.info(f"{self.listener.sum_collected_tweets} Tweets collected")
+        pass
+        # self.tweet_dict = self.listener.tweet_dict
+        # if self.tweet_dict:
+        # logger.info(f"{self.listener.sum_collected_tweets} Tweets collected")
             #self.export_to_json() #UNCOMMENT IF YOU WANT TO EXPORT LOCALLY TO JSON
-            self.export_to_DB()  #UNCOMMENT WHEN USING HEROKU DB
+        #self.dump_database()  #UNCOMMENT WHEN USING HEROKU DB
             # listener.clean_list()
     #Method for schedule task execution
     def schedule(self,interval=5):
-            schedule.every(interval).minutes.do(self.repeat_func)
+            schedule.every(interval).minutes.do(self.dump_database)
             while True:
                 schedule.run_pending()
                 time.sleep(1)

@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 
 class Runner():
-    def __init__(self,keywords=None,export_interval=10):
+    def __init__(self,keywords=None,export_interval=1):
         """The Runner starts the listener & exporter with given keyword dictionary
 
         Args:
@@ -40,6 +40,7 @@ class Runner():
         print("Listener initiated...")
         logger.info(f"Listener initiated...")
         Export(listener, export_interval)
+        
     
 #Method to allow the script to be executed via terminal
 def parse_args():

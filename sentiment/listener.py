@@ -79,8 +79,8 @@ class StreamListener(tweepy.Stream):
                 tweet = Tweet(body = cleaned_tweet, keyword= keyword, tweet_date= status_created_at, location= str(status.user.location),
                         verified_user= status.user.verified, followers= status.user.followers_count,
                         user_since= user_created_at, sentiment= tweet_sentiment)
-                with session_scope() as sess:
-                    sess.add(tweet)
+                # with session_scope() as sess:
+                #     sess.add(tweet)
 
             except Exception as e:
                 logger.warning(f"Unable to insert tweet: {e}")
