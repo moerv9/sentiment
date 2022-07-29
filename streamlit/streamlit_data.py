@@ -20,6 +20,7 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
 import matplotlib.dates as mdates
 from words import get_sent_meaning
+from financial_data import getminutedata
 
 logger = logging.getLogger(__name__)
 
@@ -128,39 +129,64 @@ def calc_mean_sent(df, min_range):
     return pd.DataFrame(df), sent_appearances_df
 
 
-def show_sentiment_chart(df, label, color,intervals):
+def show_sentiment_chart(df, label, color,intervals,lookback_timeframe,symbol):
     #setup
-    fig, ax = plt.subplots(figsize=(10, 4))
-    ax.set_title(f"Average Sentiment for {intervals} Min. Intervals")
-    ax.set_xlabel("Time",fontsize=12)
-    ax.set_ylabel("Sentiment Score",fontsize=12)
-    #xaxis 
+    fig, axs = plt.subplots(2,1,sharex=True)#figsize=(10, 4))
     locator = mdates.AutoDateLocator()
     formatter = mdates.ConciseDateFormatter(locator)
-    ax.xaxis.set_major_locator(locator)
-    ax.xaxis.set_major_formatter(formatter)
+    for nn,ax in enumerate(axs):
+        axs[nn].title.set_color("white")
+        axs[nn].xaxis.label.set_color('white') 
+        axs[nn].yaxis.label.set_color('white')
+        axs[nn].tick_params(axis='x', colors='white')
+        axs[nn].tick_params(axis='y', colors='white')
+        axs[nn].spines["left"].set_color('white')
+        axs[nn].spines["bottom"].set_color('white') 
+        axs[nn].spines["top"].set_alpha(0)
+        axs[nn].spines["right"].set_alpha(0)
+        axs[nn].set_facecolor((0,0,0,0))
+        axs[nn].xaxis.set_major_locator(locator)
+        axs[nn].xaxis.set_major_formatter(formatter)
+        
+    axs[0].set_title(f"Average Sentiment for {intervals} Min. Intervals")
+    axs[0].set_xlabel("Time",fontsize=10)
+    axs[0].set_ylabel("Sentiment Score",fontsize=10)
+    
+    axs[1].set_title(f"Price for {label}")
+    axs[1].set_xlabel("Time",fontsize=10)
+    axs[1].set_ylabel("Price ($)",fontsize=10)
     #colors
-    ax.title.set_color("white")
-    ax.xaxis.label.set_color('white') 
-    ax.yaxis.label.set_color('white')
-    ax.tick_params(axis='x', colors='white')
-    ax.tick_params(axis='y', colors='white')
-    ax.spines["left"].set_color('white')
-    ax.spines["bottom"].set_color('white') 
-    ax.spines["top"].set_alpha(0)
-    ax.spines["right"].set_alpha(0)
     fig.patch.set_alpha(0)
-    ax.set_facecolor(color="b")
-    ax.patch.set_alpha(0)
+
     #plot
-    ax.plot(df, label=label, color=color, markersize=4) #markerfacecolor="white")
+    axs[0].plot(df, label=label, color=color, markersize=5) #markerfacecolor="white")
+    data = getminutedata(symbol,intervals,lookback_timeframe)
+    axs[1].plot(data.index,data.Close,color=color,markersize=5)
     #plt.gcf().autofmt_xdate()
     plt.tight_layout()
     #plt.legend()
+    plt.show()
     st.pyplot(fig)
+    
+def show_sent_and_price_data(df,label,color,intervals,lookback_timeframe,symbol):
+    ax1 = plt.subplot(211)
+    ax1.set_title(f"Average Sentiment for {intervals} Min. Intervals")
+    ax1.set_xlabel("Time",fontsize=12)
+    ax1.set_ylabel("Sentiment Score",fontsize=12)
+    plt.plot(df,color=color,label=label,markersize=5)
+    ax1.tick_params(axis='x', colors='white')
+    
+    data = getminutedata(symbol,intervals,lookback_timeframe)
+    ax2 = plt.subplot(212,sharex=ax1)
+    ax2.set_title(symbol)
+    ax2.set_xlabel("Time")
+    ax2.set_ylabel("Price")
+    plt.cla()
+    plt.plot(data.index,data.Close,color=color,markersize=5)
+    ax2.tick_params(axis='x', colors='white')
+    st.pyplot(plt)
 
 def show_cake_diagram(df):
-    print(df)
     labels = [i for i in df["Sentiment"]]
     sizes = [i for i in df["Percentage"]]
     colors = ['#99ff99','#66b3ff','#ff9999','#ffcc99','#ff99cc']

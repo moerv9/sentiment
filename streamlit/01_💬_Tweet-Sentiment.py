@@ -3,8 +3,9 @@ from datetime import date, datetime, timedelta
 from logging.handlers import RotatingFileHandler
 import os, logging
 import streamlit as st
-from streamlit_data import get_Heroku_DB,calc_mean_sent,show_sentiment_chart,split_DF_by_time,show_cake_diagram
+from streamlit_data import get_Heroku_DB,calc_mean_sent,show_sentiment_chart,split_DF_by_time,show_cake_diagram, show_sent_and_price_data
 from words import show_wordCloud,getFrequencies_Sentiment
+from financial_data import chart_for_coin
 from matplotlib.collections import LineCollection
 from matplotlib.colors import ListedColormap, BoundaryNorm
 import numpy as np
@@ -34,8 +35,8 @@ def get_data():
 with st.sidebar:
     btc_or_ada = st.radio(label="Show Coin", options=("Bitcoin","Cardano"))
     hide_Wordcloud_and_TweetSent = st.checkbox(label="Hide Tweet Analysis",value=True)
-    lookback_timeframe = st.slider("Timeframe: Last X hours",min_value=1,max_value=96,value=4,help="Max. 4 days",on_change=loading_data_from_heroku_database)
-    intervals = st.select_slider("Group Timestamps by X Intervals",options=[1,5,10,15,30,60,120],value=5)
+    lookback_timeframe = st.slider("Timeframe: Last X hours",min_value=1,max_value=24,value=4,on_change=loading_data_from_heroku_database)#,help="Max. 4 days",
+    intervals = st.select_slider("Group Timestamps by X Intervals",options=[1,5,15,30,60,120],value=5)
     with st.expander("See explanation"):
         st.write("The sentiment score is a number between -1 and 1. "
             "Negative values indicates negative Sentiment."
@@ -72,7 +73,10 @@ if btc_or_ada == "Bitcoin":
             show_wordCloud(past_btc_df_for_timerange)
         #st.dataframe(percentage_btc_df)
     
-    show_sentiment_chart(mean_btc,"btc","g",intervals)
+    ax = show_sentiment_chart(mean_btc,"btc","g",intervals,lookback_timeframe,"BTCUSDT")
+    #chart_for_coin("BTCUSDT",interval=intervals,lookback_timeframe=lookback_timeframe,color="g",shared_x_axis=ax)
+    #show_sent_and_price_data(mean_btc,"btc","g",intervals,lookback_timeframe,"BTCUSDT")
+    
     #TODO:  word_freq um die umwandlung des scores in "positive" etc erweitern.
     #st.dataframe(word_freq_and_sent_btc)
 
