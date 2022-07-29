@@ -17,3 +17,5 @@ vaderSentiment
 psycopg2-binary
 subprocess.run
 streamlit_autorefresh
+multidict
+python-binance
