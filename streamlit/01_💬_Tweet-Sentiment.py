@@ -3,7 +3,7 @@ from datetime import date, datetime, timedelta
 from logging.handlers import RotatingFileHandler
 import os, logging
 import streamlit as st
-from streamlit_data import get_Heroku_DB,calc_mean_sent,show_sentiment_chart,split_DF_by_time,show_cake_diagram, show_sent_and_price_data
+from streamlit_data import get_Heroku_DB,calc_mean_sent,show_sentiment_chart,split_DF_by_time,show_cake_diagram
 from words import show_wordCloud,getFrequencies_Sentiment
 from financial_data import chart_for_coin
 from matplotlib.collections import LineCollection
@@ -63,13 +63,13 @@ if btc_or_ada == "Bitcoin":
     with col1:
         st.metric(label=f"Tweets in the last {lookback_timeframe}h", value=split_DF_by_time(btc_df,lookback_timeframe).shape[0])
         if not hide_Wordcloud_and_TweetSent:
-            st.text("Most used Words")
+            st.text("Sentiment of all Tweets")
             show_cake_diagram(percentage_btc_df)
         #st.dataframe(mean_btc)
     with col2:
         st.metric(label=f"Tweets in the last 24h", value=split_DF_by_time(btc_df,24).shape[0])
         if not hide_Wordcloud_and_TweetSent:
-            st.text("Sentiment of all Tweets")
+            st.text("Most used Words")
             show_wordCloud(past_btc_df_for_timerange)
         #st.dataframe(percentage_btc_df)
     
@@ -92,13 +92,14 @@ elif btc_or_ada =="Cardano":
     with col1:
         st.metric(label=f"Tweets in the last {lookback_timeframe}h", value=split_DF_by_time(ada_df,lookback_timeframe).shape[0])
         if not hide_Wordcloud_and_TweetSent:
-            st.text("Most used Words")
-            show_wordCloud(past_ada_df_for_timerange)
+            st.text("Sentiment of all Tweets")
+            show_cake_diagram(percentage_ada_df)
+
     with col2:
         st.metric(label=f"Tweets in the last 24h", value=split_DF_by_time(ada_df,24).shape[0])
         if not hide_Wordcloud_and_TweetSent:
-            st.text("Sentiment of all Tweets")
-            show_cake_diagram(percentage_ada_df)
+            st.text("Most used Words")
+            show_wordCloud(past_ada_df_for_timerange)
         
     show_sentiment_chart(mean_ada,"ada","c",intervals)
     
