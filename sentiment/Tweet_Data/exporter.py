@@ -67,8 +67,9 @@ class Export():
             sent_avg = sentiment_col.sum() / len(sentiment_col)
             return sent_avg  
         
-    def dump_database(self):
+    def dump_clean_database(self):
         conn = psycopg2.connect(conf.DB_URL,sslmode="require")
+        cur = conn.cursor()
         query = f"select * from tweet_data where Tweet_Date < (current_date - Integer '1') order by id desc;"
         df = pd.read_sql(query,conn)
         columns = {"body": "Tweet",
@@ -92,6 +93,9 @@ class Export():
             logger.info(f"Created new Directory for {date_dir}")
         json_file = os.path.join(final_dir,f"{date_dir}_dbdump.json")
         df.to_json(json_file,orient="index",indent=4) 
+        
+        query2 = f"delete from tweet_data where Tweet_Date < (current_date - Integer '1') "
+        cur.execute(query2)
 
         
     def cleanDates(self,date):
@@ -119,7 +123,7 @@ class Export():
             # listener.clean_list()
     #Method for schedule task execution
     def schedule(self,interval=5):
-            schedule.every(interval).minutes.do(self.dump_database)
+            schedule.every(interval).minutes.do(self.dump_clean_database)
             while True:
                 schedule.run_pending()
                 time.sleep(1)
