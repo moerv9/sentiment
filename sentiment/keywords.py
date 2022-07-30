@@ -31,6 +31,8 @@ class Keywords():
             logger.warning("Error in Keyword input")
 
         self.keyword_lst = self.build_keyword_list()
+        print(self.keyword_lst)
+        logger.info(self.keyword_lst)
         
     def build_keyword_list(self):
         """Build a list of keywords from a dictionary. Appends the values from the default_keyword_dict to a new list.
@@ -40,7 +42,6 @@ class Keywords():
             ['#btc', '$btc', 'bitcoin', '#bitcoin', '#ada', '$ada', 'cardano']
         """
         new_list = []
-        print(self.keyword_dict)
         for key, val in self.keyword_dict.items():
             for i in val:
                 new_list.append(i)
