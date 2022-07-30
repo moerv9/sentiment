@@ -70,7 +70,7 @@ class Export():
     def dump_clean_database(self):
         conn = psycopg2.connect(conf.DB_URL,sslmode="require")
         cur = conn.cursor()
-        cur.execute("Select exists(select from pg_tables where tablename='tweet_data'")
+        cur.execute("Select exists(select from pg_tables where tablename='tweet_data')")
         if cur.fetchone() == True:
             cur.execute("select count(*) from tweet__data")
             results = cur.fetchone()
