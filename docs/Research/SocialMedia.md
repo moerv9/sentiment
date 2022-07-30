@@ -44,7 +44,8 @@ I cannot say now if this will work later on but since the Github hasn't been upd
 
 Getting authorized from Twitter was easy. Login to the [Twitter Developer Portal](developer.twitter.com) and create a new Project and App. There you can generate and copy the neccessary token: API Key and Secret, Bearer Token for Twittert API V2 and the Access Token and Secret. The other four are needed for the Twitter API V1.  
 
-Authenticating with the Twitter API via Tweepy is easy as can be seen in all the Tweepy Notebooks (like [Get Tweets from Elon Musk](../jupyter_notebooks/getElonsTweets.ipynb)).
+
+Authenticating with the Twitter API via Tweepy is easy as can be seen in one of my example Notebooks, to... [Get Tweets from Elon Musk](../jupyter_notebooks/getElonsTweets.ipynb).
 
 ---
 

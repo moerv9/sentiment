@@ -1,16 +1,14 @@
-# Documentation 
-
-- [Introduction](approach/introduction.md)
-
-
+# Table of Contents
 - Abstract (Task, Approach and achieved goals in a few words)
-- Table of Contents
 - Project Description
     - Motivation
     - Goal
     - Action Plan
     - Context
 - Requirements analysis
+- Research
+    - Which Social Media Platform?
+    - Which Coins? 
 - Development
     - Concept
     - Classes (UML-Diagram)
