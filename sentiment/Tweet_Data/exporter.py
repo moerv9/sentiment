@@ -94,9 +94,12 @@ class Export():
         json_file = os.path.join(final_dir,f"{date_dir}_dbdump.json")
         df.to_json(json_file,orient="index",indent=4) 
         
+        # cur.execute("select count(*) from tweet__data")
+        # results = cur.fetchone()
+        
         query2 = f"delete from tweet_data where Tweet_Date < (current_date - Integer '1') "
         cur.execute(query2)
-
+        
         
     def cleanDates(self,date):
         """Mandatory for Excel. Converts date to local timeformat.
