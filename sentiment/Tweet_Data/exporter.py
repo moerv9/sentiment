@@ -70,35 +70,39 @@ class Export():
     def dump_clean_database(self):
         conn = psycopg2.connect(conf.DB_URL,sslmode="require")
         cur = conn.cursor()
-        query = f"select * from tweet_data where Tweet_Date < (current_date - Integer '1') order by id desc;"
-        df = pd.read_sql(query,conn)
-        columns = {"body": "Tweet",
-                    "keyword": "Keyword",
-                    "tweet_date": "Timestamp",
-                    "location": "Location",
-                    "verified_user": "User verified",
-                    "followers": "Followers",
-                    "user_since": "User created",
-                    "sentiment": "Sentiment Score",
-                    "sentiment_meaning": "Null"}
-        df = df.drop(columns=["sentiment_meaning"])
-        df = df.rename(columns=columns)
-        df["Timestamp"] = df["Timestamp"] + timedelta(hours=2)
-        json_dir = 'sentiment/Logs/Json/'
-        date_dir = date.today().strftime('%d-%m-%Y')
-        final_dir = os.path.join(json_dir,date_dir)
-        if not os.path.exists(final_dir):
-            os.mkdir(final_dir)
-            print(f"Created new Directory for {date_dir}")
-            logger.info(f"Created new Directory for {date_dir}")
-        json_file = os.path.join(final_dir,f"{date_dir}_dbdump.json")
-        df.to_json(json_file,orient="index",indent=4) 
+        cur.execute("select count(*) from tweet__data")
+        results = cur.fetchone()
+        if results == 0:
+            pass 
+        elif results > 9950:
+            json_dir = 'sentiment/Logs/Json/'
+            date_dir = date.today().strftime('%d-%m-%Y')
+            final_dir = os.path.join(json_dir,date_dir)
+            if not os.path.exists(final_dir):
+                os.mkdir(final_dir)
+                print(f"Created new Directory for {date_dir}")
+                logger.info(f"Created new Directory for {date_dir}")
+            json_file = os.path.join(final_dir,f"{date_dir}_dbdump.json")
+            df.to_json(json_file,orient="index",indent=4) 
+            
+            query2 = f"delete from tweet_data where Tweet_Date < (current_date - Integer '1') "
+            cur.execute(query2)
+        else:
+            query = f"select * from tweet_data where Tweet_Date < (current_date - Integer '1') order by id desc;"
+            df = pd.read_sql(query,conn)
+            columns = {"body": "Tweet",
+                        "keyword": "Keyword",
+                        "tweet_date": "Timestamp",
+                        "location": "Location",
+                        "verified_user": "User verified",
+                        "followers": "Followers",
+                        "user_since": "User created",
+                        "sentiment": "Sentiment Score",
+                        "sentiment_meaning": "Null"}
+            df = df.drop(columns=["sentiment_meaning"])
+            df = df.rename(columns=columns)
+            df["Timestamp"] = df["Timestamp"] + timedelta(hours=2)
         
-        # cur.execute("select count(*) from tweet__data")
-        # results = cur.fetchone()
-        
-        query2 = f"delete from tweet_data where Tweet_Date < (current_date - Integer '1') "
-        cur.execute(query2)
         
         
     def cleanDates(self,date):
