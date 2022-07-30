@@ -126,3 +126,6 @@ dmypy.json
 .pyre/
 
 
+secrets.toml
+.streamlit/secrets.toml
+sentiment/.streamlit/secrets.toml
