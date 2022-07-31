@@ -67,7 +67,7 @@ if btc_or_ada == "Bitcoin":
             show_cake_diagram(percentage_btc_df)
         #st.dataframe(mean_btc)
     with col2:
-        st.metric(label=f"Tweets in the last 24h", value=split_DF_by_time(btc_df,24).shape[0])
+        st.metric(label=f"Max Tweets gathered today", value=split_DF_by_time(btc_df,24).shape[0])
         if not hide_Wordcloud_and_TweetSent:
             st.text("Most used Words")
             show_wordCloud(past_btc_df_for_timerange)

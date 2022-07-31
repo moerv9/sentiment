@@ -24,7 +24,7 @@ from financial_data import getminutedata
 logger = logging.getLogger(__name__)
 
 # Config
-#os.sys.path.insert(0, "/Users/marvinottersberg/Documents/GitHub/sentiment/streamlit")
+#os.sys.path.insert(0, "/Users/marvinottersberg/Documents/GitHub/sentiment")
 # from streamlit.config import ConfigDB
 DB_URL = st.secrets["DB_URL"]
 
@@ -105,8 +105,8 @@ def get_Heroku_DB(today=True):
                 "followers": "Followers",
                 "user_since": "User created",
                 "sentiment": "Sentiment Score",
-                "sentiment_meaning": "Null"}
-    df = df.drop(columns=["sentiment_meaning"])
+                }
+    #df = df.drop(columns=["sentiment_meaning"])
     df = df.rename(columns=columns)
     # Needed because the conversion to local time does not work - database is in utc timezone
     df["Timestamp"] = df["Timestamp"] + timedelta(hours=2)
