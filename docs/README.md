@@ -5,13 +5,15 @@
     - Goal
     - Action Plan
     - Context
-- Requirements analysis
 - [Research](Research.md)
     - [Coin Comparison](./Research.md#coin-comparison)
     - [Social Media Relevance](./Research.md#social-media-relevance)
     - [Focusing on Bitcoin](./Research.md#focus-on-bitcoin)
 - Development
-    - Concept
+    - Concept & Requirements analysis
+        - Retrieve and Process the Sentiment
+        - Define Signals
+        - Visualise Data
     - Classes (UML-Diagram)
     - Challenges
     - Insights

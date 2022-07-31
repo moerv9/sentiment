@@ -1,15 +1,15 @@
 # Research
 ## Coin Comparison
-In March 2022 there were a total of 18000 cryptocurrencies. To minimize the number of coins, I will first only look at the biggest Coins by Market capitalization. The following image is a Snapshot from [Coinmarketcap](https://coinmarketcap.com), taken at the 5th of March 2022.
+In March 2022 there were a total of 18000 cryptocurrencies. To minimize the number of coins, I will first only look at the biggest coins by market capitalization. The following image is a Snapshot from [Coinmarketcap](https://coinmarketcap.com), taken at the 5th of March 2022.
 
 ![Coinmarketcap from the 5.3.2022](/docs/img/coinmcap_532022.jpeg)
 
 
-It is the Base for my comparison. From this I've put together a new table with some added metrics (image below). I will compare the Top 5 Coins, excluding Stablecoins like Tether, USD Coin or Terra since they are pegged to a FIAT Currency like the US-Dollar. It is totally normal to trade with Currencies or Stablecoins but you most likely loose to professionals, and you need to use leverage to even get a good arbitrage. You can see in the following picture that the Trading-Volume (30days) of Tether is enormously more than the total circulating supply. While this is a good sign for liquidity and trading itself it is not very suitable for our Use-Case. Therefore we will focus on the Top 5 Cryptocurrencies based on Marketcapitalisation: Bitcoin, Ethereum's Ether, Binance Chain BNB, Ripples XRP and Cardanos ADA.
+It is the base for my comparison. From this I've put together a new table with some added metrics (image below). I will compare the Top 5 coins, excluding stablecoins like Tether, USD Coin or Terra since they are pegged to a FIAT-Currency like the US-Dollar. It is totally normal to trade with Currencies or Stablecoins but you most likely loose to professionals, and you need to use leverage to even get a good arbitrage. You can see in the following picture that the Trading-Volume (30days) of Tether is enormously more than the total circulating supply. While this is a good sign for liquidity and trading itself it is not very suitable for our Use-Case. Therefore we will focus on the Top 5 Cryptocurrencies based on market capitalisation: Bitcoin, Ethereum's Ether, Binance Chain BNB, Ripples XRP and Cardanos ADA.
 
 ![Comparison of Coins](img/research/Coin_Comparison.png)
 ### Marketcap & Volume 
-Since Bitcoin is the pioneer and exists for more than 14 years now it is the most dominant Coin with the highest Marketcapitalisation. It stands now at about 740 billion dollars but has already breached 1 trillion dollars in February 2021. Bitcoin reached a trillion Marketcap. in only 13 years. The first company to do that, Apple, took **38 years** for that.
+Since Bitcoin is the pioneer and exists for more than 14 years now it is the most dominant Coin with the highest market capitalisation. It stands now at about 740 billion dollars but has already breached 1 trillion dollars in February 2021. Bitcoin reached a trillion Marketcap. in only 13 years. The first company to do that, Apple, took **38 years** for that.
 
 Ethereum is chasing Bitcoin and has already reached a dominance of 18% of the market. The Others seem quite small in comparison but when you see that they just exist for 5 years and already accumulated billions it quite impressive. 
 
@@ -29,7 +29,7 @@ When there is more trading there is more liquidity in the market and therefore o
 
 
 ## Social Media Relevance
-The data will be collected from Social Media and therefore we need to compare the different Social Media Platforms and then comparing the Coins on the most suitable platform.
+The data will be collected from Social Media, and therefore we need to compare the different Social Media Platforms and then comparing the coins on the most suitable platform.
 
 ### Social Media Platforms
 In July 2022, there are more than 17 social media platforms with at least 300M monthly users:
