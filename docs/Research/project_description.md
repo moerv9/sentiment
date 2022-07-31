@@ -49,7 +49,7 @@ I am going to focus on one social network, one cryptocurrency and one language s
 The following numbered list could be a possible action plan and structure for my project:
 1. Research
 	1. Social Network
-		- Building a list of criterias to compare networks
+		- Building a list of criteria to compare networks
 		- Build a keyword list to use as signals
 		- Validation of keywords and signals
 	2. Cryptocurrency

@@ -1,24 +1,5 @@
 # Social Media Analysis
 
-Which ones are even interesting?
-- Twitter
-- Facebook
-- Instagram
-- Reddit
-
-Why not Facebook, Instagram & Reddit?
-Facebook disallows nearly every scraping or collection of data ([Read this](https://www.octoparse.com/blog/5-things-you-need-to-know-before-scraping-data-from-facebook)) and has shown to be a platform where a lot of complaints and hate exists. Moreover, well-known personalities, like Presidents or CEO's, are more likely to be found on Twitter.
-
-Instagram is being used for showing your life with pictures rather than sharing your opinion on particular topics. Analysing pictures for sentiment is rather laborious. It is also not the top choice for giving and getting opinions on particular topics.
-
-Reddit is a good choice for gathering sentiment and has been quite popular amongst traders. Especially since it made the headlines when the reddit members of the room r/wallstreetbets with their 4.8m members (2021, 2022: 11.8m members) came together and bought stocks like crazy. 
-
-> "Prompted by the information posted on social media retail investors began buying these so called “meme-stocks” including GameStop, AMC Entertainment, Blackberry, and Nokia. The activity sent their prices soaring, with the GameStop share prices climbing over 1000% in just two weeks." [Source](https://www.thetradenews.com/the-reddit-revolt-gamestop-and-the-impact-of-social-media-on-institutional-investors/)
-
-
-But for gathering sentiment automatically it has the same problem as Instagram: A lot of pictures.
-
-Twitter is perfect. A lot of Users, including well-known Personalities, who are talking about different topics in a somewhat appropriate manner. Twitter offers a well written Documentary and easy-to-use libraries for Python.
 
 ---
 

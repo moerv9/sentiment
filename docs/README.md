@@ -6,9 +6,10 @@
     - Action Plan
     - Context
 - Requirements analysis
-- Research
-    - Which Social Media Platform?
-    - Which Coins? 
+- [Research](Research.md)
+    - [Coin Comparison](./Research.md#coin-comparison)
+    - [Social Media Relevance](./Research.md#social-media-relevance)
+    - [Focusing on Bitcoin](./Research.md#focus-on-bitcoin)
 - Development
     - Concept
     - Classes (UML-Diagram)
