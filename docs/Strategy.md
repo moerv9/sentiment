@@ -14,3 +14,9 @@ weighted average berechnen anstatt nur den average -> aber wie?
 tweet enthält keywords, die zu kauf und verkauf signalen führen
 
 
+average sentiment für den tag berechnen und wenn 
+
+Simple moving average (sma) is the mean of the data points. For example, if you look at the prices for the last 20 days, the prices of each day will be added together and then divided by 20. 
+Each datapoint is weighted equally.
+
+The Exponential moving average (ema) on the other hand gives more value to recent data points. 

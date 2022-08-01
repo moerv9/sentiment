@@ -30,6 +30,7 @@ def loading_data_from_heroku_database():
     
 with st.sidebar:
     hide_Wordcloud_and_TweetSent = st.checkbox(label="Hide Tweet Analysis",value=True)
+    hide_Charts = st.checkbox(label="Hide Charts",value=False)
     lookback_timeframe = st.slider("Timeframe: Last X hours",min_value=1,max_value=24,value=4,on_change=loading_data_from_heroku_database)#,help="Max. 4 days",
     intervals = st.select_slider("Group Timestamps by X Intervals",options=[1,5,15,30,60,120],value=5)
     with st.expander("See explanation"):
@@ -58,15 +59,16 @@ with col1:
     if not hide_Wordcloud_and_TweetSent:
         st.text("Sentiment of all Tweets")
         show_cake_diagram(percentage_btc_df)
-    #st.dataframe(mean_btc)
+    st.dataframe(mean_btc)
 with col2:
     st.metric(label=f"Max Tweets gathered today", value=split_DF_by_time(df,24).shape[0])
     if not hide_Wordcloud_and_TweetSent:
         st.text("Most used Words")
         show_wordCloud(past_btc_df_for_timerange)
-    #st.dataframe(percentage_btc_df)
+    st.dataframe(percentage_btc_df)
 
-ax = show_sentiment_chart(mean_btc,"btc","g",intervals,lookback_timeframe,"BTCUSDT")
+if not hide_Charts:
+    ax = show_sentiment_chart(mean_btc,"btc","g",intervals,lookback_timeframe,"BTCUSDT")
 #chart_for_coin("BTCUSDT",interval=intervals,lookback_timeframe=lookback_timeframe,color="g",shared_x_axis=ax)
 #show_sent_and_price_data(mean_btc,"btc","g",intervals,lookback_timeframe,"BTCUSDT")
 

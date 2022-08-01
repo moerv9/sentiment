@@ -11,7 +11,8 @@
     - [Focusing on Bitcoin](./Research.md#focus-on-bitcoin)
 - Development
     - Concept & Requirements analysis
-        - Retrieve and Process the Sentiment
+        - Retrieve and Process Tweets with Twitter API
+        - Heroku
         - Define Signals
         - Visualise Data
     - Classes (UML-Diagram)

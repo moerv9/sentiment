@@ -81,3 +81,4 @@ def chart_for_coin(symbol,interval,lookback_timeframe,color,shared_x_axis):
     plt.tight_layout()
     ax.plot(data.index,data.Close,color=color,markersize=5)
     st.pyplot(fig)
+

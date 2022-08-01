@@ -161,8 +161,12 @@ def show_sentiment_chart(df, label, color,intervals,lookback_timeframe,symbol):
     axs[1].set_ylabel("Price ($)")
     
     #first plot for sentiment
-    # x = df.index
-    # y = df["Sentiment Score"]
+    x = df.index.to_pydatetime()
+    print(x)
+    x = [((y - datetime(1970, 1, 1)) / timedelta(seconds=1)) for y in x]
+    print("x new")
+    print(x)
+    y = df["Sentiment Score"]
     
     #axs[0].scatter(x,y, label=label,color=color1,edgecolor="none")#markerfacecolor="white")
     axs[0].plot(df, label=label,color=color, markersize=5) #markerfacecolor="white")
@@ -172,11 +176,26 @@ def show_sentiment_chart(df, label, color,intervals,lookback_timeframe,symbol):
     #     axs[0].plot(x,y,color=color1)
     #second plot for price
     data = getminutedata(symbol,intervals,lookback_timeframe)
-    axs[1].plot(data.index,data.Close,color=color,markersize=5)
+    x1 = data.index
+    y1 = data.Close
+    axs[1].plot(x1,y1,color=color,markersize=5)
     #plt.gcf().autofmt_xdate()
     #plt.tight_layout()
     #plt.legend()
     #plt.show()
+    x11 = x1.to_pydatetime()
+    x11 = [((y - datetime(1970, 1, 1)) / timedelta(seconds=1)) for y in x11]
+    # trendline
+    z = np.polyfit(x, y, 1)
+    p = np.poly1d(z)
+    #axs[0].plot(df.index, p(x),color="b",linestyle="dashed")
+    
+    z1 = np.polyfit(x11,y1,1)
+    p1 = np.poly1d(z1)
+    print(x1)
+    axs[1].plot(x11,p1(x11 ),color="b",linestyle="dashed")
+    
+    
     st.pyplot(fig)
 
 def show_cake_diagram(df):
@@ -209,4 +228,5 @@ def show_cake_diagram(df):
 #     ax.bar(1,sizes[1])
 #     plt.tight_layout()
 #     st.pyplot(plt)
+
 
