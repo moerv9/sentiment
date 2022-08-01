@@ -17,6 +17,7 @@ newconf = Config()
 api = newconf.create_api("auth1")
 
 logger = logging.getLogger(__name__)
+from sqlalchemy import select,table,column
 # %% [markdown]
 # ### Class: Real-Time Listener for Tweets
 # %%
@@ -47,6 +48,9 @@ class StreamListener(tweepy.Stream):
         if diff.days < 60:
             #logger.info(f"User only {diff.days} Days on Twitter. Ignored!")
             return
+        
+        if int(status.user.followers_count) < 500:
+            return
 
         # Ignores retweets 
         # Ignores Tweets with forbidden words 
@@ -65,10 +69,9 @@ class StreamListener(tweepy.Stream):
 
         #Gets Sentiment
         tweet_sentiment = self.sentiment_model.polarity_scores(text).get("compound")
-        
         # Ignore tweets which do not contain the keyword
         keyword = self.keyword_obj.check_keyword(text)
-        if not keyword:
+        if keyword == None:
             return
         else:
             try:
@@ -86,6 +89,12 @@ class StreamListener(tweepy.Stream):
                         user_since= user_created_at, sentiment= tweet_sentiment)
                 with session_scope() as sess:
                     sess.add(tweet)
+                    # user1 = sess.query(Tweet).all()#.all()#filter_by(id=1).first()
+                    # first100 = sess.query(Tweet).limit(100).all()
+                    # if len(user1) > 100:
+                    #     sess.delete(first100)
+                    # print(first100)
+
 
             except Exception as e:
                 logger.warning(f"Unable to insert tweet: {e}")

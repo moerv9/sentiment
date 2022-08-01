@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 import os, logging, argparse
 from logging.handlers import RotatingFileHandler
+import re
 
 logger = logging.getLogger(__name__)
 default_keyword_dict ={
-                "btc":["#btc","$btc","bitcoin","#bitcoin"],
+                "btc":["$btc","#btc","bitcoin","#bitcoin"],
                 "ada":["#ada","$ada","cardano"],
                 "eth":["#eth","$eth","ether","ethereum","etherum"],
                 "bnb":["#bnb","$bnb","binance coin"],
@@ -30,6 +31,8 @@ class Keywords():
             logger.warning("Error in Keyword input")
 
         self.keyword_lst = self.build_keyword_list()
+        print(self.keyword_lst)
+        logger.info(self.keyword_lst)
         
     def build_keyword_list(self):
         """Build a list of keywords from a dictionary. Appends the values from the default_keyword_dict to a new list.
@@ -39,7 +42,6 @@ class Keywords():
             ['#btc', '$btc', 'bitcoin', '#bitcoin', '#ada', '$ada', 'cardano']
         """
         new_list = []
-        print(self.keyword_dict)
         for key, val in self.keyword_dict.items():
             for i in val:
                 new_list.append(i)
@@ -61,10 +63,11 @@ class Keywords():
             #     if keyword.lower() in body:
             #         return keyword, list(self.keyword_dict.keys())[i]
             # i+=1
-            
+        # if any([key in body for key in self.keyword_lst]):
+        #     print(body)
         for val in self.keyword_lst:
-            if val.lower() in body:
+            if val in body:
                 return val
-            else:
-                return None
+        else:
+            return None
                 

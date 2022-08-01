@@ -129,5 +129,4 @@ secrets.toml
 .streamlit/secrets.toml
 
 secrets.toml
-.streamlit/secrets.toml
-sentiment/.streamlit/secrets.toml
+streamlit/.streamlit/secrets.toml
