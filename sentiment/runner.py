@@ -39,7 +39,9 @@ class Runner():
         listener.filter(track = keyword_obj.keyword_lst, languages=["en","de"], threaded = True)
         print("Listener initiated...")
         logger.info(f"Listener initiated...")
-        Export(listener, export_interval)
+        
+        #Uncomment for local export
+        #Export(listener, export_interval)
         
     
 #Method to allow the script to be executed via terminal
@@ -60,4 +62,4 @@ def parse_args():
 #     Runner(keywords,interval)
 
 
-Runner(['btc'],1)
+Runner(['btc'],5)
