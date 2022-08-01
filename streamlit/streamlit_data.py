@@ -1,10 +1,8 @@
 import psycopg2
 import os
 import signal
-from regex import W
 import streamlit as st
 import matplotlib.pyplot as plt
-from wordcloud import WordCloud
 import pandas as pd
 import numpy as np
 from sqlalchemy import create_engine
@@ -17,18 +15,22 @@ import shlex
 import psutil
 from time import sleep
 from streamlit_autorefresh import st_autorefresh
-from collections import Counter
 from dateutil import tz
-import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
+import matplotlib.dates as mdates
+from words import get_sent_meaning
+from financial_data import getminutedata
 
 logger = logging.getLogger(__name__)
 
 # Config
-os.sys.path.insert(0, "/Users/marvinottersberg/Documents/GitHub/sentiment/streamlit/")
+#os.sys.path.insert(0, "/Users/marvinottersberg/Documents/GitHub/sentiment")
 from config import ConfigDB
-DB_URL = ConfigDB().DB_URL
 
+#Uncomment for Streamlit Deployment 
+#DB_URL = st.secrets["DB_URL"]
+#Uncomment for local Dev
+DB_URL = ConfigDB().DB_URL
 # For local setup
 def get_json_data():
     """Read Tweet Data for every Coin from Json File
@@ -71,37 +73,32 @@ def find_pid():
             return None
 
 
-def get_sentiment_on_all_data(sentiment_col):
-    sent_avg = sentiment_col.sum() / len(sentiment_col)
-    if sent_avg > 0.2:
-        sent_avg_eval = "Positive"
-    elif sent_avg < -0.2:
-        sent_avg_eval = "Negative"
-    else:
-        sent_avg_eval = "Neutral"
-    return sent_avg, sent_avg_eval
+def split_DF_by_time(df,time_frame):
+    """Returns Dataframe for the past hours specified in time_frame
 
+    Args:
+        df (_type_): Dataframe to split
+        time_frame (_type_): timeframe to look at
 
-def show_wordCloud(df,total_past_time):
-    df.set_index("Timestamp")
+    Returns:
+        DataFrame: in the given timeframe
+    """
+    if "Timestamp" in df.columns:
+        df.index = df["Timestamp"]
     df.index = pd.to_datetime(df.index)
-    df = df.last(f"{total_past_time}H")
-    all_words = ' '.join([tweets for tweets in df['Tweet']])
-    word_cloud = WordCloud(stopwords=["amp", "cardano", "bitcoin"],
-                        width=500, height=250, random_state=21, max_font_size=100, colormap="Spectral").generate(all_words)
-    plt.figure(figsize=(20, 10), facecolor="k")
-    plt.imshow(word_cloud, interpolation="bilinear")
-    plt.axis('off')
-    plt.tight_layout(pad=0)
-    st.pyplot(plt)
-    #word_list = [i for item in df['Tweet'] for i in item.split()]
-    #freq = Counter(word_list).most_common(10)
+    timedelt = datetime.now() - timedelta(hours=time_frame,minutes=15)
+    mask = (df.index > timedelt)
+    df = df.loc[mask]
+    return df
 
-
-def get_Heroku_DB(limit=1000000):
+def get_Heroku_DB(today=True):
     conn = psycopg2.connect(DB_URL, sslmode="require")
-    cur = conn.cursor()
-    query = f"select * from tweet_data order by id desc limit {limit};"
+    if today:
+        limit=60000
+        query = f"select * from tweet_data where Tweet_Date > current_date order by id desc limit {limit};"
+    else:
+        st.info("This may take a while...")
+        query = f"select * from tweet_data order by id desc limit 1000000;"
     df = pd.read_sql(query, conn)
     columns = {"body": "Tweet",
                 "keyword": "Keyword",
@@ -111,46 +108,105 @@ def get_Heroku_DB(limit=1000000):
                 "followers": "Followers",
                 "user_since": "User created",
                 "sentiment": "Sentiment Score",
-                "sentiment_meaning": "Null"}
-    df = df.drop(columns=["sentiment_meaning"])
+                }
+    #df = df.drop(columns=["sentiment_meaning"])
     df = df.rename(columns=columns)
     # Needed because the conversion to local time does not work - database is in utc timezone
     df["Timestamp"] = df["Timestamp"] + timedelta(hours=2)
     return df
 
-
-def get_mean_Sentiment(df, total_past_time, resample_minutes):
-    df = df.filter(items=["Timestamp", "Sentiment Score"])
-    # ,format="%d-%m-%Y %H:%M:%S")
-    df["Timestamp"] = pd.to_datetime(df["Timestamp"])
-    df["Timestamp"] = df["Timestamp"].dt.strftime("%d-%m-%Y  %H:%M")
-    df = df.join(df["Timestamp"].str.split(
-        " ", 1, expand=True).rename(columns={0: "Date", 1: "Time"}))
-    # If I want to split Date and Time
-    #df = df.drop(columns=["Timestamp"])
-    #df = df.reindex(columns=["Date","Time","Sentiment Score"])
-    #df =  df.resample("1T",on="Timestamp").transform("Mean")
-    df = df.groupby(["Timestamp"], dropna=True).mean()
-    df.index = pd.to_datetime(df.index)
-    df = df.resample(f"{resample_minutes}T").mean()
-    df = df.last(f"{total_past_time}H")
-    #df = df.query("index > @filter_time")
-    newdf = pd.DataFrame(df)
-    return newdf
+def calc_mean_sent(df, min_range):
+    sent_meaning_list = get_sent_meaning(df["Sentiment Score"])
+    df = df.filter(items=["Sentiment Score"])
+    df = df.groupby(df.index, dropna=True).mean()
+    df = df.resample(f"{min_range}T").mean()
+    sent_meaning_df = pd.Series(sent_meaning_list)
+    sent_appearances = pd.DataFrame(sent_meaning_df.value_counts())
+    sent_appearances["Sentiment"] = sent_appearances.index
+    sent_appearances.rename(columns={0:"Tweets"},inplace=True)
+    sent_appearances = sent_appearances[["Sentiment","Tweets"]]
+    sent_percentages = pd.Series([int((num/len(sent_meaning_df))*100) for num in sent_appearances["Tweets"]])
+    sent_appearances_df = pd.concat([sent_appearances.reset_index(drop=True),sent_percentages.reset_index(drop=True)],axis=1)
+    sent_appearances_df.rename(columns={0:"Percentage"},inplace=True)
+    return pd.DataFrame(df), sent_appearances_df
 
 
-def get_Sentiment_Chart(df, label, color):
-    fig, ax = plt.subplots(figsize=(12, 8))
-    ax.set_title(label)
-    ax.set_xlabel("Time")
-    ax.set_ylabel("Sentiment Score")
-    # ax.xaxis.set_major_locator(MultipleLocator(5))
-    ax.xaxis.set_minor_locator(MultipleLocator(1))
-    ax.set_xlim(auto=True)
-    # ax.set_ylim(-1,1)
-    # markerfacecolor = 'red', markersize = 12
-    ax.plot(df, label=label, color=color, marker=".", markersize=4)
-    plt.gcf().autofmt_xdate()
-    plt.tight_layout()
+def show_sentiment_chart(df, label, color,intervals,lookback_timeframe,symbol):
+    #setup
+    fig, axs = plt.subplots(2,1,sharex=True,constrained_layout=True)#figsize=(10, 4))
+    locator = mdates.AutoDateLocator()
+    formatter = mdates.ConciseDateFormatter(locator)
+    plt.rcParams['font.size'] = '8'
+    #colors
+    for nn,ax in enumerate(axs):
+        axs[nn].title.set_color("white")
+        axs[nn].xaxis.label.set_color('white') 
+        axs[nn].yaxis.label.set_color('white')
+        axs[nn].tick_params(axis='x', colors='white')
+        axs[nn].tick_params(axis='y', colors='white')
+        axs[nn].spines["left"].set_color('white')
+        axs[nn].spines["bottom"].set_color('white') 
+        axs[nn].spines["top"].set_alpha(0)
+        axs[nn].spines["right"].set_alpha(0)
+        axs[nn].set_facecolor((0,0,0,0))
+        axs[nn].xaxis.set_major_locator(locator)
+        axs[nn].xaxis.set_major_formatter(formatter)
+    fig.patch.set_alpha(0)
+    
+    #set labels
+    axs[0].set_title(f"Average Sentiment for {intervals} Min. Intervals")
+    axs[0].set_ylabel("Sentiment Score")
+    axs[1].set_title(f"Price for {label}")
+    axs[1].set_xlabel("Time")
+    axs[1].set_ylabel("Price ($)")
+    
+    #first plot for sentiment
+    # x = df.index
+    # y = df["Sentiment Score"]
+    
+    #axs[0].scatter(x,y, label=label,color=color1,edgecolor="none")#markerfacecolor="white")
+    axs[0].plot(df, label=label,color=color, markersize=5) #markerfacecolor="white")
+    # for i in y.values:
+    #     color1 = plt.cm.viridis(i)
+    #     c = [float(i)/float(10), 0.0, float(10-i)/float(10)]
+    #     axs[0].plot(x,y,color=color1)
+    #second plot for price
+    data = getminutedata(symbol,intervals,lookback_timeframe)
+    axs[1].plot(data.index,data.Close,color=color,markersize=5)
+    #plt.gcf().autofmt_xdate()
+    #plt.tight_layout()
     #plt.legend()
+    #plt.show()
     st.pyplot(fig)
+
+def show_cake_diagram(df):
+    labels = [i for i in df["Sentiment"]]
+    sizes = [i for i in df["Percentage"]]
+    colors = ['#99ff99','#66b3ff','#ff9999','#ffcc99','#ff99cc']
+    fig1, ax1 = plt.subplots()
+    patches,texts, autotexts = ax1.pie(sizes, labels=labels, autopct='%1.1f%%',  startangle=90,colors=colors,radius=.3)#textprops=dict(color="w"),shadow=True,
+    for text in texts:
+        text.set_color('white')
+    for autotext in autotexts:
+        autotext.set_color('grey')
+    #plt.rcParams['figure.facecolor'] = (0.5, 0.0, 0.0, 0.5)
+    #fig1.set_facecolor(color=None)
+    fig1.patch.set_alpha(0)
+    ax1.axis('equal')
+    ax1.set_title("Positive Tweets")
+    plt.setp(autotexts, size=14, weight="bold")
+    plt.tight_layout()
+    #plt.show()
+    st.pyplot(plt)
+    
+#TODO
+# def show_bar_chart(df):
+#     sizes = [i for i in df["Percentage"]]
+#     labels = [i for i in df["Sentiment"]]
+#     plt.rcParams['figure.facecolor'] = (0, 0.0, 0.0, 0)
+#     fig1, ax = plt.subplots()
+#     ax.bar(1,sizes[0])
+#     ax.bar(1,sizes[1])
+#     plt.tight_layout()
+#     st.pyplot(plt)
+

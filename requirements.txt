@@ -5,7 +5,7 @@ streamlit
 wordcloud
 numpy
 openpyxl
-regex
+regex==2022.3.2
 pyOpenSSL
 textblob
 demoji
@@ -21,3 +21,5 @@ boto
 schedule
 PyGithub
 postgres
+multidict
+python-binance
