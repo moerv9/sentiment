@@ -10,6 +10,7 @@ from Tweet_Data.database import session_scope, init_db #Uncomment when using Pos
 from Tweet_Data.Tweet import Tweet #Uncomment when using PosgresDB
 from keywords import Keywords
 logger = logging.getLogger(__name__)
+from sqlalchemy import select,table,column
 # %% [markdown]
 # ### Class: Real-Time Listener for Tweets
 # %%
@@ -81,6 +82,12 @@ class StreamListener(tweepy.Stream):
                         user_since= user_created_at, sentiment= tweet_sentiment)
                 with session_scope() as sess:
                     sess.add(tweet)
+                    # user1 = sess.query(Tweet).all()#.all()#filter_by(id=1).first()
+                    # first100 = sess.query(Tweet).limit(100).all()
+                    # if len(user1) > 100:
+                    #     sess.delete(first100)
+                    # print(first100)
+
 
             except Exception as e:
                 logger.warning(f"Unable to insert tweet: {e}")

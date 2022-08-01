@@ -74,7 +74,12 @@ class Export():
         if cur.fetchone() == True:
             cur.execute("select count(*) from tweet__data")
             results = cur.fetchone()
-            if results > 9900:
+            if results > 9000:
+                query2 = f"delete from tweet_data where Tweet_Date < (current_date - Integer '1') "
+                cur.execute(query2)
+                query3 = f"delete from tweet_data where id in (select id from tweet_data order by id asc limit 100);"
+                cur.execute(query3)
+                conn.commit()
                 json_dir = 'sentiment/Logs/Json/'
                 date_dir = date.today().strftime('%d-%m-%Y')
                 final_dir = os.path.join(json_dir,date_dir)
@@ -85,10 +90,7 @@ class Export():
                 json_file = os.path.join(final_dir,f"{date_dir}_dbdump.json")
                 df.to_json(json_file,orient="index",indent=4) 
                 
-                query2 = f"delete from tweet_data where Tweet_Date < (current_date - Integer '1') "
-                cur.execute(query2)
-                query3 = f"delete from tweet_data where id in (select id from tweet_data order by id asc limit 100); "
-                cur.execute(query3)
+
                 
             else:
                 query = f"select * from tweet_data where Tweet_Date < (current_date - Integer '1') order by id desc;"
