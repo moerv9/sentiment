@@ -25,9 +25,12 @@ logger = logging.getLogger(__name__)
 
 # Config
 #os.sys.path.insert(0, "/Users/marvinottersberg/Documents/GitHub/sentiment")
-# from streamlit.config import ConfigDB
-DB_URL = st.secrets["DB_URL"]
+from config import ConfigDB
 
+#Uncomment for Streamlit Deployment 
+#DB_URL = st.secrets["DB_URL"]
+#Uncomment for local Dev
+DB_URL = ConfigDB().DB_URL
 # For local setup
 def get_json_data():
     """Read Tweet Data for every Coin from Json File
