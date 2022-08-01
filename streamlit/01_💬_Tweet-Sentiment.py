@@ -1,4 +1,3 @@
-from ast import Mult
 from datetime import date, datetime, timedelta
 from logging.handlers import RotatingFileHandler
 import os, logging
