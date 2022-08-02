@@ -19,7 +19,8 @@ conf = ConfigDB()
 #Uncomment for local PostgresDB
 #engine = create_engine('postgresql://{}:{}@{}/localtweets'.format(conf.USER, conf.PASS, conf.HOST),convert_unicode=True)
 #Uncomment for Heroku
-engine = create_engine(conf.DB_URL,convert_unicode=True) #echo=True
+Database_URL = conf.DB_URL + "?sslmode=require"
+engine = create_engine(Database_URL,convert_unicode=True) #echo=True
 Session = scoped_session(sessionmaker(autocommit=False, bind=engine))
 
 
