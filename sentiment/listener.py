@@ -37,7 +37,7 @@ class StreamListener(tweepy.Stream):
             self.disconnect()
 
     def on_status(self, status):
-        sleep(10)
+        sleep(.5)
         """Called when Status/Tweet is received
         Args:
             status (Status): Received Status
@@ -47,7 +47,7 @@ class StreamListener(tweepy.Stream):
         tz_info = status.user.created_at.tzinfo #gets the timezone 
         diff = datetime.now(tz_info) - status.user.created_at #adding the timezone info to now() so they can be subtracted
         if diff.days < 60:
-            logger.info(f"User only {diff.days} Days on Twitter. Ignored!")
+            logger.info(f"User is only {diff.days} Days on Twitter. Ignored!")
             return
         
         # Ignores Tweets from User with less than 500 followers 
@@ -57,7 +57,7 @@ class StreamListener(tweepy.Stream):
 
         # Ignores retweets 
         if status.retweeted or "RT @" in status.text:
-            logger.info("Ignored retweet")
+            logger.info("Retweet. Ignored.")
             return
         
         # Gets Text
@@ -69,20 +69,21 @@ class StreamListener(tweepy.Stream):
         
         # Checks Text for Blacklisted Words: Giveaway, Free, Gift
         if check_blacklist(text):
-            logger.info("Blacklisted word---")
+            logger.info("Blacklisted Word. Ignored.")
             return
 
-        #Gets Sentiment
-        tweet_sentiment = self.sentiment_model.polarity_scores(text).get("compound")
-        if (tweet_sentiment < -1 or tweet_sentiment > 1):
-            logger.info(f"Sentiment {tweet_sentiment} is a faulty value")
-            return
         # Ignore tweets which do not contain the keyword
         keyword = self.keyword_obj.check_keyword(text)
         if keyword == None:
+            print("No Keyword. Ignored.")
             return
         else:
             try:
+                #Gets Sentiment
+                tweet_sentiment = self.sentiment_model.polarity_scores(text).get("compound")
+                if (tweet_sentiment < -1 or tweet_sentiment > 1):
+                    logger.info(f"Sentiment {tweet_sentiment} is a faulty value")
+                    return
                 cleaned_tweet = cleanTweets(text)
                 status_created_at = status.created_at + timedelta(hours=2)
                 user_created_at = status.user.created_at + timedelta(hours=2)
@@ -93,6 +94,7 @@ class StreamListener(tweepy.Stream):
                 self.tweet_list.append(metrics)
 
                 logger.info(f"Collected Tweets: {len(self.tweet_list)}")
+                print(f"Collected Tweets: {len(self.tweet_list)}")
                 # There are around 40 Tweets collected in a minute
                 # These 40 Tweets will be checked for duplicates and if there are any delete them.
                 # Then insert them into Heroku Database

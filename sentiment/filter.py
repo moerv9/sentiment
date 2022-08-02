@@ -50,5 +50,5 @@ def check_duplicates(tweet_list):
     duplicates = list(df.index[df.duplicated(subset=["Tweet"],keep=False)])
     df.drop(labels=duplicates,inplace=True)
     logger.info(f"Deleted {len(duplicates)} duplicates.")
-    new_list = df.values.tolist()
-    return new_list
+    print(f"Deleted {len(duplicates)} duplicates.")
+    return df.values.tolist()
