@@ -10,7 +10,7 @@ import subprocess, shlex, psutil
 from time import sleep
 from streamlit_autorefresh import st_autorefresh 
 
-from streamlit_data import show_wordCloud, get_json_data, start_local_process,find_pid,sent_meaning
+from streamlit_data import show_wordCloud,sent_meaning
 
 ##PAGE SETUP
 logger = logging.getLogger(__name__)
@@ -19,6 +19,47 @@ st.set_page_config(
     layout="wide", 
     )
 st.subheader(f"Twitter Sentiment-Streaming for {date.today().strftime('%d-%m-%Y')}")
+
+# For local setup
+def get_json_data():
+    """Read Tweet Data for every Coin from Json File
+
+    Returns:
+        dataframes: dict
+    """
+    dir = "Json/" + date.today().strftime('%d-%m-%Y')
+    dataframes = {}
+    if os.path.exists(dir):
+        for filename in os.listdir(dir):
+            file_path = os.path.join(dir, filename)
+            if os.path.isfile(file_path):
+                df = pd.read_json(file_path, orient="index")
+                dataframes.update({filename: df})
+        return dataframes
+
+def start_local_process(coin_selection, refresh_rate):
+    command = shlex.split(
+        f"python3 runner.py -k \"{coin_selection}\" -i \"{refresh_rate}\"")
+    process = subprocess.Popen(
+        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    return process
+
+def find_pid():
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """
+    for proc in psutil.process_iter():
+        try:
+            pinfo = proc.as_dict(attrs=['pid', 'name', 'cmdline'])
+            if "runner" in str(pinfo["cmdline"]):
+                logger.info(f"Process {pinfo} running...")
+                return pinfo["pid"]
+            else:
+                continue
+        except:
+            return None
 
 
 
@@ -95,4 +136,3 @@ if btn_show_datasets:
     except:
         Exception("Can't display data for right now")
         
-

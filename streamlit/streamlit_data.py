@@ -1,6 +1,4 @@
 import psycopg2
-import os
-import signal
 import streamlit as st
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -10,9 +8,7 @@ import os
 import logging
 from datetime import date, time, timedelta,datetime
 from logging.handlers import RotatingFileHandler
-import subprocess
-import shlex
-import psutil
+
 from time import sleep
 from streamlit_autorefresh import st_autorefresh
 from dateutil import tz
@@ -31,46 +27,7 @@ from config import ConfigDB
 #DB_URL = st.secrets["DB_URL"]
 #Uncomment for local Dev
 DB_URL = ConfigDB().DB_URL
-# For local setup
-def get_json_data():
-    """Read Tweet Data for every Coin from Json File
 
-    Returns:
-        dataframes: dict
-    """
-    dir = "Json/" + date.today().strftime('%d-%m-%Y')
-    dataframes = {}
-    if os.path.exists(dir):
-        for filename in os.listdir(dir):
-            file_path = os.path.join(dir, filename)
-            if os.path.isfile(file_path):
-                df = pd.read_json(file_path, orient="index")
-                dataframes.update({filename: df})
-        return dataframes
-
-def start_local_process(coin_selection, refresh_rate):
-    command = shlex.split(
-        f"python3 runner.py -k \"{coin_selection}\" -i \"{refresh_rate}\"")
-    process = subprocess.Popen(
-        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    return process
-
-def find_pid():
-    """_summary_
-
-    Returns:
-        _type_: _description_
-    """
-    for proc in psutil.process_iter():
-        try:
-            pinfo = proc.as_dict(attrs=['pid', 'name', 'cmdline'])
-            if "runner" in str(pinfo["cmdline"]):
-                logger.info(f"Process {pinfo} running...")
-                return pinfo["pid"]
-            else:
-                continue
-        except:
-            return None
 
 
 def split_DF_by_time(df,time_frame):
@@ -161,19 +118,9 @@ def show_sentiment_chart(df, label, color,intervals,lookback_timeframe,symbol):
     axs[1].set_ylabel("Price ($)")
     
     #first plot for sentiment
-    x = df.index.to_pydatetime()
-    print(x)
-    x = [((y - datetime(1970, 1, 1)) / timedelta(seconds=1)) for y in x]
-    print("x new")
-    print(x)
-    y = df["Sentiment Score"]
-    
     #axs[0].scatter(x,y, label=label,color=color1,edgecolor="none")#markerfacecolor="white")
     axs[0].plot(df, label=label,color=color, markersize=5) #markerfacecolor="white")
-    # for i in y.values:
-    #     color1 = plt.cm.viridis(i)
-    #     c = [float(i)/float(10), 0.0, float(10-i)/float(10)]
-    #     axs[0].plot(x,y,color=color1)
+
     #second plot for price
     data = getminutedata(symbol,intervals,lookback_timeframe)
     x1 = data.index
@@ -182,20 +129,7 @@ def show_sentiment_chart(df, label, color,intervals,lookback_timeframe,symbol):
     #plt.gcf().autofmt_xdate()
     #plt.tight_layout()
     #plt.legend()
-    #plt.show()
-    x11 = x1.to_pydatetime()
-    x11 = [((y - datetime(1970, 1, 1)) / timedelta(seconds=1)) for y in x11]
-    # trendline
-    z = np.polyfit(x, y, 1)
-    p = np.poly1d(z)
-    #axs[0].plot(df.index, p(x),color="b",linestyle="dashed")
-    
-    z1 = np.polyfit(x11,y1,1)
-    p1 = np.poly1d(z1)
-    print(x1)
-    axs[1].plot(x11,p1(x11 ),color="b",linestyle="dashed")
-    
-    
+    #plt.show()    
     st.pyplot(fig)
 
 def show_cake_diagram(df):

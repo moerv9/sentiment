@@ -47,7 +47,6 @@ def getFrequencies_Sentiment(df):
         tmpDict[text.lower()] = val + 1
     for key in tmpDict:
         fullTermsDict.add(key, tmpDict[key])
-    del fullTermsDict[""]
     df = conv_FrequenciesToDF(fullTermsDict)
     return fullTermsDict, df
 
