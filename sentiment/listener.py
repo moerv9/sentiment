@@ -94,7 +94,7 @@ class StreamListener(tweepy.Stream):
                 self.tweet_list.append(metrics)
 
                 logger.info(f"Collected Tweets: {len(self.tweet_list)}")
-                print(f"Collected Tweets: {len(self.tweet_list)}")
+                #print(f"Collected Tweets: {len(self.tweet_list)}")
                 # There are around 40 Tweets collected in a minute
                 # These 40 Tweets will be checked for duplicates and if there are any delete them.
                 # Then insert them into Heroku Database
