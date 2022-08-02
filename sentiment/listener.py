@@ -41,7 +41,7 @@ class StreamListener(tweepy.Stream):
         Args:
             status (Status): Received Status
         """
-        sleep(1)
+        sleep(.1)
         # Ignore Tweets from Users who only exist for under 60 days. 
         # 60 days = 2 months is pretty high but this really ensures no bots are included (hopefully)
         tz_info = status.user.created_at.tzinfo #gets the timezone 
