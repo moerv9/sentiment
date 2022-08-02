@@ -1,3 +1,7 @@
+'''
+Tweet.py
+Tweet Class to declare the Format and Type of each Column in the Database.
+'''
 from sqlalchemy import Column, Integer, String, DateTime, Boolean, Float
 from .database import Base
 

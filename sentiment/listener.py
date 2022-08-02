@@ -25,11 +25,11 @@ from sqlalchemy import select,table,column
 #TODO: Add my own sentiment analysis -> blob and ML
 class StreamListener(tweepy.Stream):
     def __init__(self,api_key, api_secret, access_token, access_secret, keyword_obj):
-        super().__init__(api_key, api_secret, access_token, access_secret)
-        init_db() #Uncomment when using PosgresDB
-        self.sentiment_model = SentimentIntensityAnalyzer()
-        self.keyword_obj = keyword_obj
-        self.tweet_list = []#defaultdict(list)
+        super().__init__(api_key, api_secret, access_token, access_secret) #Init Twitter API
+        init_db() #Init PosgresDB
+        self.sentiment_model = SentimentIntensityAnalyzer() # Init Vader SentimentModel
+        self.keyword_obj = keyword_obj #Gets Keyword Object 
+        self.tweet_list = [] 
 
         logging.info(f"Starting Stream for Keywords: {self.keyword_obj.keyword_lst}")
 
@@ -37,11 +37,11 @@ class StreamListener(tweepy.Stream):
             self.disconnect()
 
     def on_status(self, status):
-        sleep(1)
         """Called when Status/Tweet is received
         Args:
             status (Status): Received Status
         """
+        sleep(1)
         # Ignore Tweets from Users who only exist for under 60 days. 
         # 60 days = 2 months is pretty high but this really ensures no bots are included (hopefully)
         tz_info = status.user.created_at.tzinfo #gets the timezone 
@@ -79,25 +79,25 @@ class StreamListener(tweepy.Stream):
             return
         else:
             try:
-                #Gets Sentiment
+                #Get Sentiment
                 tweet_sentiment = self.sentiment_model.polarity_scores(text).get("compound")
+                # Sometimes the Sentiment was faulty and not between -1 and 1. This filters those wrong ones.
                 if (tweet_sentiment < -1 or tweet_sentiment > 1):
                     logger.info(f"Sentiment {tweet_sentiment} is a faulty value")
                     return
                 cleaned_tweet = cleanTweets(text)
+                #Adding 2 hours to utc time to match local time (Europe/Berlin)
                 status_created_at = status.created_at + timedelta(hours=2)
                 user_created_at = status.user.created_at + timedelta(hours=2)
                 
-                #Uncomment for local export to json
+                # Adding tweets to a list so they can be checked for duplicates
                 metrics = [cleaned_tweet,keyword,status_created_at,status.user.location,status.user.verified,status.user.followers_count,user_created_at,tweet_sentiment]
-                
                 self.tweet_list.append(metrics)
 
                 logger.info(f"Collected Tweets: {len(self.tweet_list)}")
                 #print(f"Collected Tweets: {len(self.tweet_list)}")
                 # There are around 40 Tweets collected in a minute
                 # These 40 Tweets will be checked for duplicates and if there are any delete them.
-                # Then insert them into Heroku Database
                 if len(self.tweet_list) >=40:
                     cleaned_list = check_duplicates(self.tweet_list)
                     for items in cleaned_list:
@@ -109,35 +109,24 @@ class StreamListener(tweepy.Stream):
                                     followers = items[5],
                                     user_since = items[6],
                                     sentiment = items[7])
-                        # tweet = Tweet(
-                        #     body = cleaned_tweet,
-                        #     keyword = keyword,
-                        #     tweet_date = status_created_at,
-                        #     location= str(status.user.location),
-                        #     verified_user = status.user.verified, 
-                        #     followers = status.user.followers_count,
-                        #     user_since = user_created_at, 
-                        #     sentiment = tweet_sentiment)
+
+                        #Uploading to Heroku Database
                         with session_scope() as sess:
                             #pass
                             sess.add(tweet)
                     self.tweet_list = []
 
 
-
             except Exception as e:
                 logger.warning(f"Unable to insert tweet: {e}")
         
+    # If Twitter API Limit is reached
     def on_limit(self,status):
         print("Rate Limit Exceeded, Sleep for 1 Min")
         sleep(60)
         return True
-
-    #Uncomment for local export to json
-    #Maybe needed to regularly clean the Expanding list...
-    # def clean_dict(self):
-    #     self.tweet_dict = []
         
+    # Twitter API Error
     def on_error(self,status_code):
         if status_code == 420:
             logger.warning("Streamlimit reached. Closing stream...")

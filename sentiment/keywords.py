@@ -1,4 +1,10 @@
-#!/usr/bin/env python
+'''
+keywords.py
+Initially designed to work for multiple coins, thus the Keyword dict. 
+Just set the keywords in the runner.py to "btc,ada,eth,bnb,xrp" to search for all these coins.
+For simplification and to not overload the Database I've just searched for Bitcoin.
+
+'''
 import os, logging, argparse
 from logging.handlers import RotatingFileHandler
 import re
@@ -11,29 +17,31 @@ default_keyword_dict ={
                 "bnb":["#bnb","$bnb","binance coin"],
                 "xrp":["#xrp","$xrp","ripple"],
 }
-#This whole keyword class could be improved and the check_keyword function from inside on_status should be in here but it works for now
 class Keywords():
-    def __init__(self,keyword_dict):
+    def __init__(self,keywords):
+        """Keyword Class if you want to search for multiple coins.
+
+        Args:
+            keywords (list): Keywords seperated like "btc,ada,eth"
+        """
         self.keyword_dict = {}
         try:
-            if keyword_dict is None: 
+            if keywords is None: 
                 self.keyword_dict = default_keyword_dict
             else:
-                if isinstance(keyword_dict, dict):
-                    for key in keyword_dict.keys():
+                if isinstance(keywords, dict):
+                    for key in keywords.keys():
                         if key in default_keyword_dict:
                             self.keyword_dict[key] = default_keyword_dict[key]
-                elif isinstance(keyword_dict, list):
-                    for word in keyword_dict:
-                        if word in keyword_dict:
+                elif isinstance(keywords, list):
+                    for word in keywords:
+                        if word in keywords:
                             self.keyword_dict[word] = default_keyword_dict[word]
         except:
             logger.warning("Error in Keyword input")
 
         self.keyword_lst = self.build_keyword_list()
-        #print(self.keyword_lst)
-        #logger.info(self.keyword_lst)
-        
+
     def build_keyword_list(self):
         """Build a list of keywords from a dictionary. Appends the values from the default_keyword_dict to a new list.
         Needed for the Tweet Listener.Filter
@@ -54,20 +62,8 @@ class Keywords():
         Returns:
             String: returns keyword or None, crypto_identifier from dict
         """
-        # i =0 
-        # for val in list(self.keyword_dict.items()):
-            # This looks for keyword like "btc" or "ada" -> results in lots of unrelated tweets 
-            # if re.search(rf"\b{key}\b", body, re.IGNORECASE):  
-            #     return key, list(self.keyword_dict.keys())[i]
-            # for keyword in val:
-            #     if keyword.lower() in body:
-            #         return keyword, list(self.keyword_dict.keys())[i]
-            # i+=1
-        # if any([key in body for key in self.keyword_lst]):
-        #     print(body)
         for val in self.keyword_lst:
             if val in body:
                 return val
         else:
             return None
-                

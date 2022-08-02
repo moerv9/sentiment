@@ -1,4 +1,10 @@
 #!/usr/bin/env python
+'''
+Runner.py
+This file is the main file that is being executed in Heroku.
+It initialises logging and the keywords that Tweepy listens to.
+'''
+
 import os, logging, argparse
 from logging.handlers import RotatingFileHandler
 from listener import StreamListener
@@ -7,7 +13,8 @@ from datetime import datetime,date, time
 from IPython.display import display
 from Tweet_Data.exporter import Export
 
-#Changed this to "sentiment/Logs" for heroku. normally would just say "Logs"
+# Logging
+# Changed this to "sentiment/Logs" for heroku. normally would just say "Logs"
 log_dir = 'sentiment/Logs/'
 if not os.path.exists(log_dir):
     os.mkdir(log_dir)
@@ -18,7 +25,7 @@ logging.basicConfig(handlers=[log_handler], level=logging.INFO,
                     datefmt='%d-%m-%Y T%H:%M:%S')
 logger = logging.getLogger(__name__)
 
-#Config
+# Config
 os.sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
 from config import Config
 newconf = Config()
@@ -38,7 +45,6 @@ class Runner():
         listener = StreamListener(newconf.getKeys()[0],newconf.getKeys()[1],newconf.getKeys()[2],newconf.getKeys()[3],keyword_obj)
         listener.filter(track = keyword_obj.keyword_lst, languages=["en"], threaded = True)
         print("Listening to tweets now...")
-        #logger.info(f"Listening to tweets now...")
         
         #Uncomment for local export
         #Export(listener, export_interval)

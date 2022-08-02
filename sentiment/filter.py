@@ -45,6 +45,14 @@ def cleanTweets(text):
 
 
 def check_duplicates(tweet_list):
+    """Check and Clean Tweet List for Duplicates
+
+    Args:
+        tweet_list (list): List of Tweet Metric: Tweet, Location, User created, etc..
+
+    Returns:
+        list: tweet metrics
+    """
     cols = ["Tweet", "Keyword", "Time", "Location","Verified","Followers","User created", "Sentiment Score"]
     df = pd.DataFrame(tweet_list,columns=cols)
     duplicates = list(df.index[df.duplicated(subset=["Tweet"],keep=False)])
