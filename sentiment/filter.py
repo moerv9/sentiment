@@ -28,7 +28,7 @@ def cleanTweets(text):
         str: cleaned text
     """
     text = re.sub(r'@[A-Za-z0-9]+',"",text,flags=re.IGNORECASE) #removes @mentions / r tells python that it is a raw stream (regex)
-    #text = re.sub(r'#[A-Za-z0-9]+',"",text, flags=re.IGNORECASE) #removes # 
+    text = re.sub(r'#[A-Za-z0-9]+',"",text, flags=re.IGNORECASE) #removes # 
     text = re.sub(r':',"",text,) #removes ':'
     text = demoji.replace(text, "") #removes emojis
     text = re.sub(r'\n+',"",text) #removes \n 
