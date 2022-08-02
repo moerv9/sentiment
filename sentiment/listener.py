@@ -37,7 +37,7 @@ class StreamListener(tweepy.Stream):
             self.disconnect()
 
     def on_status(self, status):
-        sleep(.5)
+        sleep(1)
         """Called when Status/Tweet is received
         Args:
             status (Status): Received Status
