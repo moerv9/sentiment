@@ -31,8 +31,8 @@ class Keywords():
             logger.warning("Error in Keyword input")
 
         self.keyword_lst = self.build_keyword_list()
-        print(self.keyword_lst)
-        logger.info(self.keyword_lst)
+        #print(self.keyword_lst)
+        #logger.info(self.keyword_lst)
         
     def build_keyword_list(self):
         """Build a list of keywords from a dictionary. Appends the values from the default_keyword_dict to a new list.

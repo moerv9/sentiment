@@ -74,7 +74,7 @@ class ConfigDB:
         USER = os.environ.get("DB_USER")
         PASS = os.environ.get("DB_PASS")
         HOST = os.environ.get("DB_HOST")
-        DB_URL = os.environ.get("DB_URL")
+        self.DB_URL = os.environ.get("DB_URL")
 
 # Config for Binance API
 class ConfigBinance:

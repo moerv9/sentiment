@@ -37,8 +37,8 @@ class Runner():
         keyword_obj = Keywords(keywords)
         listener = StreamListener(newconf.getKeys()[0],newconf.getKeys()[1],newconf.getKeys()[2],newconf.getKeys()[3],keyword_obj)
         listener.filter(track = keyword_obj.keyword_lst, languages=["en","de"], threaded = True)
-        print("Listener initiated...")
-        logger.info(f"Listener initiated...")
+        print("Listening to tweets now...")
+        logger.info(f"Listening to tweets now...")
         
         #Uncomment for local export
         #Export(listener, export_interval)
@@ -62,4 +62,4 @@ def parse_args():
 #     Runner(keywords,interval)
 
 
-Runner(['btc'],5)
+Runner(['btc'])
