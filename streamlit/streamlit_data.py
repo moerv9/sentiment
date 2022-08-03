@@ -69,7 +69,15 @@ def get_Heroku_DB(today=True):
                 }
     #df = df.drop(columns=["sentiment_meaning"])
     df = df.rename(columns=columns)
+    df.index = df["Timestamp"]
+    df.drop(columns=["Timestamp"],inplace=True)
+    df.index = df.index + timedelta(hours=2)
+    rows = df.shape[0]
+    duplicates = list(df.index[df.duplicated(subset=["Tweet"],keep=False)])
+    df.drop(labels=duplicates,inplace=True)
+    print(f"Deleted {len(duplicates)} duplicates from a total of {rows}")
     return df
+
 
 def calc_mean_sent(df, min_range,filter_neutral=False):
     if filter_neutral:
@@ -110,11 +118,25 @@ def decision_df(df,time_range, filter_neutral=False):
     if filter_neutral:
         df = df[df["Sentiment Score"] != 0.0]
         
-    df = df.filter(items=["Timestamp","Sentiment Score"]).reset_index(drop=True)
+    df = df.filter(items=["Sentiment Score"])
+
     df["Sent is"] = df["Sentiment Score"].apply(conv_sent_score_to_meaning)
-    df = df.resample(f"{time_range}T",on="Timestamp")
+    #df = df.resample(f"{time_range}T",on="Timestamp")
+    #df["Positive Tweets (%)"] = df["Sent is"].apply(count_sents)
+    total_sent_count = pd.value_counts(np.array(df["Sent is"].tolist()))
+
+    
     return df
 
+
+def count_sents(vals):
+    pass
+    wordcount = pd.value_counts(np.array(vals))
+    df = pd.DataFrame(wordcount,columns=["Count"])
+    #return wordcount
+
+
+# CHARTS
 def show_sentiment_chart(df, label, color,intervals,lookback_timeframe,symbol):
     #setup
     fig, axs = plt.subplots(2,1,sharex=True,constrained_layout=True)#figsize=(10, 4))

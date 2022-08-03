@@ -17,7 +17,7 @@ st.set_page_config(
     )
 
 
-@st.cache(ttl=60*10,allow_output_mutation=True,show_spinner=True,suppress_st_warning=True)
+@st.cache(ttl=60*5,allow_output_mutation=True,show_spinner=True,suppress_st_warning=True)
 def loading_data_from_heroku_database():
     if lookback_timeframe > 24:
         df = get_Heroku_DB(today=False)
@@ -43,7 +43,6 @@ with st.sidebar:
 #Convert Database to Dataframe
 df  = loading_data_from_heroku_database()
 #splits the DataFrame for each coin
-
 st.subheader(f"{date.today().strftime('%d-%m-%Y')} - Bitcoin")
 #gets dataframes for the past time specified in lookback_hours (Default: last 4 hours)
 past_btc_df_for_timerange = split_DF_by_time(df,lookback_timeframe)

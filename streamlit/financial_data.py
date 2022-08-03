@@ -12,7 +12,7 @@ import matplotlib.dates as mdates
 import sys
 #sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
 from config import ConfigBinance
-conf = ConfigBinance().getKeys()
+conf = ConfigBinance().getKeys(True)
 
 #Init Binance Client
 client = Client(conf[0],conf[1])
