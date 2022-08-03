@@ -80,7 +80,9 @@ def calc_mean_sent(df, min_range,filter_neutral=False):
     count_tweets = df.resample(f"{min_range}T").count() #count Tweets
     count_tweets.rename(columns={"Avg. Sentiment":"Total Tweets"},inplace=True)
     df = df.resample(f"{min_range}T").mean()
-    new_df = pd.concat([df,count_tweets],axis=1) #Put all DF together
+    sent_meaning_for_avg = pd.DataFrame(get_sent_meaning(df["Avg. Sentiment"]),columns=["Sent is"])
+    print(sent_meaning_for_avg)
+    new_df = pd.concat([df,count_tweets],axis=1).sort_index(ascending=False) #Put all DF together
     
     sent_meaning_df = pd.Series(sent_meaning_list)
     sent_appearances = pd.DataFrame(sent_meaning_df.value_counts())
