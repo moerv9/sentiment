@@ -68,15 +68,20 @@ def get_Heroku_DB(today=True):
                 }
     #df = df.drop(columns=["sentiment_meaning"])
     df = df.rename(columns=columns)
-    # Needed because the conversion to local time does not work - database is in utc timezone
-    df["Timestamp"] = df["Timestamp"] + timedelta(hours=2)
     return df
 
-def calc_mean_sent(df, min_range):
-    sent_meaning_list = get_sent_meaning(df["Sentiment Score"])
-    df = df.filter(items=["Sentiment Score"])
-    df = df.groupby(df.index, dropna=True).mean()
+def calc_mean_sent(df, min_range,filter_neutral=False):
+    if filter_neutral:
+        df = df[df["Sentiment Score"] != 0.0]
+    sent_meaning_list = get_sent_meaning(df["Sentiment Score"]) #Sentiment Values to Meaning ("Positive,Negative,etc.")
+    df = df.filter(items=["Sentiment Score"]) #Keep only "Sentiment Score" Column
+    df = df.groupby(df.index, dropna=True).mean() #Group by timestamp and calc mean sentiment
+    df.rename(columns={"Sentiment Score": "Avg. Sentiment"},inplace=True)
+    count_tweets = df.resample(f"{min_range}T").count() #count Tweets
+    count_tweets.rename(columns={"Avg. Sentiment":"Total Tweets"},inplace=True)
     df = df.resample(f"{min_range}T").mean()
+    new_df = pd.concat([df,count_tweets],axis=1) #Put all DF together
+    
     sent_meaning_df = pd.Series(sent_meaning_list)
     sent_appearances = pd.DataFrame(sent_meaning_df.value_counts())
     sent_appearances["Sentiment"] = sent_appearances.index
@@ -85,7 +90,13 @@ def calc_mean_sent(df, min_range):
     sent_percentages = pd.Series([int((num/len(sent_meaning_df))*100) for num in sent_appearances["Tweets"]])
     sent_appearances_df = pd.concat([sent_appearances.reset_index(drop=True),sent_percentages.reset_index(drop=True)],axis=1)
     sent_appearances_df.rename(columns={0:"Percentage"},inplace=True)
-    return pd.DataFrame(df), sent_appearances_df
+    #print(sent_appearances_df[sent_appearances_df["Sentiment"] == "Positive"]["Percentage"])
+    #df["Positive (%)"] = sent_appearances_df[sent_appearances_df["Sentiment"] == "Positive"]["Percentage"]
+
+    # sent_app_transposed = sent_appearances_df.transpose(copy=True)
+    # print(sent_app_transposed)
+    #sent_app_transposed["Sentiment"] = str(sent_app_transposed["Sentiment"])
+    return pd.DataFrame(new_df), sent_appearances_df
 
 
 def show_sentiment_chart(df, label, color,intervals,lookback_timeframe,symbol):
