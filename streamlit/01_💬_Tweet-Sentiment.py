@@ -2,7 +2,7 @@ from datetime import date, datetime, timedelta
 from logging.handlers import RotatingFileHandler
 import os, logging
 import streamlit as st
-from streamlit_data import get_Heroku_DB,calc_mean_sent,show_sentiment_chart,split_DF_by_time,show_cake_diagram
+from streamlit_data import get_Heroku_DB,calc_mean_sent,show_sentiment_chart,split_DF_by_time,show_cake_diagram,decision_df
 from words import show_wordCloud,getFrequencies_Sentiment
 from financial_data import chart_for_coin
 from matplotlib.collections import LineCollection
@@ -71,15 +71,16 @@ if not hide_Charts:
     pass
     #ax = show_sentiment_chart(mean_btc,"btc","g",intervals,lookback_timeframe,"BTCUSDT")
 
-hourly_mean,hourly_perc = calc_mean_sent(split_DF_by_time(df,12),15,True)
-st.write("Hourly mean for last 12h:")
-col1,col2 = st.columns(2)
-with col1:
-    st.dataframe(hourly_mean)
-with col2:  
-    st.dataframe(hourly_perc)
+# hourly_mean,hourly_perc = calc_mean_sent(split_DF_by_time(df,12),30,True)
+# st.write("Hourly mean for last 12h:")
+# col1,col2 = st.columns(2)
+# with col1:
+#     st.dataframe(hourly_mean)
+# with col2:  
+#     st.dataframe(hourly_perc)
 #getfreq,count_df = getFrequencies_Sentiment(past_btc_df_for_timerange.head(50))
 
+st.dataframe(decision_df(split_DF_by_time(df,12),30,True))
 
 
 

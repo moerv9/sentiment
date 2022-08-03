@@ -14,8 +14,9 @@ from streamlit_autorefresh import st_autorefresh
 from dateutil import tz
 from matplotlib.ticker import MultipleLocator
 import matplotlib.dates as mdates
-from words import get_sent_meaning
+from words import get_sent_meaning,conv_sent_score_to_meaning
 from financial_data import getminutedata
+
 
 logger = logging.getLogger(__name__)
 
@@ -105,6 +106,14 @@ def calc_mean_sent(df, min_range,filter_neutral=False):
     #sent_app_transposed["Sentiment"] = str(sent_app_transposed["Sentiment"])
     return pd.DataFrame(new_df), sent_appearances
 
+def decision_df(df,time_range, filter_neutral=False):
+    if filter_neutral:
+        df = df[df["Sentiment Score"] != 0.0]
+        
+    df = df.filter(items=["Timestamp","Sentiment Score"]).reset_index(drop=True)
+    df["Sent is"] = df["Sentiment Score"].apply(conv_sent_score_to_meaning)
+    df = df.resample(f"{time_range}T",on="Timestamp")
+    return df
 
 def show_sentiment_chart(df, label, color,intervals,lookback_timeframe,symbol):
     #setup
