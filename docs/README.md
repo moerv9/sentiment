@@ -1,10 +1,37 @@
-# Welcome to Moervs Sentiment Trading Docs
-# Getting Started
+# Table of Contents
+- Abstract (Task, Approach and achieved goals in a few words)
+- Project Description
+    - Motivation
+    - Goal
+    - Action Plan
+    - Context
+- [Research](Research.md)
+    - [Coin Comparison](./Research.md#coin-comparison)
+    - [Social Media Relevance](./Research.md#social-media-relevance)
+    - [Focusing on Bitcoin](./Research.md#focus-on-bitcoin)
+- Development
+    - Concept & Requirements analysis
+        - Retrieve and Process Tweets with Twitter API
+        - [Backend with Heroku](./Backend%20with%20Heroku.md)
+        - Define Signals
+        - Visualise Data
+    - Classes (UML-Diagram)
+    - Challenges
+    - Insights
+- Results
+    - (Placement in the scientific/financial context)
+    - Conclusion
+    - Usage Examples: Video/Pictures
+    - Outlook
+- Technical Overview
+    - Installation 
+    - Tools / Libraries
+        - (Reason for choosing those tools?(Robert?))
+    - Code Examples
+- Links/References/Literature
 
-Version: 1.0
 
-Full Code on [github.](https://github.com/moerv9/)
-
+# Installation
 ## Install
 
 conda env create -f environment.yml
@@ -29,3 +56,5 @@ https://www.pythonlikeyoumeanit.com/Module5_OddsAndEnds/Writing_Good_Code.html
 Start with the [Introduction](approach/introduction.md)
 
 ## License
+
+
