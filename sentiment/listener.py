@@ -133,7 +133,10 @@ class StreamListener(tweepy.Stream):
                             #pass
                     sess.add(tweet)
                     time_now = datetime.now().strftime("%Y-%m-%d %H:%M")
-                    print(f"Total Tweets filtered: {self.amount_filtered}") #{len(self.tweet_list)} Tweets inserted at {time_now}. 
+                    print(f"Total Tweets filtered: {self.amount_filtered}") 
+                    #To check randomly what tweet is inserted to the DB at what time
+                    if self.amount_filtered == 8:
+                        print(f"Tweet: '{items[0]}' inserted at {time_now}.")
                     #self.tweet_list = []
                 self.amount_filtered = 0
 
