@@ -74,31 +74,36 @@ def calc_mean_sent(df, min_range,filter_neutral=False):
     if filter_neutral:
         df = df[df["Sentiment Score"] != 0.0]
     sent_meaning_list = get_sent_meaning(df["Sentiment Score"]) #Sentiment Values to Meaning ("Positive,Negative,etc.")
+    sent_meaning_df = pd.Series(sent_meaning_list)
+    sent_appearances = pd.DataFrame(sent_meaning_df.value_counts())
+    
     df = df.filter(items=["Sentiment Score"]) #Keep only "Sentiment Score" Column
-    df = df.groupby(df.index, dropna=True).mean() #Group by timestamp and calc mean sentiment
+    #df = df.groupby(df.index, dropna=True).mean() #Group by timestamp and calc mean sentiment
     df.rename(columns={"Sentiment Score": "Avg. Sentiment"},inplace=True)
     count_tweets = df.resample(f"{min_range}T").count() #count Tweets
     count_tweets.rename(columns={"Avg. Sentiment":"Total Tweets"},inplace=True)
     df = df.resample(f"{min_range}T").mean()
-    sent_meaning_for_avg = pd.DataFrame(get_sent_meaning(df["Avg. Sentiment"]),columns=["Sent is"])
-    print(sent_meaning_for_avg)
-    new_df = pd.concat([df,count_tweets],axis=1).sort_index(ascending=False) #Put all DF together
+
+    #sent_meaning_for_avg = pd.DataFrame(get_sent_meaning(df["Avg. Sentiment"]),columns=["Sent is"]) #no idea why this adds all the rows below and not next to it
     
-    sent_meaning_df = pd.Series(sent_meaning_list)
-    sent_appearances = pd.DataFrame(sent_meaning_df.value_counts())
-    sent_appearances["Sentiment"] = sent_appearances.index
-    sent_appearances.rename(columns={0:"Tweets"},inplace=True)
-    sent_appearances = sent_appearances[["Sentiment","Tweets"]]
-    sent_percentages = pd.Series([int((num/len(sent_meaning_df))*100) for num in sent_appearances["Tweets"]])
-    sent_appearances_df = pd.concat([sent_appearances.reset_index(drop=True),sent_percentages.reset_index(drop=True)],axis=1)
-    sent_appearances_df.rename(columns={0:"Percentage"},inplace=True)
+    new_df = pd.concat([df,count_tweets],axis="columns").sort_index(ascending=False) #Put all DF together
+    
+    # sent_meaning_df = pd.Series(sent_meaning_list)
+    # sent_appearances = pd.DataFrame(sent_meaning_df.value_counts())
+    # sent_appearances["Sentiment"] = sent_appearances.index
+    # sent_appearances.rename(columns={0:"Tweets"},inplace=True)
+    # sent_appearances = sent_appearances[["Sentiment","Tweets"]]
+    # sent_percentages = pd.Series([int((num/len(sent_meaning_df))*100) for num in sent_appearances["Tweets"]])
+    # sent_appearances_df = pd.concat([sent_appearances.reset_index(drop=True),sent_percentages.reset_index(drop=True)],axis=1)
+    # sent_appearances_df.rename(columns={0:"Percentage"},inplace=True)
+    
     #print(sent_appearances_df[sent_appearances_df["Sentiment"] == "Positive"]["Percentage"])
     #df["Positive (%)"] = sent_appearances_df[sent_appearances_df["Sentiment"] == "Positive"]["Percentage"]
 
     # sent_app_transposed = sent_appearances_df.transpose(copy=True)
     # print(sent_app_transposed)
     #sent_app_transposed["Sentiment"] = str(sent_app_transposed["Sentiment"])
-    return pd.DataFrame(new_df), sent_appearances_df
+    return pd.DataFrame(new_df), sent_appearances
 
 
 def show_sentiment_chart(df, label, color,intervals,lookback_timeframe,symbol):

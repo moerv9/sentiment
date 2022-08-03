@@ -73,8 +73,11 @@ if not hide_Charts:
 
 hourly_mean,hourly_perc = calc_mean_sent(split_DF_by_time(df,12),15,True)
 st.write("Hourly mean for last 12h:")
-st.dataframe(hourly_mean)
-st.dataframe(hourly_perc)
+col1,col2 = st.columns(2)
+with col1:
+    st.dataframe(hourly_mean)
+with col2:  
+    st.dataframe(hourly_perc)
 #getfreq,count_df = getFrequencies_Sentiment(past_btc_df_for_timerange.head(50))
 
 
