@@ -97,14 +97,15 @@ class StreamListener(tweepy.Stream):
                 status_created_at = status.created_at + timedelta(hours=2)
                 user_created_at = status.user.created_at + timedelta(hours=2)
                 
-                # Adding tweets to a list so they can be checked for duplicates
-                metrics = [cleaned_tweet,keyword,status_created_at,status.user.location,status.user.verified,status.user.followers_count,user_created_at,tweet_sentiment]
+                items = [cleaned_tweet,keyword,status_created_at,status.user.location,status.user.verified,status.user.followers_count,user_created_at,tweet_sentiment]
+                """ Deprecated: Will check duplicates afterwards
+                Adding tweets to a list so they can be checked for duplicates
                 self.tweet_list.append(metrics)
 
                 logger.info(f"Collected Tweets: {len(self.tweet_list)}")
-                #print(f"Collected Tweets: {len(self.tweet_list)}")
-                # There are around 40 Tweets collected in a minute
-                # These 40 Tweets will be checked for duplicates and if there are any delete them.
+                print(f"Collected Tweets: {len(self.tweet_list)}")
+                There are around 40 Tweets collected in a minute
+                These 40 Tweets will be checked for duplicates and if there are any delete them.
                 if len(self.tweet_list) >=40:
                     cleaned_list = check_duplicates(self.tweet_list)
                     for items in cleaned_list:
@@ -115,16 +116,26 @@ class StreamListener(tweepy.Stream):
                                     verified_user = items[4],
                                     followers = items[5],
                                     user_since = items[6],
+                                    sentiment = items[7]) 
+                """
+                
+                tweet = Tweet(body = items[0],
+                                    keyword = items[1],
+                                    tweet_date = items[2],
+                                    location = items[3],
+                                    verified_user = items[4],
+                                    followers = items[5],
+                                    user_since = items[6],
                                     sentiment = items[7])
 
                         #Uploading to Heroku Database
-                        with session_scope() as sess:
+                with session_scope() as sess:
                             #pass
-                            sess.add(tweet)
-                            time_now = datetime.now().strftime("%Y-%m-%d %H:%M")
-                    print(f"{len(self.tweet_list)} Tweets inserted at {time_now}. Total Tweets filtered: {self.amount_filtered}")
-                    self.tweet_list = []
-                    self.amount_filtered = 0
+                    sess.add(tweet)
+                    time_now = datetime.now().strftime("%Y-%m-%d %H:%M")
+                    print(f"Total Tweets filtered: {self.amount_filtered}") #{len(self.tweet_list)} Tweets inserted at {time_now}. 
+                    #self.tweet_list = []
+                self.amount_filtered = 0
 
 
             except Exception as e:
