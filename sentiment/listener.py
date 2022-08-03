@@ -122,8 +122,9 @@ class StreamListener(tweepy.Stream):
                             #pass
                             sess.add(tweet)
                             time_now = datetime.now().strftime("%Y-%m-%d %H:%M")
-                            print(f"{len(self.tweet_list)} Tweets inserted at {time_now}. Total Tweets filtered: {self.amount_filtered}")
+                    print(f"{len(self.tweet_list)} Tweets inserted at {time_now}. Total Tweets filtered: {self.amount_filtered}")
                     self.tweet_list = []
+                    self.amount_filtered = 0
 
 
             except Exception as e:
