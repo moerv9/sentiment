@@ -30,6 +30,7 @@ class StreamListener(tweepy.Stream):
         self.sentiment_model = SentimentIntensityAnalyzer() # Init Vader SentimentModel
         self.keyword_obj = keyword_obj #Gets Keyword Object 
         self.tweet_list = [] 
+        self.amount_filtered = 0
 
         logging.info(f"Starting Stream for Keywords: {self.keyword_obj.keyword_lst}")
 
@@ -47,17 +48,20 @@ class StreamListener(tweepy.Stream):
         tz_info = status.user.created_at.tzinfo #gets the timezone 
         diff = datetime.now(tz_info) - status.user.created_at #adding the timezone info to now() so they can be subtracted
         if diff.days < 60:
-            logger.info(f"User is only {diff.days} Days on Twitter. Ignored!")
+            logger.info(f"User is only {diff.days} Days on Twitter. Ignored.")
+            self.amount_filtered +=1
             return
         
         # Ignores Tweets from User with less than 500 followers 
         if int(status.user.followers_count) < 500:
             logger.info(f"User has only {status.user.followers_count} Followers. Ignored.")
+            self.amount_filtered +=1
             return
 
         # Ignores retweets 
         if status.retweeted or "RT @" in status.text:
             logger.info("Retweet. Ignored.")
+            self.amount_filtered +=1
             return
         
         # Gets Text
@@ -70,12 +74,14 @@ class StreamListener(tweepy.Stream):
         # Checks Text for Blacklisted Words: Giveaway, Free, Gift
         if check_blacklist(text):
             logger.info("Blacklisted Word. Ignored.")
+            self.amount_filtered +=1
             return
 
         # Ignore tweets which do not contain the keyword
         keyword = self.keyword_obj.check_keyword(text)
         if keyword == None:
-            print("No Keyword. Ignored.")
+            print(f"No Keyword in '{text}'. Ignored.")
+            self.amount_filtered +=1
             return
         else:
             try:
@@ -84,6 +90,7 @@ class StreamListener(tweepy.Stream):
                 # Sometimes the Sentiment was faulty and not between -1 and 1. This filters those wrong ones.
                 if (tweet_sentiment < -1 or tweet_sentiment > 1):
                     logger.info(f"Sentiment {tweet_sentiment} is a faulty value")
+                    self.amount_filtered +=1
                     return
                 cleaned_tweet = cleanTweets(text)
                 #Adding 2 hours to utc time to match local time (Europe/Berlin)
@@ -114,6 +121,8 @@ class StreamListener(tweepy.Stream):
                         with session_scope() as sess:
                             #pass
                             sess.add(tweet)
+                            time_now = datetime.now().strftime("%Y-%m-%d %H:%M")
+                            print(f"{len(self.tweet_list)} Tweets inserted at {time_now}. Total Tweets filtered: {self.amount_filtered}")
                     self.tweet_list = []
 
 

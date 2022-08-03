@@ -60,7 +60,7 @@ class Keywords():
         Args:
             body (String): Tweet Text
         Returns:
-            String: returns keyword or None, crypto_identifier from dict
+            String: returns keyword or None
         """
         for val in self.keyword_lst:
             if val in body:
