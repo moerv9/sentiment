@@ -9,7 +9,6 @@ from Tweet_Data.database import init_db, session_scope
 from filter import check_blacklist,cleanTweets,check_duplicates
 from Tweet_Data.Tweet import Tweet
 import pandas as pd
-import pytz
 
 #Config
 import sys
@@ -94,13 +93,9 @@ class StreamListener(tweepy.Stream):
                     self.amount_filtered +=1
                     return
                 cleaned_tweet = cleanTweets(text)
-                #Adding 2 hours to utc time to match local time (Europe/Berlin)
-                tz = pytz.timezone("Europe/Berlin")
+
                 
-                status_created_at = status.created_at.astimezone(tz)
-                user_created_at = status.user.created_at.astimezone(tz)
-                
-                items = [cleaned_tweet,keyword,status_created_at,status.user.location,status.user.verified,status.user.followers_count,user_created_at,tweet_sentiment]
+                items = [cleaned_tweet,keyword,status.created_at,status.user.location,status.user.verified,status.user.followers_count,status.user.created_at,tweet_sentiment]
                 """ Deprecated: Will check duplicates afterwards
                 Adding tweets to a list so they can be checked for duplicates
                 self.tweet_list.append(metrics)
