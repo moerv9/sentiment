@@ -114,19 +114,22 @@ def calc_mean_sent(df, min_range,filter_neutral=False):
     #sent_app_transposed["Sentiment"] = str(sent_app_transposed["Sentiment"])
     return pd.DataFrame(new_df), sent_appearances
 
-def decision_df(df,time_range, filter_neutral=False):
+def get_decision_df(df,time_range, filter_neutral=False):
     if filter_neutral:
         df = df[df["Sentiment Score"] != 0.0]
         
     df = df.filter(items=["Sentiment Score"])
 
     df["Sent is"] = df["Sentiment Score"].apply(conv_sent_score_to_meaning)
-    #df = df.resample(f"{time_range}T",on="Timestamp")
-    #df["Positive Tweets (%)"] = df["Sent is"].apply(count_sents)
-    total_sent_count = pd.value_counts(np.array(df["Sent is"].tolist()))
-
+    mean_df = df.resample(f"{time_range}Min").mean().sort_index(ascending=False)
+    mean_df.rename(columns={"Sentiment Score" : "Mean"},inplace=True)
     
-    return df
+    #df["Positive Tweets (%)"] = df["Sent is"].apply(count_sents)
+    #total_sent_count = pd.value_counts(np.array(df["Sent is"].tolist()))
+    #TODO: resamplen für zeitraum und in diesem die werte für "positive,etc" zählen
+    #TODO: resamplen für average
+    
+    return df, mean_df
 
 
 def count_sents(vals):

@@ -2,7 +2,7 @@ from datetime import date, datetime, timedelta
 from logging.handlers import RotatingFileHandler
 import os, logging
 import streamlit as st
-from streamlit_data import get_Heroku_DB,calc_mean_sent,show_sentiment_chart,split_DF_by_time,show_cake_diagram,decision_df
+from streamlit_data import get_Heroku_DB,calc_mean_sent,show_sentiment_chart,split_DF_by_time,show_cake_diagram,get_decision_df
 from words import show_wordCloud,getFrequencies_Sentiment
 from financial_data import chart_for_coin
 from matplotlib.collections import LineCollection
@@ -79,7 +79,9 @@ if not hide_Charts:
 #     st.dataframe(hourly_perc)
 #getfreq,count_df = getFrequencies_Sentiment(past_btc_df_for_timerange.head(50))
 
-st.dataframe(decision_df(split_DF_by_time(df,12),30,True))
+decision_df,mean_df = get_decision_df(split_DF_by_time(df,12),30,True)
 
+st.dataframe(decision_df)
+st.dataframe(mean_df)
 
 
