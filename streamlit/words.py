@@ -20,13 +20,13 @@ def get_sent_meaning(sent_list):
     return sent_meaning_list
 
 def conv_sent_score_to_meaning(num):
-    if num > 0 and num < 0.6:
+    if num > 0 and num <= 0.5:
         return("Positive")
-    elif num > 0.6:
+    elif num > 0.5:
         return("Very Positive")
-    elif num < 0 and num > -0.6:
+    elif num < 0 and num >= -0.5:
         return("Negative")
-    elif num < - 0.6 :
+    elif num < - 0.5 :
         return("Very Negative")
     else:
         return("Neutral")

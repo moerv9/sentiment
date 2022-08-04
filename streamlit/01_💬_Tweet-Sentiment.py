@@ -17,7 +17,7 @@ st.set_page_config(
     )
 
 
-@st.cache(ttl=60*5,allow_output_mutation=True,show_spinner=True,suppress_st_warning=True)
+@st.cache(ttl=60*1,allow_output_mutation=True,show_spinner=True,suppress_st_warning=True)
 def loading_data_from_heroku_database():
     if lookback_timeframe > 24:
         df = get_Heroku_DB(today=False)

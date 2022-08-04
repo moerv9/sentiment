@@ -41,6 +41,8 @@ def split_DF_by_time(df,time_frame):
     Returns:
         DataFrame: in the given timeframe
     """
+    #print("split df by time:")
+    #print(df.head(10))
     if "Timestamp" in df.columns:
         df.index = df["Timestamp"]
     df.index = pd.to_datetime(df.index)
@@ -70,6 +72,8 @@ def get_Heroku_DB(today=True):
     #df = df.drop(columns=["sentiment_meaning"])
     df = df.rename(columns=columns)
     df.index = df["Timestamp"]
+    print("get herokuDB:")
+    print(df.index.to_datetime().strftime("%Y-%m-%dT%H:%M:%S %Z:%z"))
     df.drop(columns=["Timestamp"],inplace=True)
     df.index = df.index + timedelta(hours=2)
     rows = df.shape[0]
@@ -117,12 +121,14 @@ def calc_mean_sent(df, min_range,filter_neutral=False):
 def get_decision_df(df,time_range, filter_neutral=False):
     if filter_neutral:
         df = df[df["Sentiment Score"] != 0.0]
-        
     df = df.filter(items=["Sentiment Score"])
 
-    df["Sent is"] = df["Sentiment Score"].apply(conv_sent_score_to_meaning)
     mean_df = df.resample(f"{time_range}Min").mean().sort_index(ascending=False)
     mean_df.rename(columns={"Sentiment Score" : "Mean"},inplace=True)
+    
+    df["Sent is"] = df["Sentiment Score"].apply(conv_sent_score_to_meaning)
+    mean_df["Sent is"] = mean_df["Mean"].apply(conv_sent_score_to_meaning)
+    
     
     #df["Positive Tweets (%)"] = df["Sent is"].apply(count_sents)
     #total_sent_count = pd.value_counts(np.array(df["Sent is"].tolist()))
