@@ -16,7 +16,7 @@ from matplotlib.ticker import MultipleLocator
 import matplotlib.dates as mdates
 from words import get_sent_meaning,conv_sent_score_to_meaning
 from financial_data import getminutedata
-
+import pytz
 
 logger = logging.getLogger(__name__)
 
@@ -57,8 +57,8 @@ def get_Heroku_DB(today=True):
         limit=60000
         query = f"select * from tweet_data where Tweet_Date > current_date order by id desc limit {limit};"
     else:
-        st.info("This may take a while...")
-        query = f"select * from tweet_data order by id desc limit 1000000;"
+        print("Getting data from past Today")
+        query = f"select * from tweet_data where Tweet_Date > current_date - interval '3' day order by id desc limit 1000000;"
     df = pd.read_sql(query, conn)
     columns = {"body": "Tweet",
                 "keyword": "Keyword",
@@ -72,10 +72,10 @@ def get_Heroku_DB(today=True):
     #df = df.drop(columns=["sentiment_meaning"])
     df = df.rename(columns=columns)
     df.index = df["Timestamp"]
-    print("get herokuDB:")
-    print(df.index.to_datetime().strftime("%Y-%m-%dT%H:%M:%S %Z:%z"))
     df.drop(columns=["Timestamp"],inplace=True)
     df.index = df.index + timedelta(hours=2)
+    df.index = df.index.floor("Min")
+    #print(df.index.tz_localize("Europe/Berlin"))
     rows = df.shape[0]
     duplicates = list(df.index[df.duplicated(subset=["Tweet"],keep=False)])
     df.drop(labels=duplicates,inplace=True)
@@ -118,35 +118,39 @@ def calc_mean_sent(df, min_range,filter_neutral=False):
     #sent_app_transposed["Sentiment"] = str(sent_app_transposed["Sentiment"])
     return pd.DataFrame(new_df), sent_appearances
 
-def get_decision_df(df,time_range, filter_neutral=False):
+def resample_df(df,time_range, filter_neutral=False):
     if filter_neutral:
         df = df[df["Sentiment Score"] != 0.0]
     df = df.filter(items=["Sentiment Score"])
-
+    count_tweets = df.resample(f"{time_range}T").count()#count Tweets
+    count_tweets.rename(columns={"Sentiment Score" : "Total Tweets"},inplace=True)
+    
     mean_df = df.resample(f"{time_range}Min").mean().sort_index(ascending=False)
-    mean_df.rename(columns={"Sentiment Score" : "Mean"},inplace=True)
-    
+    mean_df.rename(columns={"Sentiment Score" : "Avg"},inplace=True)
     df["Sent is"] = df["Sentiment Score"].apply(conv_sent_score_to_meaning)
-    mean_df["Sent is"] = mean_df["Mean"].apply(conv_sent_score_to_meaning)
     
-    
-    #df["Positive Tweets (%)"] = df["Sent is"].apply(count_sents)
-    #total_sent_count = pd.value_counts(np.array(df["Sent is"].tolist()))
-    #TODO: resamplen für zeitraum und in diesem die werte für "positive,etc" zählen
+    mean_df["Sent is"] = mean_df["Avg"].apply(conv_sent_score_to_meaning)
+    resampled_mean_tweetcount = pd.concat([mean_df,count_tweets],axis="columns")
+    resampled_mean_tweetcount = resampled_mean_tweetcount.dropna(subset=["Avg"])
+    pd.set_option('max_colwidth', 400)
+
     #TODO: resamplen für average
     
-    return df, mean_df
+    return df, resampled_mean_tweetcount
 
-
-def count_sents(vals):
-    pass
-    wordcount = pd.value_counts(np.array(vals))
-    df = pd.DataFrame(wordcount,columns=["Count"])
-    #return wordcount
+#TODO: resamplen für zeitraum und in diesem die werte für "positive,etc" zählen
+# def count_sents(df,time_range):
+#     print(df)
+#     total_sent_count = pd.value_counts(np.array(df["Sent is"].tolist()))
+#     print(total_sent_count)
+#     counts = total_sent_count.resample(f"{time_range}T").count()
+#     df = pd.DataFrame(counts)
+#     print(df)
+#     return df
 
 
 # CHARTS
-def show_sentiment_chart(df, label, color,intervals,lookback_timeframe,symbol):
+def show_charts(df, label, color,intervals,lookback_timeframe,symbol):
     #setup
     fig, axs = plt.subplots(2,1,sharex=True,constrained_layout=True)#figsize=(10, 4))
     locator = mdates.AutoDateLocator()
@@ -177,7 +181,7 @@ def show_sentiment_chart(df, label, color,intervals,lookback_timeframe,symbol):
     
     #first plot for sentiment
     #axs[0].scatter(x,y, label=label,color=color1,edgecolor="none")#markerfacecolor="white")
-    axs[0].plot(df, label=label,color=color, markersize=5) #markerfacecolor="white")
+    axs[0].plot(df.index,df["Avg"], label=label,color=color, markersize=5) #markerfacecolor="white")
 
     #second plot for price
     data = getminutedata(symbol,intervals,lookback_timeframe)

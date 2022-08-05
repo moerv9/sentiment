@@ -24,6 +24,8 @@ def getminutedata(symbol,interval, lookback):
         interval = "1h"
     elif interval == 120:
         interval = "2h"
+    elif interval == 360:
+        interval = "6h"
     else:
         interval = f"{interval}m"
     lookback = f"{lookback}h"
