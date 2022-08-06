@@ -14,7 +14,7 @@ from streamlit_autorefresh import st_autorefresh
 from dateutil import tz
 from matplotlib.ticker import MultipleLocator
 import matplotlib.dates as mdates
-from words import get_sent_meaning,conv_sent_score_to_meaning
+from words import get_sent_meaning,conv_sent_score_to_meaning,get_signal_by_keywords, get_signal_by_sent_score,get_timestamps_for_trades
 from financial_data import getminutedata
 import pytz
 
@@ -132,11 +132,10 @@ def resample_df(df,time_range, filter_neutral=False):
     mean_df["Sent is"] = mean_df["Avg"].apply(conv_sent_score_to_meaning)
     resampled_mean_tweetcount = pd.concat([mean_df,count_tweets],axis="columns")
     resampled_mean_tweetcount = resampled_mean_tweetcount.dropna(subset=["Avg"])
+    resampled_mean_tweetcount["Signal"] = resampled_mean_tweetcount["Avg"].apply(get_signal_by_sent_score)
     pd.set_option('max_colwidth', 400)
-
-    #TODO: resamplen für average
     
-    return df, resampled_mean_tweetcount
+    return df, resampled_mean_tweetcount.sort_index(ascending=False)
 
 #TODO: resamplen für zeitraum und in diesem die werte für "positive,etc" zählen
 # def count_sents(df,time_range):
@@ -179,19 +178,30 @@ def show_charts(df, label, color,intervals,lookback_timeframe,symbol):
     axs[1].set_xlabel("Time")
     axs[1].set_ylabel("Price ($)")
     
+    #Get Marker for Buy and Sell
+    buy_times = list(np.where(df["Signal"]=="BUY",True,False))
+    buyy= list(np.where(df["Avg"]>0.2,True,False))
     #first plot for sentiment
     #axs[0].scatter(x,y, label=label,color=color1,edgecolor="none")#markerfacecolor="white")
-    axs[0].plot(df.index,df["Avg"], label=label,color=color, markersize=5) #markerfacecolor="white")
+    axs[0].plot(df.index,df["Avg"], label=label,color=color, markersize=2,linewidth=1) #markerfacecolor="white")
+
+    axs[0].plot(df.index,df["Avg"],"^", label="buy",color="g", markersize=4,markevery=list(np.where(df["Avg"]>0.2,True,False)))
+    axs[0].plot(df.index,df["Avg"],"v", label="sell",color="r", markersize=4,markevery=list(np.where(df["Avg"]<0.2,True,False)))
+    
+
 
     #second plot for price
     data = getminutedata(symbol,intervals,lookback_timeframe)
     x1 = data.index
     y1 = data.Close
-    axs[1].plot(x1,y1,color=color,markersize=5)
+    axs[1].plot(x1,y1,linewidth=1,color=color,markersize=4)
+    #axs[1].plot(x1,y1,"^",color="g",markersize=5,linewidth=1,markevery=buyy)
+    #axs[1].plot(x1,y1,"^",color="g",label="buy",markersize=4,)
     #plt.gcf().autofmt_xdate()
     #plt.tight_layout()
     #plt.legend()
     #plt.show()    
+    fig.legend()
     st.pyplot(fig)
 
 def show_cake_diagram(df):

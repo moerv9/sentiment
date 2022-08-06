@@ -28,7 +28,14 @@ def getminutedata(symbol,interval, lookback):
         interval = "6h"
     else:
         interval = f"{interval}m"
-    lookback = f"{lookback}h"
+    if lookback == 24:
+        lookback = "1d"
+    elif lookback == 72:
+        lookback = "3d"
+    elif lookback == 168:
+        lookback = "1w"
+    else:
+        lookback = f"{lookback}h"
     frame = pd.DataFrame(client.get_historical_klines(symbol,interval,lookback))
     frame = frame.iloc[:,:6]
     frame.columns= ["Time","Open","High","Low","Close","Volume"]

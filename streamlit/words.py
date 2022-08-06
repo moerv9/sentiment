@@ -1,3 +1,4 @@
+from audioop import avg
 import re
 import multidict
 from wordcloud import WordCloud,STOPWORDS
@@ -32,8 +33,27 @@ def conv_sent_score_to_meaning(num):
     else:
         return("Neutral")
 
+def get_signal_by_sent_score(score):
+    if score > 0.2:
+        return "BUY"
+    if score < 0.2:
+        return "SELL"
+    
+sell_vals = []
+buy_vals = []
+def get_timestamps_for_trades(avg_count_df):
+    avg_count_df.sort_index(ascending=False)
+    for i in range(len(avg_count_df)):
+        if avg_count_df["Avg"].values[i] >= 0.2:
+            buy_vals.append(avg_count_df.index[i])
+        else:
+            sell_vals.append(avg_count_df.index[i])
+    return buy_vals, sell_vals
 
-def getFrequencies_Sentiment(df):
+
+            
+
+def get_signal_by_keywords(df):
     all_words = ' '.join([tweets for tweets in df])
     words = list(all_words.split(" "))
     cleaned_words = [x for x in words if not bool(re.search('\d|_|\$|\amp|\/', x))]
@@ -62,7 +82,7 @@ def get_signals(df,interval):
     df["Timestamp"] = df.index
     df.reset_index(drop=True,inplace=True)
     
-    signals = df["Tweet"].apply(getFrequencies_Sentiment)#    df[["Signal","Count"]]
+    signals = df["Tweet"].apply(get_signal_by_keywords)#    df[["Signal","Count"]]
     
     #signal_dict = {key: df.loc[value] for key, value in df.groupby("Timestamp").groups.items()} 
     #df = df.groupby(by="Timestamp")
@@ -83,7 +103,7 @@ def trading_keywords(word):
 
 
 def show_wordCloud(df):
-    freq_words = getFrequencies_Sentiment(df)[0]
+    freq_words = get_signal_by_keywords(df)[0]
     wordcloud1 = WordCloud(relative_scaling=0.5,max_words=50,stopwords=my_stopwords,
                         width=500, height=250,collocations=False, random_state=1, max_font_size=100, background_color=None,colormap="viridis_r").generate_from_frequencies(freq_words)
     fig1 = plt.figure(figsize=(20, 10))
