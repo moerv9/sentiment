@@ -1,6 +1,8 @@
 import psycopg2
 import streamlit as st
 import matplotlib.pyplot as plt
+from matplotlib.collections import LineCollection
+from matplotlib.colors import ListedColormap, BoundaryNorm
 import pandas as pd
 import numpy as np
 from sqlalchemy import create_engine
@@ -12,10 +14,10 @@ from logging.handlers import RotatingFileHandler
 from time import sleep
 from streamlit_autorefresh import st_autorefresh
 from dateutil import tz
-from matplotlib.ticker import MultipleLocator
+from matplotlib.ticker import (MultipleLocator,AutoMinorLocator)
 import matplotlib.dates as mdates
-from words import get_sent_meaning,conv_sent_score_to_meaning,get_signal_by_keywords, get_signal_by_sent_score,get_timestamps_for_trades
-from financial_data import getminutedata
+from words import get_sent_meaning,conv_sent_score_to_meaning
+from financial_data import getminutedata,get_timestamps_for_trades,get_signal_by_sent_score
 import pytz
 
 logger = logging.getLogger(__name__)
@@ -149,10 +151,10 @@ def resample_df(df,time_range, filter_neutral=False):
 
 
 # CHARTS
-def show_charts(df, label, color,intervals,lookback_timeframe,symbol):
+def show_charts(df, data):
     #setup
     fig, axs = plt.subplots(2,1,sharex=True,constrained_layout=True)#figsize=(10, 4))
-    locator = mdates.AutoDateLocator()
+    locator = mdates.AutoDateLocator(minticks=5, maxticks=20)
     formatter = mdates.ConciseDateFormatter(locator)
     plt.rcParams['font.size'] = '8'
     #colors
@@ -160,7 +162,7 @@ def show_charts(df, label, color,intervals,lookback_timeframe,symbol):
         axs[nn].title.set_color("white")
         axs[nn].xaxis.label.set_color('white') 
         axs[nn].yaxis.label.set_color('white')
-        axs[nn].tick_params(axis='x', colors='white')
+        axs[nn].tick_params(axis='x', colors='white',labelrotation=30)
         axs[nn].tick_params(axis='y', colors='white')
         axs[nn].spines["left"].set_color('white')
         axs[nn].spines["bottom"].set_color('white') 
@@ -168,40 +170,43 @@ def show_charts(df, label, color,intervals,lookback_timeframe,symbol):
         axs[nn].spines["right"].set_alpha(0)
         axs[nn].set_facecolor((0,0,0,0))
         axs[nn].xaxis.set_major_locator(locator)
+        axs[nn].xaxis.set_minor_locator(locator)
         axs[nn].xaxis.set_major_formatter(formatter)
     fig.patch.set_alpha(0)
     
     #set labels
-    axs[0].set_title(f"Average Sentiment for {intervals} Min. Intervals")
-    axs[0].set_ylabel("Sentiment Score")
-    axs[1].set_title(f"Price for {label}")
-    axs[1].set_xlabel("Time")
-    axs[1].set_ylabel("Price ($)")
+    #axs[1].set_title(f"Average Sentiment for {intervals} Min. Intervals")
+    axs[1].set_ylabel("Sentiment Score")
+    axs[0].set_xlabel("Time")
+    axs[0].set_ylabel("Price ($)")
     
-    #Get Marker for Buy and Sell
-    buy_times = list(np.where(df["Signal"]=="BUY",True,False))
-    buyy= list(np.where(df["Avg"]>0.2,True,False))
-    #first plot for sentiment
-    #axs[0].scatter(x,y, label=label,color=color1,edgecolor="none")#markerfacecolor="white")
-    axs[0].plot(df.index,df["Avg"], label=label,color=color, markersize=2,linewidth=1) #markerfacecolor="white")
-
-    axs[0].plot(df.index,df["Avg"],"^", label="buy",color="g", markersize=4,markevery=list(np.where(df["Avg"]>0.2,True,False)))
-    axs[0].plot(df.index,df["Avg"],"v", label="sell",color="r", markersize=4,markevery=list(np.where(df["Avg"]<0.2,True,False)))
-    
-
-
-    #second plot for price
-    data = getminutedata(symbol,intervals,lookback_timeframe)
+    #first plot for btc price
     x1 = data.index
     y1 = data.Close
-    axs[1].plot(x1,y1,linewidth=1,color=color,markersize=4)
-    #axs[1].plot(x1,y1,"^",color="g",markersize=5,linewidth=1,markevery=buyy)
-    #axs[1].plot(x1,y1,"^",color="g",label="buy",markersize=4,)
-    #plt.gcf().autofmt_xdate()
+    
+    buy_marker, sell_marker,_,_ = get_timestamps_for_trades(df,x1)
+
+    
+    #positive means buy
+    axs[0].set_title(f"Sent > 0.2 => Buy")
+    axs[0].plot(x1,y1,"^",label="buy",color="g",markersize=3,markevery=buy_marker)
+    axs[0].plot(x1,y1,"v",label="sell",color="r",markersize=3,markevery=sell_marker)
+    axs[0].plot(x1,y1,label="BTC Price",color="w",linewidth=1,markersize=3)
+    
+    #positive sent means sell
+    # axs[1].set_title(f"Sent > 0.2 means Sell")
+    #axs[1].set_ylabel("Price ($)")
+    # axs[1].plot(x1,y1,"^",label="buy",color="g",markersize=3,markevery=plot_sell_marker)
+    # axs[1].plot(x1,y1,"v",label="sell",color="r",markersize=3,markevery=plot_buy_marker)
+    # axs[1].plot(x1,y1,label="BTC Price",linewidth=1,color="w",markersize=3)
+
+    #third plot for sentiment
+    x = df.index
+    y = df["Avg"]
+    axs[1].plot(x,y,linestyle=":", label="Sentiment",color="orange", markersize=2,linewidth=1)
+    axs[1].axhline(y=0.2,linestyle=":",color="red",linewidth=0.5)   
+    axs[0].legend()
     #plt.tight_layout()
-    #plt.legend()
-    #plt.show()    
-    fig.legend()
     st.pyplot(fig)
 
 def show_cake_diagram(df):
@@ -234,5 +239,3 @@ def show_cake_diagram(df):
 #     ax.bar(1,sizes[1])
 #     plt.tight_layout()
 #     st.pyplot(plt)
-
-

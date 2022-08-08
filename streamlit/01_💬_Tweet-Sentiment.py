@@ -5,7 +5,7 @@ import streamlit as st
 from words import get_signals
 from streamlit_data import get_Heroku_DB,calc_mean_sent,show_charts,split_DF_by_time,show_cake_diagram,resample_df
 from words import show_wordCloud,get_signal_by_keywords
-from financial_data import chart_for_coin
+from financial_data import getminutedata
 from matplotlib.collections import LineCollection
 from matplotlib.colors import ListedColormap, BoundaryNorm
 import numpy as np
@@ -32,8 +32,8 @@ def loading_data_from_heroku_database():
 with st.sidebar:
     hide_Wordcloud_and_TweetSent = st.checkbox(label="Hide Tweet Analysis",value=True)
     hide_Charts = st.checkbox(label="Hide Charts",value=False)
-    lookback_timeframe = st.select_slider("Timeframe: Last X hours",options=[1,6,12,24,72,168],value=72, help="The more days you want to look at, the longer it may take to load the database",on_change=loading_data_from_heroku_database)
-    intervals = st.select_slider("Resample Timeperiod by X Minutes",options=[1,5,15,30,60,120,360],value=360)
+    lookback_timeframe = st.select_slider("Timeframe: Last X hours",options=[1,6,12,24,72],value=72, help="The more days you want to look at, the longer it may take to load the database",on_change=loading_data_from_heroku_database)
+    intervals = st.select_slider("Resample Timeperiod by X Minutes",options=[1,5,15,30,60,120,360],value=60)
     with st.expander("See explanation"):
         st.write("The sentiment score is a number between -1 and 1. "
             "Negative values indicates negative Sentiment."
@@ -79,7 +79,8 @@ with col2:
     # st.dataframe(resampled_df)
 
 if not hide_Charts:
-    ax = show_charts(resampled_mean_tweetcount,"btc","w",intervals,lookback_timeframe,"BTCUSDT")
+    data = getminutedata("BTCUSDT",intervals,lookback_timeframe)
+    show_charts(resampled_mean_tweetcount,data)
 
 
 

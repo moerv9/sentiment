@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import numpy as np
 from collections import Counter
-
+from financial_data import get_buy_or_sell_signal
 
 my_stopwords={"amp","bitcoin","bitcoins","cardano"}
 sentiment_model = SentimentIntensityAnalyzer()
@@ -33,25 +33,7 @@ def conv_sent_score_to_meaning(num):
     else:
         return("Neutral")
 
-def get_signal_by_sent_score(score):
-    if score > 0.2:
-        return "BUY"
-    if score < 0.2:
-        return "SELL"
-    
-sell_vals = []
-buy_vals = []
-def get_timestamps_for_trades(avg_count_df):
-    avg_count_df.sort_index(ascending=False)
-    for i in range(len(avg_count_df)):
-        if avg_count_df["Avg"].values[i] >= 0.2:
-            buy_vals.append(avg_count_df.index[i])
-        else:
-            sell_vals.append(avg_count_df.index[i])
-    return buy_vals, sell_vals
 
-
-            
 
 def get_signal_by_keywords(df):
     all_words = ' '.join([tweets for tweets in df])
@@ -66,7 +48,7 @@ def get_signal_by_keywords(df):
     df["Words"] = df.index
     df = df[["Words","Count"]].sort_values(by=["Count"],ascending=False)
     df.reset_index(drop=True, inplace=True)
-    df["Signal"] = df["Words"].apply(trading_keywords)
+    df["Signal"] = df["Words"].apply(get_buy_or_sell_signal)
     df = df.dropna(subset=["Signal"])
     
     grouped_df = df.groupby(by=["Signal"],as_index=False,sort=False).agg({"Count":"sum"})
@@ -90,15 +72,7 @@ def get_signals(df,interval):
     #tweet_group_list = [df.loc[values] for values in df.groupby("Timestamp").groups.values()]
     
     return signals
- 
-    return pd.DataFrame(tweet_group_list)
 
-
-def trading_keywords(word):
-    if word in ["buy","up","bullish","bought","high","pump","growth","uptrend","revolution","hold","love","trust","bull","#pump","success","hodl"]:
-        return "BUY"
-    elif word in ["sell","down","bearish","sold","never","bad","low","dump","decline","downfall","downtrend","decay","recession","regess","short","hate","#short","#dump","loss","lost","lose"]:
-        return "SELL"
 
 
 

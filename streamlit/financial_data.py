@@ -15,7 +15,7 @@ from config import ConfigBinance
 conf = ConfigBinance().getKeys(True)
 
 #Init Binance Client
-client = Client(conf[0],conf[1])
+client = Client(conf[0],conf[1],testnet=True)
 asset = "BTCUSDT"
 
 
@@ -60,34 +60,37 @@ def getDateData(symbol,interval, start_str, end_str):
 #df = getminutedata(asset,"1m","12 July, 2022 16:00:00")
 #df = getDateData(asset,"1m","12 July, 2022 20:00:00","12 July,2022 22:00:00")
 
+def get_buy_or_sell_signal(word):
+    if word in ["buy","up","bullish","bought","high","pump","growth","uptrend","revolution","hold","love","trust","bull","#pump","success","hodl"]:
+        return "BUY"
+    elif word in ["sell","down","bearish","sold","never","bad","low","dump","decline","downfall","downtrend","decay","recession","regess","short","hate","#short","#dump","loss","lost","lose"]:
+        return "SELL"
 
-def chart_for_coin(symbol,interval,lookback_timeframe,color,shared_x_axis):
-    data = getminutedata(symbol,f"{interval}m",f"{lookback_timeframe}h")
-    fig, ax = plt.subplot(212,sharex=shared_x_axis)
-    plt.cla()
-    #xaxis 
-    locator = mdates.AutoDateLocator()
-    formatter = mdates.ConciseDateFormatter(locator)
-    ax.xaxis.set_major_locator(locator)
-    ax.xaxis.set_major_formatter(formatter)
-    #colors
-    ax.title.set_color("white")
-    ax.xaxis.label.set_color('white') 
-    ax.yaxis.label.set_color('white')
-    ax.tick_params(axis='x', colors='white')
-    ax.tick_params(axis='y', colors='white')
-    ax.spines["left"].set_color('white')
-    ax.spines["bottom"].set_color('white') 
-    ax.spines["top"].set_alpha(0)
-    ax.spines["right"].set_alpha(0)
-    fig.patch.set_alpha(0)
-    ax.set_facecolor(color="b")
-    ax.patch.set_alpha(0)
+def get_signal_by_sent_score(score):
+    if score >= 0.2:
+        return "BUY"
+    if score < 0.2:
+        return "SELL"
     
-    ax.set_xlabel("Time")
-    ax.set_ylabel("Price")
-    ax.set_title(asset)
-    plt.tight_layout()
-    ax.plot(data.index,data.Close,color=color,markersize=5)
-    st.pyplot(fig)
+sell_vals = []
+buy_vals = []
+plot_buy_marker  = []
+plot_sell_marker  = []
+time_buy = []
+time_sell = []
 
+def get_timestamps_for_trades(avg_count_df,x1):
+    avg_count_df.sort_index(ascending=False)
+    for i in range(len(avg_count_df)):
+        if avg_count_df["Avg"].values[i] >= 0.2:
+            buy_vals.append(avg_count_df.index[i])
+        else:
+            sell_vals.append(avg_count_df.index[i])
+    for i in range(len(x1)):
+        if x1.values[i] in buy_vals:
+            time_buy.append(x1.values[i])
+            plot_buy_marker.append(i)
+        elif x1.values[i] in sell_vals:
+            plot_sell_marker.append(i)
+            time_sell.append(x1.values[i])
+    return plot_buy_marker, plot_sell_marker,time_buy,time_sell

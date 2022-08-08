@@ -1,35 +1,46 @@
 # Table of Contents
-- Abstract (Task, Approach and achieved goals in a few words)
-- Project Description
+<!-- - Abstract (Task, Approach and achieved goals in a few words) -->
+- Introduction
     - Motivation
     - Goal
     - Action Plan
     - Context
+- Requirements
+    - Stakeholder
+    - 
 - [Research](Research.md)
     - [Coin Comparison](./Research.md#coin-comparison)
     - [Social Media Relevance](./Research.md#social-media-relevance)
     - [Focusing on Bitcoin](./Research.md#focus-on-bitcoin)
 - Development
-    - Concept & Requirements analysis
-        - Retrieve and Process Tweets with Twitter API
-        - Heroku
-        - Define Signals
+    - Concept
+        - [Data Acquisition](Data%20Acquisition.md)
+        - [Backend with Heroku](./Backend%20with%20Heroku.md)
+        - [Sentiment](Sentiment.md)
+        - Trading with Binance API 
         - Visualise Data
-    - Classes (UML-Diagram)
     - Challenges
     - Insights
 - Results
     - (Placement in the scientific/financial context)
     - Conclusion
-    - Usage Examples: Video/Pictures
+
     - Outlook
 - Technical Overview
     - Installation 
     - Tools / Libraries
         - (Reason for choosing those tools?(Robert?))
     - Code Examples
-- Links/References/Literature
+- Appendices
+    - Class Diagram
+    - Example of Usage (video/bilder)
 
+
+# Abstract
+
+# Abbreviations
+
+# Get Started
 
 # Installation
 ## Install
