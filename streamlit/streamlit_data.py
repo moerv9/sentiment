@@ -57,10 +57,11 @@ def get_Heroku_DB(today=True):
     conn = psycopg2.connect(DB_URL, sslmode="require")
     if today:
         limit=60000
+        logger.info("Getting data from Today")
         query = f"select * from tweet_data where Tweet_Date > current_date order by id desc limit {limit};"
     else:
-        print("Getting data from past Today")
-        query = f"select * from tweet_data where Tweet_Date > current_date - interval '3' day order by id desc limit 1000000;"
+        logger.info("Getting data from past Today")
+        query = f"select * from tweet_data where Tweet_Date > current_date - interval '4' day limit 1000000;"
     df = pd.read_sql(query, conn)
     columns = {"body": "Tweet",
                 "keyword": "Keyword",
@@ -80,7 +81,7 @@ def get_Heroku_DB(today=True):
     #print(df.index.tz_localize("Europe/Berlin"))
     rows = df.shape[0]
     duplicates = list(df.index[df.duplicated(subset=["Tweet"],keep=False)])
-    df.drop(labels=duplicates,inplace=True)
+    df.drop_duplicates(subset=["Tweet"],keep=False,inplace=True)
     print(f"Deleted {len(duplicates)} duplicates from a total of {rows}")
     return df
 
@@ -137,7 +138,7 @@ def resample_df(df,time_range, filter_neutral=False):
     resampled_mean_tweetcount["Signal"] = resampled_mean_tweetcount["Avg"].apply(get_signal_by_sent_score)
     pd.set_option('max_colwidth', 400)
     
-    return df, resampled_mean_tweetcount.sort_index(ascending=False)
+    return df.sort_index(ascending=False), resampled_mean_tweetcount.sort_index(ascending=False)
 
 #TODO: resamplen für zeitraum und in diesem die werte für "positive,etc" zählen
 # def count_sents(df,time_range):

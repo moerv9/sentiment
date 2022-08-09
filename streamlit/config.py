@@ -86,10 +86,10 @@ class ConfigBinance:
         
     def getKeys(self,testnet:bool=False):
         if testnet:
-            logger.info("Retrieve Binance Testnet Keys")
+            #logger.info("Retrieve Binance Testnet Keys")
             return self.BINANCE_TESTNET_API_KEY,self.BINANCE_TESTNET_API_SECRET
         else:
-            logger.info("Retrieve Binance API Keys")
+            #logger.info("Retrieve Binance API Keys")
             return self.BINANCE_API_KEY,self.BINANCE_API_SECRET
 
 '''

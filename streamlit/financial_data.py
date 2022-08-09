@@ -76,8 +76,8 @@ sell_vals = []
 buy_vals = []
 plot_buy_marker  = []
 plot_sell_marker  = []
-time_buy = []
-time_sell = []
+buy_time = []
+sell_time = []
 
 def get_timestamps_for_trades(avg_count_df,x1):
     avg_count_df.sort_index(ascending=False)
@@ -88,9 +88,16 @@ def get_timestamps_for_trades(avg_count_df,x1):
             sell_vals.append(avg_count_df.index[i])
     for i in range(len(x1)):
         if x1.values[i] in buy_vals:
-            time_buy.append(x1.values[i])
+            buy_time.append(x1.values[i])
             plot_buy_marker.append(i)
         elif x1.values[i] in sell_vals:
             plot_sell_marker.append(i)
-            time_sell.append(x1.values[i])
-    return plot_buy_marker, plot_sell_marker,time_buy,time_sell
+            sell_time.append(x1.values[i])
+
+    price_for_date_df = [pd.to_datetime(x).strftime("%d %B, %Y %H:%M:%S") for x in buy_time]
+    # print("Prices for buy times")
+    # print(price_for_date_df[0])
+    # print(price_for_date_df[1])
+    price_for_date_df = getDateData("BTCUSDT","1h",price_for_date_df[0],price_for_date_df[1])
+    #print(price_for_date_df.to_string())
+    return plot_buy_marker, plot_sell_marker,buy_time,sell_time

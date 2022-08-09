@@ -5,7 +5,7 @@ import streamlit as st
 from words import get_signals
 from streamlit_data import get_Heroku_DB,calc_mean_sent,show_charts,split_DF_by_time,show_cake_diagram,resample_df
 from words import show_wordCloud,get_signal_by_keywords
-from financial_data import getminutedata
+from financial_data import getminutedata,getDateData
 from matplotlib.collections import LineCollection
 from matplotlib.colors import ListedColormap, BoundaryNorm
 import numpy as np
@@ -18,13 +18,14 @@ st.set_page_config(
     )
 
 
-@st.experimental_memo(show_spinner=True,suppress_st_warning=True,ttl=5*60)#@st.cache(ttl=60*20,allow_output_mutation=True,show_spinner=True,suppress_st_warning=True)
+#@st.experimental_memo(show_spinner=True,suppress_st_warning=True)
+#@st.cache(ttl=60*5,allow_output_mutation=True,show_spinner=True,suppress_st_warning=True)
 def loading_data_from_heroku_database():
     if lookback_timeframe > 24:
         df = get_Heroku_DB(today=False)
-    else:
+    elif lookback_timeframe <=24:
         df = get_Heroku_DB(today=True)
-    print("Retrieved new Data from Database...")
+    print(f"Retrieved {df.shape[0]} new Items from Database...")
     return df
 
 
@@ -46,10 +47,12 @@ df  = loading_data_from_heroku_database()
 #splits the DataFrame for each coin
 st.subheader(f"{date.today().strftime('%d-%m-%Y')} - Bitcoin")
 #gets dataframes for the past time specified in lookback_timeframe
-past_btc_df_for_timerange = split_DF_by_time(df,lookback_timeframe)
+# past_btc_df_for_timerange = split_DF_by_time(df,lookback_timeframe)
 
 
 single_sent_scores_df,resampled_mean_tweetcount = resample_df(split_DF_by_time(df,lookback_timeframe),intervals,True)
+
+data = getminutedata("BTCUSDT",intervals,lookback_timeframe)
 
 #calculates the Mean/Average for the past time and in sums of min_range (Default 5 Minutes)
 #mean_btc,percentage_btc_df= calc_mean_sent(past_btc_df_for_timerange,intervals)
@@ -58,7 +61,7 @@ single_sent_scores_df,resampled_mean_tweetcount = resample_df(split_DF_by_time(d
 
 col1,col2 = st.columns(2)
 with col1:
-    st.metric(label=f"Total Tweets gathered last {lookback_timeframe} h", value=split_DF_by_time(df,lookback_timeframe).shape[0])
+    st.metric(label=f"Total Tweets gathered last {lookback_timeframe} h", value=df.shape[0])
     if not hide_Wordcloud_and_TweetSent:
         st.text("Sentiment of all Tweets")
         #show_cake_diagram(percentage_btc_df)
@@ -79,8 +82,9 @@ with col2:
     # st.dataframe(resampled_df)
 
 if not hide_Charts:
-    data = getminutedata("BTCUSDT",intervals,lookback_timeframe)
+
     show_charts(resampled_mean_tweetcount,data)
+
 
 
 
