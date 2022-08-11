@@ -42,7 +42,7 @@ class StreamListener(tweepy.Stream):
         Args:
             status (Status): Received Status
         """
-        sleep(5)
+        sleep(0.2)
         # Ignore Tweets from Users who only exist for under 60 days. 
         # 60 days = 2 months is pretty high but this really ensures no bots are included (hopefully)
         tz_info = status.user.created_at.tzinfo #gets the timezone 
@@ -110,12 +110,12 @@ class StreamListener(tweepy.Stream):
                 with session_scope() as sess:
                             #pass
                     sess.add(tweet)
-                    sess.commit()
+                    #sess.commit()
                     time_now = datetime.now().strftime("%Y-%m-%d %H:%M")
                     print(f"Total Tweets filtered: {self.amount_filtered}") 
                     #To check randomly what tweet is inserted to the DB at what time
                     tweet_time = status.created_at.strftime("%Y-%m-%d %H:%M:%S %Z:%z")
-                    if self.amount_filtered == 8:
+                    if self.amount_filtered %3 == 0:
                         print(f"Tweet: '{items[0]}' (Time: {tweet_time}) inserted at localtime: {time_now}. User has {items[5]} followers.")
                     #self.tweet_list = []
                 self.amount_filtered = 0
