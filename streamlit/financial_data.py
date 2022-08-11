@@ -1,7 +1,10 @@
 from datetime import timedelta
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
-from binance import Client
+from binance import Client as bClient
+from kucoin.client import Client as kucoinClient
+from binance.enums import *
+
 import pandas as pd
 import os
 import streamlit as st
@@ -11,19 +14,50 @@ import matplotlib.dates as mdates
 #Config
 import sys
 #sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
-from config import ConfigBinance
-conf = ConfigBinance().getKeys(True)
+from config import ConfigBinance,ConfigKucoin
 
+kconf=ConfigKucoin()
 #Init Binance Client
-client = Client(conf[0],conf[1],testnet=True)
-asset = "BTCUSDT"
+binance_client = bClient(ConfigBinance().BINANCE_API_KEY,ConfigBinance().BINANCE_API_SECRET)
+kSubClient = kucoinClient(kconf.KUCOIN_SUB_KEY, kconf.KUCOIN_SUB_SECRET,kconf.KUCOIN_SUB_PASS,sandbox=True)
+kMainClient = kucoinClient(kconf.KUCOIN_KEY, kconf.KUCOIN_SECRET,kconf.KUCOIN_PASS,sandbox=True)
 
+
+def trade(avg):
+    #acc_balance = kClient.g 
+    accounts = kMainClient.get_accounts(account_type="trade")
+    usdt_balance = accounts[0]["balance"]
+    btc_balance = accounts[1]["balance"]
+    if avg >= 0.2:
+        try:
+            order = kMainClient.create_market_order('BTC-USDT', kMainClient.SIDE_BUY,funds=usdt_balance*0.00005)
+            print("BUY ORDER executed")
+        except Exception as e:
+            print(e.status_code)
+            print(e.message)
+    elif avg < 0.2 : 
+        try:
+            order = kMainClient.create_market_order('BTC-USDT', kMainClient.SIDE_SELL,funds=btc_balance*0.25)
+            print("SELL ORDER executed")
+        except Exception as e:
+            print(e.status_code)
+            print(e.message)
+                
+    last_orders = kMainClient.get_orders(symbol='BTC-USDT')
+    d = []
+    for i in last_orders["items"]:
+        d.append([pd.to_datetime(i["createdAt"],unit="ms",utc=True) + timedelta(hours=2),i["symbol"], i["side"],i["size"],i["funds"], i["fee"],i["isActive"], i["cancelExist"],i["id"]])
+        
+    df = pd.DataFrame(data=d,columns=["time","symbol","side","size","funds","fee","isActive","cancelExist","id"])
+    return df 
 
 def getminutedata(symbol,interval, lookback):
     if interval == 60:
         interval = "1h"
     elif interval == 120:
         interval = "2h"
+    elif interval == 240:
+        interval = "4h"
     elif interval == 360:
         interval = "6h"
     else:
@@ -36,7 +70,7 @@ def getminutedata(symbol,interval, lookback):
         lookback = "1w"
     else:
         lookback = f"{lookback}h"
-    frame = pd.DataFrame(client.get_historical_klines(symbol,interval,lookback))
+    frame = pd.DataFrame(binance_client.get_historical_klines(symbol,interval,lookback))
     frame = frame.iloc[:,:6]
     frame.columns= ["Time","Open","High","Low","Close","Volume"]
     frame = frame.set_index("Time")
@@ -46,7 +80,7 @@ def getminutedata(symbol,interval, lookback):
     return frame
 
 def getDateData(symbol,interval, start_str, end_str):
-    frame = pd.DataFrame(client.get_historical_klines(symbol,interval,start_str,end_str))
+    frame = pd.DataFrame(binance_client.get_historical_klines(symbol,interval,start_str,end_str))
     frame = frame.iloc[:,:6]
     frame.columns= ["Time","Open","High","Low","Close","Volume"]
     frame = frame.set_index("Time")
@@ -79,25 +113,26 @@ plot_sell_marker  = []
 buy_time = []
 sell_time = []
 
-def get_timestamps_for_trades(avg_count_df,x1):
+def get_timestamps_for_trades(avg_count_df,btc_timestamps):
     avg_count_df.sort_index(ascending=False)
     for i in range(len(avg_count_df)):
         if avg_count_df["Avg"].values[i] >= 0.2:
-            buy_vals.append(avg_count_df.index[i])
+            buy_vals.append(avg_count_df.index[i])#[Timestamp('2022-08-09 14:00:00'), ,...]
         else:
             sell_vals.append(avg_count_df.index[i])
-    for i in range(len(x1)):
-        if x1.values[i] in buy_vals:
-            buy_time.append(x1.values[i])
-            plot_buy_marker.append(i)
-        elif x1.values[i] in sell_vals:
+    for i in range(len(btc_timestamps)):
+        if btc_timestamps.values[i] in buy_vals:
+            buy_time.append(pd.to_datetime(btc_timestamps.values[i],utc=True))
+            plot_buy_marker.append(i) #[1, 2, 7, 8, 10, 11, 12, 13, ...]
+        elif btc_timestamps.values[i] in sell_vals:
             plot_sell_marker.append(i)
-            sell_time.append(x1.values[i])
-
-    price_for_date_df = [pd.to_datetime(x).strftime("%d %B, %Y %H:%M:%S") for x in buy_time]
-    # print("Prices for buy times")
-    # print(price_for_date_df[0])
-    # print(price_for_date_df[1])
-    price_for_date_df = getDateData("BTCUSDT","1h",price_for_date_df[0],price_for_date_df[1])
+            sell_time.append(pd.to_datetime(btc_timestamps.values[i],utc=True))
+    #df = pd.Series(data=True,index=buy_time)
+    
+    #print(pd.Series(buy_time))
+    #price_for_date_df = [x.strftime("%d %B, %Y %H:%M:%S") for x in buy_time] #['05 August, 2022 17:00:00', ...]
+    #price_for_date_df = getDateData("BTCUSDT","1h",price_for_date_df[0],price_for_date_df[1])
     #print(price_for_date_df.to_string())
+    
     return plot_buy_marker, plot_sell_marker,buy_time,sell_time
+

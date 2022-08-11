@@ -82,8 +82,9 @@ def get_Heroku_DB(today=True):
     rows = df.shape[0]
     duplicates = list(df.index[df.duplicated(subset=["Tweet"],keep=False)])
     df.drop_duplicates(subset=["Tweet"],keep=False,inplace=True)
+
     print(f"Deleted {len(duplicates)} duplicates from a total of {rows}")
-    return df
+    return df, len(duplicates)
 
 
 def calc_mean_sent(df, min_range,filter_neutral=False):
@@ -121,14 +122,18 @@ def calc_mean_sent(df, min_range,filter_neutral=False):
     #sent_app_transposed["Sentiment"] = str(sent_app_transposed["Sentiment"])
     return pd.DataFrame(new_df), sent_appearances
 
-def resample_df(df,time_range, filter_neutral=False):
+def resample_df(df,time_range, filter_neutral=False,by_day=True):
     if filter_neutral:
         df = df[df["Sentiment Score"] != 0.0]
     df = df.filter(items=["Sentiment Score"])
-    count_tweets = df.resample(f"{time_range}T").count()#count Tweets
+    if by_day:
+        count_tweets = df.resample(f"D").count()
+        mean_df = df.resample(f"D").mean().sort_index(ascending=False)
+    elif by_day == False:
+        count_tweets = df.resample(f"{time_range}T").count()#count Tweets
+        mean_df = df.resample(f"{time_range}T").mean().sort_index(ascending=False)
     count_tweets.rename(columns={"Sentiment Score" : "Total Tweets"},inplace=True)
     
-    mean_df = df.resample(f"{time_range}Min").mean().sort_index(ascending=False)
     mean_df.rename(columns={"Sentiment Score" : "Avg"},inplace=True)
     df["Sent is"] = df["Sentiment Score"].apply(conv_sent_score_to_meaning)
     
@@ -154,8 +159,8 @@ def resample_df(df,time_range, filter_neutral=False):
 # CHARTS
 def show_charts(df, data):
     #setup
-    fig, axs = plt.subplots(2,1,sharex=True,constrained_layout=True)#figsize=(10, 4))
-    locator = mdates.AutoDateLocator(minticks=5, maxticks=20)
+    fig, axs = plt.subplots(3,1,sharex=True,constrained_layout=True)#figsize=(10, 4))
+    locator = mdates.AutoDateLocator(minticks=6, maxticks=20)
     formatter = mdates.ConciseDateFormatter(locator)
     plt.rcParams['font.size'] = '8'
     #colors
@@ -180,6 +185,7 @@ def show_charts(df, data):
     axs[1].set_ylabel("Sentiment Score")
     axs[0].set_xlabel("Time")
     axs[0].set_ylabel("Price ($)")
+    axs[2].set_ylabel("Amount of Tweets")
     
     #first plot for btc price
     x1 = data.index
@@ -208,6 +214,7 @@ def show_charts(df, data):
     axs[1].axhline(y=0.2,linestyle=":",color="red",linewidth=0.5)   
     axs[0].legend()
     #plt.tight_layout()
+    axs[2].plot(x,df["Total Tweets"],linestyle=":", label="Tweets",color="yellow", markersize=2,linewidth=1)
     st.pyplot(fig)
 
 def show_cake_diagram(df):

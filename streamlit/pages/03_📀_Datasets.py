@@ -28,14 +28,14 @@ st.subheader("Bitcoin")
 st.dataframe(btc_df.head(rows))
 
 def convert_df(df):
-     # IMPORTANT: Cache the conversion to prevent computation on every rerun
-     return df.to_csv().encode('utf-8')
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return df.to_csv().encode('utf-8')
 
 csv = convert_df(df.head(5))
 
 st.download_button(
-     label="Download data as CSV",
-     data=csv,
-     file_name='btcdf.csv',
-     mime='text/csv',
- )
+    label="Download data as CSV",
+    data=csv,
+    file_name='btcdf.csv',
+    mime='text/csv',
+)

@@ -81,8 +81,8 @@ class ConfigBinance:
     def __init__(self) -> None:
         self.BINANCE_API_KEY = os.getenv("BINANCE_API_KEY")
         self.BINANCE_API_SECRET = os.getenv("BINANCE_API_SECRET")
-        self.BINANCE_TESTNET_API_KEY = os.getenv("BINANCE_TESTNET_API_KEY")
-        self.BINANCE_TESTNET_API_SECRET = os.getenv("BINANCE_TESTNET_API_SECRET")
+        self.BINANCE_TESTNET_API_KEY = os.environ.get("BINANCE_TESTNET_API_KEY")
+        self.BINANCE_TESTNET_API_SECRET = os.environ.get("BINANCE_TESTNET_API_SECRET")
         
     def getKeys(self,testnet:bool=False):
         if testnet:
@@ -91,6 +91,16 @@ class ConfigBinance:
         else:
             #logger.info("Retrieve Binance API Keys")
             return self.BINANCE_API_KEY,self.BINANCE_API_SECRET
+
+class ConfigKucoin:
+    def __init__(self) -> None:
+        self.KUCOIN_UID = os.environ.get("KUCOIN_UID")
+        self.KUCOIN_KEY = os.environ.get("KUCOIN_API_KEY")
+        self.KUCOIN_SECRET = os.environ.get("KUCOIN_SECRET")
+        self.KUCOIN_PASS = os.environ.get("KUCOIN_PASS")
+        self.KUCOIN_SUB_KEY = os.environ.get("KUCOIN_SUB_KEY")
+        self.KUCOIN_SUB_SECRET = os.environ.get("KUCOIN_SUB_SECRET")
+        self.KUCOIN_SUB_PASS = os.environ.get("KUCOIN_SUB_PASS")
 
 '''
 # Test for getting the Tokens
