@@ -42,7 +42,7 @@ class StreamListener(tweepy.Stream):
         Args:
             status (Status): Received Status
         """
-        sleep(1)
+        sleep(0.5)
         # Ignore Tweets from Users who only exist for under 60 days. 
         # 60 days = 2 months is pretty high but this really ensures no bots are included (hopefully)
         tz_info = status.user.created_at.tzinfo #gets the timezone 
@@ -96,27 +96,7 @@ class StreamListener(tweepy.Stream):
 
                 
                 items = [cleaned_tweet,keyword,status.created_at,status.user.location,status.user.verified,status.user.followers_count,status.user.created_at,tweet_sentiment]
-                """ Deprecated: Will check duplicates afterwards
-                Adding tweets to a list so they can be checked for duplicates
-                self.tweet_list.append(metrics)
 
-                logger.info(f"Collected Tweets: {len(self.tweet_list)}")
-                print(f"Collected Tweets: {len(self.tweet_list)}")
-                There are around 40 Tweets collected in a minute
-                These 40 Tweets will be checked for duplicates and if there are any delete them.
-                if len(self.tweet_list) >=40:
-                    cleaned_list = check_duplicates(self.tweet_list)
-                    for items in cleaned_list:
-                        tweet = Tweet(body = items[0],
-                                    keyword = items[1],
-                                    tweet_date = items[2],
-                                    location = items[3],
-                                    verified_user = items[4],
-                                    followers = items[5],
-                                    user_since = items[6],
-                                    sentiment = items[7]) 
-                """
-                
                 tweet = Tweet(body = items[0],
                                     keyword = items[1],
                                     tweet_date = items[2],

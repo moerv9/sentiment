@@ -27,7 +27,7 @@ conf = ConfigDB()
 #Uncomment for Heroku
 Database_URL = conf.DB_URL + "?sslmode=require"
 engine = create_engine(Database_URL,convert_unicode=True) #echo=True
-Session = scoped_session(sessionmaker(autocommit=False, bind=engine))
+Session = scoped_session(sessionmaker(autocommit=True, bind=engine))
 
 
 @contextmanager
