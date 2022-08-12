@@ -2,9 +2,11 @@ from datetime import date, datetime, timedelta
 from logging.handlers import RotatingFileHandler
 import os, logging
 import streamlit as st
-from streamlit_data import get_Heroku_DB,calc_mean_sent,show_sentiment_chart,split_DF_by_time,show_cake_diagram
-from words import show_wordCloud,getFrequencies_Sentiment
-from financial_data import chart_for_coin
+from streamlit_autorefresh import st_autorefresh
+from words import get_signals
+from streamlit_data import get_Heroku_DB,calc_mean_sent,show_charts,split_DF_by_time,show_cake_diagram,resample_df
+from words import show_wordCloud,get_signal_by_keywords
+from financial_data import getminutedata,getDateData,trade,get_last_orders
 from matplotlib.collections import LineCollection
 from matplotlib.colors import ListedColormap, BoundaryNorm
 import numpy as np
@@ -16,62 +18,123 @@ st.set_page_config(
     layout="wide", 
     )
 
+count = st_autorefresh(interval=1000*60*5, key="sent")
 
-@st.cache(ttl=60*10,allow_output_mutation=True,show_spinner=True,suppress_st_warning=True)
+@st.experimental_memo(show_spinner=True,suppress_st_warning=True,ttl=5*60)
+#@st.cache(ttl=60*5,allow_output_mutation=True,show_spinner=True,suppress_st_warning=True)
 def loading_data_from_heroku_database():
     if lookback_timeframe > 24:
-        df = get_Heroku_DB(today=False)
-    else:
-        df = get_Heroku_DB(today=True)
-    print("Retrieved new Data from Database...")
-    return df
+        df,duplicates = get_Heroku_DB(today=False)
+    elif lookback_timeframe <=24:
+        df,duplicates = get_Heroku_DB(today=True)
+    return df,duplicates
 
 
-    
+ 
 with st.sidebar:
+    st.info("Turn on Darkmode in upper right settings!")
     hide_Wordcloud_and_TweetSent = st.checkbox(label="Hide Tweet Analysis",value=True)
-    lookback_timeframe = st.slider("Timeframe: Last X hours",min_value=1,max_value=24,value=4,on_change=loading_data_from_heroku_database)#,help="Max. 4 days",
-    intervals = st.select_slider("Group Timestamps by X Intervals",options=[1,5,15,30,60,120],value=5)
-    with st.expander("See explanation"):
+    hide_Charts = st.checkbox(label="Hide Charts",value=False)
+    lookback_timeframe = 96# st.select_slider("Timeframe: Last X hours",options=[1,6,12,24,72,96],value=96, help="The more days you want to look at, the longer it may take to load the database",on_change=loading_data_from_heroku_database)
+    intervals = 60 #rst.select_slider("Resample Timeperiod by X Minutes",options=[1,5,15,30,60,120,360],value=60)
+    
+    with st.expander("INFO"):
         st.write("The sentiment score is a number between -1 and 1. "
             "Negative values indicates negative Sentiment."
             "Around zero is neutral Sentiment (+-0.2)."
             )
+    
+if "duplicates" not in st.session_state:
+    _, duplicates = get_Heroku_DB()
+
 
 #Get Dataframes
 #Convert Database to Dataframe
-df  = loading_data_from_heroku_database()
+df, duplicates  = loading_data_from_heroku_database()
+st.session_state['duplicates'] = duplicates
 #splits the DataFrame for each coin
-
 st.subheader(f"{date.today().strftime('%d-%m-%Y')} - Bitcoin")
-#gets dataframes for the past time specified in lookback_hours (Default: last 4 hours)
-past_btc_df_for_timerange = split_DF_by_time(df,lookback_timeframe)
+#gets dataframes for the past time specified in lookback_timeframe
+# past_btc_df_for_timerange = split_DF_by_time(df,lookback_timeframe)
+
+
+single_sent_scores_df,resampled_mean_tweetcount = resample_df(df, intervals, True, False)#(split_DF_by_time(df,lookback_timeframe),intervals,True)
+
+data = getminutedata("BTCUSDT",intervals,lookback_timeframe)
+
+
 
 #calculates the Mean/Average for the past time and in sums of min_range (Default 5 Minutes)
-mean_btc,percentage_btc_df = calc_mean_sent(past_btc_df_for_timerange,intervals)
+#mean_btc,percentage_btc_df= calc_mean_sent(past_btc_df_for_timerange,intervals)
 #Gets single words in the tweets and their frequencies + sentiment
-_, word_freq_and_sent_btc = getFrequencies_Sentiment(past_btc_df_for_timerange)
+#freq_df = get_signals(past_btc_df_for_timerange,intervals)
 
+def convert_df(df):
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return df.to_csv().encode('utf-8')
+
+csv = convert_df(resampled_mean_tweetcount)
+col1,col2,col3 = st.columns(3)
+with col1:
+    st.metric(label=f"Total Tweets gathered last {lookback_timeframe} h", value=df.shape[0])
+with col2:
+    st.metric(label = f"Tweets gathered last 24h", value = split_DF_by_time(df,24).shape[0])
+with col3:
+    st.metric(label="Deleted Duplicates",value=st.session_state.duplicates)
 col1,col2 = st.columns(2)
 with col1:
-    st.metric(label=f"Tweets in the last {lookback_timeframe}h", value=split_DF_by_time(df,lookback_timeframe).shape[0])
     if not hide_Wordcloud_and_TweetSent:
         st.text("Sentiment of all Tweets")
-        show_cake_diagram(percentage_btc_df)
-    #st.dataframe(mean_btc)
+        #show_cake_diagram(percentage_btc_df)
+    st.text(f"Sentiment Score for Tweets in a Timeframe of {lookback_timeframe} hours")
+    st.dataframe(single_sent_scores_df)
+    #st.text(f"Word Frequency in all Tweets for last {lookback_timeframe} hours ")
+    #st.text(freq_df)
+    # st.text("Total Signal Count")
+    # st.dataframe(signals_count)
 with col2:
-    st.metric(label=f"Max Tweets gathered today", value=split_DF_by_time(df,24).shape[0])
     if not hide_Wordcloud_and_TweetSent:
         st.text("Most used Words")
-        show_wordCloud(past_btc_df_for_timerange)
-    #st.dataframe(percentage_btc_df)
+        #TODO: Bug
+        #show_wordCloud(past_btc_df_for_timerange)
+    st.text(f"Average Sentiment and Tweet Count for {intervals} Min. Periods")
+    st.dataframe(resampled_mean_tweetcount)
+    st.download_button(
+    label="Download data as CSV",
+    data= csv,
+    file_name='resample_btc_df.csv',
+    mime='text/csv',
+)
+    # st.dataframe(resampled_df)
 
-ax = show_sentiment_chart(mean_btc,"btc","g",intervals,lookback_timeframe,"BTCUSDT")
-#chart_for_coin("BTCUSDT",interval=intervals,lookback_timeframe=lookback_timeframe,color="g",shared_x_axis=ax)
-#show_sent_and_price_data(mean_btc,"btc","g",intervals,lookback_timeframe,"BTCUSDT")
+if not hide_Charts:
+    show_charts(resampled_mean_tweetcount,data)
 
-#TODO:  word_freq um die umwandlung des scores in "positive" etc erweitern.
-#st.dataframe(word_freq_and_sent_btc)
+# if "last_trade_snapshot" not in st.session_state or resampled_mean_tweetcount.index[0] > st.session_state["last_trade_snapshot"] and resampled_mean_tweetcount["Total Tweets"].head(1)[0] > 100:
+#     st.session_state["last_trade_snapshot"] = resampled_mean_tweetcount.index[0]
+#     last_trade_snapshot = st.session_state["last_trade_snapshot"]
+#     last_trades_df = trade(resampled_mean_tweetcount.head(1))
+#     last_trades_df = trade(resampled_mean_tweetcount.head(1))
+#     print(f"New trade for AVG at {last_trade_snapshot}.")
+#     st.subheader("Last Trades")
+#     st.dataframe(last_trades_df)
+# else:
+#     print("No new Avg. since last trade at:")
+#     print(st.session_state["last_trade_snapshot"])
 
+second_last_avg = resampled_mean_tweetcount.head(2).iloc[1]
+print("second last avg time:")
+print(second_last_avg.name)
+# if 'trade_exec' not in st.session_state:
+#     st.session_state.trade_exec = False
+#st.session_state.trade_exec_at = resampled_mean_tweetcount.head(3).iloc[2].name
+if 'trade_exec_at' not in st.session_state:
+    st.session_state.trade_exec_at = resampled_mean_tweetcount.head(3).iloc[2].name
+if second_last_avg.name > st.session_state.trade_exec_at:
+    print(f"Got new Avg: Starting Trade for {second_last_avg.name}")
+    trade_df = trade(second_last_avg)
+
+st.dataframe(get_last_orders())
+st.session_state
 
 
