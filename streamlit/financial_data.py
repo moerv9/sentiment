@@ -1,4 +1,4 @@
-from datetime import timedelta
+from datetime import timedelta,datetime
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from binance import Client as bClient
@@ -16,33 +16,36 @@ import sys
 #sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
 from config import ConfigBinance,ConfigKucoin
 
-kconf=ConfigKucoin()
+kconf = ConfigKucoin()
 #Init Binance Client
 binance_client = bClient(ConfigBinance().BINANCE_API_KEY,ConfigBinance().BINANCE_API_SECRET)
 kSubClient = kucoinClient(kconf.KUCOIN_SUB_KEY, kconf.KUCOIN_SUB_SECRET,kconf.KUCOIN_SUB_PASS,sandbox=True)
 kMainClient = kucoinClient(kconf.KUCOIN_KEY, kconf.KUCOIN_SECRET,kconf.KUCOIN_PASS,sandbox=True)
 
 
-def trade(avg):
-    #acc_balance = kClient.g 
-    accounts = kMainClient.get_accounts(account_type="trade")
-    usdt_balance = accounts[0]["balance"]
-    btc_balance = accounts[1]["balance"]
-    if avg >= 0.2:
+def trade(last_avg_df):
+    accounts = kMainClient.get_accounts(account_type = "trade")
+    usdt_balance = float(accounts[0]["balance"])
+    btc_balance = float(accounts[1]["balance"])
+    if last_avg_df["Avg"] >= 0.2 and usdt_balance > 20: #usdt_balance > 10 for subClient
         try:
-            order = kMainClient.create_market_order('BTC-USDT', kMainClient.SIDE_BUY,funds=usdt_balance*0.00005)
-            print("BUY ORDER executed")
+            order = kMainClient.create_market_order('BTC-USDT', kMainClient.SIDE_BUY,funds = round(usdt_balance*0.00005,5)) #usdt_balance * 0.05 for subclient
+            st.session_state.trade_exec_at = last_avg_df.name
+            print(f"BUY ORDER executed for {st.session_state.trade_exec_at} for {round(usdt_balance*0.00005,5)} at {datetime.now()}")
         except Exception as e:
             print(e.status_code)
             print(e.message)
-    elif avg < 0.2 : 
+    elif last_avg_df < 0.2 and btc_balance > 5: 
         try:
-            order = kMainClient.create_market_order('BTC-USDT', kMainClient.SIDE_SELL,funds=btc_balance*0.25)
-            print("SELL ORDER executed")
+            order = kMainClient.create_market_order('BTC-USDT', kMainClient.SIDE_SELL,funds = round(btc_balance*0.25,5))
+            st.session_state.trade_exec_at = last_avg_df.name
+            print(f"SELL ORDER executed for {st.session_state.trade_exec_at} for {round(btc_balance*0.25,5)} at {datetime.now()}")
         except Exception as e:
-            print(e.status_code)
             print(e.message)
-                
+    
+
+
+def get_last_orders():
     last_orders = kMainClient.get_orders(symbol='BTC-USDT')
     d = []
     for i in last_orders["items"]:
@@ -50,6 +53,7 @@ def trade(avg):
         
     df = pd.DataFrame(data=d,columns=["time","symbol","side","size","funds","fee","isActive","cancelExist","id"])
     return df 
+
 
 def getminutedata(symbol,interval, lookback):
     if interval == 60:

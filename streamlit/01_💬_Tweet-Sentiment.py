@@ -6,7 +6,7 @@ from streamlit_autorefresh import st_autorefresh
 from words import get_signals
 from streamlit_data import get_Heroku_DB,calc_mean_sent,show_charts,split_DF_by_time,show_cake_diagram,resample_df
 from words import show_wordCloud,get_signal_by_keywords
-from financial_data import getminutedata,getDateData,trade
+from financial_data import getminutedata,getDateData,trade,get_last_orders
 from matplotlib.collections import LineCollection
 from matplotlib.colors import ListedColormap, BoundaryNorm
 import numpy as np
@@ -27,9 +27,7 @@ def loading_data_from_heroku_database():
         df,duplicates = get_Heroku_DB(today=False)
     elif lookback_timeframe <=24:
         df,duplicates = get_Heroku_DB(today=True)
-    print(f"Retrieved {df.shape[0]} new Items from Database...")
-    st.session_state['duplicates'] = duplicates
-    return df
+    return df,duplicates
 
 
  
@@ -47,19 +45,20 @@ with st.sidebar:
             )
     
 if "duplicates" not in st.session_state:
-    loading_data_from_heroku_database()
+    _, duplicates = get_Heroku_DB()
 
 
 #Get Dataframes
 #Convert Database to Dataframe
-df  = loading_data_from_heroku_database()
+df, duplicates  = loading_data_from_heroku_database()
+st.session_state['duplicates'] = duplicates
 #splits the DataFrame for each coin
 st.subheader(f"{date.today().strftime('%d-%m-%Y')} - Bitcoin")
 #gets dataframes for the past time specified in lookback_timeframe
 # past_btc_df_for_timerange = split_DF_by_time(df,lookback_timeframe)
 
 
-single_sent_scores_df,resampled_mean_tweetcount = resample_df(df,intervals,True,False)#(split_DF_by_time(df,lookback_timeframe),intervals,True)
+single_sent_scores_df,resampled_mean_tweetcount = resample_df(df, intervals, True, False)#(split_DF_by_time(df,lookback_timeframe),intervals,True)
 
 data = getminutedata("BTCUSDT",intervals,lookback_timeframe)
 
@@ -111,20 +110,31 @@ with col2:
 if not hide_Charts:
     show_charts(resampled_mean_tweetcount,data)
 
-if "last_trade_snapshot" not in st.session_state or resampled_mean_tweetcount.index[0] > st.session_state["last_trade_snapshot"] and resampled_mean_tweetcount["Total Tweets"].head(1)[0] > 100:
-    st.session_state["last_trade_snapshot"] = resampled_mean_tweetcount.index[0]
-    last_trade_snapshot = st.session_state["last_trade_snapshot"]
-    last_trades_df = trade(resampled_mean_tweetcount.head(1)["Avg"][0])
-    print(f"New trade for AVG at {last_trade_snapshot}.")
-    st.subheader("Last Trades")
-    st.dataframe(last_trades_df)
-else:
-    print("No new Avg. since last trade at:")
-    print(st.session_state["last_trade_snapshot"])
+# if "last_trade_snapshot" not in st.session_state or resampled_mean_tweetcount.index[0] > st.session_state["last_trade_snapshot"] and resampled_mean_tweetcount["Total Tweets"].head(1)[0] > 100:
+#     st.session_state["last_trade_snapshot"] = resampled_mean_tweetcount.index[0]
+#     last_trade_snapshot = st.session_state["last_trade_snapshot"]
+#     last_trades_df = trade(resampled_mean_tweetcount.head(1))
+#     last_trades_df = trade(resampled_mean_tweetcount.head(1))
+#     print(f"New trade for AVG at {last_trade_snapshot}.")
+#     st.subheader("Last Trades")
+#     st.dataframe(last_trades_df)
+# else:
+#     print("No new Avg. since last trade at:")
+#     print(st.session_state["last_trade_snapshot"])
 
+second_last_avg = resampled_mean_tweetcount.head(2).iloc[1]
+print("second last avg time:")
+print(second_last_avg.name)
+# if 'trade_exec' not in st.session_state:
+#     st.session_state.trade_exec = False
+#st.session_state.trade_exec_at = resampled_mean_tweetcount.head(3).iloc[2].name
+if 'trade_exec_at' not in st.session_state:
+    st.session_state.trade_exec_at = resampled_mean_tweetcount.head(3).iloc[2].name
+if second_last_avg.name > st.session_state.trade_exec_at:
+    print(f"Got new Avg: Starting Trade for {second_last_avg.name}")
+    trade_df = trade(second_last_avg)
 
-
-
-
+st.dataframe(get_last_orders())
+st.session_state
 
 
