@@ -9,7 +9,7 @@ class Tweet(Base):
     __tablename__ = "tweet_data"
     __table_args__ = {'extend_existing': True}
     id = Column(Integer, primary_key=True)
-    body = Column(String(2000), nullable=False)
+    body = Column(String(5000), nullable=False)
     keyword = Column(String(256), nullable=False)
     tweet_date = Column(DateTime, nullable=False)
     location = Column(String(100))

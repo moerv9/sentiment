@@ -30,7 +30,7 @@ def loading_data_from_heroku_database():
     return df,duplicates
 
 
- 
+
 with st.sidebar:
     st.info("Turn on Darkmode in upper right settings!")
     hide_Wordcloud_and_TweetSent = st.checkbox(label="Hide Tweet Analysis",value=True)

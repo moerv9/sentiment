@@ -36,7 +36,6 @@ def session_scope():
     try:
         yield session
         session.commit()
-        print("Session commited")
     except:
         session.rollback()
         raise 

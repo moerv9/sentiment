@@ -5,7 +5,7 @@ from matplotlib.collections import LineCollection
 from matplotlib.colors import ListedColormap, BoundaryNorm
 import pandas as pd
 import numpy as np
-from sqlalchemy import create_engine
+
 import os
 import logging
 from datetime import date, time, timedelta,datetime
@@ -130,7 +130,7 @@ def resample_df(df,time_range, filter_neutral=False,by_day=True):
         count_tweets = df.resample(f"D").count()
         mean_df = df.resample(f"D").mean().sort_index(ascending=False)
     elif by_day == False:
-        count_tweets = df.resample(f"{time_range}T").count()#count Tweets
+        count_tweets = df.resample(f"1H").count()#count Tweets
         mean_df = df.resample(f"{time_range}T").mean().sort_index(ascending=False)
     count_tweets.rename(columns={"Sentiment Score" : "Total Tweets"},inplace=True)
     

@@ -5,9 +5,9 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from datetime import datetime, timedelta
 from time import sleep
 from collections import defaultdict
-from Tweet_Data.database import init_db, session_scope
+from Database.database import init_db, session_scope
 from filter import check_blacklist,cleanTweets,check_duplicates
-from Tweet_Data.Tweet import Tweet
+from Database.Tweet import Tweet
 import pandas as pd
 
 #Config
