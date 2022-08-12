@@ -113,8 +113,6 @@ class ConfigKucoin:
         self.KUCOIN_SUB_KEY = os.environ.get("KUCOIN_SUB_KEY")
         self.KUCOIN_SUB_SECRET = os.environ.get("KUCOIN_SUB_SECRET")
         self.KUCOIN_SUB_PASS = os.environ.get("KUCOIN_SUB_PASS")
-        print(os.environ.get("KUCOIN_API_KEY"))
-        print(type(os.environ.get("KUCOIN_API_KEY")))
         # s3_handler = S3Connection(
         #     os.environ.get("KUCOIN_API_KEY"),
         #     os.environ.get("KUCOIN_SECRET"),

@@ -10,7 +10,7 @@ class Trade_Table(Base):
     __tablename__ = "trade_data"
     __table_args__ = {'extend_existing': True}
     id = Column(Integer, primary_key=True)
-    avgTime = Column(DateTime, nullable=False)
+    avgTime = Column(DateTime)
     avg = Column(Float, nullable=False)
     tradeAt = Column(DateTime, nullable=False)
     symbol = Column(String(50), nullable=False)
@@ -22,7 +22,7 @@ class Trade_Table(Base):
     btc_balance = Column(Float)
     
     def __init__(self, avgTime, avg, tradeAt, symbol, side, funds, fee, tradeId,usdt_balance,btc_balance):
-        self.avg_time = avgTime
+        self.avgTime = avgTime
         self.avg = avg
         self.tradeAt = tradeAt
         self.symbol = symbol 

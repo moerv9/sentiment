@@ -105,7 +105,7 @@ class LiveTrade():
         accounts = kMainClient.get_accounts(account_type = "trade")
         new_usdt_balance = float(accounts[0]["balance"])
         new_btc_balance = float(accounts[1]["balance"])
-        trade = Trade_Table(last_avg_df.name, last_avg_df["Avg"], time, symbol, side, funds, fee, order["orderId"], new_usdt_balance, new_btc_balance)
+        trade = Trade_Table(pd.to_datetime(self.trade_exec_at), last_avg_df["Avg"], time, symbol, side, funds, fee, order["orderId"], new_usdt_balance, new_btc_balance)
 
         with session_scope() as sess:
             sess.add(trade)
