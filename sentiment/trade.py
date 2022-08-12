@@ -103,9 +103,9 @@ class LiveTrade():
         for i in orders["items"]:
             if i["id"] == str(order["orderId"]):#order["orderId"]:
                 time = pd.to_datetime(i["createdAt"],unit="ms",utc=True) + timedelta(hours=2)
-                fee =  i["fee"]
+                fee =  float(i["fee"])
                 side =  i["side"]
-                fundss = i["funds"]
+                fundss = float(i["funds"])
         accounts = kSubClient.get_accounts(account_type = "trade")
         new_usdt_balance = float(accounts[0]["balance"])
         new_btc_balance = float(accounts[1]["balance"])
