@@ -18,10 +18,11 @@ class Trade_Table(Base):
     funds = Column(Float)
     fee = Column(Float)
     tradeId = Column(String(200),nullable=False)
+    acc = Column(String(10))
     usdt_balance = Column(Float)
     btc_balance = Column(Float)
     
-    def __init__(self, avgTime, avg, tradeAt, symbol, side, funds, fee, tradeId,usdt_balance,btc_balance):
+    def __init__(self, avgTime, avg, tradeAt, symbol, side, funds, fee, tradeId, acc, usdt_balance, btc_balance):
         self.avgTime = avgTime
         self.avg = avg
         self.tradeAt = tradeAt
@@ -30,5 +31,6 @@ class Trade_Table(Base):
         self.funds = funds
         self.fee = fee
         self.tradeId = tradeId
+        self.acc = acc
         self.usdt_balance = usdt_balance
         self.btc_balance = btc_balance

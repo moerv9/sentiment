@@ -74,14 +74,14 @@ class LiveTrade():
 
 
     def trade(self,last_avg_df):
-        accounts = kMainClient.get_accounts(account_type = "trade")
+        accounts = kSubClient.get_accounts(account_type = "trade")
         usdt_balance = float(accounts[0]["balance"])
         btc_balance = float(accounts[1]["balance"])
         symbol = "BTC-USDT"
         if last_avg_df["Avg"] >= 0.2 and usdt_balance > 20: #usdt_balance > 10 for subClient
             try:
-                funds = round(usdt_balance*0.00005,5)
-                order = kMainClient.create_market_order(symbol = symbol, side = kMainClient.SIDE_BUY, funds = funds) #usdt_balance * 0.05 for subclient
+                funds = round(usdt_balance*0.05,5) #0.00005
+                order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_BUY, funds = funds) #usdt_balance * 0.05 for subclient
                 self.trade_exec_at = last_avg_df.name
                 print(f"BUY ORDER executed for {self.trade_exec_at} for {funds} at {datetime.now()}")
             except Exception as e:
@@ -90,22 +90,25 @@ class LiveTrade():
         elif last_avg_df < 0.2 and btc_balance > 5: 
             try:
                 funds = round(btc_balance*0.25,5)
-                order = kMainClient.create_market_order(symbol = symbol, side = kMainClient.SIDE_SELL, funds = funds)
+                order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_SELL, funds = funds)
                 self.trade_exec_at = last_avg_df.name
                 print(f"SELL ORDER executed for {self.trade_exec_at} for {funds} at {datetime.now()}")
             except Exception as e:
                 print(e.message)
         sleep(10)
-        orders = kMainClient.get_orders(symbol='BTC-USDT')
+        orders = kSubClient.get_orders(symbol='BTC-USDT')
         for i in orders["items"]:
             if i["id"] == str(order["orderId"]):#order["orderId"]:
                 time = pd.to_datetime(i["createdAt"],unit="ms",utc=True) + timedelta(hours=2)
                 fee =  i["fee"]
                 side =  i["side"]
-        accounts = kMainClient.get_accounts(account_type = "trade")
+                fundss = i["funds"]
+        accounts = kSubClient.get_accounts(account_type = "trade")
+        acc = "Sub"
         new_usdt_balance = float(accounts[0]["balance"])
         new_btc_balance = float(accounts[1]["balance"])
-        trade = Trade_Table(pd.to_datetime(self.trade_exec_at), last_avg_df["Avg"], time, symbol, side, funds, fee, order["orderId"], new_usdt_balance, new_btc_balance)
+    
+        trade = Trade_Table(pd.to_datetime(self.trade_exec_at), last_avg_df["Avg"], time, symbol, side, fundss, fee, order["orderId"], acc, new_usdt_balance, new_btc_balance)
 
         with session_scope() as sess:
             sess.add(trade)
@@ -114,8 +117,7 @@ class LiveTrade():
     def trade_main(self):
         df = self.get_Heroku_DB(True)
         second_last_avg = df.head(2).iloc[1]
-        print("Second last avg time:")
-        print(second_last_avg.name) 
+
         if self.first_trade:
             self.trade_exec_at = df.head(3).iloc[2].name
             self.trade(second_last_avg)
@@ -125,10 +127,12 @@ class LiveTrade():
         elif second_last_avg.name > self.trade_exec_at:#.strftime("%Y-%m-%d %H:%m:%S"):
             print(f"Got new Avg: Starting Trade for {second_last_avg.name}")
             self.trade(second_last_avg)
+        else:
+            print(f"Trade already made for {second_last_avg.name}")
             
 
     #Method for schedule task execution
-    def schedule(self,interval=0.5):
+    def schedule(self,interval = 10):
             schedule.every(interval).minutes.do(self.trade_main)
             while True:
                 schedule.run_pending()
