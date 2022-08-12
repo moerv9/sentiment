@@ -75,8 +75,11 @@ class LiveTrade():
 
     def trade(self,last_avg_df):
         accounts = kSubClient.get_accounts(account_type = "trade")
-        usdt_balance = float(accounts[0]["balance"])
-        btc_balance = float(accounts[1]["balance"])
+        if len(accounts) == 2:
+            usdt_balance = float(accounts[0]["balance"])
+            btc_balance = float(accounts[1]["balance"])
+        elif len(accounts) == 1:
+            usdt_balance = float(accounts[0]["balance"])
         symbol = "BTC-USDT"
         if last_avg_df["Avg"] >= 0.2 and usdt_balance > 20: #usdt_balance > 10 for subClient
             try:
@@ -87,7 +90,7 @@ class LiveTrade():
             except Exception as e:
                 print(e.status_code)
                 print(e.message)
-        elif last_avg_df < 0.2 and btc_balance > 5: 
+        elif last_avg_df < 0.2 and btc_balance > 5 and len(accounts) != 1: 
             try:
                 funds = round(btc_balance*0.25,5)
                 order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_SELL, funds = funds)
