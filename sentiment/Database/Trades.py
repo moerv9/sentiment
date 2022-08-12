@@ -15,9 +15,9 @@ class Trade_Table(Base):
     tradeAt = Column(DateTime, nullable=False)
     symbol = Column(String(50), nullable=False)
     side = Column(String(10))
-    funds = Column(Integer)
+    funds = Column(Float)
     fee = Column(Float)
-    tradeId = Column(String,nullable=False)
+    tradeId = Column(String(200),nullable=False)
     usdt_balance = Column(Float)
     btc_balance = Column(Float)
     
