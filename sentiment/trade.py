@@ -20,6 +20,7 @@ logger = logging.getLogger(__name__)
 
 class LiveTrade():
     def __init__(self) -> None:
+        print("Trade Class initialised.")
         # dt = datetime.now() - timedelta(hours = 3)
         # dt = dt.replace(tzinfo=timezone.utc)
         # self.trade_exec_at = dt
@@ -127,7 +128,7 @@ class LiveTrade():
             
 
     #Method for schedule task execution
-    def schedule(self,interval=5):
+    def schedule(self,interval=0.5):
             schedule.every(interval).minutes.do(self.trade_main)
             while True:
                 schedule.run_pending()

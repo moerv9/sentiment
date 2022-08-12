@@ -11,7 +11,13 @@ s3_handler = S3Connection(
     os.environ['API_SECRET'],
     os.environ['ACCESS_TOKEN'],
     os.environ['ACCESS_SECRET'],
-    os.environ['DB_URL']
+    os.environ['DB_URL'],
+    os.environ["KUCOIN_API_KEY"],
+    os.environ["KUCOIN_SECRET"],
+    os.environ["KUCOIN_PASS"],
+    os.environ["KUCOIN_SUB_KEY"],
+    os.environ["KUCOIN_SUB_SECRET"],
+    os.environ["KUCOIN_SUB_PASS"],
     )
 
 # Get Twitter API Token and Secret
