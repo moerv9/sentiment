@@ -128,11 +128,11 @@ print(second_last_avg.name)
 # if 'trade_exec' not in st.session_state:
 #     st.session_state.trade_exec = False
 #st.session_state.trade_exec_at = resampled_mean_tweetcount.head(3).iloc[2].name
-if 'trade_exec_at' not in st.session_state:
-    st.session_state.trade_exec_at = resampled_mean_tweetcount.head(3).iloc[2].name
-if second_last_avg.name > st.session_state.trade_exec_at:
-    print(f"Got new Avg: Starting Trade for {second_last_avg.name}")
-    trade_df = trade(second_last_avg)
+# if 'trade_exec_at' not in st.session_state:
+#     st.session_state.trade_exec_at = resampled_mean_tweetcount.head(3).iloc[2].name
+# if second_last_avg.name > st.session_state.trade_exec_at:
+#     print(f"Got new Avg: Starting Trade for {second_last_avg.name}")
+#     trade_df = trade(second_last_avg)
 
 st.dataframe(get_last_orders())
 st.session_state
