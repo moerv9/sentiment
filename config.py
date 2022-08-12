@@ -6,19 +6,19 @@ import logging
 logger = logging.getLogger(__name__)
 from boto.s3.connection import S3Connection
 
-s3_handler = S3Connection(
-    os.environ['API_KEY'],
-    os.environ['API_SECRET'],
-    os.environ['ACCESS_TOKEN'],
-    os.environ['ACCESS_SECRET'],
-    os.environ['DB_URL'],
-    os.environ["KUCOIN_API_KEY"],
-    os.environ["KUCOIN_SECRET"],
-    os.environ["KUCOIN_PASS"],
-    os.environ["KUCOIN_SUB_KEY"],
-    os.environ["KUCOIN_SUB_SECRET"],
-    os.environ["KUCOIN_SUB_PASS"],
-    )
+# s3_handler = S3Connection(
+#     os.environ['API_KEY'],
+#     os.environ['API_SECRET'],
+#     os.environ['ACCESS_TOKEN'],
+#     os.environ['ACCESS_SECRET'],
+#     os.environ['DB_URL'],
+#     os.environ.get("KUCOIN_API_KEY"),
+#     os.environ.get("KUCOIN_SECRET"),
+#     os.environ.get("KUCOIN_PASS"),
+#     os.environ.get("KUCOIN_SUB_KEY"),
+#     os.environ.get("KUCOIN_SUB_SECRET"),
+#     os.environ.get("KUCOIN_SUB_PASS"),
+#     )
 
 # Get Twitter API Token and Secret
 class Config():
@@ -28,6 +28,11 @@ class Config():
             self.BEARER_TOKEN = os.getenv('BEARER_TOKEN')
             self.ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
             self.ACCESS_SECRET = os.getenv('ACCESS_SECRET')
+            # s3_handler = S3Connection(
+            #     os.environ['API_KEY'],
+            #     os.environ['API_SECRET'],
+            #     os.environ['ACCESS_TOKEN'],
+            #     os.environ['ACCESS_SECRET'])
             self.create_api("auth1")
         
     def create_api(self,bearer_token):
@@ -81,6 +86,7 @@ class ConfigDB:
         PASS = os.environ.get("DB_PASS")
         HOST = os.environ.get("DB_HOST")
         self.DB_URL = os.environ.get("DB_URL")
+        # s3_handler = S3Connection(os.environ['DB_URL'],)
 
 # Config for Binance API
 class ConfigBinance:
@@ -107,6 +113,16 @@ class ConfigKucoin:
         self.KUCOIN_SUB_KEY = os.environ.get("KUCOIN_SUB_KEY")
         self.KUCOIN_SUB_SECRET = os.environ.get("KUCOIN_SUB_SECRET")
         self.KUCOIN_SUB_PASS = os.environ.get("KUCOIN_SUB_PASS")
+        print(os.environ.get("KUCOIN_API_KEY"))
+        print(type(os.environ.get("KUCOIN_API_KEY")))
+        # s3_handler = S3Connection(
+        #     os.environ.get("KUCOIN_API_KEY"),
+        #     os.environ.get("KUCOIN_SECRET"),
+        #     os.environ.get("KUCOIN_PASS"),
+        #     os.environ.get("KUCOIN_SUB_KEY"),
+        #     os.environ.get("KUCOIN_SUB_SECRET"),
+        #     os.environ.get("KUCOIN_SUB_PASS"))
+        
 
 '''
 # Test for getting the Tokens
