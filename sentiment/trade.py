@@ -126,7 +126,7 @@ class LiveTrade():
             
 
     #Method for schedule task execution
-    def schedule(self,interval = 0.5):
+    def schedule(self,interval = 20):
             schedule.every(interval).minutes.do(self.trade_main)
             while True:
                 schedule.run_pending()
