@@ -85,7 +85,7 @@ class LiveTrade():
                 print(f"BUY ORDER executed with {funds} at {datetime.now()}")
             except Exception as e:
                 print(e.message)
-        elif last_avg_df < 0.2 and btc_balance > 5 and len(accounts) != 1: 
+        elif last_avg_df["avg"] < 0.2 and btc_balance > 5 and len(accounts) != 1: 
             try:
                 funds = round(btc_balance*0.25,5)
                 order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_SELL, funds = funds)
@@ -104,7 +104,7 @@ class LiveTrade():
         new_usdt_balance = float(accounts[0]["balance"])
         new_btc_balance = float(accounts[1]["balance"])
         print(f"New Balances: {new_usdt_balance} $ and {new_btc_balance} btc.")
-        trade = Trade_Table(pd.to_datetime(self.trade_exec_at), last_avg_df["Avg"], time, symbol, side, fundss, fee, order["orderId"], new_usdt_balance, new_btc_balance)
+        trade = Trade_Table(pd.to_datetime(last_avg_df.name), last_avg_df["Avg"], time, symbol, side, fundss, fee, order["orderId"], new_usdt_balance, new_btc_balance)
 
         with session_scope() as sess:
             sess.add(trade)
