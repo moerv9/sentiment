@@ -4,9 +4,9 @@ import os, logging
 import streamlit as st
 from streamlit_autorefresh import st_autorefresh
 from words import get_signals
-from streamlit_data import get_Heroku_DB,calc_mean_sent,show_charts,split_DF_by_time,show_cake_diagram,resample_df
+from streamlit_data import get_Heroku_DB,calc_mean_sent,show_charts,split_DF_by_time,show_cake_diagram,resample_df, get_trades_Heroku
 from words import show_wordCloud,get_signal_by_keywords
-from financial_data import getminutedata,getDateData,trade,get_last_orders
+from financial_data import getminutedata,getDateData,trade
 from matplotlib.collections import LineCollection
 from matplotlib.colors import ListedColormap, BoundaryNorm
 import numpy as np
@@ -134,7 +134,8 @@ print(second_last_avg.name)
 #     print(f"Got new Avg: Starting Trade for {second_last_avg.name}")
 #     trade_df = trade(second_last_avg)
 
-st.dataframe(get_last_orders())
-st.session_state
+st.subheader("Last Trades for Kucoin Sub-Account")
+sub_trades = get_trades_Heroku()
+st.dataframe(sub_trades)
 
 

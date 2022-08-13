@@ -53,8 +53,8 @@ def split_DF_by_time(df,time_frame):
     df = df.loc[mask]
     return df
 
+conn = psycopg2.connect(DB_URL, sslmode="require")
 def get_Heroku_DB(today=True):
-    conn = psycopg2.connect(DB_URL, sslmode="require")
     if today:
         limit=60000
         logger.info("Getting data from Today")
@@ -85,6 +85,11 @@ def get_Heroku_DB(today=True):
 
     print(f"Deleted {len(duplicates)} duplicates from a total of {rows}")
     return df, len(duplicates)
+
+def get_trades_Heroku():
+    query = "select * from trade_data where id > 6"
+    df = pd.read_sql(query,conn)
+    return df
 
 
 def calc_mean_sent(df, min_range,filter_neutral=False):
