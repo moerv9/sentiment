@@ -115,8 +115,8 @@ class StreamListener(tweepy.Stream):
                     #print(f"Total Tweets filtered: {self.amount_filtered}") 
                     #To check randomly what tweet is inserted to the DB at what time
                     tweet_time = status.created_at.strftime("%Y-%m-%d %H:%M:%S %Z:%z")
-                    if self.amount_filtered %6 == 0:
-                        print(f"Tweet: '{items[0]}' (Time: {tweet_time}) inserted at localtime: {time_now}. User has {items[5]} followers.")
+                    # if self.amount_filtered %6 == 0:
+                    #     print(f"Tweet: '{items[0]}' (Time: {tweet_time}) inserted at localtime: {time_now}. User has {items[5]} followers.")
                     #self.tweet_list = []
                 self.amount_filtered = 0
 

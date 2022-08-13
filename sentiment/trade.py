@@ -4,7 +4,7 @@ import numpy as np
 import psycopg2
 import logging, os, schedule
 from datetime import datetime, timedelta,timezone
-from Database.Trades import Trade_Table
+from Database.Trade import Trade_Table
 from Database.database import session_scope
 from kucoin.client import Client as kucoinClient
 
@@ -18,17 +18,17 @@ kMainClient = kucoinClient(kconf.KUCOIN_KEY, kconf.KUCOIN_SECRET,kconf.KUCOIN_PA
 
 logger = logging.getLogger(__name__)
 
+conn = psycopg2.connect(DB_URL, sslmode="require")
+
 class LiveTrade():
     def __init__(self) -> None:
         print("Trade Class initialised.")
         # dt = datetime.now() - timedelta(hours = 3)
         # dt = dt.replace(tzinfo=timezone.utc)
         # self.trade_exec_at = dt
-        self.first_trade = True
         self.schedule(1)
 
     def get_Heroku_DB(self, today=True):
-        conn = psycopg2.connect(DB_URL, sslmode="require")
         if today:
             limit=100000
             print("Getting data from Today")
@@ -85,7 +85,6 @@ class LiveTrade():
             try:
                 funds = round(usdt_balance*0.05,5) #0.00005
                 order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_BUY, funds = funds) #usdt_balance * 0.05 for subclient
-                self.trade_exec_at = last_avg_df.name
                 print(f"BUY ORDER executed for {self.trade_exec_at} for {funds} at {datetime.now()}")
             except Exception as e:
                 print(e.status_code)
@@ -94,7 +93,6 @@ class LiveTrade():
             try:
                 funds = round(btc_balance*0.25,5)
                 order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_SELL, funds = funds)
-                self.trade_exec_at = last_avg_df.name
                 print(f"SELL ORDER executed for {self.trade_exec_at} for {funds} at {datetime.now()}")
             except Exception as e:
                 print(e.message)
@@ -119,14 +117,11 @@ class LiveTrade():
     def trade_main(self):
         df = self.get_Heroku_DB(True)
         second_last_avg = df.head(2).iloc[1]
+        query = "select * from trade_data where id > 6 order by id desc limit 1;"
+        df_trades = pd.read_sql(query, conn)
+        last_trade_time = df_trades["avgTime"][0]
 
-        if self.first_trade:
-            self.trade_exec_at = df.head(3).iloc[2].name
-            self.trade(second_last_avg)
-            self.first_trade = False
-            print("Trade_Exec_At")
-            print(self.trade_exec_at)
-        elif second_last_avg.name > self.trade_exec_at:#.strftime("%Y-%m-%d %H:%m:%S"):
+        if second_last_avg.name > last_trade_time:#.strftime("%Y-%m-%d %H:%m:%S"):
             print(f"Got new Avg: Starting Trade for {second_last_avg.name}")
             self.trade(second_last_avg)
         else:
@@ -134,7 +129,7 @@ class LiveTrade():
             
 
     #Method for schedule task execution
-    def schedule(self,interval = 10):
+    def schedule(self,interval = 0.5):
             schedule.every(interval).minutes.do(self.trade_main)
             while True:
                 schedule.run_pending()
