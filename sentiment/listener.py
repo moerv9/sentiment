@@ -42,7 +42,7 @@ class StreamListener(tweepy.Stream):
         Args:
             status (Status): Received Status
         """
-        sleep(0.2)
+        sleep(0.5)
         # Ignore Tweets from Users who only exist for under 60 days. 
         # 60 days = 2 months is pretty high but this really ensures no bots are included (hopefully)
         tz_info = status.user.created_at.tzinfo #gets the timezone 
@@ -80,7 +80,7 @@ class StreamListener(tweepy.Stream):
         # Ignore tweets which do not contain the keyword
         keyword = self.keyword_obj.check_keyword(text)
         if keyword == None:
-            print(f"No Keyword in '{text}'. Ignored.")
+            #print(f"No Keyword in '{text}'. Ignored.")
             self.amount_filtered +=1
             return
         else:
@@ -112,7 +112,7 @@ class StreamListener(tweepy.Stream):
                     sess.add(tweet)
                     #sess.commit()
                     time_now = datetime.now().strftime("%Y-%m-%d %H:%M")
-                    #print(f"Total Tweets filtered: {self.amount_filtered}") 
+                    print(f"Total Tweets filtered: {self.amount_filtered}") 
                     #To check randomly what tweet is inserted to the DB at what time
                     tweet_time = status.created_at.strftime("%Y-%m-%d %H:%M:%S %Z:%z")
                     # if self.amount_filtered %6 == 0:

@@ -87,7 +87,6 @@ class LiveTrade():
                 order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_BUY, funds = funds) #usdt_balance * 0.05 for subclient
                 print(f"BUY ORDER executed for {self.trade_exec_at} for {funds} at {datetime.now()}")
             except Exception as e:
-                print(e.status_code)
                 print(e.message)
         elif last_avg_df < 0.2 and btc_balance > 5 and len(accounts) != 1: 
             try:
