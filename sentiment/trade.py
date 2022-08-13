@@ -23,9 +23,6 @@ conn = psycopg2.connect(DB_URL, sslmode="require")
 class LiveTrade():
     def __init__(self) -> None:
         print("Trade Class initialised.")
-        # dt = datetime.now() - timedelta(hours = 3)
-        # dt = dt.replace(tzinfo=timezone.utc)
-        # self.trade_exec_at = dt
         self.schedule(1)
 
     def get_Heroku_DB(self, today=True):
@@ -85,14 +82,14 @@ class LiveTrade():
             try:
                 funds = round(usdt_balance*0.05,5) #0.00005
                 order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_BUY, funds = funds) #usdt_balance * 0.05 for subclient
-                print(f"BUY ORDER executed for {self.trade_exec_at} for {funds} at {datetime.now()}")
+                print(f"BUY ORDER executed with {funds} at {datetime.now()}")
             except Exception as e:
                 print(e.message)
         elif last_avg_df < 0.2 and btc_balance > 5 and len(accounts) != 1: 
             try:
                 funds = round(btc_balance*0.25,5)
                 order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_SELL, funds = funds)
-                print(f"SELL ORDER executed for {self.trade_exec_at} for {funds} at {datetime.now()}")
+                print(f"SELL ORDER executed with {funds} at {datetime.now()}")
             except Exception as e:
                 print(e.message)
         sleep(10)
@@ -106,7 +103,7 @@ class LiveTrade():
         accounts = kSubClient.get_accounts(account_type = "trade")
         new_usdt_balance = float(accounts[0]["balance"])
         new_btc_balance = float(accounts[1]["balance"])
-    
+        print(f"New Balances: {new_usdt_balance} $ and {new_btc_balance} btc.")
         trade = Trade_Table(pd.to_datetime(self.trade_exec_at), last_avg_df["Avg"], time, symbol, side, fundss, fee, order["orderId"], new_usdt_balance, new_btc_balance)
 
         with session_scope() as sess:
@@ -119,9 +116,10 @@ class LiveTrade():
         query = "select * from trade_data where id > 6 order by id desc limit 1;"
         df_trades = pd.read_sql(query, conn)
         last_trade_time = df_trades["avgTime"][0]
-
+        print(f"Check if a trade exists for {second_last_avg.name}")
+        print(f"Last Trade at: {last_trade_time}")
         if second_last_avg.name > last_trade_time:#.strftime("%Y-%m-%d %H:%m:%S"):
-            print(f"Got new Avg: Starting Trade for {second_last_avg.name}")
+            print(f"No Trade. Starting Trade for {second_last_avg.name}")
             self.trade(second_last_avg)
         else:
             print(f"Trade already made for {second_last_avg.name}")
