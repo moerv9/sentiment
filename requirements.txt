@@ -24,3 +24,4 @@ postgres
 multidict
 python-binance
 python-kucoin
+APScheduler==3.0.0

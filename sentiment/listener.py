@@ -22,7 +22,6 @@ from sqlalchemy import select,table,column
 # %% [markdown]
 # ### Class: Real-Time Listener for Tweets
 # %%
-#TODO: Add my own sentiment analysis -> blob and ML
 class StreamListener(tweepy.Stream):
     def __init__(self,api_key, api_secret, access_token, access_secret, keyword_obj):
         super().__init__(api_key, api_secret, access_token, access_secret) #Init Twitter API
@@ -112,9 +111,11 @@ class StreamListener(tweepy.Stream):
                     sess.add(tweet)
                     #sess.commit()
                     time_now = datetime.now().strftime("%Y-%m-%d %H:%M")
-                    print(f"Total Tweets filtered: {self.amount_filtered}") 
+                    
+                    #print(f"Total Tweets filtered: {self.amount_filtered}") 
+
                     #To check randomly what tweet is inserted to the DB at what time
-                    tweet_time = status.created_at.strftime("%Y-%m-%d %H:%M:%S %Z:%z")
+                    #tweet_time = status.created_at.strftime("%Y-%m-%d %H:%M:%S %Z:%z")
                     # if self.amount_filtered %6 == 0:
                     #     print(f"Tweet: '{items[0]}' (Time: {tweet_time}) inserted at localtime: {time_now}. User has {items[5]} followers.")
                     #self.tweet_list = []
@@ -133,6 +134,6 @@ class StreamListener(tweepy.Stream):
     # Twitter API Error
     def on_error(self,status_code):
         if status_code == 420:
-            logger.warning("Streamlimit reached. Closing stream...")
+            print("Streamlimit reached. Closing stream...")
             return False
-        logger.warning(f"Streaming error (status code {status_code})")
+        print(f"Streaming error (status code {status_code})")

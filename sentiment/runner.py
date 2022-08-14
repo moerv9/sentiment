@@ -12,7 +12,6 @@ from keywords import Keywords
 from datetime import datetime,date, time 
 from IPython.display import display
 from Database.exporter import Export
-from trade import LiveTrade
 
 # Logging
 # Changed this to "sentiment/Logs" for heroku. normally would just say "Logs"
@@ -46,7 +45,7 @@ class Runner():
         listener = StreamListener(newconf.getKeys()[0],newconf.getKeys()[1],newconf.getKeys()[2],newconf.getKeys()[3],keyword_obj)
         listener.filter(track = keyword_obj.keyword_lst, languages=["en"], threaded = True)
         print("Listening to tweets now...")
-        LiveTrade()
+        
         #Uncomment for local export
         #Export(listener, export_interval)
         
