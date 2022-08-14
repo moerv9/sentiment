@@ -60,11 +60,15 @@ def get_Heroku_DB():
 
 def trade(last_avg_df):
     accounts = kSubClient.get_accounts(account_type = "trade")
+    print("Sent Avg: {}".format(last_avg_df["Avg"]))
     if len(accounts) == 2:
         usdt_balance = float(accounts[0]["balance"])
         btc_balance = float(accounts[1]["balance"])
+        print(f"USDT Balance: {usdt_balance} $")
+        print(f"BTC Balance: {btc_balance}")
     elif len(accounts) == 1:
         usdt_balance = float(accounts[0]["balance"])
+        print(f"USDT Balance: {usdt_balance} $")
     symbol = "BTC-USDT"
     if last_avg_df["Avg"] >= 0.2 and usdt_balance > 20: #usdt_balance > 10 for subClient
         try:
@@ -72,14 +76,17 @@ def trade(last_avg_df):
             order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_BUY, funds = funds) #usdt_balance * 0.05 for subclient
             print(f"BUY ORDER executed with {funds} at {datetime.now()}")
         except Exception as e:
-            print(e.message)
-    elif last_avg_df["avg"] < 0.2 and btc_balance > 5 and len(accounts) != 1: 
+            print(f"Exception: {e}")
+    elif last_avg_df["avg"] < 0.2 and btc_balance > 0.005 and len(accounts) != 1: 
         try:
             funds = round(btc_balance*0.25,5)
             order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_SELL, funds = funds)
             print(f"SELL ORDER executed with {funds} at {datetime.now()}")
         except Exception as e:
-            print(e.message)
+            print(f"Exception: {e}")
+    else:
+        print("Trade not fulfilled.")
+        print("Maybe there are not enough funds")
     sleep(10)
     orders = kSubClient.get_orders(symbol='BTC-USDT')
     for i in orders["items"]:
