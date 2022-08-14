@@ -1,6 +1,8 @@
 # Data Acquisition 
+</br>
 
 ## Retrieving and Processing of Tweets with the Twitter API
+The development phase starts with the acquisition of data from Twitter, as being stated in the *Must-Have*-Requirements (compare [[FR 10]](/2_Concept.md#must-have)).
 Instead of dealing with HTTP Requests, Data Serialisation and Rate Limits it is easier to use pre-built libraries to access the Twitter API and be able to focus more on building functionality. There are hundreds of different libraries, but I've found two to be standing out and compared them: Twint and Tweepy.
 
 | **Library**          | **Twint**                                                                   | **Tweepy**                                                                       |
@@ -51,6 +53,8 @@ If you are not scraping in the EU you are good to go.
 
 ---
 
+</br>
+
 ## Retrieving Tweets with Tweepy
 
 Using the [Stream](https://docs.tweepy.org/en/stable/stream.html) Class from Tweepy allows filtering and sampling of realtime Tweets with the Twitter API.
@@ -72,7 +76,7 @@ It also contains the method to search through each word in the tweet for the key
 
 </br>
 
----
+
 
 ### Tweet Metrics
 I am not only collecting the tweet but some other information/metrics about the tweet or the user: 
@@ -88,7 +92,7 @@ I am not only collecting the tweet but some other information/metrics about the 
 
 Using the Location to filter for different timezones, so it is possible to enable the bot at different places at different times. It would be more efficient to collect tweets p.e. from America when most people are awake and able to tweet and not asleep. The problem is that the Location is not automatically read and set by Twitter, but rather manually set by the user. This means it is nearly useless to filter it since some tweets are from *"Everywhere"* or from the *"Magic Internet Bank"*, as can be seen in the table above.
 
-For the tweet the timestamp, the found keyword and the calculated sentiment are included.
+For the tweet the timestamp, the found keyword and the calculated sentiment are included. More about sentiment in [this](/5_Sentiment.md) section.
 
 The information about the user includes their follower base, when the user was created and if they are verified. No personal information with which one can conclude the identity of the person is acquired.
 
@@ -98,8 +102,10 @@ These metrics are collected to filter the tweets, so we have more high quality d
 
 ---
 
+</br>
+
 ## Filter Tweets 
-The data needs to be as significant as it can be, which means we don't want Tweets from Bots in our list since they are repeating the same thing over and over and deflect the overall opinion.
+The data needs to be as significant as it can be, which means Tweets from Bots should not be included since they are deflecting the overall opinion by spreading the **exact** same opinion/tweet repeatedly. Applying filters is increasing the quality of the final product [FR 50].
 
 But what differentiates a tweet by a bot from a tweet by a human?
 1. Bots often retweet
@@ -135,7 +141,10 @@ After cleaning, it looks like this:
 </br>
 
 ---
-### Duplicates
+
+</br>
+
+## Duplicates
 The next thing is to find and delete all the duplicates:
 
 <img src=./img/sentiment/duplicatetweets.png width=900/>
@@ -158,5 +167,5 @@ Unfortunately this lead to the following problem:
 
 Firstly, even though this function found and deleted some duplicates nearly every time it was called, checking only 40 tweets at a time is not sufficient to delete **all** duplicates.
 
-When applying this function to the whole database, it deleted 17318 duplicates from a total of 32698. More than 50% duplicate Tweets is massive! This would've distorted the calculation of the sentiment significantly. 
+When applying this function to the whole database, it deleted 17318 duplicates from a total of 32698. More than 50% duplicate Tweets is massive! This would've deflected the calculation of the sentiment significantly. 
 This lead to the decision to apply the deletion of duplicates for the entire database before calculation of the sentiment.

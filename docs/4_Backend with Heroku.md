@@ -1,14 +1,13 @@
 # Backend with Heroku
 
-## Why Heroku?
 Tweepy uses two ways of searching for tweets: Searching through the history or listening to real-time tweets.
 One approach would be to schedule a task, p.e. for every hour, that searches the history of tweets and does the trading afterwards. However, after looking closer into the Documentation, it was discovered that the search service with the Twitter API doesn't show all available tweets. This would lead to incomplete data, which would deflect the strategy and therefore wasn't an option.
 
-When listening to real-time tweets, the python script needs to run the whole time in the background. It is no option to only run it on the local machine when it is intended to run for days or weeks. When the laptop is closed, the script stops running.
+When listening to real-time tweets, the python script needs to run the whole time in the background ([FR 80]). It is no option to only run it on the local machine when it is intended to run for days or weeks. When the laptop is closed, the script stops running.
 
 That is where cloud platforms as services come in handy. Today, most of the SaaS-products run in some sort of cloud since it is not very desirable for smaller companies to run and maintain servers for their clients when other bigger corporations such as Google, Amazon or Microsoft offer better, more scalable and cheaper services.
 
-For this project [Heroku](https://www.heroku.com/) was the used cloud provider, because it works well with Python, has a free tier available and an easy-to-use Postgres Add-On and GitHub Continuous Integration.
+For this project, [Heroku](https://www.heroku.com/) was used as the cloud provider, because it works well with Python, has a free tier available and an easy-to-use Postgres Database Add-On ([FR 70]) and GitHub Continuous Integration.
 
 Heroku works with containerization: Heroku automatically detects a change in the GitHub Repository and starts a new Deployment. Because this did not always work, it is still possible to manually deploy in the Heroku Dashboard or with the Heroku CLI.
 
@@ -27,7 +26,7 @@ In the free tier you have free 550 Dynos a month and each time a web service is 
 
 
 
-2. Add Heroku Postgres Add-On
+2. Add Heroku Postgres Database Add-On
 
 [Heroku Postgres Documentation](https://devcenter.heroku.com/articles/heroku-postgresql)
 3. Add Credentials from Postgres Settings to local .env file and Heroku config vars
