@@ -116,3 +116,4 @@ def trade_main():
         print(f"Exception at {datetime.now()}: {e}")
         
 
+trade_main()
