@@ -100,7 +100,7 @@ def trade(last_avg_df):
 
 def trade_main():
     try:
-        df =  get_Heroku_DB(True)
+        df =  get_Heroku_DB()
         second_last_avg = df.head(2).iloc[1]
         query = "select * from trade_data where id > 6 order by id desc limit 1;"
         df_trades = pd.read_sql(query, conn)
