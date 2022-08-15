@@ -13,7 +13,7 @@ import matplotlib.dates as mdates
 
 #Config
 import sys
-#sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
+sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
 from config import ConfigBinance,ConfigKucoin
 
 kconf = ConfigKucoin()

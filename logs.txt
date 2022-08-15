@@ -1,0 +1,1500 @@
+2022-08-13T20:12:41.513824+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:12:44.035778+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:12:46.547910+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:12:47.555597+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:12:48.563102+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:12:49.069753+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:12:50.580102+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:12:52.089481+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:12:53.599214+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:12:56.118526+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:12:58.138289+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:13:01.150393+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:13:02.159150+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:13:07.178969+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T20:13:09.691213+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:13:10.699279+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:13:11.206558+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:13:15.725666+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:13:20.745196+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T20:13:26.765817+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T20:13:27.273232+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:13:30.786771+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T20:13:33.300275+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:13:40.844431+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T20:13:43.357964+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:13:44.867966+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:13:49.389183+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:13:52.406216+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:13:54.420726+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:13:56.430529+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:14:00.957588+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:14:06.486229+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:14:14.019521+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T20:14:26.579555+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:14:28.596324+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:14:33.615032+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T20:14:35.627626+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:14:37.136344+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:14:39.148960+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:14:39.658502+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:14:50.194698+00:00 app[worker.1]: Total Tweets filtered: 20
+2022-08-13T20:14:52.712955+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:14:58.737880+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T20:15:00.749284+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:15:08.277332+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T20:15:12.293077+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:15:12.799845+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:15:14.310882+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:15:15.820777+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:15:17.832315+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:15:19.845790+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:15:21.355131+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:15:23.366273+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:15:25.876985+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:15:27.385681+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:15:28.895997+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:15:32.911084+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:15:39.946410+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T20:15:40.960283+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:15:41.468612+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:15:48.495152+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T20:16:05.544571+00:00 app[worker.1]: Total Tweets filtered: 33
+2022-08-13T20:16:11.568756+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T20:16:17.094736+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:16:19.111101+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:16:19.620998+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:16:27.161025+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T20:16:29.673757+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:16:42.219828+00:00 app[worker.1]: Total Tweets filtered: 24
+2022-08-13T20:16:42.725470+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:16:51.251487+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T20:16:56.773790+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:16:57.784204+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:17:06.309986+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T20:17:07.830909+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:17:08.337140+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:17:08.842925+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:17:11.856678+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:17:15.370078+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T20:17:36.946255+00:00 app[worker.1]: Total Tweets filtered: 42
+2022-08-13T20:17:47.986585+00:00 app[worker.1]: Total Tweets filtered: 21
+2022-08-13T20:17:48.994571+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:17:52.015632+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:17:53.529836+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:17:56.050467+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:18:00.573384+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:18:01.581271+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:18:14.623887+00:00 app[worker.1]: Total Tweets filtered: 25
+2022-08-13T20:18:21.663247+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T20:18:42.731874+00:00 app[worker.1]: Total Tweets filtered: 41
+2022-08-13T20:18:47.249305+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:18:49.261987+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:18:50.774130+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:18:51.280759+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:18:57.303885+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T20:19:00.819305+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T20:19:06.340022+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:19:08.852197+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:19:09.862744+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:19:13.379771+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T20:19:26.922743+00:00 app[worker.1]: Total Tweets filtered: 26
+2022-08-13T20:19:36.462237+00:00 app[worker.1]: Total Tweets filtered: 18
+2022-08-13T20:19:41.984637+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:19:44.496801+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:20:11.081152+00:00 app[worker.1]: Total Tweets filtered: 52
+2022-08-13T20:20:12.591569+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:20:20.140127+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T20:20:20.648231+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:20:24.171886+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T20:20:25.184611+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:20:35.743660+00:00 app[worker.1]: Total Tweets filtered: 20
+2022-08-13T20:20:40.784686+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T20:21:02.868932+00:00 app[worker.1]: Total Tweets filtered: 43
+2022-08-13T20:21:06.383484+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T20:21:09.898570+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T20:21:26.474677+00:00 app[worker.1]: Total Tweets filtered: 32
+2022-08-13T20:21:27.487492+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:21:37.023799+00:00 app[worker.1]: Total Tweets filtered: 18
+2022-08-13T20:21:39.541468+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:21:41.050763+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:21:45.569349+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:21:49.584989+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:22:14.666564+00:00 app[worker.1]: Total Tweets filtered: 49
+2022-08-13T20:22:18.682444+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:22:35.237401+00:00 app[worker.1]: Total Tweets filtered: 32
+2022-08-13T20:22:37.247597+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:22:39.761590+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:22:48.796885+00:00 app[worker.1]: Total Tweets filtered: 17
+2022-08-13T20:22:55.318180+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T20:23:04.350952+00:00 app[worker.1]: Total Tweets filtered: 17
+2022-08-13T20:23:05.867221+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:23:07.380682+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:23:10.396413+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:23:12.924633+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:23:27.482939+00:00 app[worker.1]: Total Tweets filtered: 28
+2022-08-13T20:23:29.494336+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:23:38.523148+00:00 app[worker.1]: Total Tweets filtered: 17
+2022-08-13T20:23:49.057247+00:00 app[worker.1]: Total Tweets filtered: 20
+2022-08-13T20:23:53.574795+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:23:55.587227+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:23:58.098165+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:23:59.607491+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:24:09.133876+00:00 app[worker.1]: Total Tweets filtered: 18
+2022-08-13T20:24:19.665659+00:00 app[worker.1]: Total Tweets filtered: 20
+2022-08-13T20:24:27.692989+00:00 app[worker.1]: Total Tweets filtered: 15
+2022-08-13T20:24:28.702687+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:24:53.772940+00:00 app[worker.1]: Total Tweets filtered: 49
+2022-08-13T20:24:54.782044+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:24:55.789195+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:24:56.798354+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:24:58.312649+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:24:58.819265+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:25:07.347956+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T20:25:09.864151+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:25:20.393895+00:00 app[worker.1]: Total Tweets filtered: 20
+2022-08-13T20:25:31.929668+00:00 app[worker.1]: Total Tweets filtered: 22
+2022-08-13T20:25:43.475110+00:00 app[worker.1]: Total Tweets filtered: 22
+2022-08-13T20:25:54.012234+00:00 app[worker.1]: Total Tweets filtered: 20
+2022-08-13T20:25:57.526678+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T20:25:59.538206+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:26:00.044589+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:26:05.063789+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T20:26:14.097615+00:00 app[worker.1]: Total Tweets filtered: 17
+2022-08-13T20:26:17.119483+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:26:37.683244+00:00 app[worker.1]: Total Tweets filtered: 40
+2022-08-13T20:26:38.693703+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:26:42.708091+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:26:43.214094+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:26:47.739259+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:26:48.247473+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:26:55.783417+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T20:26:57.798369+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:26:59.813162+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:27:05.334586+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:27:16.369758+00:00 app[worker.1]: Total Tweets filtered: 21
+2022-08-13T20:27:22.388091+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T20:27:30.422631+00:00 app[worker.1]: Total Tweets filtered: 15
+2022-08-13T20:27:38.449975+00:00 app[worker.1]: Total Tweets filtered: 15
+2022-08-13T20:27:49.488261+00:00 app[worker.1]: Total Tweets filtered: 21
+2022-08-13T20:27:58.015863+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T20:28:02.032012+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:28:03.038776+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:28:06.554155+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T20:28:17.090293+00:00 app[worker.1]: Total Tweets filtered: 20
+2022-08-13T20:28:32.636373+00:00 app[worker.1]: Total Tweets filtered: 30
+2022-08-13T20:28:48.181285+00:00 app[worker.1]: Total Tweets filtered: 30
+2022-08-13T20:28:54.704832+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T20:28:57.214498+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:28:59.225001+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:29:15.284474+00:00 app[worker.1]: Total Tweets filtered: 31
+2022-08-13T20:29:15.791245+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:29:18.805065+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:29:32.847452+00:00 app[worker.1]: Total Tweets filtered: 27
+2022-08-13T20:29:56.911391+00:00 app[worker.1]: Total Tweets filtered: 47
+2022-08-13T20:29:58.921838+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:30:07.949798+00:00 app[worker.1]: Total Tweets filtered: 17
+2022-08-13T20:30:13.968167+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T20:30:14.977790+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:30:23.520290+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T20:30:25.029105+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:30:26.541013+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:30:34.073167+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T20:30:38.597131+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:31:16.220237+00:00 app[worker.1]: Total Tweets filtered: 74
+2022-08-13T20:31:24.757904+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T20:31:25.264894+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:31:29.286329+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:31:33.299095+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:31:36.318039+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:32:04.914850+00:00 app[worker.1]: Total Tweets filtered: 56
+2022-08-13T20:32:08.937627+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:32:09.946037+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:32:13.963807+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:32:15.477780+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:32:16.990145+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:32:19.001654+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:32:47.115189+00:00 app[worker.1]: Total Tweets filtered: 55
+2022-08-13T20:32:48.125422+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:32:49.132809+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:32:50.642875+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:32:57.665431+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T20:32:59.680848+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:33:00.188802+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:33:03.203591+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:33:17.749836+00:00 app[worker.1]: Total Tweets filtered: 28
+2022-08-13T20:33:21.767765+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:34:01.381431+00:00 app[worker.1]: Total Tweets filtered: 78
+2022-08-13T20:34:07.905624+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T20:34:10.422333+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:34:11.431093+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:34:18.454781+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T20:34:20.464421+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:34:29.998022+00:00 app[worker.1]: Total Tweets filtered: 18
+2022-08-13T20:34:49.051683+00:00 app[worker.1]: Total Tweets filtered: 37
+2022-08-13T20:34:56.582096+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T20:35:02.102596+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:35:07.622983+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:35:09.635758+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:35:15.163277+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:35:17.691503+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:35:29.231809+00:00 app[worker.1]: Total Tweets filtered: 22
+2022-08-13T20:35:34.254603+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T20:35:46.792670+00:00 app[worker.1]: Total Tweets filtered: 24
+2022-08-13T20:35:50.809321+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:35:55.327709+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:35:57.842652+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:36:00.855844+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:36:07.883057+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T20:36:17.441182+00:00 app[worker.1]: Total Tweets filtered: 18
+2022-08-13T20:36:27.990665+00:00 app[worker.1]: Total Tweets filtered: 20
+2022-08-13T20:36:48.059030+00:00 app[worker.1]: Total Tweets filtered: 39
+2022-08-13T20:37:07.118899+00:00 app[worker.1]: Total Tweets filtered: 37
+2022-08-13T20:37:08.628514+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:37:14.651114+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T20:37:20.675504+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T20:37:22.686852+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:37:26.709564+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:37:27.719582+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:37:48.290912+00:00 app[worker.1]: Total Tweets filtered: 40
+2022-08-13T20:38:01.362072+00:00 app[worker.1]: Total Tweets filtered: 25
+2022-08-13T20:38:06.887411+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:38:08.402228+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:38:12.923627+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:38:20.452472+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T20:38:21.461226+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:38:24.477438+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:38:26.003468+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:38:34.027759+00:00 app[worker.1]: Total Tweets filtered: 15
+2022-08-13T20:38:52.587513+00:00 app[worker.1]: Total Tweets filtered: 36
+2022-08-13T20:39:03.124574+00:00 app[worker.1]: Total Tweets filtered: 20
+2022-08-13T20:39:08.648085+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:39:09.157626+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:39:17.702484+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T20:39:20.213184+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:39:24.226373+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:39:44.287116+00:00 app[worker.1]: Total Tweets filtered: 39
+2022-08-13T20:39:50.305471+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T20:39:53.325179+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:39:58.343960+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T20:40:10.882055+00:00 app[worker.1]: Total Tweets filtered: 24
+2022-08-13T20:40:12.400359+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:40:24.940194+00:00 app[worker.1]: Total Tweets filtered: 24
+2022-08-13T20:40:25.949202+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:40:37.000805+00:00 app[worker.1]: Total Tweets filtered: 21
+2022-08-13T20:40:38.017892+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:40:42.038184+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:40:44.052761+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:40:55.098132+00:00 app[worker.1]: Total Tweets filtered: 21
+2022-08-13T20:40:55.610548+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:40:58.125436+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:41:06.661487+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T20:41:09.678293+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:41:34.256791+00:00 app[worker.1]: Total Tweets filtered: 48
+2022-08-13T20:41:38.775137+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:41:40.786737+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:41:41.299487+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:41:43.815492+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:41:48.352376+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:41:48.862472+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:41:49.874923+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:42:06.436936+00:00 app[worker.1]: Total Tweets filtered: 32
+2022-08-13T20:42:19.490826+00:00 app[worker.1]: Total Tweets filtered: 25
+2022-08-13T20:42:24.009720+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:42:30.538552+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T20:42:32.045826+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:42:46.088343+00:00 app[worker.1]: Total Tweets filtered: 27
+2022-08-13T20:42:48.100329+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:42:54.621280+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T20:42:57.633467+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:43:04.662577+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T20:43:16.210836+00:00 app[worker.1]: Total Tweets filtered: 22
+2022-08-13T20:43:20.733961+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:43:22.242627+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:43:24.253226+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:43:24.761663+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:43:26.771731+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:43:30.786089+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:43:35.304185+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:43:37.818729+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:43:45.349218+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T20:43:53.881897+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T20:44:03.917923+00:00 app[worker.1]: Total Tweets filtered: 19
+2022-08-13T20:44:07.935853+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:44:16.474272+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T20:44:18.488609+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:44:28.525146+00:00 app[worker.1]: Total Tweets filtered: 19
+2022-08-13T20:44:31.540108+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:44:42.575155+00:00 app[worker.1]: Total Tweets filtered: 21
+2022-08-13T20:44:45.086535+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:45:07.652954+00:00 app[worker.1]: Total Tweets filtered: 44
+2022-08-13T20:45:09.162306+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:45:16.691764+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T20:45:19.201300+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:45:26.724569+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T20:45:30.244167+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T20:45:30.750577+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:45:36.270296+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:45:49.808823+00:00 app[worker.1]: Total Tweets filtered: 26
+2022-08-13T20:45:57.337265+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T20:46:04.363599+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T20:46:09.883251+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:46:10.390133+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:46:15.913588+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:46:17.924256+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:46:20.936463+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:46:27.457607+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T20:46:29.469942+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:46:40.007788+00:00 app[worker.1]: Total Tweets filtered: 20
+2022-08-13T20:46:41.018968+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:46:44.537672+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T20:46:56.578305+00:00 app[worker.1]: Total Tweets filtered: 23
+2022-08-13T20:47:03.607775+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T20:47:13.660463+00:00 app[worker.1]: Total Tweets filtered: 19
+2022-08-13T20:47:15.172538+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:47:25.715370+00:00 app[worker.1]: Total Tweets filtered: 20
+2022-08-13T20:47:27.223968+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:47:44.776424+00:00 app[worker.1]: Total Tweets filtered: 34
+2022-08-13T20:47:48.294622+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T20:47:49.302758+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:47:50.310968+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:48:11.376157+00:00 app[worker.1]: Total Tweets filtered: 41
+2022-08-13T20:48:13.387107+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:48:14.397331+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:48:19.916564+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:48:35.968062+00:00 app[worker.1]: Total Tweets filtered: 31
+2022-08-13T20:48:40.484982+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:48:46.503565+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T20:48:55.036790+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T20:49:07.089819+00:00 app[worker.1]: Total Tweets filtered: 23
+2022-08-13T20:49:21.132139+00:00 app[worker.1]: Total Tweets filtered: 27
+2022-08-13T20:49:23.142684+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:49:35.177214+00:00 app[worker.1]: Total Tweets filtered: 23
+2022-08-13T20:49:41.197537+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T20:49:48.720821+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T20:49:55.244673+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T20:49:58.760037+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T20:50:16.307632+00:00 app[worker.1]: Total Tweets filtered: 34
+2022-08-13T20:50:19.821284+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T20:50:24.837463+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T20:50:26.845952+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:50:28.356593+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:50:29.865830+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:50:30.872182+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:50:31.378250+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:50:31.883802+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:50:34.897344+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:50:35.906111+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:50:36.913909+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:50:37.923208+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:50:40.937074+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:50:43.451012+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:50:44.465088+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:50:51.490509+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T20:50:58.021173+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T20:51:04.052351+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T20:51:06.063752+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:51:21.110578+00:00 app[worker.1]: Total Tweets filtered: 29
+2022-08-13T20:51:26.630426+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:51:31.148178+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:51:32.664415+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:51:34.172923+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:51:50.747161+00:00 app[worker.1]: Total Tweets filtered: 32
+2022-08-13T20:51:52.759391+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:52:02.793426+00:00 app[worker.1]: Total Tweets filtered: 19
+2022-08-13T20:52:07.311730+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:52:08.821698+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:52:15.848924+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T20:52:27.383299+00:00 app[worker.1]: Total Tweets filtered: 22
+2022-08-13T20:52:31.400575+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:52:38.429170+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T20:52:44.448774+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T20:52:55.995297+00:00 app[worker.1]: Total Tweets filtered: 22
+2022-08-13T20:52:58.008347+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:52:59.519503+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:53:06.553680+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T20:53:08.062321+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:53:08.568260+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:53:20.604154+00:00 app[worker.1]: Total Tweets filtered: 23
+2022-08-13T20:53:21.112269+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:53:25.139451+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:53:54.750208+00:00 app[worker.1]: Total Tweets filtered: 58
+2022-08-13T20:53:55.758138+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:54:00.279150+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:54:01.291447+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:54:03.805303+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:54:24.870690+00:00 app[worker.1]: Total Tweets filtered: 41
+2022-08-13T20:54:26.892510+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:54:31.914942+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T20:54:33.923503+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:54:36.935839+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:54:39.448050+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:54:40.957985+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:54:42.469387+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:54:55.514623+00:00 app[worker.1]: Total Tweets filtered: 25
+2022-08-13T20:55:00.540221+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T20:55:04.557958+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:55:45.192009+00:00 app[worker.1]: Total Tweets filtered: 80
+2022-08-13T20:55:50.738729+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:55:53.753457+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T20:56:02.280543+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T20:56:06.294098+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T20:56:07.302910+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:56:26.353415+00:00 app[worker.1]: Total Tweets filtered: 37
+2022-08-13T20:56:28.361457+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T20:56:35.386624+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T20:56:46.421623+00:00 app[worker.1]: Total Tweets filtered: 21
+2022-08-13T20:56:56.450477+00:00 app[worker.1]: Total Tweets filtered: 19
+2022-08-13T20:57:00.970770+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:57:06.493341+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:57:09.005163+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:57:17.534472+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T20:57:19.046092+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T20:57:19.551865+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:57:20.058243+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:57:20.564386+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:57:31.611590+00:00 app[worker.1]: Total Tweets filtered: 21
+2022-08-13T20:57:37.129223+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:57:44.153539+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T20:57:53.181391+00:00 app[worker.1]: Total Tweets filtered: 17
+2022-08-13T20:57:53.688197+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:58:05.222349+00:00 app[worker.1]: Total Tweets filtered: 22
+2022-08-13T20:58:10.746124+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T20:58:18.280869+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T20:58:24.305442+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T20:58:25.314358+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T20:58:55.394272+00:00 app[worker.1]: Total Tweets filtered: 59
+2022-08-13T20:59:03.420942+00:00 app[worker.1]: Total Tweets filtered: 15
+2022-08-13T20:59:09.946294+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T20:59:14.464050+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:59:18.992466+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T20:59:21.504410+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T20:59:27.526833+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T20:59:44.578084+00:00 app[worker.1]: Total Tweets filtered: 33
+2022-08-13T20:59:45.085782+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T20:59:55.116783+00:00 app[worker.1]: Total Tweets filtered: 19
+2022-08-13T20:59:59.632700+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T21:00:01.144519+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:00:02.157039+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:00:06.678492+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T21:00:07.187551+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:00:08.199765+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:00:14.723490+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T21:00:15.232076+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:00:24.265807+00:00 app[worker.1]: Total Tweets filtered: 17
+2022-08-13T21:00:25.786371+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:00:28.306617+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:00:34.336934+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T21:00:35.852510+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:00:37.361475+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:00:39.873315+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:00:40.388271+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:00:47.421650+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T21:00:49.936691+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:00:53.968597+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:00:57.002546+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:00:58.519200+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:00:59.030951+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:01:00.040331+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:01:00.550618+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:01:01.060709+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:01:02.583015+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:01:13.155196+00:00 app[worker.1]: Total Tweets filtered: 20
+2022-08-13T21:01:18.207588+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:01:19.720300+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:01:29.281930+00:00 app[worker.1]: Total Tweets filtered: 18
+2022-08-13T21:01:35.833476+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T21:01:38.347821+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:01:45.390141+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T21:01:49.414426+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:01:49.923783+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:01:56.463246+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T21:02:07.019418+00:00 app[worker.1]: Total Tweets filtered: 20
+2022-08-13T21:02:09.033307+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:02:15.575198+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T21:02:37.154521+00:00 app[worker.1]: Total Tweets filtered: 42
+2022-08-13T21:02:44.693503+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T21:02:49.217735+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T21:02:54.747182+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:02:58.771850+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:03:10.821679+00:00 app[worker.1]: Total Tweets filtered: 23
+2022-08-13T21:03:17.853108+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T21:03:23.878759+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T21:03:25.899310+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:03:33.935958+00:00 app[worker.1]: Total Tweets filtered: 15
+2022-08-13T21:03:41.970207+00:00 app[worker.1]: Total Tweets filtered: 15
+2022-08-13T21:03:57.526527+00:00 app[worker.1]: Total Tweets filtered: 30
+2022-08-13T21:03:58.034921+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:04:09.568803+00:00 app[worker.1]: Total Tweets filtered: 22
+2022-08-13T21:04:20.604498+00:00 app[worker.1]: Total Tweets filtered: 21
+2022-08-13T21:04:23.616539+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:04:37.673761+00:00 app[worker.1]: Total Tweets filtered: 27
+2022-08-13T21:04:41.189603+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:04:42.197658+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:04:42.702877+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:04:49.728268+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T21:04:57.263219+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T21:04:59.781957+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:05:03.299686+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:05:08.318339+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:05:13.336606+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:05:15.356700+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:05:15.865796+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:05:33.914274+00:00 app[worker.1]: Total Tweets filtered: 35
+2022-08-13T21:05:34.421539+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:05:37.434655+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:05:38.943759+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:05:40.459364+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:05:42.973359+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:05:48.495274+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:05:49.001284+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:05:54.520093+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:05:55.026980+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:05:56.534829+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:05:57.040271+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:05:59.552396+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:06:05.574466+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T21:06:14.108395+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T21:06:16.122492+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:06:21.640834+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:06:24.155272+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:06:28.179667+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:06:29.690952+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:06:33.205773+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:06:34.216707+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:06:34.724745+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:06:37.241066+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:06:39.753585+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:06:44.277185+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T21:06:47.291394+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:06:48.301357+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:06:53.821980+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:06:59.355980+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:07:05.378710+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T21:07:07.390756+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:07:14.418729+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T21:07:17.934787+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:07:27.460671+00:00 app[worker.1]: Total Tweets filtered: 18
+2022-08-13T21:07:34.485640+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T21:07:35.496622+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:07:36.511235+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:07:44.040459+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T21:07:46.550135+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:07:51.066885+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T21:08:08.116782+00:00 app[worker.1]: Total Tweets filtered: 33
+2022-08-13T21:08:11.632096+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:08:12.139716+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:08:18.666980+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T21:08:30.206862+00:00 app[worker.1]: Total Tweets filtered: 22
+2022-08-13T21:08:34.226945+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:08:38.244326+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:08:45.276426+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T21:08:50.801377+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:09:00.861042+00:00 app[worker.1]: Total Tweets filtered: 19
+2022-08-13T21:09:12.416522+00:00 app[worker.1]: Total Tweets filtered: 22
+2022-08-13T21:09:12.927398+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:09:16.454794+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:09:18.473849+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:09:32.518152+00:00 app[worker.1]: Total Tweets filtered: 27
+2022-08-13T21:09:33.525249+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:09:47.063737+00:00 app[worker.1]: Total Tweets filtered: 26
+2022-08-13T21:09:59.099043+00:00 app[worker.1]: Total Tweets filtered: 23
+2022-08-13T21:10:02.112193+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:10:02.620122+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:10:05.635783+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:10:07.145113+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:10:07.653312+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:10:08.662956+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:10:09.171944+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:10:09.682460+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:10:10.190141+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:10:13.206103+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:10:15.217439+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:10:22.745687+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T21:10:23.251334+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:10:24.763478+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:10:25.270557+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:10:27.286019+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:10:29.307891+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:10:30.317363+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:10:30.829979+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:10:39.878127+00:00 app[worker.1]: Total Tweets filtered: 17
+2022-08-13T21:10:41.392701+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:10:53.926841+00:00 app[worker.1]: Total Tweets filtered: 24
+2022-08-13T21:10:54.934344+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:10:59.951233+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:11:03.466667+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:11:04.976153+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:11:05.984788+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:11:16.518172+00:00 app[worker.1]: Total Tweets filtered: 20
+2022-08-13T21:11:20.033456+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:11:26.067455+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T21:11:28.085149+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:11:30.605234+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:11:31.616628+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:11:54.186086+00:00 app[worker.1]: Total Tweets filtered: 44
+2022-08-13T21:11:57.201747+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:12:04.728558+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T21:12:13.755822+00:00 app[worker.1]: Total Tweets filtered: 17
+2022-08-13T21:12:15.263856+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:12:20.780835+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:12:31.815011+00:00 app[worker.1]: Total Tweets filtered: 21
+2022-08-13T21:12:34.327826+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:12:35.841708+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:12:37.353208+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:12:39.363924+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:12:39.872639+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:12:41.391404+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:12:58.442857+00:00 app[worker.1]: Total Tweets filtered: 33
+2022-08-13T21:13:03.964479+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:13:15.502102+00:00 app[worker.1]: Total Tweets filtered: 22
+2022-08-13T21:13:17.009054+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:13:17.514653+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:13:24.538870+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T21:13:26.046590+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:13:34.577935+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T21:13:42.608869+00:00 app[worker.1]: Total Tweets filtered: 15
+2022-08-13T21:13:44.117961+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:13:47.129441+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:13:56.169257+00:00 app[worker.1]: Total Tweets filtered: 17
+2022-08-13T21:14:01.691635+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:14:03.701847+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:14:13.235958+00:00 app[worker.1]: Total Tweets filtered: 18
+2022-08-13T21:14:17.264527+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:14:23.282352+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T21:14:30.807675+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T21:14:35.323827+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T21:14:49.867032+00:00 app[worker.1]: Total Tweets filtered: 28
+2022-08-13T21:14:56.897592+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T21:15:04.930579+00:00 app[worker.1]: Total Tweets filtered: 15
+2022-08-13T21:15:05.440562+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:15:06.950983+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:15:09.964497+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:15:19.499711+00:00 app[worker.1]: Total Tweets filtered: 18
+2022-08-13T21:15:20.509274+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:15:30.045053+00:00 app[worker.1]: Total Tweets filtered: 18
+2022-08-13T21:15:31.558386+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:15:33.569547+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:15:36.585991+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:15:38.596408+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:15:39.102077+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:15:42.614532+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:15:46.129223+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:15:47.138499+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:16:05.208534+00:00 app[worker.1]: Total Tweets filtered: 35
+2022-08-13T21:16:19.756925+00:00 app[worker.1]: Total Tweets filtered: 28
+2022-08-13T21:16:21.770980+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:16:22.779833+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:16:24.288570+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:16:45.352552+00:00 app[worker.1]: Total Tweets filtered: 41
+2022-08-13T21:16:46.362312+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:16:49.879771+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:17:10.964601+00:00 app[worker.1]: Total Tweets filtered: 41
+2022-08-13T21:17:11.471119+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:17:16.491156+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:17:23.516094+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T21:17:31.543607+00:00 app[worker.1]: Total Tweets filtered: 15
+2022-08-13T21:17:46.589963+00:00 app[worker.1]: Total Tweets filtered: 29
+2022-08-13T21:17:57.118511+00:00 app[worker.1]: Total Tweets filtered: 20
+2022-08-13T21:18:02.642776+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:18:08.160192+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:18:29.725706+00:00 app[worker.1]: Total Tweets filtered: 42
+2022-08-13T21:18:32.238124+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:18:32.748690+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:18:35.258391+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:18:35.764033+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:18:43.288876+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T21:18:44.796917+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:18:59.840883+00:00 app[worker.1]: Total Tweets filtered: 29
+2022-08-13T21:19:02.852214+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:19:04.362308+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:19:23.417502+00:00 app[worker.1]: Total Tweets filtered: 37
+2022-08-13T21:19:33.448369+00:00 app[worker.1]: Total Tweets filtered: 19
+2022-08-13T21:19:34.457455+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:19:36.968469+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:19:47.000626+00:00 app[worker.1]: Total Tweets filtered: 19
+2022-08-13T21:19:47.507196+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:19:51.527106+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:19:52.536000+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:19:59.057018+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T21:20:02.070220+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:20:05.584080+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:20:12.111872+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T21:20:20.657037+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T21:20:21.164592+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:20:23.680733+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:20:29.205256+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:20:29.712253+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:20:30.221613+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:20:35.247475+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:20:36.775395+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:20:37.795722+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:20:42.323994+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T21:20:57.371877+00:00 app[worker.1]: Total Tweets filtered: 29
+2022-08-13T21:21:13.427892+00:00 app[worker.1]: Total Tweets filtered: 31
+2022-08-13T21:21:16.944738+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:21:18.452345+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:21:24.482021+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T21:21:25.495410+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:21:26.003413+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:21:34.536276+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T21:21:37.048103+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:22:05.639636+00:00 app[worker.1]: Total Tweets filtered: 56
+2022-08-13T21:22:08.654003+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:22:09.161163+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:22:16.185904+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T21:22:18.702134+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:22:28.234441+00:00 app[worker.1]: Total Tweets filtered: 18
+2022-08-13T21:22:33.751726+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:22:44.283669+00:00 app[worker.1]: Total Tweets filtered: 20
+2022-08-13T21:23:11.874033+00:00 app[worker.1]: Total Tweets filtered: 54
+2022-08-13T21:23:12.379587+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:23:14.897821+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:23:17.912225+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:23:21.927339+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:23:30.451607+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T21:23:33.465327+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:23:45.502753+00:00 app[worker.1]: Total Tweets filtered: 23
+2022-08-13T21:23:46.512061+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:23:51.028916+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T21:23:54.546697+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:23:56.560545+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:23:58.074121+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:24:19.146262+00:00 app[worker.1]: Total Tweets filtered: 41
+2022-08-13T21:24:21.662081+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:24:25.678922+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:24:26.691689+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:24:39.227823+00:00 app[worker.1]: Total Tweets filtered: 24
+2022-08-13T21:25:20.846376+00:00 app[worker.1]: Total Tweets filtered: 82
+2022-08-13T21:25:26.870699+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T21:25:30.386112+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:25:35.914916+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:25:36.932396+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:25:40.446255+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:25:42.960269+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:25:45.473824+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:25:48.995132+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:25:52.510034+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:25:54.519947+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:26:07.057457+00:00 app[worker.1]: Total Tweets filtered: 24
+2022-08-13T21:26:09.073980+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:26:13.594264+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T21:26:18.613951+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:26:19.621238+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:26:20.628967+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:26:21.636465+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:26:22.644676+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:26:24.657633+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:26:34.191744+00:00 app[worker.1]: Total Tweets filtered: 18
+2022-08-13T21:26:34.703433+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:26:36.216765+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:26:37.725853+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:27:03.794322+00:00 app[worker.1]: Total Tweets filtered: 51
+2022-08-13T21:27:17.838323+00:00 app[worker.1]: Total Tweets filtered: 27
+2022-08-13T21:27:34.389223+00:00 app[worker.1]: Total Tweets filtered: 32
+2022-08-13T21:27:45.421945+00:00 app[worker.1]: Total Tweets filtered: 21
+2022-08-13T21:27:45.928803+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:27:48.940680+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:27:53.963068+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:28:09.006167+00:00 app[worker.1]: Total Tweets filtered: 29
+2022-08-13T21:28:10.016314+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:28:18.541857+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T21:28:30.583403+00:00 app[worker.1]: Total Tweets filtered: 23
+2022-08-13T21:28:38.106452+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T21:28:43.624022+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:28:45.636135+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:28:47.146977+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:28:56.679861+00:00 app[worker.1]: Total Tweets filtered: 18
+2022-08-13T21:29:06.205891+00:00 app[worker.1]: Total Tweets filtered: 18
+2022-08-13T21:29:08.718789+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:29:11.237215+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:29:15.758285+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T21:29:17.271217+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:29:17.777718+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:29:22.805207+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:29:26.322956+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:29:28.332229+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:29:28.839253+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:29:30.348721+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:29:32.359956+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:29:43.392448+00:00 app[worker.1]: Total Tweets filtered: 21
+2022-08-13T21:29:44.903434+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:29:47.915925+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:29:51.930829+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:29:53.440101+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:29:54.948705+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:29:57.460226+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:29:59.472299+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:29:59.977916+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:30:02.991888+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:30:04.006377+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:30:06.016391+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:30:07.526333+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:30:10.540455+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:30:12.555285+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:30:15.073551+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:30:22.617220+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T21:30:26.632205+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:30:29.649796+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:30:31.161341+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:30:39.192893+00:00 app[worker.1]: Total Tweets filtered: 15
+2022-08-13T21:30:41.713522+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:30:43.224008+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:30:52.253218+00:00 app[worker.1]: Total Tweets filtered: 17
+2022-08-13T21:31:00.786074+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T21:31:09.840661+00:00 app[worker.1]: Total Tweets filtered: 17
+2022-08-13T21:31:14.866971+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:31:15.375001+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:31:16.400250+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:31:16.917618+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:31:25.985441+00:00 app[worker.1]: Total Tweets filtered: 17
+2022-08-13T21:31:26.995158+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:31:30.011330+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:31:32.531532+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:31:38.557352+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T21:31:40.586604+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:31:46.616132+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T21:31:52.140925+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:31:54.659862+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:31:58.175993+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:32:03.198377+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:32:06.214255+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:32:08.224415+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:32:14.746520+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T21:32:19.764229+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:32:20.777670+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:32:21.284866+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:32:22.293759+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:32:28.815994+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T21:32:33.837767+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:32:37.354825+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:32:40.367014+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:32:49.399154+00:00 app[worker.1]: Total Tweets filtered: 17
+2022-08-13T21:32:52.410696+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:32:56.428750+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:32:59.441166+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:33:08.467666+00:00 app[worker.1]: Total Tweets filtered: 17
+2022-08-13T21:33:09.977022+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:33:12.490420+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:33:15.020000+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:33:18.540451+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:33:22.556122+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:33:23.564860+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:33:28.583305+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:33:37.611151+00:00 app[worker.1]: Total Tweets filtered: 17
+2022-08-13T21:33:39.622591+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:33:41.635194+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:33:47.155091+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:33:48.664171+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:33:52.178002+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:33:56.193443+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:33:58.204360+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:33:59.713027+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:34:00.221304+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:34:02.236895+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:34:11.764737+00:00 app[worker.1]: Total Tweets filtered: 18
+2022-08-13T21:34:13.776270+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:34:15.284451+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:34:17.306905+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:34:17.814142+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:34:21.328267+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:34:25.358289+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:34:30.394925+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:34:35.414454+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:34:36.422046+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:34:38.433511+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:34:39.946623+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:34:40.453548+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:34:54.995547+00:00 app[worker.1]: Total Tweets filtered: 28
+2022-08-13T21:34:55.501686+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:35:18.064136+00:00 app[worker.1]: Total Tweets filtered: 44
+2022-08-13T21:35:23.084501+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:35:24.596790+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:35:28.113290+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:35:30.125734+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:35:30.632587+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:35:45.691887+00:00 app[worker.1]: Total Tweets filtered: 29
+2022-08-13T21:35:50.213518+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T21:36:02.747881+00:00 app[worker.1]: Total Tweets filtered: 24
+2022-08-13T21:36:04.257097+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:36:07.272699+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:36:14.298470+00:00 app[worker.1]: Total Tweets filtered: 13
+2022-08-13T21:36:20.823474+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T21:36:28.350298+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T21:36:38.383013+00:00 app[worker.1]: Total Tweets filtered: 19
+2022-08-13T21:36:41.397327+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:36:54.435912+00:00 app[worker.1]: Total Tweets filtered: 25
+2022-08-13T21:36:54.945789+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:36:56.962888+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:37:02.984310+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T21:37:09.010456+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T21:37:13.528289+00:00 app[worker.1]: Total Tweets filtered: 8
+2022-08-13T21:37:15.038280+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:37:22.566299+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T21:37:34.098716+00:00 app[worker.1]: Total Tweets filtered: 22
+2022-08-13T21:37:38.113584+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:37:41.629856+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:37:43.644666+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:37:50.183242+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T21:37:55.708099+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:38:00.725060+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:38:10.754689+00:00 app[worker.1]: Total Tweets filtered: 19
+2022-08-13T21:38:11.764476+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:38:15.280925+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:38:20.799028+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:38:22.309890+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:38:24.322707+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:38:32.855428+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T21:38:33.862517+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:38:36.374235+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:38:36.880722+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:38:37.388338+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:38:37.894548+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:38:38.401515+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:38:38.910511+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:38:44.930992+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T21:38:49.953321+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:38:50.963702+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:38:51.972654+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:38:52.478034+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:38:58.497443+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T21:39:01.511483+00:00 app[worker.1]: Total Tweets filtered: 5
+2022-08-13T21:39:08.031762+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T21:39:13.551188+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:39:17.568306+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:39:19.079057+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:39:19.586177+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:39:20.594461+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:39:26.616554+00:00 app[worker.1]: Total Tweets filtered: 11
+2022-08-13T21:39:30.132185+00:00 app[worker.1]: Total Tweets filtered: 6
+2022-08-13T21:39:32.150108+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:39:38.688120+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T21:39:43.716343+00:00 app[worker.1]: Total Tweets filtered: 9
+2022-08-13T21:40:01.276233+00:00 app[worker.1]: Total Tweets filtered: 34
+2022-08-13T21:40:03.791449+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:40:07.808975+00:00 app[worker.1]: Total Tweets filtered: 7
+2022-08-13T21:40:10.321561+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:40:11.331566+00:00 app[worker.1]: Total Tweets filtered: 1
+2022-08-13T21:40:17.856127+00:00 app[worker.1]: Total Tweets filtered: 12
+2022-08-13T21:40:25.389943+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T21:40:25.897146+00:00 app[worker.1]: Total Tweets filtered: 0
+2022-08-13T21:40:31.416219+00:00 app[worker.1]: Total Tweets filtered: 10
+2022-08-13T21:40:33.928485+00:00 app[worker.1]: Total Tweets filtered: 4
+2022-08-13T21:40:41.972741+00:00 app[worker.1]: Total Tweets filtered: 15
+2022-08-13T21:40:43.482266+00:00 app[worker.1]: Total Tweets filtered: 2
+2022-08-13T21:40:52.023742+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T21:40:59.548709+00:00 app[worker.1]: Total Tweets filtered: 14
+2022-08-13T21:41:08.585062+00:00 app[worker.1]: Total Tweets filtered: 17
+2022-08-13T21:41:16.612817+00:00 app[worker.1]: Total Tweets filtered: 15
+2022-08-13T21:41:18.623947+00:00 app[worker.1]: Total Tweets filtered: 3
+2022-08-13T21:41:27.153454+00:00 app[worker.1]: Total Tweets filtered: 16
+2022-08-13T21:41:27.514618+00:00 app[api]: Scaled to worker@0:Free by user y.heinze@chainsulting.de
+2022-08-13T21:41:27.941789+00:00 heroku[worker.1]: State changed from up to down
+2022-08-13T21:41:28.604843+00:00 heroku[worker.1]: Stopping all processes with SIGTERM
+2022-08-13T21:41:28.875899+00:00 heroku[worker.1]: Process exited with status 143
+2022-08-14T07:32:13.000000+00:00 app[api]: Build started by user y.heinze@chainsulting.de
+2022-08-14T07:34:31.993765+00:00 app[api]: Deploy 5f190920 by user y.heinze@chainsulting.de
+2022-08-14T07:34:31.993765+00:00 app[api]: Release v62 created by user y.heinze@chainsulting.de
+2022-08-14T07:34:59.000000+00:00 app[api]: Build succeeded
+2022-08-14T07:47:38.241557+00:00 app[api]: Scaled to clock@1:Free worker@0:Free by user y.heinze@chainsulting.de
+2022-08-14T07:47:51.806801+00:00 heroku[clock.1]: Starting process with command `python sentiment/clock.py`
+2022-08-14T07:47:51.984681+00:00 app[api]: Scaled to clock@1:Free worker@1:Free by user y.heinze@chainsulting.de
+2022-08-14T07:47:52.429699+00:00 heroku[clock.1]: State changed from starting to up
+2022-08-14T07:47:52.953275+00:00 app[clock.1]: Traceback (most recent call last):
+2022-08-14T07:47:52.953289+00:00 app[clock.1]: File "/app/sentiment/clock.py", line 2, in <module>
+2022-08-14T07:47:52.953356+00:00 app[clock.1]: from apscheduler.schedulers.background import BackgroundScheduler
+2022-08-14T07:47:52.953365+00:00 app[clock.1]: File "/app/.heroku/python/lib/python3.10/site-packages/apscheduler/schedulers/background.py", line 4, in <module>
+2022-08-14T07:47:52.953442+00:00 app[clock.1]: from apscheduler.schedulers.base import BaseScheduler
+2022-08-14T07:47:52.953445+00:00 app[clock.1]: File "/app/.heroku/python/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 3, in <module>
+2022-08-14T07:47:52.953515+00:00 app[clock.1]: from collections import MutableMapping
+2022-08-14T07:47:52.953539+00:00 app[clock.1]: ImportError: cannot import name 'MutableMapping' from 'collections' (/app/.heroku/python/lib/python3.10/collections/__init__.py)
+2022-08-14T07:47:53.104977+00:00 heroku[clock.1]: Process exited with status 1
+2022-08-14T07:47:53.189071+00:00 heroku[clock.1]: State changed from up to crashed
+2022-08-14T07:47:53.192643+00:00 heroku[clock.1]: State changed from crashed to starting
+2022-08-14T07:48:04.012357+00:00 heroku[worker.1]: Starting process with command `python3 sentiment/runner.py`
+2022-08-14T07:48:04.785236+00:00 heroku[worker.1]: State changed from starting to up
+2022-08-14T07:48:06.458841+00:00 heroku[clock.1]: Starting process with command `python sentiment/clock.py`
+2022-08-14T07:48:07.078959+00:00 app[worker.1]: Listening to tweets now...
+2022-08-14T07:48:07.172730+00:00 heroku[clock.1]: State changed from starting to up
+2022-08-14T07:48:07.598860+00:00 app[clock.1]: Traceback (most recent call last):
+2022-08-14T07:48:07.598880+00:00 app[clock.1]: File "/app/sentiment/clock.py", line 2, in <module>
+2022-08-14T07:48:07.598941+00:00 app[clock.1]: from apscheduler.schedulers.background import BackgroundScheduler
+2022-08-14T07:48:07.598942+00:00 app[clock.1]: File "/app/.heroku/python/lib/python3.10/site-packages/apscheduler/schedulers/background.py", line 4, in <module>
+2022-08-14T07:48:07.599003+00:00 app[clock.1]: from apscheduler.schedulers.base import BaseScheduler
+2022-08-14T07:48:07.599012+00:00 app[clock.1]: File "/app/.heroku/python/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 3, in <module>
+2022-08-14T07:48:07.599071+00:00 app[clock.1]: from collections import MutableMapping
+2022-08-14T07:48:07.599089+00:00 app[clock.1]: ImportError: cannot import name 'MutableMapping' from 'collections' (/app/.heroku/python/lib/python3.10/collections/__init__.py)
+2022-08-14T07:48:07.720241+00:00 heroku[clock.1]: Process exited with status 1
+2022-08-14T07:48:07.821232+00:00 heroku[clock.1]: State changed from up to crashed
+2022-08-14T08:04:49.000000+00:00 app[api]: Build started by user y.heinze@chainsulting.de
+2022-08-14T08:06:45.933461+00:00 app[api]: Release v63 created by user y.heinze@chainsulting.de
+2022-08-14T08:06:45.933461+00:00 app[api]: Deploy d98d4a81 by user y.heinze@chainsulting.de
+2022-08-14T08:06:47.153169+00:00 heroku[clock.1]: State changed from crashed to starting
+2022-08-14T08:06:47.257525+00:00 heroku[worker.1]: Restarting
+2022-08-14T08:06:47.259331+00:00 heroku[worker.1]: State changed from up to starting
+2022-08-14T08:06:48.309307+00:00 heroku[worker.1]: Stopping all processes with SIGTERM
+2022-08-14T08:06:48.573252+00:00 heroku[worker.1]: Process exited with status 143
+2022-08-14T08:06:57.945935+00:00 heroku[worker.1]: Starting process with command `python3 sentiment/runner.py`
+2022-08-14T08:06:58.717004+00:00 heroku[worker.1]: State changed from starting to up
+2022-08-14T08:07:00.476294+00:00 heroku[clock.1]: Starting process with command `python sentiment/clock.py`
+2022-08-14T08:07:01.046419+00:00 app[worker.1]: Listening to tweets now...
+2022-08-14T08:07:01.214364+00:00 heroku[clock.1]: State changed from starting to up
+2022-08-14T08:07:03.250393+00:00 heroku[clock.1]: Process exited with status 0
+2022-08-14T08:07:03.382669+00:00 heroku[clock.1]: State changed from up to crashed
+2022-08-14T08:07:03.385592+00:00 heroku[clock.1]: State changed from crashed to starting
+2022-08-14T08:07:14.000000+00:00 app[api]: Build succeeded
+2022-08-14T08:07:15.400729+00:00 heroku[clock.1]: Starting process with command `python sentiment/clock.py`
+2022-08-14T08:07:16.393033+00:00 heroku[clock.1]: State changed from starting to up
+2022-08-14T08:07:17.787654+00:00 heroku[clock.1]: Process exited with status 0
+2022-08-14T08:07:17.854177+00:00 heroku[clock.1]: State changed from up to crashed
+2022-08-14T08:33:54.000000+00:00 app[api]: Build started by user y.heinze@chainsulting.de
+2022-08-14T08:34:57.085424+00:00 app[api]: Deploy 2bb24983 by user y.heinze@chainsulting.de
+2022-08-14T08:34:57.085424+00:00 app[api]: Release v64 created by user y.heinze@chainsulting.de
+2022-08-14T08:34:58.355121+00:00 heroku[clock.1]: State changed from crashed to starting
+2022-08-14T08:34:58.448686+00:00 heroku[worker.1]: Restarting
+2022-08-14T08:34:58.450222+00:00 heroku[worker.1]: State changed from up to starting
+2022-08-14T08:34:59.397575+00:00 heroku[worker.1]: Stopping all processes with SIGTERM
+2022-08-14T08:34:59.596231+00:00 heroku[worker.1]: Process exited with status 143
+2022-08-14T08:35:08.932136+00:00 heroku[clock.1]: Starting process with command `python sentiment/clock.py`
+2022-08-14T08:35:09.999604+00:00 heroku[clock.1]: State changed from starting to up
+2022-08-14T08:35:12.287622+00:00 heroku[worker.1]: Starting process with command `python3 sentiment/runner.py`
+2022-08-14T08:35:12.967392+00:00 app[clock.1]: Exception at 2022-08-14 08:35:12.967273: get_Heroku_DB() takes 0 positional arguments but 1 was given
+2022-08-14T08:35:13.021881+00:00 heroku[worker.1]: State changed from starting to up
+2022-08-14T08:35:13.401598+00:00 heroku[clock.1]: Process exited with status 0
+2022-08-14T08:35:13.609937+00:00 heroku[clock.1]: State changed from up to crashed
+2022-08-14T08:35:13.612659+00:00 heroku[clock.1]: State changed from crashed to starting
+2022-08-14T08:35:19.370857+00:00 app[worker.1]: Listening to tweets now...
+2022-08-14T08:35:24.097375+00:00 heroku[clock.1]: Starting process with command `python sentiment/clock.py`
+2022-08-14T08:35:24.979759+00:00 heroku[clock.1]: State changed from starting to up
+2022-08-14T08:35:28.040121+00:00 app[clock.1]: Exception at 2022-08-14 08:35:28.040035: get_Heroku_DB() takes 0 positional arguments but 1 was given
+2022-08-14T08:35:28.410562+00:00 heroku[clock.1]: Process exited with status 0
+2022-08-14T08:35:28.518458+00:00 heroku[clock.1]: State changed from up to crashed
+2022-08-14T08:35:31.000000+00:00 app[api]: Build succeeded
+2022-08-14T08:39:20.779661+00:00 app[api]: Scaled to clock@0:Free worker@1:Free by user y.heinze@chainsulting.de
+2022-08-14T08:39:21.104844+00:00 heroku[clock.1]: State changed from crashed to down
+2022-08-14T08:40:11.000000+00:00 app[api]: Build started by user y.heinze@chainsulting.de
+2022-08-14T08:41:38.874383+00:00 app[api]: Deploy 41e32cd7 by user y.heinze@chainsulting.de
+2022-08-14T08:41:38.874383+00:00 app[api]: Release v65 created by user y.heinze@chainsulting.de
+2022-08-14T08:41:40.279493+00:00 heroku[worker.1]: Restarting
+2022-08-14T08:41:40.291835+00:00 heroku[worker.1]: State changed from up to starting
+2022-08-14T08:41:41.336198+00:00 heroku[worker.1]: Stopping all processes with SIGTERM
+2022-08-14T08:41:41.680655+00:00 heroku[worker.1]: Process exited with status 143
+2022-08-14T08:41:51.504729+00:00 heroku[worker.1]: Starting process with command `python3 sentiment/runner.py`
+2022-08-14T08:41:52.220236+00:00 heroku[worker.1]: State changed from starting to up
+2022-08-14T08:41:56.928421+00:00 app[worker.1]: Listening to tweets now...
+2022-08-14T08:42:05.000000+00:00 app[api]: Build succeeded
+2022-08-14T08:44:24.216880+00:00 app[api]: Running release v66 commands by user y.heinze@chainsulting.de
+2022-08-14T08:44:24.216880+00:00 app[api]: Attach DEADMANSSNITCH (@ref:deadmanssnitch-colorful-01951) by user y.heinze@chainsulting.de
+2022-08-14T08:44:24.231367+00:00 app[api]: Release v67 created by user y.heinze@chainsulting.de
+2022-08-14T08:44:24.231367+00:00 app[api]: @ref:deadmanssnitch-colorful-01951 completed provisioning, setting DEADMANSSNITCH_API_KEY. by user y.heinze@chainsulting.de
+2022-08-14T08:44:26.668474+00:00 heroku[worker.1]: Restarting
+2022-08-14T08:44:26.670479+00:00 heroku[worker.1]: State changed from up to starting
+2022-08-14T08:44:27.543086+00:00 heroku[worker.1]: Stopping all processes with SIGTERM
+2022-08-14T08:44:27.875295+00:00 heroku[worker.1]: Process exited with status 143
+2022-08-14T08:44:36.901597+00:00 heroku[worker.1]: Starting process with command `python3 sentiment/runner.py`
+2022-08-14T08:44:37.598216+00:00 heroku[worker.1]: State changed from starting to up
+2022-08-14T08:44:42.226398+00:00 app[worker.1]: Listening to tweets now...
+2022-08-14T08:44:59.822672+00:00 app[api]: Detach DEADMANSSNITCH (@ref:deadmanssnitch-colorful-01951) by user y.heinze@chainsulting.de
+2022-08-14T08:44:59.822672+00:00 app[api]: Release v68 created by user y.heinze@chainsulting.de
+2022-08-14T08:45:01.005417+00:00 heroku[worker.1]: Restarting
+2022-08-14T08:45:01.017353+00:00 heroku[worker.1]: State changed from up to starting
+2022-08-14T08:45:02.084493+00:00 heroku[worker.1]: Stopping all processes with SIGTERM
+2022-08-14T08:45:02.416961+00:00 heroku[worker.1]: Process exited with status 143
+2022-08-14T08:45:12.067739+00:00 heroku[worker.1]: Starting process with command `python3 sentiment/runner.py`
+2022-08-14T08:45:12.940495+00:00 heroku[worker.1]: State changed from starting to up
+2022-08-14T08:45:17.178982+00:00 app[worker.1]: Listening to tweets now...
+2022-08-14T09:10:24.103197+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-14T09:10:35.308810+00:00 heroku[scheduler.2519]: Starting process with command `python sentiment/trade.py`
+2022-08-14T09:10:36.899403+00:00 heroku[scheduler.2519]: State changed from starting to up
+2022-08-14T09:10:40.442397+00:00 app[scheduler.2519]: Getting data from Today
+2022-08-14T09:10:40.444798+00:00 app[scheduler.2519]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T09:10:40.444799+00:00 app[scheduler.2519]: warnings.warn(
+2022-08-14T09:10:40.511356+00:00 app[scheduler.2519]: Deleted 133 duplicates from a total of 771
+2022-08-14T09:10:40.532412+00:00 app[scheduler.2519]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T09:10:40.532414+00:00 app[scheduler.2519]: warnings.warn(
+2022-08-14T09:10:40.535642+00:00 app[scheduler.2519]: Check if a trade exists for 2022-08-14 09:00:00
+2022-08-14T09:10:40.535663+00:00 app[scheduler.2519]: Last Trade at: 2022-08-13 11:00:00
+2022-08-14T09:10:40.535672+00:00 app[scheduler.2519]: No Trade. Starting Trade for 2022-08-14 09:00:00
+2022-08-14T09:10:40.834391+00:00 app[scheduler.2519]: Exception at 2022-08-14 09:10:40.834305: 'avg'
+2022-08-14T09:10:41.122934+00:00 heroku[scheduler.2519]: Process exited with status 0
+2022-08-14T09:10:41.233307+00:00 heroku[scheduler.2519]: State changed from up to complete
+2022-08-14T09:45:46.000000+00:00 app[api]: Build started by user y.heinze@chainsulting.de
+2022-08-14T09:46:45.006015+00:00 app[api]: Deploy a298a3a3 by user y.heinze@chainsulting.de
+2022-08-14T09:46:45.006015+00:00 app[api]: Release v69 created by user y.heinze@chainsulting.de
+2022-08-14T09:46:49.278530+00:00 heroku[worker.1]: Restarting
+2022-08-14T09:46:49.292739+00:00 heroku[worker.1]: State changed from up to starting
+2022-08-14T09:46:50.217357+00:00 heroku[worker.1]: Stopping all processes with SIGTERM
+2022-08-14T09:46:50.419819+00:00 heroku[worker.1]: Process exited with status 143
+2022-08-14T09:47:00.202248+00:00 heroku[worker.1]: Starting process with command `python3 sentiment/runner.py`
+2022-08-14T09:47:00.913455+00:00 heroku[worker.1]: State changed from starting to up
+2022-08-14T09:47:05.435285+00:00 app[worker.1]: Listening to tweets now...
+2022-08-14T09:47:13.000000+00:00 app[api]: Build succeeded
+2022-08-14T09:52:23.497676+00:00 app[api]: Scaled to clock@1:Free worker@1:Free by user y.heinze@chainsulting.de
+2022-08-14T09:52:27.252173+00:00 app[api]: Scaled to clock@0:Free worker@1:Free by user y.heinze@chainsulting.de
+2022-08-14T09:52:27.581412+00:00 heroku[clock.1]: State changed from starting to down
+2022-08-14T09:52:35.527765+00:00 heroku[clock.1]: Starting process with command `python sentiment/clock.py`
+2022-08-14T09:52:36.987869+00:00 heroku[clock.1]: Stopping all processes with SIGTERM
+2022-08-14T09:52:37.152912+00:00 heroku[clock.1]: Process exited with status 143
+2022-08-14T10:10:12.941988+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-14T10:10:23.899460+00:00 heroku[scheduler.3347]: Starting process with command `python sentiment/trade.py`
+2022-08-14T10:10:24.714393+00:00 heroku[scheduler.3347]: State changed from starting to up
+2022-08-14T10:10:27.801463+00:00 app[scheduler.3347]: Getting data from Today
+2022-08-14T10:10:27.807566+00:00 app[scheduler.3347]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T10:10:27.807568+00:00 app[scheduler.3347]: warnings.warn(
+2022-08-14T10:10:27.919404+00:00 app[scheduler.3347]: Deleted 249 duplicates from a total of 1299
+2022-08-14T10:10:27.939517+00:00 app[scheduler.3347]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T10:10:27.939520+00:00 app[scheduler.3347]: warnings.warn(
+2022-08-14T10:10:27.941908+00:00 app[scheduler.3347]: Check if a trade exists for 2022-08-14 10:00:00
+2022-08-14T10:10:27.941911+00:00 app[scheduler.3347]: Last Trade at: 2022-08-13 11:00:00
+2022-08-14T10:10:27.941929+00:00 app[scheduler.3347]: No Trade. Starting Trade for 2022-08-14 10:00:00
+2022-08-14T10:10:28.311348+00:00 app[scheduler.3347]: Sent Avg: 0.2359751700680272
+2022-08-14T10:10:28.311375+00:00 app[scheduler.3347]: USDT Balance: 512.99176508 $
+2022-08-14T10:10:28.311375+00:00 app[scheduler.3347]: BTC Balance: 0.02153123
+2022-08-14T10:10:28.797925+00:00 app[scheduler.3347]: BUY ORDER executed with 25.64959 at 2022-08-14 10:10:28.797858
+2022-08-14T10:10:39.276876+00:00 app[scheduler.3347]: New Balances: 487.3165263 $ and 0.08245662 btc.
+2022-08-14T10:10:39.278048+00:00 app[scheduler.3347]: Added Trade to Heroku DB
+2022-08-14T10:10:39.668776+00:00 heroku[scheduler.3347]: Process exited with status 0
+2022-08-14T10:10:39.878332+00:00 heroku[scheduler.3347]: State changed from up to complete
+2022-08-14T11:10:08.368123+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-14T11:10:20.726731+00:00 heroku[scheduler.3268]: Starting process with command `python sentiment/trade.py`
+2022-08-14T11:10:21.384720+00:00 heroku[scheduler.3268]: State changed from starting to up
+2022-08-14T11:10:25.297995+00:00 app[scheduler.3268]: Getting data from Today
+2022-08-14T11:10:25.300906+00:00 app[scheduler.3268]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T11:10:25.300908+00:00 app[scheduler.3268]: warnings.warn(
+2022-08-14T11:10:25.365510+00:00 app[scheduler.3268]: Deleted 362 duplicates from a total of 1899
+2022-08-14T11:10:25.386326+00:00 app[scheduler.3268]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T11:10:25.386328+00:00 app[scheduler.3268]: warnings.warn(
+2022-08-14T11:10:25.389608+00:00 app[scheduler.3268]: Check if a trade exists for 2022-08-14 11:00:00
+2022-08-14T11:10:25.389610+00:00 app[scheduler.3268]: Last Trade at: 2022-08-14 10:00:00
+2022-08-14T11:10:25.389626+00:00 app[scheduler.3268]: No Trade. Starting Trade for 2022-08-14 11:00:00
+2022-08-14T11:10:25.691856+00:00 app[scheduler.3268]: Sent Avg: 0.23695617977528088
+2022-08-14T11:10:25.691876+00:00 app[scheduler.3268]: USDT Balance: 487.3165263 $
+2022-08-14T11:10:25.691877+00:00 app[scheduler.3268]: BTC Balance: 0.08245662
+2022-08-14T11:10:26.103243+00:00 app[scheduler.3268]: BUY ORDER executed with 24.36583 at 2022-08-14 11:10:26.103178
+2022-08-14T11:10:37.628438+00:00 app[scheduler.3268]: New Balances: 462.9263605 $ and 0.08367491 btc.
+2022-08-14T11:10:37.629959+00:00 app[scheduler.3268]: Added Trade to Heroku DB
+2022-08-14T11:10:37.995985+00:00 heroku[scheduler.3268]: Process exited with status 0
+2022-08-14T11:10:38.440480+00:00 heroku[scheduler.3268]: State changed from up to complete
+2022-08-14T12:10:10.518687+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-14T12:10:22.514100+00:00 heroku[scheduler.4590]: Starting process with command `python sentiment/trade.py`
+2022-08-14T12:10:23.289603+00:00 heroku[scheduler.4590]: State changed from starting to up
+2022-08-14T12:10:27.469084+00:00 app[scheduler.4590]: Getting data from Today
+2022-08-14T12:10:27.472803+00:00 app[scheduler.4590]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T12:10:27.472805+00:00 app[scheduler.4590]: warnings.warn(
+2022-08-14T12:10:27.548441+00:00 app[scheduler.4590]: Deleted 518 duplicates from a total of 2462
+2022-08-14T12:10:27.573611+00:00 app[scheduler.4590]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T12:10:27.573612+00:00 app[scheduler.4590]: warnings.warn(
+2022-08-14T12:10:27.577990+00:00 app[scheduler.4590]: Check if a trade exists for 2022-08-14 11:00:00
+2022-08-14T12:10:27.577993+00:00 app[scheduler.4590]: Last Trade at: 2022-08-14 11:00:00
+2022-08-14T12:10:27.578011+00:00 app[scheduler.4590]: Trade already made for 2022-08-14 11:00:00
+2022-08-14T12:10:27.969395+00:00 heroku[scheduler.4590]: Process exited with status 0
+2022-08-14T12:10:28.049462+00:00 heroku[scheduler.4590]: State changed from up to complete
+2022-08-14T13:10:16.218749+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-14T13:10:26.884529+00:00 heroku[scheduler.4542]: Starting process with command `python sentiment/trade.py`
+2022-08-14T13:10:27.839359+00:00 heroku[scheduler.4542]: State changed from starting to up
+2022-08-14T13:10:30.898208+00:00 app[scheduler.4542]: Getting data from Today
+2022-08-14T13:10:30.901428+00:00 app[scheduler.4542]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T13:10:30.901428+00:00 app[scheduler.4542]: warnings.warn(
+2022-08-14T13:10:30.979605+00:00 app[scheduler.4542]: Deleted 637 duplicates from a total of 3077
+2022-08-14T13:10:31.009530+00:00 app[scheduler.4542]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T13:10:31.009533+00:00 app[scheduler.4542]: warnings.warn(
+2022-08-14T13:10:31.013140+00:00 app[scheduler.4542]: Check if a trade exists for 2022-08-14 12:00:00
+2022-08-14T13:10:31.013163+00:00 app[scheduler.4542]: Last Trade at: 2022-08-14 11:00:00
+2022-08-14T13:10:31.013189+00:00 app[scheduler.4542]: No Trade. Starting Trade for 2022-08-14 12:00:00
+2022-08-14T13:10:31.324996+00:00 app[scheduler.4542]: Sent Avg: 0.25413839441535774
+2022-08-14T13:10:31.325003+00:00 app[scheduler.4542]: USDT Balance: 462.9263605 $
+2022-08-14T13:10:31.325005+00:00 app[scheduler.4542]: BTC Balance: 0.08367491
+2022-08-14T13:10:31.672881+00:00 app[scheduler.4542]: BUY ORDER executed with 23.14632 at 2022-08-14 13:10:31.672827
+2022-08-14T13:10:42.165606+00:00 app[scheduler.4542]: New Balances: 443.51844848 $ and 0.12972841 btc.
+2022-08-14T13:10:42.166992+00:00 app[scheduler.4542]: Added Trade to Heroku DB
+2022-08-14T13:10:42.571805+00:00 heroku[scheduler.4542]: Process exited with status 0
+2022-08-14T13:10:42.685958+00:00 heroku[scheduler.4542]: State changed from up to complete
+2022-08-14T14:10:10.055567+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-14T14:10:20.307652+00:00 heroku[scheduler.8348]: Starting process with command `python sentiment/trade.py`
+2022-08-14T14:10:20.897589+00:00 heroku[scheduler.8348]: State changed from starting to up
+2022-08-14T14:10:24.339040+00:00 app[scheduler.8348]: Getting data from Today
+2022-08-14T14:10:24.341304+00:00 app[scheduler.8348]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T14:10:24.341306+00:00 app[scheduler.8348]: warnings.warn(
+2022-08-14T14:10:24.421660+00:00 app[scheduler.8348]: Deleted 767 duplicates from a total of 3628
+2022-08-14T14:10:24.448692+00:00 app[scheduler.8348]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T14:10:24.448697+00:00 app[scheduler.8348]: warnings.warn(
+2022-08-14T14:10:24.452037+00:00 app[scheduler.8348]: Check if a trade exists for 2022-08-14 12:00:00
+2022-08-14T14:10:24.452038+00:00 app[scheduler.8348]: Last Trade at: 2022-08-14 12:00:00
+2022-08-14T14:10:24.452042+00:00 app[scheduler.8348]: Trade already made for 2022-08-14 12:00:00
+2022-08-14T14:10:24.769487+00:00 heroku[scheduler.8348]: Process exited with status 0
+2022-08-14T14:10:24.820823+00:00 heroku[scheduler.8348]: State changed from up to complete
+2022-08-14T15:10:13.253219+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-14T15:10:26.136501+00:00 heroku[scheduler.1328]: Starting process with command `python sentiment/trade.py`
+2022-08-14T15:10:26.909527+00:00 heroku[scheduler.1328]: State changed from starting to up
+2022-08-14T15:10:31.155873+00:00 app[scheduler.1328]: Getting data from Today
+2022-08-14T15:10:31.158328+00:00 app[scheduler.1328]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T15:10:31.158330+00:00 app[scheduler.1328]: warnings.warn(
+2022-08-14T15:10:31.297448+00:00 app[scheduler.1328]: Deleted 892 duplicates from a total of 4193
+2022-08-14T15:10:31.321312+00:00 app[scheduler.1328]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T15:10:31.321314+00:00 app[scheduler.1328]: warnings.warn(
+2022-08-14T15:10:31.324564+00:00 app[scheduler.1328]: Check if a trade exists for 2022-08-14 13:00:00
+2022-08-14T15:10:31.324597+00:00 app[scheduler.1328]: Last Trade at: 2022-08-14 12:00:00
+2022-08-14T15:10:31.324651+00:00 app[scheduler.1328]: No Trade. Starting Trade for 2022-08-14 13:00:00
+2022-08-14T15:10:31.643323+00:00 app[scheduler.1328]: Sent Avg: 0.26158195364238407
+2022-08-14T15:10:31.643335+00:00 app[scheduler.1328]: USDT Balance: 443.51844848 $
+2022-08-14T15:10:31.643336+00:00 app[scheduler.1328]: BTC Balance: 0.12972841
+2022-08-14T15:10:32.024222+00:00 app[scheduler.1328]: BUY ORDER executed with 22.17592 at 2022-08-14 15:10:32.023838
+2022-08-14T15:10:43.237762+00:00 app[scheduler.1328]: New Balances: 421.32035256 $ and 0.18303591 btc.
+2022-08-14T15:10:43.238829+00:00 app[scheduler.1328]: Added Trade to Heroku DB
+2022-08-14T15:10:43.714404+00:00 heroku[scheduler.1328]: Process exited with status 0
+2022-08-14T15:10:43.774150+00:00 heroku[scheduler.1328]: State changed from up to complete
+2022-08-14T16:10:11.073661+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-14T16:10:21.849869+00:00 heroku[scheduler.1184]: Starting process with command `python sentiment/trade.py`
+2022-08-14T16:10:22.497897+00:00 heroku[scheduler.1184]: State changed from starting to up
+2022-08-14T16:10:25.683324+00:00 app[scheduler.1184]: Getting data from Today
+2022-08-14T16:10:25.685685+00:00 app[scheduler.1184]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T16:10:25.685686+00:00 app[scheduler.1184]: warnings.warn(
+2022-08-14T16:10:25.772005+00:00 app[scheduler.1184]: Deleted 995 duplicates from a total of 4705
+2022-08-14T16:10:25.789543+00:00 app[scheduler.1184]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T16:10:25.789546+00:00 app[scheduler.1184]: warnings.warn(
+2022-08-14T16:10:25.791918+00:00 app[scheduler.1184]: Check if a trade exists for 2022-08-14 13:00:00
+2022-08-14T16:10:25.791928+00:00 app[scheduler.1184]: Last Trade at: 2022-08-14 13:00:00
+2022-08-14T16:10:25.791939+00:00 app[scheduler.1184]: Trade already made for 2022-08-14 13:00:00
+2022-08-14T16:10:26.049691+00:00 heroku[scheduler.1184]: Process exited with status 0
+2022-08-14T16:10:26.103274+00:00 heroku[scheduler.1184]: State changed from up to complete
+2022-08-14T17:10:09.839061+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-14T17:10:19.943925+00:00 heroku[scheduler.9450]: Starting process with command `python sentiment/trade.py`
+2022-08-14T17:10:20.795615+00:00 heroku[scheduler.9450]: State changed from starting to up
+2022-08-14T17:10:23.516050+00:00 app[scheduler.9450]: Getting data from Today
+2022-08-14T17:10:23.517935+00:00 app[scheduler.9450]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T17:10:23.517936+00:00 app[scheduler.9450]: warnings.warn(
+2022-08-14T17:10:23.605587+00:00 app[scheduler.9450]: Deleted 1104 duplicates from a total of 5246
+2022-08-14T17:10:23.621591+00:00 app[scheduler.9450]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T17:10:23.621592+00:00 app[scheduler.9450]: warnings.warn(
+2022-08-14T17:10:23.623891+00:00 app[scheduler.9450]: Check if a trade exists for 2022-08-14 14:00:00
+2022-08-14T17:10:23.623896+00:00 app[scheduler.9450]: Last Trade at: 2022-08-14 13:00:00
+2022-08-14T17:10:23.623898+00:00 app[scheduler.9450]: No Trade. Starting Trade for 2022-08-14 14:00:00
+2022-08-14T17:10:24.022162+00:00 app[scheduler.9450]: Sent Avg: 0.28611556156968876
+2022-08-14T17:10:24.022169+00:00 app[scheduler.9450]: USDT Balance: 421.32035256 $
+2022-08-14T17:10:24.022171+00:00 app[scheduler.9450]: BTC Balance: 0.18303591
+2022-08-14T17:10:24.392693+00:00 app[scheduler.9450]: BUY ORDER executed with 21.06602 at 2022-08-14 17:10:24.392636
+2022-08-14T17:10:35.526761+00:00 app[scheduler.9450]: New Balances: 400.23326702 $ and 0.23367538 btc.
+2022-08-14T17:10:35.529970+00:00 app[scheduler.9450]: Added Trade to Heroku DB
+2022-08-14T17:10:35.849887+00:00 heroku[scheduler.9450]: Process exited with status 0
+2022-08-14T17:10:35.973769+00:00 heroku[scheduler.9450]: State changed from up to complete
+2022-08-14T18:10:28.786052+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-14T18:10:39.374114+00:00 heroku[scheduler.6692]: Starting process with command `python sentiment/trade.py`
+2022-08-14T18:10:40.058397+00:00 heroku[scheduler.6692]: State changed from starting to up
+2022-08-14T18:10:43.344073+00:00 app[scheduler.6692]: Getting data from Today
+2022-08-14T18:10:43.346453+00:00 app[scheduler.6692]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T18:10:43.346457+00:00 app[scheduler.6692]: warnings.warn(
+2022-08-14T18:10:43.476827+00:00 app[scheduler.6692]: Deleted 1219 duplicates from a total of 5841
+2022-08-14T18:10:43.501261+00:00 app[scheduler.6692]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T18:10:43.501262+00:00 app[scheduler.6692]: warnings.warn(
+2022-08-14T18:10:43.505128+00:00 app[scheduler.6692]: Check if a trade exists for 2022-08-14 15:00:00
+2022-08-14T18:10:43.505132+00:00 app[scheduler.6692]: Last Trade at: 2022-08-14 14:00:00
+2022-08-14T18:10:43.505158+00:00 app[scheduler.6692]: No Trade. Starting Trade for 2022-08-14 15:00:00
+2022-08-14T18:10:43.874061+00:00 app[scheduler.6692]: Sent Avg: 0.20602428571428572
+2022-08-14T18:10:43.874083+00:00 app[scheduler.6692]: USDT Balance: 400.23326702 $
+2022-08-14T18:10:43.874083+00:00 app[scheduler.6692]: BTC Balance: 0.23367538
+2022-08-14T18:10:44.255100+00:00 app[scheduler.6692]: BUY ORDER executed with 20.01166 at 2022-08-14 18:10:44.255038
+2022-08-14T18:10:55.468916+00:00 app[scheduler.6692]: New Balances: 380.20159846 $ and 0.28189624 btc.
+2022-08-14T18:10:55.470414+00:00 app[scheduler.6692]: Added Trade to Heroku DB
+2022-08-14T18:10:55.784948+00:00 heroku[scheduler.6692]: Process exited with status 0
+2022-08-14T18:10:55.867212+00:00 heroku[scheduler.6692]: State changed from up to complete
+2022-08-14T19:10:23.677058+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-14T19:10:34.830577+00:00 heroku[scheduler.1659]: Starting process with command `python sentiment/trade.py`
+2022-08-14T19:10:35.497861+00:00 heroku[scheduler.1659]: State changed from starting to up
+2022-08-14T19:10:38.350548+00:00 app[scheduler.1659]: Getting data from Today
+2022-08-14T19:10:38.352481+00:00 app[scheduler.1659]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T19:10:38.352483+00:00 app[scheduler.1659]: warnings.warn(
+2022-08-14T19:10:38.455970+00:00 app[scheduler.1659]: Deleted 1363 duplicates from a total of 6539
+2022-08-14T19:10:38.472927+00:00 app[scheduler.1659]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T19:10:38.472929+00:00 app[scheduler.1659]: warnings.warn(
+2022-08-14T19:10:38.476087+00:00 app[scheduler.1659]: Check if a trade exists for 2022-08-14 19:00:00
+2022-08-14T19:10:38.476096+00:00 app[scheduler.1659]: Last Trade at: 2022-08-14 15:00:00
+2022-08-14T19:10:38.476114+00:00 app[scheduler.1659]: No Trade. Starting Trade for 2022-08-14 19:00:00
+2022-08-14T19:10:38.782321+00:00 app[scheduler.1659]: Sent Avg: 0.203072265625
+2022-08-14T19:10:38.782336+00:00 app[scheduler.1659]: USDT Balance: 380.20159846 $
+2022-08-14T19:10:38.782338+00:00 app[scheduler.1659]: BTC Balance: 0.28189624
+2022-08-14T19:10:39.162969+00:00 app[scheduler.1659]: BUY ORDER executed with 19.01008 at 2022-08-14 19:10:39.162905
+2022-08-14T19:10:49.813320+00:00 app[scheduler.1659]: New Balances: 361.17251158 $ and 0.32759354 btc.
+2022-08-14T19:10:49.814447+00:00 app[scheduler.1659]: Added Trade to Heroku DB
+2022-08-14T19:10:50.177425+00:00 heroku[scheduler.1659]: Process exited with status 0
+2022-08-14T19:10:50.310661+00:00 heroku[scheduler.1659]: State changed from up to complete
+2022-08-14T20:10:12.324878+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-14T20:10:22.485514+00:00 heroku[scheduler.4670]: Starting process with command `python sentiment/trade.py`
+2022-08-14T20:10:23.254252+00:00 heroku[scheduler.4670]: State changed from starting to up
+2022-08-14T20:10:25.806903+00:00 app[scheduler.4670]: Getting data from Today
+2022-08-14T20:10:25.809708+00:00 app[scheduler.4670]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T20:10:25.809708+00:00 app[scheduler.4670]: warnings.warn(
+2022-08-14T20:10:25.910198+00:00 app[scheduler.4670]: Deleted 1454 duplicates from a total of 7108
+2022-08-14T20:10:25.928121+00:00 app[scheduler.4670]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T20:10:25.928122+00:00 app[scheduler.4670]: warnings.warn(
+2022-08-14T20:10:25.931158+00:00 app[scheduler.4670]: Check if a trade exists for 2022-08-14 19:00:00
+2022-08-14T20:10:25.931178+00:00 app[scheduler.4670]: Last Trade at: 2022-08-14 19:00:00
+2022-08-14T20:10:25.931195+00:00 app[scheduler.4670]: Trade already made for 2022-08-14 19:00:00
+2022-08-14T20:10:26.167459+00:00 heroku[scheduler.4670]: Process exited with status 0
+2022-08-14T20:10:26.243895+00:00 heroku[scheduler.4670]: State changed from up to complete
+2022-08-14T21:10:17.728126+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-14T21:10:28.307554+00:00 heroku[scheduler.6024]: Starting process with command `python sentiment/trade.py`
+2022-08-14T21:10:28.914259+00:00 heroku[scheduler.6024]: State changed from starting to up
+2022-08-14T21:10:31.871139+00:00 app[scheduler.6024]: Getting data from Today
+2022-08-14T21:10:31.873448+00:00 app[scheduler.6024]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T21:10:31.873449+00:00 app[scheduler.6024]: warnings.warn(
+2022-08-14T21:10:31.981246+00:00 app[scheduler.6024]: Deleted 1584 duplicates from a total of 7761
+2022-08-14T21:10:32.000083+00:00 app[scheduler.6024]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T21:10:32.000085+00:00 app[scheduler.6024]: warnings.warn(
+2022-08-14T21:10:32.002724+00:00 app[scheduler.6024]: Check if a trade exists for 2022-08-14 20:00:00
+2022-08-14T21:10:32.002725+00:00 app[scheduler.6024]: Last Trade at: 2022-08-14 19:00:00
+2022-08-14T21:10:32.002727+00:00 app[scheduler.6024]: No Trade. Starting Trade for 2022-08-14 20:00:00
+2022-08-14T21:10:32.493678+00:00 app[scheduler.6024]: Sent Avg: 0.19302035519125682
+2022-08-14T21:10:32.493705+00:00 app[scheduler.6024]: USDT Balance: 361.17251158 $
+2022-08-14T21:10:32.493705+00:00 app[scheduler.6024]: BTC Balance: 0.32759354
+2022-08-14T21:10:32.493724+00:00 app[scheduler.6024]: Exception at 2022-08-14 21:10:32.493698: 'avg'
+2022-08-14T21:10:32.799336+00:00 heroku[scheduler.6024]: Process exited with status 0
+2022-08-14T21:10:32.849827+00:00 heroku[scheduler.6024]: State changed from up to complete
+2022-08-14T22:10:29.843934+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-14T22:10:40.640686+00:00 heroku[scheduler.9972]: Starting process with command `python sentiment/trade.py`
+2022-08-14T22:10:41.261146+00:00 heroku[scheduler.9972]: State changed from starting to up
+2022-08-14T22:10:43.845763+00:00 app[scheduler.9972]: Getting data from Today
+2022-08-14T22:10:43.847950+00:00 app[scheduler.9972]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T22:10:43.847950+00:00 app[scheduler.9972]: warnings.warn(
+2022-08-14T22:10:43.952177+00:00 app[scheduler.9972]: Deleted 1721 duplicates from a total of 8424
+2022-08-14T22:10:43.970838+00:00 app[scheduler.9972]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T22:10:43.970840+00:00 app[scheduler.9972]: warnings.warn(
+2022-08-14T22:10:43.973230+00:00 app[scheduler.9972]: Check if a trade exists for 2022-08-14 20:00:00
+2022-08-14T22:10:43.973232+00:00 app[scheduler.9972]: Last Trade at: 2022-08-14 19:00:00
+2022-08-14T22:10:43.973246+00:00 app[scheduler.9972]: No Trade. Starting Trade for 2022-08-14 20:00:00
+2022-08-14T22:10:44.315241+00:00 app[scheduler.9972]: Sent Avg: 0.19302035519125682
+2022-08-14T22:10:44.315248+00:00 app[scheduler.9972]: USDT Balance: 361.17251158 $
+2022-08-14T22:10:44.315251+00:00 app[scheduler.9972]: BTC Balance: 0.32759354
+2022-08-14T22:10:44.315295+00:00 app[scheduler.9972]: Exception at 2022-08-14 22:10:44.315266: 'avg'
+2022-08-14T22:10:44.569745+00:00 heroku[scheduler.9972]: Process exited with status 0
+2022-08-14T22:10:44.629928+00:00 heroku[scheduler.9972]: State changed from up to complete
+2022-08-14T23:10:10.121658+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-14T23:10:21.616917+00:00 heroku[scheduler.5830]: Starting process with command `python sentiment/trade.py`
+2022-08-14T23:10:23.174366+00:00 heroku[scheduler.5830]: State changed from starting to up
+2022-08-14T23:10:27.927846+00:00 app[scheduler.5830]: Getting data from Today
+2022-08-14T23:10:27.930232+00:00 app[scheduler.5830]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T23:10:27.930234+00:00 app[scheduler.5830]: warnings.warn(
+2022-08-14T23:10:28.080235+00:00 app[scheduler.5830]: Deleted 1829 duplicates from a total of 9033
+2022-08-14T23:10:28.099981+00:00 app[scheduler.5830]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-14T23:10:28.099983+00:00 app[scheduler.5830]: warnings.warn(
+2022-08-14T23:10:28.102438+00:00 app[scheduler.5830]: Check if a trade exists for 2022-08-14 21:00:00
+2022-08-14T23:10:28.102439+00:00 app[scheduler.5830]: Last Trade at: 2022-08-14 19:00:00
+2022-08-14T23:10:28.102439+00:00 app[scheduler.5830]: No Trade. Starting Trade for 2022-08-14 21:00:00
+2022-08-14T23:10:28.400714+00:00 app[scheduler.5830]: Sent Avg: 0.2125472868217054
+2022-08-14T23:10:28.400734+00:00 app[scheduler.5830]: USDT Balance: 361.17251158 $
+2022-08-14T23:10:28.400737+00:00 app[scheduler.5830]: BTC Balance: 0.32759354
+2022-08-14T23:10:28.756222+00:00 app[scheduler.5830]: BUY ORDER executed with 18.05863 at 2022-08-14 23:10:28.756154
+2022-08-14T23:10:39.937993+00:00 app[scheduler.5830]: New Balances: 343.0958264 $ and 0.3710037 btc.
+2022-08-14T23:10:39.940336+00:00 app[scheduler.5830]: Added Trade to Heroku DB
+2022-08-14T23:10:40.406600+00:00 heroku[scheduler.5830]: Process exited with status 0
+2022-08-14T23:10:40.467504+00:00 heroku[scheduler.5830]: State changed from up to complete
+2022-08-15T00:10:23.824257+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-15T00:10:35.280853+00:00 heroku[scheduler.7378]: Starting process with command `python sentiment/trade.py`
+2022-08-15T00:10:36.060213+00:00 heroku[scheduler.7378]: State changed from starting to up
+2022-08-15T00:10:39.042001+00:00 app[scheduler.7378]: Getting data from Today
+2022-08-15T00:10:39.044501+00:00 app[scheduler.7378]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-15T00:10:39.044502+00:00 app[scheduler.7378]: warnings.warn(
+2022-08-15T00:10:39.102731+00:00 app[scheduler.7378]: Exception at 2022-08-15 00:10:39.102640: 'Float64Index' object has no attribute 'floor'
+2022-08-15T00:10:39.406933+00:00 heroku[scheduler.7378]: Process exited with status 0
+2022-08-15T00:10:39.607952+00:00 heroku[scheduler.7378]: State changed from up to complete
+2022-08-15T01:10:31.268185+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-15T01:10:45.225843+00:00 heroku[scheduler.7375]: Starting process with command `python sentiment/trade.py`
+2022-08-15T01:10:46.172625+00:00 heroku[scheduler.7375]: State changed from starting to up
+2022-08-15T01:10:48.757579+00:00 app[scheduler.7375]: Getting data from Today
+2022-08-15T01:10:48.760348+00:00 app[scheduler.7375]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-15T01:10:48.760349+00:00 app[scheduler.7375]: warnings.warn(
+2022-08-15T01:10:48.808713+00:00 app[scheduler.7375]: Exception at 2022-08-15 01:10:48.808623: 'Float64Index' object has no attribute 'floor'
+2022-08-15T01:10:49.082499+00:00 heroku[scheduler.7375]: Process exited with status 0
+2022-08-15T01:10:49.239697+00:00 heroku[scheduler.7375]: State changed from up to complete
+2022-08-15T02:10:25.624151+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-15T02:10:36.992257+00:00 heroku[scheduler.4967]: Starting process with command `python sentiment/trade.py`
+2022-08-15T02:10:37.785132+00:00 heroku[scheduler.4967]: State changed from starting to up
+2022-08-15T02:10:40.611005+00:00 app[scheduler.4967]: Getting data from Today
+2022-08-15T02:10:40.613187+00:00 app[scheduler.4967]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-15T02:10:40.613187+00:00 app[scheduler.4967]: warnings.warn(
+2022-08-15T02:10:40.660787+00:00 app[scheduler.4967]: Exception at 2022-08-15 02:10:40.660715: 'Float64Index' object has no attribute 'floor'
+2022-08-15T02:10:40.963259+00:00 heroku[scheduler.4967]: Process exited with status 0
+2022-08-15T02:10:41.026518+00:00 heroku[scheduler.4967]: State changed from up to complete
+2022-08-15T03:11:07.262655+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-15T03:11:19.297641+00:00 heroku[scheduler.8463]: Starting process with command `python sentiment/trade.py`
+2022-08-15T03:11:20.055754+00:00 heroku[scheduler.8463]: State changed from starting to up
+2022-08-15T03:11:24.815008+00:00 app[scheduler.8463]: Getting data from Today
+2022-08-15T03:11:24.818289+00:00 app[scheduler.8463]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-15T03:11:24.818291+00:00 app[scheduler.8463]: warnings.warn(
+2022-08-15T03:11:24.891043+00:00 app[scheduler.8463]: Deleted 107 duplicates from a total of 631
+2022-08-15T03:11:24.910213+00:00 app[scheduler.8463]: Exception at 2022-08-15 03:11:24.910138: single positional indexer is out-of-bounds
+2022-08-15T03:11:25.207454+00:00 heroku[scheduler.8463]: Process exited with status 0
+2022-08-15T03:11:25.357789+00:00 heroku[scheduler.8463]: State changed from up to complete
+2022-08-15T04:11:12.199056+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-15T04:11:23.354432+00:00 heroku[scheduler.7523]: Starting process with command `python sentiment/trade.py`
+2022-08-15T04:11:24.001288+00:00 heroku[scheduler.7523]: State changed from starting to up
+2022-08-15T04:11:26.722296+00:00 app[scheduler.7523]: Getting data from Today
+2022-08-15T04:11:26.724733+00:00 app[scheduler.7523]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-15T04:11:26.724733+00:00 app[scheduler.7523]: warnings.warn(
+2022-08-15T04:11:26.790949+00:00 app[scheduler.7523]: Deleted 273 duplicates from a total of 1402
+2022-08-15T04:11:26.810636+00:00 app[scheduler.7523]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-15T04:11:26.810640+00:00 app[scheduler.7523]: warnings.warn(
+2022-08-15T04:11:26.812992+00:00 app[scheduler.7523]: Check if a trade exists for 2022-08-15 04:00:00
+2022-08-15T04:11:26.812995+00:00 app[scheduler.7523]: Last Trade at: 2022-08-14 21:00:00
+2022-08-15T04:11:26.813020+00:00 app[scheduler.7523]: No Trade. Starting Trade for 2022-08-15 04:00:00
+2022-08-15T04:11:27.109625+00:00 app[scheduler.7523]: Sent Avg: 0.20636323907455012
+2022-08-15T04:11:27.109643+00:00 app[scheduler.7523]: USDT Balance: 343.0958264 $
+2022-08-15T04:11:27.109643+00:00 app[scheduler.7523]: BTC Balance: 0.3710037
+2022-08-15T04:11:27.451261+00:00 app[scheduler.7523]: BUY ORDER executed with 17.15479 at 2022-08-15 04:11:27.451206
+2022-08-15T04:11:37.949423+00:00 app[scheduler.7523]: New Balances: 325.92388409 $ and 0.41224117 btc.
+2022-08-15T04:11:37.950730+00:00 app[scheduler.7523]: Added Trade to Heroku DB
+2022-08-15T04:11:38.215638+00:00 heroku[scheduler.7523]: Process exited with status 0
+2022-08-15T04:11:38.321374+00:00 heroku[scheduler.7523]: State changed from up to complete
+2022-08-15T05:10:07.209162+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-15T05:10:18.610886+00:00 heroku[scheduler.8439]: Starting process with command `python sentiment/trade.py`
+2022-08-15T05:10:19.396163+00:00 heroku[scheduler.8439]: State changed from starting to up
+2022-08-15T05:10:22.758133+00:00 app[scheduler.8439]: Getting data from Today
+2022-08-15T05:10:22.761116+00:00 app[scheduler.8439]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-15T05:10:22.761117+00:00 app[scheduler.8439]: warnings.warn(
+2022-08-15T05:10:22.875054+00:00 app[scheduler.8439]: Deleted 412 duplicates from a total of 2103
+2022-08-15T05:10:22.900964+00:00 app[scheduler.8439]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-15T05:10:22.900965+00:00 app[scheduler.8439]: warnings.warn(
+2022-08-15T05:10:22.905152+00:00 app[scheduler.8439]: Check if a trade exists for 2022-08-15 05:00:00
+2022-08-15T05:10:22.905156+00:00 app[scheduler.8439]: Last Trade at: 2022-08-15 04:00:00
+2022-08-15T05:10:22.905199+00:00 app[scheduler.8439]: No Trade. Starting Trade for 2022-08-15 05:00:00
+2022-08-15T05:10:23.208385+00:00 app[scheduler.8439]: Sent Avg: 0.21941681957186546
+2022-08-15T05:10:23.208391+00:00 app[scheduler.8439]: USDT Balance: 325.92388409 $
+2022-08-15T05:10:23.208393+00:00 app[scheduler.8439]: BTC Balance: 0.41224117
+2022-08-15T05:10:23.531773+00:00 app[scheduler.8439]: BUY ORDER executed with 16.29619 at 2022-08-15 05:10:23.531705
+2022-08-15T05:10:34.361556+00:00 app[scheduler.8439]: New Balances: 309.61139942 $ and 0.4514147 btc.
+2022-08-15T05:10:34.363136+00:00 app[scheduler.8439]: Added Trade to Heroku DB
+2022-08-15T05:10:34.673319+00:00 heroku[scheduler.8439]: Process exited with status 0
+2022-08-15T05:10:34.775289+00:00 heroku[scheduler.8439]: State changed from up to complete
+2022-08-15T06:10:23.973335+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-15T06:10:36.094863+00:00 heroku[scheduler.7979]: Starting process with command `python sentiment/trade.py`
+2022-08-15T06:10:36.855592+00:00 heroku[scheduler.7979]: State changed from starting to up
+2022-08-15T06:10:40.350657+00:00 app[scheduler.7979]: Getting data from Today
+2022-08-15T06:10:40.353664+00:00 app[scheduler.7979]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-15T06:10:40.353666+00:00 app[scheduler.7979]: warnings.warn(
+2022-08-15T06:10:40.426084+00:00 app[scheduler.7979]: Deleted 510 duplicates from a total of 2756
+2022-08-15T06:10:40.449813+00:00 app[scheduler.7979]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-15T06:10:40.449817+00:00 app[scheduler.7979]: warnings.warn(
+2022-08-15T06:10:40.452427+00:00 app[scheduler.7979]: Check if a trade exists for 2022-08-15 06:00:00
+2022-08-15T06:10:40.452458+00:00 app[scheduler.7979]: Last Trade at: 2022-08-15 05:00:00
+2022-08-15T06:10:40.452492+00:00 app[scheduler.7979]: No Trade. Starting Trade for 2022-08-15 06:00:00
+2022-08-15T06:10:40.813593+00:00 app[scheduler.7979]: Sent Avg: 0.2739896551724138
+2022-08-15T06:10:40.813613+00:00 app[scheduler.7979]: USDT Balance: 309.61139942 $
+2022-08-15T06:10:40.813613+00:00 app[scheduler.7979]: BTC Balance: 0.4514147
+2022-08-15T06:10:41.254430+00:00 app[scheduler.7979]: BUY ORDER executed with 15.48057 at 2022-08-15 06:10:41.254373
+2022-08-15T06:10:52.117948+00:00 app[scheduler.7979]: New Balances: 294.11535245 $ and 0.4886276 btc.
+2022-08-15T06:10:52.119031+00:00 app[scheduler.7979]: Added Trade to Heroku DB
+2022-08-15T06:10:52.508640+00:00 heroku[scheduler.7979]: Process exited with status 0
+2022-08-15T06:10:52.568898+00:00 heroku[scheduler.7979]: State changed from up to complete
+2022-08-15T07:10:34.106130+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-15T07:10:47.260756+00:00 heroku[scheduler.7698]: Starting process with command `python sentiment/trade.py`
+2022-08-15T07:10:48.333403+00:00 heroku[scheduler.7698]: State changed from starting to up
+2022-08-15T07:10:51.839831+00:00 app[scheduler.7698]: Getting data from Today
+2022-08-15T07:10:51.842982+00:00 app[scheduler.7698]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-15T07:10:51.842983+00:00 app[scheduler.7698]: warnings.warn(
+2022-08-15T07:10:51.944512+00:00 app[scheduler.7698]: Deleted 649 duplicates from a total of 3464
+2022-08-15T07:10:51.969363+00:00 app[scheduler.7698]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-15T07:10:51.969365+00:00 app[scheduler.7698]: warnings.warn(
+2022-08-15T07:10:51.973307+00:00 app[scheduler.7698]: Check if a trade exists for 2022-08-15 06:00:00
+2022-08-15T07:10:51.973322+00:00 app[scheduler.7698]: Last Trade at: 2022-08-15 06:00:00
+2022-08-15T07:10:51.973341+00:00 app[scheduler.7698]: Trade already made for 2022-08-15 06:00:00
+2022-08-15T07:10:52.311806+00:00 heroku[scheduler.7698]: Process exited with status 0
+2022-08-15T07:10:52.367251+00:00 heroku[scheduler.7698]: State changed from up to complete

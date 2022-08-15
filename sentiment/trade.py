@@ -6,6 +6,7 @@ from datetime import datetime, timedelta,timezone
 from Database.Trade import Trade_Table
 from Database.database import session_scope
 from kucoin.client import Client as kucoinClient
+import re
 
 os.sys.path.insert(0, "/Users/marvinottersberg/Documents/GitHub/sentiment")
 from config import ConfigDB,ConfigKucoin
@@ -60,7 +61,9 @@ def get_Heroku_DB():
 
 def trade(last_avg_df):
     accounts = kSubClient.get_accounts(account_type = "trade")
-    print("Sent Avg: {}".format(last_avg_df["Avg"]))
+    average = re.match(r'\d+.\d{3}', str(last_avg_df["Avg"])).group(0)
+    print("Sent Avg: {}".format(str(average)))
+    average = float(average)
     if len(accounts) == 2:
         usdt_balance = float(accounts[0]["balance"])
         btc_balance = float(accounts[1]["balance"])
@@ -70,16 +73,18 @@ def trade(last_avg_df):
         usdt_balance = float(accounts[0]["balance"])
         print(f"USDT Balance: {usdt_balance} $")
     symbol = "BTC-USDT"
-    if last_avg_df["Avg"] >= 0.2 and usdt_balance > 20: #usdt_balance > 10 for subClient
+    if average > 0.20 and usdt_balance > 20: #usdt_balance > 10 for subClient
         try:
-            funds = round(usdt_balance*0.05,5) #0.00005
+            funds = re.match(r'\d+.\d{3}', str(usdt_balance*0.05)).group(0)
+            funds = float(funds)
             order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_BUY, funds = funds) #usdt_balance * 0.05 for subclient
             print(f"BUY ORDER executed with {funds} at {datetime.now()}")
         except Exception as e:
             print(f"Exception: {e}")
-    elif last_avg_df["avg"] < 0.2 and btc_balance > 0.005 and len(accounts) != 1: 
+    elif average <= 0.20 and btc_balance > 0.005 and len(accounts) != 1: 
         try:
-            funds = round(btc_balance*0.25,5)
+            funds = re.match(r'\d+.\d{3}', str(btc_balance*0.25)).group(0)
+            funds = float(funds)
             order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_SELL, funds = funds)
             print(f"SELL ORDER executed with {funds} at {datetime.now()}")
         except Exception as e:
