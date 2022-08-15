@@ -61,8 +61,12 @@ def get_Heroku_DB():
 
 def trade(last_avg_df):
     accounts = kSubClient.get_accounts(account_type = "trade")
-    average = re.match(r'\d+.\d{3}', str(last_avg_df["Avg"])).group(0)
-    print("Sent Avg: {}".format(str(average)))
+    average = str(average)
+    print("Sent Avg: {}".format(average))
+    if average.startswith("-"):
+        average = average[:5]
+    else:
+        average = average[:4]
     average = float(average)
     if len(accounts) == 2:
         usdt_balance = float(accounts[0]["balance"])
