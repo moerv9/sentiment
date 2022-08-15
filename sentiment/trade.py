@@ -61,6 +61,7 @@ def get_Heroku_DB():
 
 def trade(last_avg_df):
     accounts = kSubClient.get_accounts(account_type = "trade")
+    print(f"Starting trade process at {datetime.now()}")
     average = str(last_avg_df["Avg"])
     print("Sent Avg: {}".format(average))
     if average.startswith("-"):
@@ -80,14 +81,14 @@ def trade(last_avg_df):
     if float(average) > 0.20 and usdt_balance > 20: #usdt_balance > 10 for subClient
         try:
             funds = usdt_balance*0.05    
-            order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_BUY, funds = funds) #usdt_balance * 0.05 for subclient
-            print(f"BUY ORDER executed with {funds} at {datetime.now()}")
+            #order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_BUY, funds = funds) #usdt_balance * 0.05 for subclient
+            
         except Exception as e:
             print(f"Exception: {e}")
     elif float(average) <= 0.20 and btc_balance > 0.005 and len(accounts) != 1: 
         try:
             funds = btc_balance*0.25
-            order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_SELL, funds = funds)
+            #order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_SELL, funds = funds)
             print(f"SELL ORDER executed with {funds} at {datetime.now()}")
         except Exception as e:
             print(f"Exception: {e}")
@@ -96,21 +97,26 @@ def trade(last_avg_df):
         print("Maybe there are not enough funds")
     sleep(10)
     orders = kSubClient.get_orders(symbol='BTC-USDT')
-    for i in orders["items"]:
-        if i["id"] == str(order["orderId"]):#order["orderId"]:
-            time = pd.to_datetime(i["createdAt"],unit="ms",utc=True) + timedelta(hours=2)
-            fee =  float(i["fee"])
-            side =  i["side"]
-            fundss = float(i["funds"])
-    accounts = kSubClient.get_accounts(account_type = "trade")
-    new_usdt_balance = float(accounts[0]["balance"])
-    new_btc_balance = float(accounts[1]["balance"])
-    print(f"New Balances: {new_usdt_balance} $ and {new_btc_balance} btc.")
-    trade = Trade_Table(pd.to_datetime(last_avg_df.name), last_avg_df["Avg"], time, symbol, side, fundss, fee, order["orderId"], new_usdt_balance, new_btc_balance)
+    order = True
+    if order:
+        try:
+            for i in orders["items"]:
+                if i["id"] == str(order["orderId"]):#order["orderId"]:
+                    time = pd.to_datetime(i["createdAt"],unit="ms",utc=True) + timedelta(hours=2)
+                    fee =  float(i["fee"])
+                    side =  i["side"]
+                    fundss = float(i["funds"])
+            accounts = kSubClient.get_accounts(account_type = "trade")
+            new_usdt_balance = float(accounts[0]["balance"])
+            new_btc_balance = float(accounts[1]["balance"])
+            print(f"New Balances: {new_usdt_balance} $ and {new_btc_balance} btc.")
+            trade = Trade_Table(pd.to_datetime(last_avg_df.name), last_avg_df["Avg"], time, symbol, side, fundss, fee, order["orderId"], new_usdt_balance, new_btc_balance)
 
-    with session_scope() as sess:
-        sess.add(trade)
-        print("Added Trade to Heroku DB")
+            with session_scope() as sess:
+                sess.add(trade)
+                print("Added Trade to Heroku DB")
+        except Exception as e:
+            print(f"Exeption: {e}")  
 
 def trade_main():
     try:
@@ -130,4 +136,4 @@ def trade_main():
         print(f"Exception at {datetime.now()}: {e}")
         
 
-trade_main()
+#trade_main()
