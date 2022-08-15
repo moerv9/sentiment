@@ -61,7 +61,7 @@ def get_Heroku_DB():
 
 def trade(last_avg_df):
     accounts = kSubClient.get_accounts(account_type = "trade")
-    average = str(average)
+    average = str(last_avg_df["Avg"])
     print("Sent Avg: {}".format(average))
     if average.startswith("-"):
         average = average[:5]
