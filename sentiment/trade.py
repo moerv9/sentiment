@@ -77,18 +77,16 @@ def trade(last_avg_df):
         usdt_balance = float(accounts[0]["balance"])
         print(f"USDT Balance: {usdt_balance} $")
     symbol = "BTC-USDT"
-    if average > 0.20 and usdt_balance > 20: #usdt_balance > 10 for subClient
+    if float(average) > 0.20 and usdt_balance > 20: #usdt_balance > 10 for subClient
         try:
-            funds = re.match(r'\d+.\d{3}', str(usdt_balance*0.05)).group(0)
-            funds = float(funds)
+            funds = usdt_balance*0.05    
             order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_BUY, funds = funds) #usdt_balance * 0.05 for subclient
             print(f"BUY ORDER executed with {funds} at {datetime.now()}")
         except Exception as e:
             print(f"Exception: {e}")
-    elif average <= 0.20 and btc_balance > 0.005 and len(accounts) != 1: 
+    elif float(average) <= 0.20 and btc_balance > 0.005 and len(accounts) != 1: 
         try:
-            funds = re.match(r'\d+.\d{3}', str(btc_balance*0.25)).group(0)
-            funds = float(funds)
+            funds = btc_balance*0.25
             order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_SELL, funds = funds)
             print(f"SELL ORDER executed with {funds} at {datetime.now()}")
         except Exception as e:
