@@ -36,7 +36,7 @@ def conv_sent_score_to_meaning(num):
 
 
 def get_signal_by_keywords(df):
-    all_words = ' '.join([tweets for tweets in df])
+    all_words = ' '.join([tweets for tweets in df["Tweet"]])
     words = list(all_words.split(" "))
     cleaned_words = [x for x in words if not bool(re.search('\d|_|\$|\amp|\/', x))]
     cleaned_words = [re.sub(r"\.|\!|\,|\(|\)|\-|\?|\;|\\","",x) for x in cleaned_words]
@@ -50,20 +50,39 @@ def get_signal_by_keywords(df):
     df.reset_index(drop=True, inplace=True)
     df["Signal"] = df["Words"].apply(get_buy_or_sell_signal)
     df = df.dropna(subset=["Signal"])
-    
     grouped_df = df.groupby(by=["Signal"],as_index=False,sort=False).agg({"Count":"sum"})
-    
+
     #sent_list = [sentiment_model.polarity_scores(words).get("compound") for words in df["Words"]] #Sent for each word
     #df["Sentiment"] = get_sent_meaning(sent_list)
     #df_count = df.groupby(df["Sentiment"], dropna=True).count() #count words for each sentiment "pos, neg, ..."
-    
-    return grouped_df #df,grouped_df,resampled_df
+    return df, grouped_df
 
+
+
+def show_wordCloud(df,df_contains_tweet):
+    if df_contains_tweet:
+        all_words = ' '.join([tweets for tweets in df["Tweet"]])
+        wordcloud1 = WordCloud(relative_scaling=0.5,max_words=50,stopwords=my_stopwords,
+                            width=500, height=250,collocations=False, random_state=1, max_font_size=100, background_color=None,colormap="viridis_r").generate(all_words)
+    elif df_contains_tweet == False:
+        df.reset_index(drop=True, inplace=True)
+        df.index = df["Words"] 
+        df = df.drop(columns=["Signal","Words"])
+        print("DFFFFF")
+        print(df)
+        wordcloud1 = WordCloud(relative_scaling=0.5,max_words=50,stopwords=my_stopwords,
+                            width=500, height=250,collocations=False, random_state=1, max_font_size=100, background_color=None,colormap="viridis_r").generate_from_frequencies(df)
+    fig1 = plt.figure(figsize=(20, 10))
+    fig1.patch.set_alpha(0)
+    plt.imshow(wordcloud1, interpolation="bilinear")
+    plt.axis('off')
+    plt.tight_layout(pad=0)
+    st.pyplot(plt)
+    
 def get_signals(df,interval):
     df = df.filter(items=["Tweet"])
     df["Timestamp"] = df.index
     df.reset_index(drop=True,inplace=True)
-    
     signals = df["Tweet"].apply(get_signal_by_keywords)#    df[["Signal","Count"]]
     
     #signal_dict = {key: df.loc[value] for key, value in df.groupby("Timestamp").groups.items()} 
@@ -72,17 +91,3 @@ def get_signals(df,interval):
     #tweet_group_list = [df.loc[values] for values in df.groupby("Timestamp").groups.values()]
     
     return signals
-
-
-
-
-def show_wordCloud(df):
-    freq_words = get_signal_by_keywords(df)[0]
-    wordcloud1 = WordCloud(relative_scaling=0.5,max_words=50,stopwords=my_stopwords,
-                        width=500, height=250,collocations=False, random_state=1, max_font_size=100, background_color=None,colormap="viridis_r").generate_from_frequencies(freq_words)
-    fig1 = plt.figure(figsize=(20, 10))
-    fig1.patch.set_alpha(0)
-    plt.imshow(wordcloud1, interpolation="bilinear")
-    plt.axis('off')
-    plt.tight_layout(pad=0)
-    st.pyplot(plt)

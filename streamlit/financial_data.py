@@ -22,37 +22,13 @@ binance_client = bClient(ConfigBinance().BINANCE_API_KEY,ConfigBinance().BINANCE
 kSubClient = kucoinClient(kconf.KUCOIN_SUB_KEY, kconf.KUCOIN_SUB_SECRET,kconf.KUCOIN_SUB_PASS,sandbox=True)
 kMainClient = kucoinClient(kconf.KUCOIN_KEY, kconf.KUCOIN_SECRET,kconf.KUCOIN_PASS,sandbox=True)
 
-
-def trade(last_avg_df):
-    accounts = kMainClient.get_accounts(account_type = "trade")
+def get_kucoin_data():
+    accounts = kSubClient.get_accounts(account_type = "trade")
     usdt_balance = float(accounts[0]["balance"])
     btc_balance = float(accounts[1]["balance"])
-    if last_avg_df["Avg"] >= 0.2 and usdt_balance > 20: #usdt_balance > 10 for subClient
-        try:
-            order = kMainClient.create_market_order('BTC-USDT', kMainClient.SIDE_BUY,funds = round(usdt_balance*0.00005,5)) #usdt_balance * 0.05 for subclient
-            st.session_state.trade_exec_at = last_avg_df.name
-            print(f"BUY ORDER executed for {st.session_state.trade_exec_at} for {round(usdt_balance*0.00005,5)} at {datetime.now()}")
-        except Exception as e:
-            print(e.status_code)
-            print(e.message)
-    elif last_avg_df < 0.2 and btc_balance > 5: 
-        try:
-            order = kMainClient.create_market_order('BTC-USDT', kMainClient.SIDE_SELL,funds = round(btc_balance*0.25,5))
-            st.session_state.trade_exec_at = last_avg_df.name
-            print(f"SELL ORDER executed for {st.session_state.trade_exec_at} for {round(btc_balance*0.25,5)} at {datetime.now()}")
-        except Exception as e:
-            print(e.message)
-    
-
-
-def get_last_orders():
-    last_orders = kMainClient.get_orders(symbol='BTC-USDT')
-    d = []
-    for i in last_orders["items"]:
-        d.append([pd.to_datetime(i["createdAt"],unit="ms",utc=True) + timedelta(hours=2),i["symbol"], i["side"],i["size"],i["funds"], i["fee"],i["isActive"], i["cancelExist"],i["id"]])
-        
-    df = pd.DataFrame(data=d,columns=["time","symbol","side","size","funds","fee","isActive","cancelExist","id"])
-    return df 
+    btc_price = binance_client.get_symbol_ticker(symbol="BTCUSDT")["price"]
+    btc_in_usdt = float(btc_balance) * float(btc_price)
+    return usdt_balance, btc_balance, btc_in_usdt
 
 
 def getminutedata(symbol,interval, lookback):

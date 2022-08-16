@@ -180,7 +180,7 @@ Then, if the signal indicates buy, a market order will be created with 5% of the
 A sell order will sell a quarter of the current bitcoin holdings.
 
 At last, some metrics from the trade are uploaded into a separate table on Heroku for a better overview of the trades and later calculation of current PNL (Profit and Loss).
-An excerpt from this table is shown below. It contains the sentiment average and the time period, as well as information about the trade itself. The last balances are actually the balances after the trade was made. So, it is possible, to look back at all the balances without gaps. 
+An excerpt from this table is shown below in figure 15. It contains the sentiment average and the time period, as well as information about the trade itself. The last balances are actually the balances after the trade was made. So, it is possible, to look back at all the balances without gaps. 
 
 </br>
 

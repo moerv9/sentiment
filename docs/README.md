@@ -1,4 +1,4 @@
-
+# Social Signal Sentiment-Based Prediction for Cryptocurrency Trading.
 # Table of Contents
 - [Introduction](0_Introduction.md) 
 

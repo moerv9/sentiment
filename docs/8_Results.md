@@ -1,17 +1,31 @@
+# Results 
+
+Beginning the automatic trading on sentiment at the 16th of August 2022 with a balance of 5000$ USDT.
+
+
 # Conclusion
-#TODO: results 
 All the requiremetns apart from #TODO were achieved.
     - (Placement in the scientific/financial context)
     - Conclusion
     - Challenges
 
-
-
 ## Learnings
+
+It has been an awesome and interesting project from the start and I have learned a lot of things:
+
+- Building a whole python project from start to finish by myself
+- Running scripts in the background on cloud provider Heroku
+- Building and adding to a real-time database with Postgres
+- Building a strategy for trading and testing it in real-time inside a sandbox from a crypto brokerage
+
+
+
 
 - Don't spend that much time on a documentation platform
 - make a better action plan and stick to it
 - set a time cap for tasks and don't try to get something to work if there are other options available: binance vs kucoin
+
+- dont spend that much time on visualisation when most functionality isn't done yet.
 
 ---
 

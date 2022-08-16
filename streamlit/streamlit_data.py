@@ -32,27 +32,6 @@ from config import ConfigDB
 DB_URL = ConfigDB().DB_URL
 
 
-
-def split_DF_by_time(df,time_frame):
-    """Returns Dataframe for the past hours specified in time_frame
-
-    Args:
-        df (_type_): Dataframe to split
-        time_frame (_type_): timeframe to look at
-
-    Returns:
-        DataFrame: in the given timeframe
-    """
-    #print("split df by time:")
-    #print(df.head(10))
-    if "Timestamp" in df.columns:
-        df.index = df["Timestamp"]
-    df.index = pd.to_datetime(df.index)
-    timedelt = datetime.now() - timedelta(hours=time_frame,minutes=15)
-    mask = (df.index > timedelt)
-    df = df.loc[mask]
-    return df
-
 def get_Heroku_DB(today=True):
     conn = psycopg2.connect(DB_URL, sslmode="require")
     if today:
@@ -61,7 +40,7 @@ def get_Heroku_DB(today=True):
         query = f"select * from tweet_data where Tweet_Date > current_date order by id desc limit {limit};"
     else:
         logger.info("Getting data from past Today")
-        query = f"select * from tweet_data where Tweet_Date > current_date - interval '4' day limit 1000000;"
+        query = f"select * from tweet_data where Tweet_Date > current_date - interval '4' day order by id desc limit 1000000;"
     df = pd.read_sql(query, conn)
     columns = {"body": "Tweet",
                 "keyword": "Keyword",
@@ -83,44 +62,69 @@ def get_Heroku_DB(today=True):
     duplicates = list(df.index[df.duplicated(subset=["Tweet"],keep=False)])
     df.drop_duplicates(subset=["Tweet"],keep=False,inplace=True)
 
-    print(f"Deleted {len(duplicates)} duplicates from a total of {rows}")
-    return df, len(duplicates)
+    #print(f"Deleted {len(duplicates)} duplicates from a total of {rows}")
+    
+    query = "select * from trade_data where id > 28 order by id desc;"
+    df_trades = pd.read_sql(query, conn)
 
+    return df.sort_index(ascending=False), df_trades, len(duplicates)
 
-def calc_mean_sent(df, min_range,filter_neutral=False):
+def split_DF_by_time(df,time_frame):
+    """Returns Dataframe for the past hours specified in time_frame
+
+    Args:
+        df (_type_): Dataframe to split
+        time_frame (_type_): timeframe to look at
+
+    Returns:
+        DataFrame: in the given timeframe
+    """
+    #print("split df by time:")
+    #print(df.head(10))
+    if "Timestamp" in df.columns:
+        df.index = df["Timestamp"]
+    df.index = pd.to_datetime(df.index)
+    timedelt = datetime.now() - timedelta(hours=time_frame,minutes=15)
+    mask = (df.index > timedelt)
+    df = df.loc[mask]
+    return df
+
+def calc_mean_sent(df, filter_neutral=False):
     if filter_neutral:
         df = df[df["Sentiment Score"] != 0.0]
     sent_meaning_list = get_sent_meaning(df["Sentiment Score"]) #Sentiment Values to Meaning ("Positive,Negative,etc.")
     sent_meaning_df = pd.Series(sent_meaning_list)
     sent_appearances = pd.DataFrame(sent_meaning_df.value_counts())
     
-    df = df.filter(items=["Sentiment Score"]) #Keep only "Sentiment Score" Column
-    #df = df.groupby(df.index, dropna=True).mean() #Group by timestamp and calc mean sentiment
-    df.rename(columns={"Sentiment Score": "Avg. Sentiment"},inplace=True)
-    count_tweets = df.resample(f"{min_range}T").count() #count Tweets
-    count_tweets.rename(columns={"Avg. Sentiment":"Total Tweets"},inplace=True)
-    df = df.resample(f"{min_range}T").mean()
+    # df = df.filter(items=["Sentiment Score"]) #Keep only "Sentiment Score" Column
+    # #df = df.groupby(df.index, dropna=True).mean() #Group by timestamp and calc mean sentiment
+    # df.rename(columns={"Sentiment Score": "Avg. Sentiment"},inplace=True)
+    # count_tweets = df.resample(f"{min_range}T").count() #count Tweets
+    # count_tweets.rename(columns={"Avg. Sentiment":"Total Tweets"},inplace=True)
+    # df = df.resample(f"{min_range}T").mean()
 
     #sent_meaning_for_avg = pd.DataFrame(get_sent_meaning(df["Avg. Sentiment"]),columns=["Sent is"]) #no idea why this adds all the rows below and not next to it
     
-    new_df = pd.concat([df,count_tweets],axis="columns").sort_index(ascending=False) #Put all DF together
+    # new_df = pd.concat([df,count_tweets],axis="columns").sort_index(ascending=False) #Put all DF together
     
-    # sent_meaning_df = pd.Series(sent_meaning_list)
-    # sent_appearances = pd.DataFrame(sent_meaning_df.value_counts())
-    # sent_appearances["Sentiment"] = sent_appearances.index
-    # sent_appearances.rename(columns={0:"Tweets"},inplace=True)
-    # sent_appearances = sent_appearances[["Sentiment","Tweets"]]
-    # sent_percentages = pd.Series([int((num/len(sent_meaning_df))*100) for num in sent_appearances["Tweets"]])
-    # sent_appearances_df = pd.concat([sent_appearances.reset_index(drop=True),sent_percentages.reset_index(drop=True)],axis=1)
-    # sent_appearances_df.rename(columns={0:"Percentage"},inplace=True)
-    
-    #print(sent_appearances_df[sent_appearances_df["Sentiment"] == "Positive"]["Percentage"])
-    #df["Positive (%)"] = sent_appearances_df[sent_appearances_df["Sentiment"] == "Positive"]["Percentage"]
-
+    sent_meaning_df = pd.Series(sent_meaning_list)
+    sent_appearances = pd.DataFrame(sent_meaning_df.value_counts())
+    sent_appearances["Sentiment"] = sent_appearances.index
+    sent_appearances.rename(columns={0:"Tweets"},inplace=True)
+    sent_appearances = sent_appearances[["Sentiment","Tweets"]]
+    sent_percentages = pd.Series([int((num/len(sent_meaning_df))*100) for num in sent_appearances["Tweets"]])
+    sent_appearances_df = pd.concat([sent_appearances.reset_index(drop=True),sent_percentages.reset_index(drop=True)],axis=1)
+    sent_appearances_df.rename(columns={0:"Percentage"},inplace=True)
+    # print("Sent appearencs")
+    # print(sent_appearances_df[sent_appearances_df["Sentiment"] == "Positive"]["Percentage"])
+    # df["Positive (%)"] = sent_appearances_df[sent_appearances_df["Sentiment"] == "Positive"]["Percentage"]
+    print("sent apperancaes df")
+    print(sent_appearances_df)
     # sent_app_transposed = sent_appearances_df.transpose(copy=True)
+    # print("sent transposed")
     # print(sent_app_transposed)
-    #sent_app_transposed["Sentiment"] = str(sent_app_transposed["Sentiment"])
-    return pd.DataFrame(new_df), sent_appearances
+
+    return sent_appearances_df
 
 def resample_df(df,time_range, filter_neutral=False,by_day=True):
     if filter_neutral:
@@ -216,6 +220,8 @@ def show_charts(df, data):
     #plt.tight_layout()
     axs[2].plot(x,df["Total Tweets"],linestyle=":", label="Tweets",color="yellow", markersize=2,linewidth=1)
     st.pyplot(fig)
+    
+
 
 def show_cake_diagram(df):
     labels = [i for i in df["Sentiment"]]
