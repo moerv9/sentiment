@@ -120,7 +120,7 @@ Accounts with less than 500 followers or when they have just been created in the
 The next step is cleaning the tweet itself. 
 Most often a tweet can contain a lot of characters like *underscores, hashtags or emojis* and special characters like *"&amp"* (which is used in Html entities for a normal "&"-Symbol. There was one in one of Elon Musks Tweet [above](#elon-musks-latest-tweets)).
 
-With the help of regex functions it can be done to filter and substitute words or symbols that are not useful. This is an excerpt from the `cleanTweets`-Function in the [filter.py](#TODO:link filter.py) file:
+With the help of regex functions it can be done to filter and substitute words or symbols that are not useful. This is an excerpt from the `cleanTweets`-Function in the [filter.py](../sentiment/filter.py) file:
 ```
 text = re.sub(r'@[A-Za-z0-9]+',"",text,flags=re.IGNORECASE) 
 text = re.sub(r'_*|\+*',"",text) # removes _ and +

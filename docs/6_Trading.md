@@ -132,8 +132,8 @@ Since this looked promising it was implemented to real-time Papertrading in the 
 
 
 </br>
-The [LiveTrade-Class](#TODO: trade.py) works as follows:
-A function collects all the Data for the single tweets and stores them in a pandas DataFrame. This is neded to delete the duplicates with the following methods:
+In the [trade](../sentiment/trade.py) file are the following methods:
+The first method collects all the Data for the single tweets and stores them in a pandas DataFrame. This is neded to delete the duplicates with the following methods:
 
 </br>
 
