@@ -226,7 +226,7 @@ Therefore, a few print statements are left in the final code.
 
 <div style="display: inline;" >
 <a href="https://github.com/moerv9/sentiment/blob/main/docs/5_Sentiment.md"><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter: Sentiment</button></a>
-<a href=https://github.com/moerv9/sentiment/blob/main/docs/7_Visualisation.md""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Visualisation ></button></a>
+<a href=https://github.com/moerv9/sentiment/blob/main/docs/7_Visualisation.md"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Visualisation ></button></a>
 </div>
 
 </br>

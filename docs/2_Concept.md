@@ -92,7 +92,7 @@ The orange bigger box are the parent steps, in which the smaller steps take plac
 
 <div style="display: inline;" >
 <a href="https://github.com/moerv9/sentiment/blob/main/docs/1_Research.md"><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter: Research</button></a>
-<a href="https://github.com/moerv9/sentiment/blob/main/docs/3_Data_Acquisition"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Data Acquisition ></button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/3_Data_Acquisition.md"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Data Acquisition ></button></a>
 </div>
 
 </br>
