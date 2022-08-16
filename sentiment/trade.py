@@ -6,6 +6,7 @@ from datetime import datetime, timedelta,timezone
 from Database.Trade import Trade_Table
 from Database.database import session_scope
 from kucoin.client import Client as kucoinClient
+
 import re
 
 os.sys.path.insert(0, "/Users/marvinottersberg/Documents/GitHub/sentiment")
@@ -78,22 +79,35 @@ def trade(last_avg_df):
         usdt_balance = float(accounts[0]["balance"])
         print(f"USDT Balance: {usdt_balance} $")
     symbol = "BTC-USDT"
-    if float(average) > 0.20 and usdt_balance > 20: #usdt_balance > 10 for subClient
+    if float(average) > 0.20: #usdt_balance > 10 for subClient
         try:
-            funds = round(usdt_balance,5)*0.05
+            if usdt_balance < 10:
+                funds = usdt_balance
+            funds = int(usdt_balance*0.05)
             print(f"Buying for {funds}")
             order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_BUY, funds = funds) #usdt_balance * 0.05 for subclient
-            
         except Exception as e:
             print(f"Exception: {e}")
-    elif float(average) <= 0.20 and btc_balance > 0.005 and len(accounts) != 1: 
-        try:
-            funds = round(btc_balance,5)*0.25
-            print(f"Buying for {funds}")
-            order = kSubClient.create_market_order(symbol = symbol, side = kSubClient.SIDE_SELL, funds = funds)
-            print(f"SELL ORDER executed with {funds} at {datetime.now()}")
-        except Exception as e:
-            print(f"Exception: {e}")
+    elif float(average) <= 0.20 and len(accounts) != 1: 
+        counter = 0
+        while True:
+            counter +=1
+            if btc_balance > 0.0005:
+                sellfunds = round(btc_balance * 0.25,5)
+            elif btc_balance == 0.0:
+                break
+            else:
+                sellfunds = btc_balance
+            print(f"Selling for {sellfunds}")
+            order = kSubClient.create_market_order(symbol = "BTC-USDT", side = kSubClient.SIDE_SELL, size = sellfunds)
+            print(f"SELL ORDER executed with {sellfunds} at {datetime.now()}")
+            if order:
+                break
+            else:
+                sellfunds = btc_balance
+            if counter == 5:
+                print("Something went wrong. No trade executed.")
+                break
     else:
         print("Trade not fulfilled.")
         print("Maybe there are not enough funds")
