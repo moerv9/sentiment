@@ -33,8 +33,8 @@ A few other strategies were:
 </br>
 
 <div style="display: inline;" >
-<a href=""><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter</button></a>
-<a href=""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter ></button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/7_Visualisation.md"><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter: Visualisation</button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/9_Appendices.md"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Appendices ></button></a>
 </div>
 
 </br>

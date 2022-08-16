@@ -17,8 +17,8 @@ Actually, Streamlit and Jupyter Notebooks were used to test the code before it e
 </br>
 
 <div style="display: inline;" >
-<a href=""><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter</button></a>
-<a href=""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter ></button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/6_Trading.md"><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter: Trading</button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/8_Results.md"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Results ></button></a>
 </div>
 
 </br>

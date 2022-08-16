@@ -95,6 +95,10 @@ In the left table in the image below you see the Timestamp, Sentiment Score and 
 
 ![60 min Sentiment Average and Amount of Tweets](./img/trading/60min-avg-count.png)
 
+##### *Figure 12: Sentiment for a single tweet on the left, Average Sentiment and counted Tweets for a timeperiod of 1h*
+</br>
+
+
 The right table shows the grouped and counted tweets for intervals of 60 min. Afterwards, the average sentiment is calculated and converted into a *Buy* or *Sell* Signal.
 It can be seen that there isn't a lot of tweets and some timestamps are missing. This was an error from SQL-Alchemy, which lead to the state of not committing the current 
 Database-Session and thus leading to missing timestamps. This is fixed in the final version, but was kept here to correspond to the below chart.
@@ -119,7 +123,13 @@ This is why the threshold is set to 0.2.
 ## Papertrading  
 The image below shows the sentiment and bitcoin price from August 5th till August 6th. If the sentiment is above 0.2 (positive or very positive) it is marked as a buy signal in the chart (green triangle).
 Since this looked promising it was implemented to real-time Papertrading in the Kucoin Sandbox ([FR 40]).
+
+</br>
+
 ![Strategy #1](./img/trading/strategy%20%231.png)
+##### *Figure 13: Charts for Bitcoin Price and Average Sentiment with corresponding signals*
+</br>
+
 
 </br>
 The [LiveTrade-Class](#TODO: trade.py) works as follows:
@@ -153,7 +163,14 @@ mean_df = df.resample(f"1H").mean().sort_index(ascending=False)
 </br>
 
 These two series get concatenated together to have one table:
-![last three averages](/img/trading/last_avg.png)
+
+</br>
+
+![last three averages](./img/trading/last_avg.png)
+
+##### *Figure 14: Last three time periods with average, total tweets and signal*
+</br>
+
 
 And these last three timestamps are important for the trading. The first row is showing the actual timestamp. So at the time this picture was taken it was somewhere between 05:00 and 06:00. Since the tweets are collected live and every few seconds this row will be updated frequently and the avg and total tweets will change. 
 
@@ -165,7 +182,13 @@ A sell order will sell a quarter of the current bitcoin holdings.
 At last, some metrics from the trade are uploaded into a separate table on Heroku for a better overview of the trades and later calculation of current PNL (Profit and Loss).
 An excerpt from this table is shown below. It contains the sentiment average and the time period, as well as information about the trade itself. The last balances are actually the balances after the trade was made. So, it is possible, to look back at all the balances without gaps. 
 
-![latest trades from Heroku DB](/img/trading/last_trades_from_Heroku.png)
+</br>
+
+![latest trades from Heroku DB](./img/trading/last_trades_from_Heroku.png)
+
+##### *Figure 15: Last Trades with Kucoin Sub-Account*
+</br>
+
 
 </br>
 
@@ -175,9 +198,17 @@ An excerpt from this table is shown below. It contains the sentiment average and
 
 ## Looking at the trades
 
-![Heroku Logs](./img/trading/scheduled_trading.png)
 
-Above is an excerpt from the Heroku Logs. At first, the runner is started, that listens to the tweets and adds them to the database. When you see the line `Listening to tweets now...`, you know, everything is working properly.
+Figure 16 shows the Heroku Logs. At first, the runner is started, that listens to the tweets and adds them to the database. When you see the line `Listening to tweets now...`, you know, everything is working properly.
+
+</br>
+
+![Heroku Logs](./img/trading/scheduled_trading.png)
+##### *Figure 16: Logs from Heroku on scheduled trades*
+</br>
+
+
+
 
 As explained in the Backend-Section, the scheduler is executing the trading script every hour.
 
@@ -194,8 +225,8 @@ Therefore, a few print statements are left in the final code.
 </br>
 
 <div style="display: inline;" >
-<a href=""><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter</button></a>
-<a href=""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter ></button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/5_Sentiment.md"><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter: Sentiment</button></a>
+<a href=https://github.com/moerv9/sentiment/blob/main/docs/7_Visualisation.md""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Visualisation ></button></a>
 </div>
 
 </br>

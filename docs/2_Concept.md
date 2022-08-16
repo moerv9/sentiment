@@ -72,11 +72,15 @@ The requirements are structured as functional and non-functional with three cate
 
 
 
-## Programming Logic
+## Steps for Development Phase
 From the above requirements analysis, a flow diagram was derived to simplify and visualise the order of steps that are needed to be taken in the development phase. This helped to split the available time into phases for each part in this diagram. It was basically the key to time-management of this project.
 The orange bigger box are the parent steps, in which the smaller steps take place.
 
+</br>
+
 ![Concept as Flow Diagram](./img/concept.png)
+##### *Figure 7: Flow Diagram for Development Phase*
+</br>
 
 
 
@@ -87,8 +91,8 @@ The orange bigger box are the parent steps, in which the smaller steps take plac
 </br>
 
 <div style="display: inline;" >
-<a href=""><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter</button></a>
-<a href=""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter ></button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/1_Research.md"><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter: Research</button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/3_Data_Acquisition"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Data Acquisition ></button></a>
 </div>
 
 </br>

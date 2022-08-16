@@ -19,8 +19,8 @@
 </br>
 
 <div style="display: inline;" >
-<a href=""><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter</button></a>
-<a href=""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Back to Start ></button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/8_Results.md"><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter: Results</button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/README.md"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Back to Start ></button></a>
 </div>
 
 </br>

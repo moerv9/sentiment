@@ -4,20 +4,31 @@
 </br>
 
 ## Coin Comparison
-In March 2022, there were a total of 18000 cryptocurrencies. To minimize the number of coins for comparison, it is wise to look at the biggest coins by market capitalisation. They are the most known and impactful. The following image is a Snapshot from [Coinmarketcap](https://coinmarketcap.com), taken at the 5th of March 2022.
+In March 2022, there were a total of 18000 cryptocurrencies. To minimize the number of coins for comparison, it is wise to look at the biggest coins by market capitalisation (see Figure 1). They are the most known and impactful.
 
-![Coinmarketcap from the 5.3.2022](/img/research/coinmcap_532022.jpeg)
+![Coinmarketcap from the 5.3.2022](./img/research/coinmcap_532022.jpeg)
+##### *Figure 1: Snapshot from the 5th March 2022 from [Coinmarketcap](https://coinmarketcap.com)*
+</br>
 
+Stablecoins like Tether, USD Coin or Terra are not included, since they are pegged to a FIAT-Currency like the US-Dollar. It is totally normal to trade with Currencies or Stablecoins, but you most likely loose to professionals, and you need to use leverage to even get a good arbitrage. In Figure 2 it can be seen, that the Trading-Volume (30days) of Tether is enormously more than the total circulating supply. While this is a good sign for liquidity and trading itself it is not very suitable for our Use-Case. Therefore, we will focus on the Top 5 Cryptocurrencies based on market capitalisation: Bitcoin, Ethereum's Ether, Binance Chain BNB, Ripples XRP and Cardanos ADA.
 
-Stablecoins like Tether, USD Coin or Terra are not included, since they are pegged to a FIAT-Currency like the US-Dollar. It is totally normal to trade with Currencies or Stablecoins, but you most likely loose to professionals, and you need to use leverage to even get a good arbitrage. You can see in the following picture that the Trading-Volume (30days) of Tether is enormously more than the total circulating supply. While this is a good sign for liquidity and trading itself it is not very suitable for our Use-Case. Therefore, we will focus on the Top 5 Cryptocurrencies based on market capitalisation: Bitcoin, Ethereum's Ether, Binance Chain BNB, Ripples XRP and Cardanos ADA.
+</br>
 
 ![Comparison of Coins](img/research/Coin_Comparison.png)
+##### *Figure 2: Detailed Coin Comparison*
+</br>
+
 ### Marketcap & Volume 
 Since Bitcoin is the pioneer and exists for more than 14 years now it is the most dominant Coin with the highest market capitalisation. It stands now at about 740 billion dollars but has already breached 1 trillion dollars in February 2021. Bitcoin reached a trillion marketcap. in only 13 years. The first company to do that, Apple, took **38 years** for that.
 
 Ethereum is chasing Bitcoin and has already reached a dominance of 18% of the market. The Others seem quite small in comparison but when you see that they just exist for 5 years and already accumulated billions it quite impressive. 
 
+</br>
+
 ![Marketcap](img/research/mark_vol_coins.png)
+##### *Figure 3: Market capitalisation and Volume for Top 5 coins*
+</br>
+
 
 Adding the trading volume for the last 30 days into the comparison we can see that Ethereum and Ripple are being traded the most. At a Volume/Total Supply of 128.5% for Ethereum and 154% for Ripple. 
 
@@ -43,7 +54,10 @@ The data will be collected from Social Media, and therefore we need to compare t
 ### Social Media Platforms
 In July 2022, there are more than 17 social media platforms with at least 300M monthly users:
 
-![Social Media Users](https://images.squarespace-cdn.com/content/v1/5b79011d266c077298791201/872a23a7-eb42-481b-99be-f37ee63d8d12/DataReportal+20220719+Digital+2022+July+Global+Statshot+Report+Chart+121.png?format=2500w) ([Picture Source](https://datareportal.com/social-media-users)): 
+![Social Media Users](https://images.squarespace-cdn.com/content/v1/5b79011d266c077298791201/872a23a7-eb42-481b-99be-f37ee63d8d12/DataReportal+20220719+Digital+2022+July+Global+Statshot+Report+Chart+121.png?format=2500w)
+##### *Figure 4:The worlds' most used social platforms, taken from [datareportal.com](https://datareportal.com/social-media-users)*
+</br>
+
 
 They are all very different in regard of how they work. Some are focused on video (Youtube, Tik Tok, Instagram), some for communication (Telegram, WeChat, Whatsapp), photos (Instagram, Pinterest) and some for writing (Twitter, Reddit, Quora). We are only interested in analysing and processing text, leaving us with Facebook, Twitter, Reddit and Quora.
 
@@ -65,11 +79,22 @@ A lot of Users, including well-known Personalities, who are talking about differ
 This Snapshot from 14th of March shows how different the Social Media Presence can be.
 In spite of being one of the youngest coins in the list, BNB has the second place in terms of total tweets and is third in total followers on Twitter. 
 
+</br>
+
 ![Social Media Relevance](img/research/Coins_SocialMedia_Relevance.png)
+##### *Figure 5: Comparison of Coins on Twitter and Reddit*
+</br>
+
 
 In Terms of Followers on Twitter and Reddit, for obvious reasons Bitcoin is in first place. 
 It is very interesting to see that Ripple has a very little following despite being around for 10 years. 
+
+</br>
+
 ![Twitter vs. Reddit Followers](img/research/followers_coins.png)
+##### *Figure 6: Visualisation of Followers*
+</br>
+
 
 
 Since there is a lot of volatility and hype in the cryptocurrency world the amount of talk about one cryptocurrency can change in minutes. Twitter can show you the amount of tweets in the last hour when you search for a hashtag or cashtag. For these five Coins the range of tweets can be anything up to 8000 tweets in the last hour. This obviously depends on the timezone (CET /UTC+1). On a random day ( 18.03.2022) the hashtag #xrp was the strongest (6350 tweets in the last hour) and just 5 days later, on the 23rd of March, #btc trended with 7480 tweets in the last hour. At the same time #bnbchain had only 460 tweets in the last hour.
@@ -101,8 +126,8 @@ Building a modular model in a way that it can retrieve tweets about any coin was
 </br>
 
 <div style="display: inline;" >
-<a href=""><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter</button></a>
-<a href=""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter ></button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/0_Introduction.md"><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter: Introduction</button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/2_Concept.md"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Concept ></button></a>
 </div>
 
 </br>

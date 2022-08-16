@@ -18,7 +18,7 @@
 
 - [Results](./8_Results.md)
 
-- Appendices
+- [Appendices](9_Appendices.md)
     - Class Diagram
     - Example of Usage (video/bilder)
 
@@ -40,7 +40,6 @@
 # Continue with the Documentation
 
 <div style="display: inline;" >
-https://github.com/moerv9/sentiment/blob/main/docs/0_Introduction.md
 <a href="https://github.com/moerv9/sentiment/blob/main/docs/0_Introduction.md"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Introduction ></button></a>
 </div>
 

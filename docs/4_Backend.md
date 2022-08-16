@@ -57,7 +57,12 @@ worker: python3 sentiment/runner.py
 The Heroku Scheduler Add-On is used to execute the trading script every hour. It checks if there are trades for a past timeframe and either buys, sells or does nothing if there is a trade already.
 More on the trading part [here](6_Trading.md).
 
+</br>
+
 ![Heroku Scheduler Add-On](./img/heroku/heroku_scheduler.png)
+##### *Figure 9: Scheduler Add-On on Heroku*
+</br>
+
 
 </br>
 
@@ -70,7 +75,12 @@ More on the trading part [here](6_Trading.md).
 
 Heroku Dataclips offers to run SQL queries and view the output directly in the Browser. It was a very valuable tool to check quickly if a SQL Statement is executed successfully on the real database and if everything works smoothly in the production phase. 
 
+</br>
+
 ![Heroku Tweet Database Dataclip](./img/heroku/heroku_tweet_dataclip.png)
+##### *Figure 10: Dataclip to view the Tweet database with SQL queries*
+</br>
+
 
 </br>
 
@@ -102,7 +112,14 @@ The URL just needed to be changed from `"postgres://..."`to `"postgresql://.."` 
 ### Postgres Row Limit of 10000 
 The Free Hobby Plan for Heroku Postgres Database has a limit of 10000 rows, and it got filled very quickly. The database was filled in a few hours.
 But nothing happened. A week passed, and the database was filling up until I got an email from Heroku: 
+
+</br>
+
 <img src=./img/heroku//heroku_email_databasefull.PNG width=300 alt="Email from Heroku: Database Full"/> 
+
+##### *Figure 11: Email from Heroku: Database Row Limit reached*
+</br>
+
 
 The Heroku Database got filled such quickly because the system was collecting Tweets about Bitcoin **and** Cardano.
 It would be very interesting to compare different coins side by side, but it made sense to only look at Bitcoin after this point to gather more Tweets.
@@ -117,8 +134,8 @@ Unfortunately, when the Database is full, Heroku revokes *Writing-Privileges*, w
 </br>
 
 <div style="display: inline;" >
-<a href=""><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter</button></a>
-<a href=""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter ></button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/3_Data_Acquisition.md"><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter: Data Acquisition</button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/5_Sentiment.md"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Sentiment ></button></a>
 </div>
 
 </br>

@@ -146,10 +146,14 @@ After cleaning, it looks like this:
 </br>
 
 ## Duplicates
-The next thing is to find and delete all the duplicates:
+The next thing is to find and delete all the duplicates. As can be seen in Figure 8, the same tweet was tweeted 10 times in one minute. It is the exact same tweet, and it kept on tweeting for quite a bit. Since this is obviously a bot, a way to filter out these duplicates was needed.
 
 <img src=./img/sentiment/duplicatetweets.png width=900/>
-As can be seen in the picture above, the same tweet was tweeted 10 times in one minute. It is the exact same tweet and it kept on tweeting for quite a bit. Since this is obviously a bot, a way to filter out these duplicates was needed.
+
+##### *Figure 8: Duplicate Tweets in a 1 Min. time period*
+</br>
+
+
 
 The first approach was as follows: Adding the collected tweets to a list, and after the list had 40 items, run a function that checks for duplicates and deletes them. There were about 40 collected items a minute, so it seemed like a good choice.
 
@@ -178,8 +182,8 @@ This lead to the decision to apply the deletion of duplicates for the entire dat
 </br>
 
 <div style="display: inline;" >
-<a href=""><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter</button></a>
-<a href=""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter ></button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/2_Concept.md"><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter: Concept</button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/4_Backend.md"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Backend ></button></a>
 </div>
 
 </br>
