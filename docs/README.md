@@ -40,8 +40,8 @@
 # Continue with the Documentation
 
 <div style="display: inline;" >
-
-<a href="https://github.com/moerv9/sentiment/blob/846db28b9f8e8c95729e4f3cd21a51493670f20a/docs/0_Introduction.md"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Introduction ></button></a>
+https://github.com/moerv9/sentiment/blob/main/docs/0_Introduction.md
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/0_Introduction.md"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Introduction ></button></a>
 </div>
 
 </br>
