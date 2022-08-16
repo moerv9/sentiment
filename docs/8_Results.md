@@ -1,6 +1,11 @@
 # Conclusion
 #TODO: results 
 All the requiremetns apart from #TODO were achieved.
+    - (Placement in the scientific/financial context)
+    - Conclusion
+    - Challenges
+
+
 
 ## Learnings
 
@@ -21,3 +26,15 @@ A few other strategies were:
 - Ratio of positive / negative sentiment crossing a particular treshhold
 - calculating the weighted average instead of a normal average
 
+</br>
+
+---
+
+</br>
+
+<div style="display: inline;" >
+<a href=""><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter</button></a>
+<a href=""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter ></button></a>
+</div>
+
+</br>

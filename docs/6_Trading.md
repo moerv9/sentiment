@@ -14,6 +14,8 @@ The following table shows the full comparison of five cryptocurrency API's, whic
 | **Fees**                                   | 0.1%, but when using BNB can be lowered to 0.075%                                                                                                                                                          | 1%                                                                                       | 3-5%, when buying with FIAT</br>0.1% for crypto, 0.08% when buying with Kucoin Token                                               | not found any data                                                                                                               | 0.9% fee for any stablecoins</br>1.5% fee for any other crypto or FX pair                                                                                                                                                       |
 | **Rating of Documentation**                   | Very good                                                                                                                                                                                                  | Good                                                                                     | Very good                                                                                                         | Okay                                                                                                                             | Very good                                                                                                                                                                                                                       |
 | **Availability of Python Libraries/Wrappers** | Very good and updated.</br>https://github.com/sammchardy/python-binancehttps://github.com/binance/binance-connector-python                                                                                 | Last updated 8 years ago.</br>https://github.com/resy/coinbase_python33                  | Very good and updated.</br>https://github.com/sammchardy/python-kucoinhttps://github.com/Kucoin/kucoin-python-sdk | Not really detailed.</br>https://github.com/rsz44/python-coinmarketcap                                                           | Not updated recently. </br>https://github.com/veox/python3-krakenex                                                                                                                                                             |
+|
+
 
 </br>
 
@@ -68,7 +70,8 @@ print(f"USDT Balance: {usdt_balance} $")
 print(f"BTC Balance: {btc_balance} ({btc_in_usdt} $)")
 
 # Make a Market Order for 5% of the current USDT Balance
-order = kClient.create_market_order('BTC-USDT', kClient.SIDE_BUY, funds = round(usdt_balance*0.05,5))
+funds = re.match(r'\d+.\d{3}', str(usdt_balance*0.05)).group(0)
+order = kClient.create_market_order('BTC-USDT', kClient.SIDE_BUY, funds = funds)
 ```
 
 **Output:**
@@ -108,6 +111,7 @@ This is why the threshold is set to 0.2.
 > An average sentiment above 0.2 means *Buy*, below 0.2 means *Sell*.
 
 </br>
+
 ---
 
 </br> 
@@ -159,10 +163,39 @@ Then, if the signal indicates buy, a market order will be created with 5% of the
 A sell order will sell a quarter of the current bitcoin holdings.
 
 At last, some metrics from the trade are uploaded into a separate table on Heroku for a better overview of the trades and later calculation of current PNL (Profit and Loss).
+An excerpt from this table is shown below. It contains the sentiment average and the time period, as well as information about the trade itself. The last balances are actually the balances after the trade was made. So, it is possible, to look back at all the balances without gaps. 
 
 ![latest trades from Heroku DB](/img/trading/last_trades_from_Heroku.png)
 
-
----
 </br>
 
+---
+
+</br>
+
+## Looking at the trades
+
+![Heroku Logs](./img/trading/scheduled_trading.png)
+
+Above is an excerpt from the Heroku Logs. At first, the runner is started, that listens to the tweets and adds them to the database. When you see the line `Listening to tweets now...`, you know, everything is working properly.
+
+As explained in the Backend-Section, the scheduler is executing the trading script every hour.
+
+The sentiment average is shown and the Balances before and after the trade.
+It also says if a trade already exists and then either starts a new trade or does nothing.
+
+The Heroku logs were an essential part of the development-phase, since they allowed for a good way of debugging. Usually, no *`print`*-statements are left in the final code, when it's entering the production phase. However, Heroku seems to only print the `print`-statements rather than from the logging-library, which is otherwise used. 
+Therefore, a few print statements are left in the final code. 
+
+</br>
+
+---
+
+</br>
+
+<div style="display: inline;" >
+<a href=""><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter</button></a>
+<a href=""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter ></button></a>
+</div>
+
+</br>

@@ -1,12 +1,24 @@
-
 # Visualisation with Streamlit
-With programming a lot of work will happen in the background and will never be seen.
-Since all the tweet data will be saved in table form in dataframes and a Postgres Database and the sentiment analysis can be visualised in plots and diagrams, I will try to make a lot of work visible and understandable.
-
-([FR 60])
-
-I will use [Streamlit](https://streamlit.io) for this. Streamlit is an open-source Framework for building simple and interactive Machine-Learning and Data Science Web-Apps.
 
 
-Tweets from the History can be filtered here:
-https://share.streamlit.io/moerv9/sentiment/main/tweet_visualisation.py
+When scripts are running in the background and acting on their own, a lot of work will never be seen.
+Since all the tweet and trade data are stored in a database and the sentiment analysis and price charts can be visualised in plots and diagrams, it was specified in the requirements ([FR 60]).
+
+[Streamlit](https://streamlit.io) is an open-source Framework for building simple and interactive Machine-Learning and Data Science Web-Apps. It was perfect for this project, because it contained all the features for charts and dataframes and was easy to implement and therefore allowed rapid prototyping. 
+
+Actually, Streamlit and Jupyter Notebooks were used to test the code before it entered Heroku, because each execution on Heroku consumed dynos and obviously increased the row count in the database.
+
+#TODO
+
+</br>
+
+---
+
+</br>
+
+<div style="display: inline;" >
+<a href=""><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter</button></a>
+<a href=""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter ></button></a>
+</div>
+
+</br>

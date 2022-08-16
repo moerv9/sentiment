@@ -11,3 +11,16 @@
 
 [4] [ Chainsulting Website](https://chainsulting.de/about-us/)
 
+
+</br>
+
+---
+
+</br>
+
+<div style="display: inline;" >
+<a href=""><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter</button></a>
+<a href=""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Back to Start ></button></a>
+</div>
+
+</br>

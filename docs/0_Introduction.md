@@ -1,13 +1,10 @@
+
 # Introduction 
 
 ## Social Signal Sentiment-Based Prediction for Cryptocurrency Trading.
 
 This Project is supposed to cover two topics:
 It will analyse specific signals in social networks and their impact on trading digital assets, specifically cryptocurrency. This research will be used in a real-world test with the development of a bot that automatically trades cryptocurrency while considering the analysis of social signals.
-
-</br>
-
----
 
 </br>
 
@@ -19,6 +16,7 @@ As being said by Schoen et al. [1] about social media:
 Chainsulting, a blockchain-company from Flensburg is keen on finding out if the idea behind social signals is working and interested in trying out new trading methods. Also, they are open for publishing this project, as it will greatly contribute to a scientific area where not much has been done before. It is obvious, that if an automatic trading bot can increase the revenue this will not likely be published. 
 Natural Language Processing is a big part in today's world of big data and their impact is yet to be studied.
 
+</br>
 
 ## Context
 This project will find context in the R&D Department of Chainsulting, a blockchain-company based in Flensburg.
@@ -28,9 +26,6 @@ Contact person will be Yannik Heinze, CEO of Chainsulting ([Email](y.heinze@chai
 
 More about Chainsulting on their [Website](https://chainsulting.de) or [GitHub Profile](https://github.com/chainsulting).
 
-</br>
-
----
 
 </br>
 
@@ -59,9 +54,16 @@ At last, a strategy for trading is built and executed.
 ### Third Phase: Testing, Documentation and Evaluation
 While testing the strategy, the documentation is written. The last step will be evaluating the results.
 
+</br>
 
+---
 
+</br>
 
+<div style="display: inline;" >
+<a href=""><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter</button></a>
+<a href=""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter ></button></a>
+</div>
 
-
+</br>
 

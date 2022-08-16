@@ -68,6 +68,7 @@ The final classification:
 | 0.0             | Neutral                 |
 | <= 0.5          | Positive                |
 | > 0.5 & < 1     | Very Positive           |
+|
 
 </br>
 
@@ -84,9 +85,15 @@ Filtering out neutral tweets was a necessary step and is achieved with just one 
 
 With these sentiment values and their meaning at hand some more calculations will be made to build a [strategy](Trading.md#strategy) for signals, when a buy or sell order is made.
 
+</br>
 
+---
 
+</br>
 
+<div style="display: inline;" >
+<a href=""><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter</button></a>
+<a href=""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter ></button></a>
+</div>
 
-
-
+</br>

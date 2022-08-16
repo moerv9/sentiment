@@ -6,7 +6,7 @@
 ## Coin Comparison
 In March 2022, there were a total of 18000 cryptocurrencies. To minimize the number of coins for comparison, it is wise to look at the biggest coins by market capitalisation. They are the most known and impactful. The following image is a Snapshot from [Coinmarketcap](https://coinmarketcap.com), taken at the 5th of March 2022.
 
-![Coinmarketcap from the 5.3.2022](/img/coinmcap_532022.jpeg)
+![Coinmarketcap from the 5.3.2022](/img/research/coinmcap_532022.jpeg)
 
 
 Stablecoins like Tether, USD Coin or Terra are not included, since they are pegged to a FIAT-Currency like the US-Dollar. It is totally normal to trade with Currencies or Stablecoins, but you most likely loose to professionals, and you need to use leverage to even get a good arbitrage. You can see in the following picture that the Trading-Volume (30days) of Tether is enormously more than the total circulating supply. While this is a good sign for liquidity and trading itself it is not very suitable for our Use-Case. Therefore, we will focus on the Top 5 Cryptocurrencies based on market capitalisation: Bitcoin, Ethereum's Ether, Binance Chain BNB, Ripples XRP and Cardanos ADA.
@@ -94,3 +94,15 @@ Building a modular model in a way that it can retrieve tweets about any coin was
 *Python* was the chosen the programming language for this project. Not only had the developer a good amount of experience with it, further more offers Python the needed libraries to analyse and visualise data in a way that allows for rapid prototyping.
 
 
+</br>
+
+---
+
+</br>
+
+<div style="display: inline;" >
+<a href=""><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter</button></a>
+<a href=""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter ></button></a>
+</div>
+
+</br>

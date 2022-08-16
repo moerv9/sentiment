@@ -87,6 +87,7 @@ I am not only collecting the tweet but some other information/metrics about the 
 | 2022-08-04 11:54:34 | 25706 | he need to focus on his #bitcoin investment                                                                                                                                                                     | bitcoin | Ivory Coast         | False         | 786       | 2020-06-04 10:55:58 | 0.0             |
 | 2022-08-04 11:54:25 | 25704 | who wants a #bitcoin update video hit up that like button                                                                                                                                                       | bitcoin | Magic Internet Bank | False         | 3810      | 2021-02-11 15:29:52 | 0.3612          |
 | 2022-08-04 11:54:15 | 25703 | picture perfectthe $4250 resistance will be hard to break thoseeing a small retracement from hereif $btc $eth behave and hopefully pump we may see another ~50% pump from here for $metis as well to around $65 | $btc    |                     | False         | 505       | 2022-03-14 15:14:53 | 0.7964          |
+|
 
 </br>
 
@@ -169,3 +170,16 @@ Firstly, even though this function found and deleted some duplicates nearly ever
 
 When applying this function to the whole database, it deleted 17318 duplicates from a total of 32698. More than 50% duplicate Tweets is massive! This would've deflected the calculation of the sentiment significantly. 
 This lead to the decision to apply the deletion of duplicates for the entire database before calculation of the sentiment.
+
+</br>
+
+---
+
+</br>
+
+<div style="display: inline;" >
+<a href=""><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter</button></a>
+<a href=""><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter ></button></a>
+</div>
+
+</br>

@@ -1,43 +1,61 @@
+
 # Table of Contents
-<!-- - Abstract (Task, Approach and achieved goals in a few words) -->
-- Introduction
+- [Introduction](0_Introduction.md) 
 
-- [Research](Research.md)
-    - [Coin Comparison](./Research.md#coin-comparison)
-    - [Social Media Relevance](./Research.md#social-media-relevance)
-    - [Focusing on Bitcoin](./Research.md#focus-on-bitcoin)
-- Concept
+- [Research](./1_Research.md)
+    - [Coin Comparison](./1_Research.md#coin-comparison)
+    - [Social Media Relevance](./1_Research.md#social-media-relevance)
+    - [Focusing on Bitcoin](./1_Research.md#focus-on-bitcoin)
+
+- [Concept](./2_Concept.md)
+
 - Development
-        - [Data Acquisition](Data%20Acquisition.md)
-        - [Backend with Heroku](./Backend%20with%20Heroku.md)
-        - [Sentiment](Sentiment.md)
-        - Trading with Kucoin API
-        - Visualise Data
-    - Challenges
-    - Insights
-- Results
-    - (Placement in the scientific/financial context)
-    - Conclusion
+    - [Data Acquisition](./3_Data%20Acquisition.md)
+    - [Backend](./4_Backend.md)
+    - [Sentiment](./5_Sentiment.md)
+    - [Trading](./6_Trading.md)
+    - [Visualisation](./7_Visualisation.md)
 
-    - Outlook
-- Technical Overview
-    - Installation 
-    - Tools / Libraries
-        - (Reason for choosing those tools?(Robert?))
-    - Code Examples
+- [Results](./8_Results.md)
+
 - Appendices
     - Class Diagram
     - Example of Usage (video/bilder)
 
+</br>
+
+---
+
+</br>
 
 # Abstract
 #TODO Put Task, Approach and achieved goals in a few words here 
-# Abbreviations
 
-# Get Started
+</br>
+
+---
+
+</br>
+
+# Continue with the Documentation
+
+<div style="display: inline;" >
+
+<a href="https://github.com/moerv9/sentiment/blob/846db28b9f8e8c95729e4f3cd21a51493670f20a/docs/0_Introduction.md"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Introduction ></button></a>
+</div>
+
+</br>
+</br>
+
+---
+
+</br>
+</br>
+
+# Technical 
 
 ## Development Environment 
-</br>
+
 
 The code editor used was Visual Studio Code with their tremendous amount of extensions. 
 Particular helpful extensions were the [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) Notebook, the [TabNine](https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode) AI supported Autocomplete and the [LTeX](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex) LanguageTool that checked grammar and spell Markdown files. This way it was possible to directly write the documentation inside VSCode.
@@ -91,3 +109,4 @@ The following packages were used:
 - multidict
 - python-binance
 - python-kucoin
+
