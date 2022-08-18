@@ -69,7 +69,7 @@ def get_Heroku_DB(today=True):
 
     return df.sort_index(ascending=False), df_trades, len(duplicates)
 
-def split_DF_by_time(df,time_frame):
+def split_DF_by_time(df,time_frame,timestamp):
     """Returns Dataframe for the past hours specified in time_frame
 
     Args:
@@ -79,14 +79,20 @@ def split_DF_by_time(df,time_frame):
     Returns:
         DataFrame: in the given timeframe
     """
-    #print("split df by time:")
-    #print(df.head(10))
     if "Timestamp" in df.columns:
         df.index = df["Timestamp"]
     df.index = pd.to_datetime(df.index)
-    timedelt = datetime.now() - timedelta(hours=time_frame,minutes=15)
+    if timestamp == False:
+        timedelt = datetime.now() - timedelta(hours= time_frame)
+    else:
+        timedelt = timestamp - timedelta(hours= time_frame)
+        mask = (df.index < pd.to_datetime(timestamp))
+        df = df.loc[mask]
+        print("Df < tmestamp")
+        print(df)
     mask = (df.index > timedelt)
     df = df.loc[mask]
+
     return df
 
 def calc_mean_sent(df, filter_neutral=False):
@@ -94,18 +100,7 @@ def calc_mean_sent(df, filter_neutral=False):
         df = df[df["Sentiment Score"] != 0.0]
     sent_meaning_list = get_sent_meaning(df["Sentiment Score"]) #Sentiment Values to Meaning ("Positive,Negative,etc.")
     sent_meaning_df = pd.Series(sent_meaning_list)
-    sent_appearances = pd.DataFrame(sent_meaning_df.value_counts())
-    
-    # df = df.filter(items=["Sentiment Score"]) #Keep only "Sentiment Score" Column
-    # #df = df.groupby(df.index, dropna=True).mean() #Group by timestamp and calc mean sentiment
-    # df.rename(columns={"Sentiment Score": "Avg. Sentiment"},inplace=True)
-    # count_tweets = df.resample(f"{min_range}T").count() #count Tweets
-    # count_tweets.rename(columns={"Avg. Sentiment":"Total Tweets"},inplace=True)
-    # df = df.resample(f"{min_range}T").mean()
-
-    #sent_meaning_for_avg = pd.DataFrame(get_sent_meaning(df["Avg. Sentiment"]),columns=["Sent is"]) #no idea why this adds all the rows below and not next to it
-    
-    # new_df = pd.concat([df,count_tweets],axis="columns").sort_index(ascending=False) #Put all DF together
+    sent_appearances = pd.DataFrame(sent_meaning_df.value_counts())  
     
     sent_meaning_df = pd.Series(sent_meaning_list)
     sent_appearances = pd.DataFrame(sent_meaning_df.value_counts())
@@ -118,24 +113,25 @@ def calc_mean_sent(df, filter_neutral=False):
     # print("Sent appearencs")
     # print(sent_appearances_df[sent_appearances_df["Sentiment"] == "Positive"]["Percentage"])
     # df["Positive (%)"] = sent_appearances_df[sent_appearances_df["Sentiment"] == "Positive"]["Percentage"]
-    print("sent apperancaes df")
-    print(sent_appearances_df)
     # sent_app_transposed = sent_appearances_df.transpose(copy=True)
     # print("sent transposed")
     # print(sent_app_transposed)
 
     return sent_appearances_df
 
-def resample_df(df,time_range, filter_neutral=False,by_day=True):
+def resample_df(df,interval, filter_neutral=False,by_day=False):
     if filter_neutral:
         df = df[df["Sentiment Score"] != 0.0]
+    df_follower = df.filter(items=["Followers"])
+    mean_follower = df_follower.resample("1H",label="right").mean()
+        
     df = df.filter(items=["Sentiment Score"])
     if by_day:
-        count_tweets = df.resample(f"D").count()
-        mean_df = df.resample(f"D").mean().sort_index(ascending=False)
+        count_tweets = df.resample(f"D",label="right").count()
+        mean_df = df.resample(f"D",label="right").mean().sort_index(ascending=False)
     elif by_day == False:
-        count_tweets = df.resample(f"1H").count()#count Tweets
-        mean_df = df.resample(f"{time_range}T").mean().sort_index(ascending=False)
+        count_tweets = df.resample(f"1H",label="right").count()#count Tweets
+        mean_df = df.resample(f"{interval}T",label="right").mean().sort_index(ascending=False)
     count_tweets.rename(columns={"Sentiment Score" : "Total Tweets"},inplace=True)
     
     mean_df.rename(columns={"Sentiment Score" : "Avg"},inplace=True)
@@ -147,7 +143,7 @@ def resample_df(df,time_range, filter_neutral=False,by_day=True):
     resampled_mean_tweetcount["Signal"] = resampled_mean_tweetcount["Avg"].apply(get_signal_by_sent_score)
     pd.set_option('max_colwidth', 400)
     
-    return df.sort_index(ascending=False), resampled_mean_tweetcount.sort_index(ascending=False)
+    return df.sort_index(ascending=False), resampled_mean_tweetcount.sort_index(ascending=False), mean_follower
 
 #TODO: resamplen für zeitraum und in diesem die werte für "positive,etc" zählen
 # def count_sents(df,time_range):
@@ -163,7 +159,7 @@ def resample_df(df,time_range, filter_neutral=False,by_day=True):
 # CHARTS
 def show_charts(df, data):
     #setup
-    fig, axs = plt.subplots(3,1,sharex=True,constrained_layout=True)#figsize=(10, 4))
+    fig, axs = plt.subplots(2,1,sharex=True,constrained_layout=True)#figsize=(10, 4))
     locator = mdates.AutoDateLocator(minticks=6, maxticks=20)
     formatter = mdates.ConciseDateFormatter(locator)
     plt.rcParams['font.size'] = '8'
@@ -189,28 +185,16 @@ def show_charts(df, data):
     axs[1].set_ylabel("Sentiment Score")
     axs[0].set_xlabel("Time")
     axs[0].set_ylabel("Price ($)")
-    axs[2].set_ylabel("Amount of Tweets")
-    
-    #first plot for btc price
+    #axs[2].set_ylabel("Amount of Tweets")
     x1 = data.index
-    y1 = data.Close
-    
+    y1 = data.Close    
     buy_marker, sell_marker,_,_ = get_timestamps_for_trades(df,x1)
-
-    
-    #positive means buy
+    #first plot for btc price
     axs[0].set_title(f"Sent > 0.2 => Buy")
     axs[0].plot(x1,y1,"^",label="buy",color="g",markersize=3,markevery=buy_marker)
     axs[0].plot(x1,y1,"v",label="sell",color="r",markersize=3,markevery=sell_marker)
     axs[0].plot(x1,y1,label="BTC Price",color="w",linewidth=1,markersize=3)
     
-    #positive sent means sell
-    # axs[1].set_title(f"Sent > 0.2 means Sell")
-    #axs[1].set_ylabel("Price ($)")
-    # axs[1].plot(x1,y1,"^",label="buy",color="g",markersize=3,markevery=plot_sell_marker)
-    # axs[1].plot(x1,y1,"v",label="sell",color="r",markersize=3,markevery=plot_buy_marker)
-    # axs[1].plot(x1,y1,label="BTC Price",linewidth=1,color="w",markersize=3)
-
     #third plot for sentiment
     x = df.index
     y = df["Avg"]
@@ -218,8 +202,31 @@ def show_charts(df, data):
     axs[1].axhline(y=0.2,linestyle=":",color="red",linewidth=0.5)   
     axs[0].legend()
     #plt.tight_layout()
-    axs[2].plot(x,df["Total Tweets"],linestyle=":", label="Tweets",color="yellow", markersize=2,linewidth=1)
+    #axs[2].plot(x,df["Total Tweets"],linestyle=":", label="Tweets",color="yellow", markersize=2,linewidth=1)
     st.pyplot(fig)
+
+#TODO
+def visualise_timeperiods(df):
+    print(df.columns)
+    time_periods ,avg, total_tweets,signal = df.index,df["Avg"], df["Total Tweets"],df["Signal"]
+    fig1, ax1 = plt.subplots()
+    ax1.title.set_color("white")
+    ax1.xaxis.label.set_color('white') 
+    ax1.yaxis.label.set_color('white')
+    ax1.tick_params(axis='y', colors='white',labelrotation=30)
+    ax1.tick_params(axis='x', colors='white')
+    ax1.spines["left"].set_color('white')
+    ax1.spines["bottom"].set_color('white')
+    ax1.spines["top"].set_alpha(0)
+    ax1.spines["right"].set_alpha(0)
+    ax1.set_facecolor((0,0,0,0))
+    fig1.patch.set_alpha(0)
+    
+    plot1 = ax1.plot(time_periods,avg,label="Avg",color="red")
+    plot2 = ax1.plot(time_periods,total_tweets,label="Total Tweets",color="cyan")
+    ax1.legend()
+    st.pyplot(fig1)
+    
     
 
 

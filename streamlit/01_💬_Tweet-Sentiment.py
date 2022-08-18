@@ -6,7 +6,7 @@ from re import S
 import streamlit as st
 from streamlit_autorefresh import st_autorefresh
 from words import get_signals
-from streamlit_data import get_Heroku_DB,calc_mean_sent,show_charts,show_cake_diagram,resample_df, split_DF_by_time
+from streamlit_data import get_Heroku_DB,calc_mean_sent,show_charts,show_cake_diagram,resample_df, split_DF_by_time,visualise_timeperiods
 from words import show_wordCloud,get_signal_by_keywords
 from financial_data import getminutedata,getDateData,get_kucoin_data
 from matplotlib.collections import LineCollection
@@ -19,6 +19,8 @@ st.set_page_config(
     page_title="Sentiment", 
     layout="wide", 
     )
+
+
 
 count = st_autorefresh(interval=1000*60*5, key="sent")
 
@@ -35,7 +37,8 @@ def loading_data_from_heroku_database():
 with st.sidebar:
     st.info("Turn on Darkmode in upper right settings!")
     hide_explanation = st.checkbox(label="Hide Explanation",value=False)
-    hide_single_tweets = st.checkbox(label="Hide Tweet Metrics",value=True)
+    hide_most_important_metrics = st.checkbox(label="Hide most important metrics",value=False)
+    hide_single_tweets = st.checkbox(label="Hide Last Collected Tweets",value=True)
     hide_sentiment = st.checkbox(label="Hide Sentiment Metrics",value=False)
     hide_Wordcloud_and_TweetSent = st.checkbox(label="Hide Word Analysis",value=True)
     hide_Charts = st.checkbox(label="Hide Charts",value=True)
@@ -49,13 +52,20 @@ with st.sidebar:
 #Get Dataframes
 #Convert Database to Dataframe
 df, df_trades, duplicates  = loading_data_from_heroku_database()
-
 st.subheader(f"{date.today().strftime('%d-%m-%Y')} - Bitcoin")
 
 
-single_sent_scores_df,resampled_mean_tweetcount = resample_df(df, intervals, True, False)#(split_DF_by_time(df,lookback_timeframe),intervals,True)
+single_sent_scores_df,resampled_mean_tweetcount,mean_follower = resample_df(df, intervals, True, False)#(split_DF_by_time(df,lookback_timeframe),intervals,True)
 
+last_avail_tweets_1h = split_DF_by_time(df,1,resampled_mean_tweetcount.index[0]) # gets all the last tweets from the last available timestamp - 1h
+print(last_avail_tweets_1h)
+# Get price data for bitcoin
 data = getminutedata("BTCUSDT",intervals,lookback_timeframe)
+
+#calculates the Mean/Average for the past time and in sums of min_range (Default 5 Minutes)
+percentage_btc_df = calc_mean_sent(last_avail_tweets_1h,False)
+
+
 
 if not hide_explanation:
     st.subheader("Explanation")
@@ -68,6 +78,22 @@ if not hide_explanation:
     st.write("Click the checkboxes on the left sidebar to hide/show metrics.")
     st.markdown("---")
 
+
+if not hide_most_important_metrics:
+    st.subheader("Most important Metrics")
+    col1,col2 = st.columns(2)
+    current_sent = resampled_mean_tweetcount["Avg"].head(1)
+    current_sent_is = resampled_mean_tweetcount["Sent is"].head(1)[0]
+    current_signal = resampled_mean_tweetcount["Signal"].head(1)[0]
+    with col1:
+        st.metric(label="Current Sentiment",value = round(current_sent,4),delta=current_sent_is,delta_color="off")
+    with col2:
+        st.metric(label="Current Signal",value=current_signal)
+    st.markdown("---")
+    
+
+
+
 if not hide_single_tweets:
     st.subheader("Last collected Tweets")
     rows = st.slider("Rows to retrieve:",step=5,min_value=5,max_value=500,value=5)
@@ -77,44 +103,47 @@ if not hide_single_tweets:
 
 
 
-
-#calculates the Mean/Average for the past time and in sums of min_range (Default 5 Minutes)
-percentage_btc_df = calc_mean_sent(split_DF_by_time(df,1),False)
-
 #Gets single words in the tweets and their frequencies + sentiment
 #freq_df = get_signals(past_btc_df_for_timerange,intervals)
-
+#TODO: anzahl average follower oder ähnliches
 if not hide_sentiment:
     st.subheader("Sentiment Metrics")
-    col1,col2,col3 = st.columns(3)
+    col1,col2 = st.columns(2)
+    col1.text("Last 4 days")
+    col2.text("Last 24 hours")
+    col1,col2,col3,col4 = st.columns(4)
     with col1:
-        st.metric(label=f"Total Tweets gathered last 4 days", value=df.shape[0])
+        st.metric(label=f"Collected Tweets", value=df.shape[0])
     with col2:
-        st.metric(label = f"Tweets gathered last 24h", value = split_DF_by_time(df,24).shape[0])
+        st.metric(label="Deleted Duplicates",value=f"{int(duplicates/df.shape[0]*100)} %")
+
     with col3:
-        st.metric(label="Deleted Duplicates",value=duplicates)
+        st.metric(label = f"Collected Tweets", value = split_DF_by_time(df,24,False).shape[0])
+    with col4:
+        st.metric(label="Average Followers",value=int(mean_follower["Followers"].tail(1)))
     st.write("##")
     st.write("##")
+
     col1,col2 = st.columns(2)
     with col1:
         st.text("Tweet sentiment for the last hour")
         #st.dataframe(percentage_btc_df)
         show_cake_diagram(percentage_btc_df)
     with col2:
+        #TODO: als chart in most important metrics
         st.text(f"Last 5 Periods with Average Sentiment and total amount of Tweets")
         st.dataframe(resampled_mean_tweetcount.head(5))
-    
-
+        #visualise_timeperiods(resampled_mean_tweetcount.head(5))
     st.markdown("---")
         
 if not hide_Wordcloud_and_TweetSent:
     st.subheader("Word Analysis")
-    words_df = get_signal_by_keywords(split_DF_by_time(df,1))
+    words_df = get_signal_by_keywords(last_avail_tweets_1h)
     col1,col2,col3 = st.columns(3)   
     with col1:
         st.text("Most used Words in the last hour")
         #show_wordCloud(words_df[0],False)
-        show_wordCloud(split_DF_by_time(df,1),True)
+        show_wordCloud(last_avail_tweets_1h,True)
     with col2:
         st.text("Most used Words that indicate buy or sell")
         st.dataframe(words_df[0])
@@ -150,6 +179,7 @@ if not hide_trades:
         st.metric(label = f"Current Balance", value = f"{int(get_kucoin_data()[0])} USDT")
     with col3:
         st.metric(label="Current BTC",value=f"{get_kucoin_data()[1]} ₿ = {get_kucoin_data()[2]}")
+    #TODO: als chart visualisieren
     st.subheader("Last Trades")
     st.dataframe(df_trades)
 

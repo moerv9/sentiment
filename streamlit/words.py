@@ -10,7 +10,7 @@ import numpy as np
 from collections import Counter
 from financial_data import get_buy_or_sell_signal
 
-my_stopwords={"amp","bitcoin","bitcoins","cardano"}
+my_stopwords={"amp","the","and","to","it","as","a","an","in","by","is","that","be","of","or"}
 sentiment_model = SentimentIntensityAnalyzer()
 
 
@@ -22,13 +22,13 @@ def get_sent_meaning(sent_list):
     return sent_meaning_list
 
 def conv_sent_score_to_meaning(num):
-    if num > 0 and num <= 0.5:
+    if num > 0.2 and num <= 0.6:
         return("Positive")
-    elif num > 0.5:
+    elif num > 0.6:
         return("Very Positive")
-    elif num < 0 and num >= -0.5:
+    elif num < 0.2 and num >= -0.6:
         return("Negative")
-    elif num < - 0.5 :
+    elif num < - 0.6 :
         return("Very Negative")
     else:
         return("Neutral")
@@ -62,14 +62,13 @@ def get_signal_by_keywords(df):
 def show_wordCloud(df,df_contains_tweet):
     if df_contains_tweet:
         all_words = ' '.join([tweets for tweets in df["Tweet"]])
+
         wordcloud1 = WordCloud(relative_scaling=0.5,max_words=50,stopwords=my_stopwords,
                             width=500, height=250,collocations=False, random_state=1, max_font_size=100, background_color=None,colormap="viridis_r").generate(all_words)
     elif df_contains_tweet == False:
         df.reset_index(drop=True, inplace=True)
         df.index = df["Words"] 
         df = df.drop(columns=["Signal","Words"])
-        print("DFFFFF")
-        print(df)
         wordcloud1 = WordCloud(relative_scaling=0.5,max_words=50,stopwords=my_stopwords,
                             width=500, height=250,collocations=False, random_state=1, max_font_size=100, background_color=None,colormap="viridis_r").generate_from_frequencies(df)
     fig1 = plt.figure(figsize=(20, 10))

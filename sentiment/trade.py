@@ -51,8 +51,8 @@ def get_Heroku_DB():
     df = df.filter(items=["Sentiment Score"])
     df = df[df["Sentiment Score"] != 0.0]
 
-    count_tweets = df.resample(f"1H").count()#count Tweets
-    mean_df = df.resample(f"1H").mean().sort_index(ascending=False)
+    count_tweets = df.resample(f"1H",label="right").count()#count Tweets
+    mean_df = df.resample(f"1H",label="right").mean().sort_index(ascending=False)
     count_tweets.rename(columns={"Sentiment Score" : "Total Tweets"},inplace=True)
     mean_df.rename(columns={"Sentiment Score" : "Avg"},inplace=True)
     resampled_mean_tweetcount = pd.concat([mean_df,count_tweets],axis="columns")

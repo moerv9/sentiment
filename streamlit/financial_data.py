@@ -81,9 +81,9 @@ def get_buy_or_sell_signal(word):
         return "SELL"
 
 def get_signal_by_sent_score(score):
-    if score >= 0.2:
+    if score > 0.2:
         return "BUY"
-    if score < 0.2:
+    if score <= 0.2:
         return "SELL"
     
 sell_vals = []
