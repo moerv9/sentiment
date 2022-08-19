@@ -24,8 +24,14 @@ kMainClient = kucoinClient(kconf.KUCOIN_KEY, kconf.KUCOIN_SECRET,kconf.KUCOIN_PA
 
 def get_kucoin_data():
     accounts = kSubClient.get_accounts(account_type = "trade")
-    usdt_balance = float(accounts[0]["balance"])
-    btc_balance = float(accounts[1]["balance"])
+    
+    if accounts[0]["currency"] == "BTC":
+        btc_balance = float(accounts[0]["balance"])
+        usdt_balance = float(accounts[1]["balance"])
+    else:
+        usdt_balance = float(accounts[0]["balance"])
+        btc_balance = float(accounts[1]["balance"])
+    print(f"USDT: {usdt_balance}, BTC: {btc_balance}")
     btc_price = binance_client.get_symbol_ticker(symbol="BTCUSDT")["price"]
     btc_in_usdt = float(btc_balance) * float(btc_price)
     return usdt_balance, btc_balance, btc_in_usdt

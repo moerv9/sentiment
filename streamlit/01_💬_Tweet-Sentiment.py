@@ -35,12 +35,12 @@ def loading_data_from_heroku_database():
 
 with st.sidebar:
     st.info("Turn on Darkmode in upper right settings!")
-    hide_explanation = st.checkbox(label="Hide Explanation",value=False)
-    hide_most_important_metrics = st.checkbox(label="Hide most important metrics",value=False)
+    hide_explanation = st.checkbox(label="Hide Explanation",value=True)
+    hide_most_important_metrics = st.checkbox(label="Hide most important metrics",value=True)
     hide_single_tweets = st.checkbox(label="Hide Last Collected Tweets",value=True)
-    hide_sentiment = st.checkbox(label="Hide Sentiment Metrics",value=False)
-    hide_Wordcloud_and_TweetSent = st.checkbox(label="Hide Word Analysis",value=False)
-    hide_Charts = st.checkbox(label="Hide Charts",value=True)
+    hide_sentiment = st.checkbox(label="Hide Sentiment Metrics",value=True)
+    hide_Wordcloud_and_TweetSent = st.checkbox(label="Hide Word Analysis",value=True)
+    hide_Charts = st.checkbox(label="Hide Charts",value=False)
     hide_trades = st.checkbox(label="Hide Trades",value=False)
     intervals = 60 #rst.select_slider("Resample Timeperiod by X Minutes",options=[1,5,15,30,60,120,360],value=60)
 
@@ -154,11 +154,12 @@ if not hide_Wordcloud_and_TweetSent:
 
 if not hide_Charts:
     st.subheader("Charts")
-    if st.checkbox("Show only last 24h"):
-        lookback_timeframe = 24
-    else:
-        lookback_timeframe = 96
+    # if st.checkbox("Show only last 24h"):
+    #     lookback_timeframe = 24
+    # else:
+    #     lookback_timeframe = 96
     # Get price data for bitcoin
+    lookback_timeframe = 24
     data = getminutedata("BTCUSDT",intervals,lookback_timeframe)
     time.sleep(1)
     show_charts(split_DF_by_time(resampled_mean_tweetcount,lookback_timeframe,False),data)

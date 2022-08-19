@@ -71,12 +71,19 @@ def trade(last_avg_df):
         average = average[:4]
     average = float(average)
     if len(accounts) == 2:
-        usdt_balance = float(accounts[0]["balance"])
-        btc_balance = float(accounts[1]["balance"])
+        if accounts[0]["currency"] == "BTC":
+            btc_balance = float(accounts[0]["balance"])
+            usdt_balance = float(accounts[1]["balance"])
+        else:
+            usdt_balance = float(accounts[0]["balance"])
+            btc_balance = float(accounts[1]["balance"])
         print(f"USDT Balance: {usdt_balance} $")
         print(f"BTC Balance: {btc_balance}")
     elif len(accounts) == 1:
-        usdt_balance = float(accounts[0]["balance"])
+        if accounts[0]["currency"] == "USDT":
+            usdt_balance = float(accounts[0]["balance"])
+        else:
+            usdt_balance = float(accounts[1]["balance"])
         print(f"USDT Balance: {usdt_balance} $")
     symbol = "BTC-USDT"
     if float(average) > 0.20: #usdt_balance > 10 for subClient
