@@ -216,6 +216,7 @@ def show_charts(df, data):
     st.pyplot(fig)
     
 def show_trade_chart(df):
+    plt.clf()
     fig1, ax1 = plt.subplots(figsize=(8,4))
     ax1.xaxis.label.set_color('white') 
     ax1.yaxis.label.set_color('white')
@@ -231,9 +232,9 @@ def show_trade_chart(df):
     ax1.xaxis.set_minor_locator(date_locator)
     ax1.xaxis.set_major_formatter(formatter)
     
-    trade_timeperiods = df.filter(items=["tradeAt","side"]) #.values um die tradeAt zu bekommen
+    df_avg = df["avg"]
+    trade_timeperiods = df.filter(items=["side"]) #.values um die tradeAt zu bekommen
     data = getminutedata("BTCUSDT",1,96)
-    
     di = data.index
     dc = data.Close
     lst = []
@@ -252,6 +253,7 @@ def show_trade_chart(df):
     ax1.plot(trade_timeperiods.index,lst,"v",label="sell",color=cmap(0.8),markersize=4,markevery=sell)
     ax1.plot(trade_timeperiods.index,lst,"^",label="buy",color=cmap(0.25),markersize=4,markevery=buy)
     #plt.setp(ax1.get_xticklabels(), rotation=30, horizontalalignment='right') 
+
     fig1.autofmt_xdate()
     ax1.legend()
     st.pyplot(fig1)

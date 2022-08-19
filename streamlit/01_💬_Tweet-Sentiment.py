@@ -40,7 +40,6 @@ with st.sidebar:
     hide_single_tweets = st.checkbox(label="Hide Last Collected Tweets",value=True)
     hide_sentiment = st.checkbox(label="Hide Sentiment Metrics",value=True)
     hide_Wordcloud_and_TweetSent = st.checkbox(label="Hide Word Analysis",value=True)
-    hide_Charts = st.checkbox(label="Hide Charts",value=False)
     hide_trades = st.checkbox(label="Hide Trades",value=False)
     intervals = 60 #rst.select_slider("Resample Timeperiod by X Minutes",options=[1,5,15,30,60,120,360],value=60)
 
@@ -154,18 +153,6 @@ if not hide_Wordcloud_and_TweetSent:
 
 
 
-if not hide_Charts:
-    st.subheader("Charts")
-    # if st.checkbox("Show only last 24h"):
-    #     lookback_timeframe = 24
-    # else:
-    #     lookback_timeframe = 96
-    # Get price data for bitcoin
-    lookback_timeframe = 24
-    data = getminutedata("BTCUSDT",intervals,lookback_timeframe)
-    time.sleep(1)
-    #show_charts(split_DF_by_time(resampled_mean_tweetcount,lookback_timeframe,False),data)
-    st.markdown("---")
 
 
 last_trade_time = df_trades.index[0]
@@ -184,8 +171,8 @@ if not hide_trades:
         st.metric(label="Current BTC",value=f"{get_kucoin_data()[1]} ₿ = {get_kucoin_data()[2]}")
     #TODO: als chart visualisieren
     st.subheader("Last Trades")
-    df_trades = df_trades[["side","usdt_balance","btc_balance","fee"]]
-    st.dataframe(df_trades)
+    important_df_trades = df_trades[["side","usdt_balance","btc_balance","fee"]]
+    #st.dataframe(important_df_trades)
     time_frame = 24
     #data = getminutedata("BTCUSDT",intervals,time_frame)
     #show_charts(split_DF_by_time(df_trades,time_frame,False),data)
