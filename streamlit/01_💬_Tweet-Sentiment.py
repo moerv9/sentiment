@@ -6,7 +6,7 @@ from re import S
 import streamlit as st
 from streamlit_autorefresh import st_autorefresh
 from words import get_signals
-from streamlit_data import get_Heroku_DB,calc_mean_sent,show_charts,show_cake_diagram,resample_df, split_DF_by_time,visualise_timeperiods,visualise_word_signals
+from streamlit_data import get_Heroku_DB,calc_mean_sent,show_charts,show_cake_diagram,resample_df, split_DF_by_time,visualise_timeperiods,visualise_word_signals,show_trade_chart
 from words import show_wordCloud,get_signal_by_keywords
 from financial_data import getminutedata,getDateData,get_kucoin_data
 from matplotlib.collections import LineCollection
@@ -28,8 +28,8 @@ count = st_autorefresh(interval=1000*60*5, key="sent")
 #@st.cache(ttl=60*5,allow_output_mutation=True,show_spinner=True,suppress_st_warning=True)
 def loading_data_from_heroku_database():
     df, df_trades, duplicates = get_Heroku_DB(today=False)
-    # elif lookback_timeframe <=24:
-    #     df, df_trades, duplicates = get_Heroku_DB(today=True)
+    df_trades.replace(df_trades[df_trades["id"]== 59]["usdt_balance"][0],2524.543209,inplace=True)
+    df_trades.replace(df_trades[df_trades["id"]== 59]["btc_balance"][0],0.05575778,inplace=True)
     return df,df_trades, duplicates
 
 
@@ -47,6 +47,8 @@ with st.sidebar:
 #Get Dataframes
 #Convert Database to Dataframe
 df, df_trades, duplicates  = loading_data_from_heroku_database()
+
+
 st.subheader(f"{date.today().strftime('%d-%m-%Y')} - Bitcoin")
 
 
@@ -162,7 +164,7 @@ if not hide_Charts:
     lookback_timeframe = 24
     data = getminutedata("BTCUSDT",intervals,lookback_timeframe)
     time.sleep(1)
-    show_charts(split_DF_by_time(resampled_mean_tweetcount,lookback_timeframe,False),data)
+    #show_charts(split_DF_by_time(resampled_mean_tweetcount,lookback_timeframe,False),data)
     st.markdown("---")
 
 
@@ -182,7 +184,11 @@ if not hide_trades:
         st.metric(label="Current BTC",value=f"{get_kucoin_data()[1]} ₿ = {get_kucoin_data()[2]}")
     #TODO: als chart visualisieren
     st.subheader("Last Trades")
+    df_trades = df_trades[["side","usdt_balance","btc_balance","fee"]]
     st.dataframe(df_trades)
-    show_charts(split_DF_by_time(df_trades,96,False),data)
+    time_frame = 24
+    #data = getminutedata("BTCUSDT",intervals,time_frame)
+    #show_charts(split_DF_by_time(df_trades,time_frame,False),data)
+    show_trade_chart(split_DF_by_time(df_trades,96,False))
 
 

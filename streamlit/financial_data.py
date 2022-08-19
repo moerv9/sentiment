@@ -30,7 +30,7 @@ def get_kucoin_data():
     else:
         usdt_balance = float(accounts[0]["balance"])
         btc_balance = float(accounts[1]["balance"])
-    print(f"USDT: {usdt_balance}, BTC: {btc_balance}")
+    #print(f"USDT: {usdt_balance}, BTC: {btc_balance}")
     btc_price = binance_client.get_symbol_ticker(symbol="BTCUSDT")["price"]
     btc_in_usdt = float(btc_balance) * float(btc_price)
     return usdt_balance, btc_balance, btc_in_usdt
@@ -101,7 +101,7 @@ sell_time = []
 def get_timestamps_for_trades(avg_count_df,btc_timestamps):
     avg_count_df.sort_index(ascending=False)
     for i in range(len(avg_count_df)):
-        if avg_count_df["Avg"].values[i] > 0.2:
+        if avg_count_df["avg"].values[i] > 0.2:
             buy_vals.append(avg_count_df.index[i])#[Timestamp('2022-08-09 14:00:00'), ,...]
         else:
             sell_vals.append(avg_count_df.index[i])

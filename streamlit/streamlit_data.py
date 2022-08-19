@@ -15,6 +15,7 @@ from streamlit_autorefresh import st_autorefresh
 from dateutil import tz
 from matplotlib.ticker import (MultipleLocator,AutoMinorLocator,MaxNLocator,AutoLocator,AutoMinorLocator)
 import matplotlib.dates as mdates
+
 import matplotlib.patches as mpatches
 from words import get_sent_meaning,conv_sent_score_to_meaning
 from financial_data import getminutedata,get_timestamps_for_trades,get_signal_by_sent_score
@@ -32,8 +33,11 @@ from config import ConfigDB
 DB_URL = ConfigDB().DB_URL
 
 cmap = plt.cm.get_cmap("turbo")#('RdYlBu')
-date_locator = mdates.AutoDateLocator(minticks=6, maxticks=20)
+date_locator = mdates.AutoDateLocator(minticks=4, maxticks=16)
 formatter = mdates.ConciseDateFormatter(date_locator)
+#xtick_formatter = mdates.AutoDateFormatter(date_locator)
+#cut_date_format = mdates.DateFormatter('%d-%m %H:%M')
+
 
 def get_Heroku_DB(today=True):
     conn = psycopg2.connect(DB_URL, sslmode="require")
@@ -69,10 +73,10 @@ def get_Heroku_DB(today=True):
     
     query = "select * from trade_data where id > 28 order by id desc;"
     df_trades = pd.read_sql(query, conn)
-    df_trades = df_trades.rename(columns={"avg": "Avg"})
+    #df_trades = df_trades.rename(columns={"avg": "Avg"})
     df_trades.index = df_trades["avgTime"]
     df_trades.index = df_trades.index + timedelta(hours=2)
-    df_trades.drop(columns=["avgTime","id"],inplace=True)
+    df_trades.drop(columns=["avgTime"],inplace=True)
 
     return df.sort_index(ascending=False), df_trades, len(duplicates)
 
@@ -164,8 +168,7 @@ def resample_df(df,interval, filter_neutral=False,by_day=False):
 # CHARTS
 def show_charts(df, data):
     #setup
-    fig, axs = plt.subplots(2,1,sharex=True,constrained_layout=True)#figsize=(10, 4))
-
+    fig, axs = plt.subplots(3,1,sharex=True,constrained_layout=True)#figsize=(10, 4))
     plt.rcParams['font.size'] = '8'
     # plt.rcParams["figure.figsize"] = (6,4)
     #colors
@@ -194,8 +197,6 @@ def show_charts(df, data):
     x1 = data.index
     y1 = data.Close    
     buy_marker, sell_marker,_,_ = get_timestamps_for_trades(df,x1)
-    print(buy_marker)
-    print(sell_marker)
     #first plot for btc price
     axs[0].set_title(f"Sent > 0.2 => Buy")
     axs[0].plot(x1,y1,"^",label="buy",color=cmap(0.25),markersize=4,markevery=buy_marker)
@@ -204,13 +205,57 @@ def show_charts(df, data):
     
     #third plot for sentiment
     x = df.index
-    y = df["Avg"]
+    y = df["avg"]
+    trade_signal = df["side"]
     axs[1].plot(x,y,linestyle=":", label="Sentiment",color="orange", markersize=2,linewidth=1)
     axs[1].axhline(y=0.2,linestyle=":",color="red",linewidth=0.5)   
     axs[0].legend()
+    
     #plt.tight_layout()
     #axs[2].plot(x,df["Total Tweets"],linestyle=":", label="Tweets",color="yellow", markersize=2,linewidth=1)
     st.pyplot(fig)
+    
+def show_trade_chart(df):
+    fig1, ax1 = plt.subplots(figsize=(8,4))
+    ax1.xaxis.label.set_color('white') 
+    ax1.yaxis.label.set_color('white')
+    ax1.tick_params(axis='y', colors='white')
+    ax1.tick_params(axis='x', colors='white',labelrotation=30)
+    ax1.spines["left"].set_color('white')
+    ax1.spines["bottom"].set_color('white')
+    ax1.spines["top"].set_alpha(0)
+    ax1.spines["right"].set_alpha(0)
+    ax1.set_facecolor((0,0,0,0))
+    fig1.patch.set_alpha(0)
+    ax1.xaxis.set_major_locator(date_locator)
+    ax1.xaxis.set_minor_locator(date_locator)
+    ax1.xaxis.set_major_formatter(formatter)
+    
+    trade_timeperiods = df.filter(items=["tradeAt","side"]) #.values um die tradeAt zu bekommen
+    data = getminutedata("BTCUSDT",1,96)
+    
+    di = data.index
+    dc = data.Close
+    lst = []
+    sell = []
+    buy = []
+    for i in range(len(di)):
+        if di.values[i] in trade_timeperiods.index:
+            #print(dc.values[i])
+            lst.append(dc.values[i])
+    for y in range(len(trade_timeperiods)):
+        if trade_timeperiods["side"][y] == "sell":
+            sell.append(y)
+        elif trade_timeperiods["side"][y] == "buy":
+            buy.append(y)
+    ax1.plot(trade_timeperiods.index,lst,label="BTC Price",color="w",linewidth=1)
+    ax1.plot(trade_timeperiods.index,lst,"v",label="sell",color=cmap(0.8),markersize=4,markevery=sell)
+    ax1.plot(trade_timeperiods.index,lst,"^",label="buy",color=cmap(0.25),markersize=4,markevery=buy)
+    #plt.setp(ax1.get_xticklabels(), rotation=30, horizontalalignment='right') 
+    fig1.autofmt_xdate()
+    ax1.legend()
+    st.pyplot(fig1)
+    
 
 #TODO
 def visualise_timeperiods(df):
@@ -219,14 +264,15 @@ def visualise_timeperiods(df):
     ax1.title.set_color("white")
     ax1.xaxis.label.set_color('white') 
     ax1.yaxis.label.set_color('white')
-    ax1.tick_params(axis='y', colors='white',labelrotation=30)
-    ax1.tick_params(axis='x', colors='white')
+    ax1.tick_params(axis='x', colors='white',labelrotation=30)
+    ax1.tick_params(axis='y', colors='white')
     ax1.spines["left"].set_color('white')
     ax1.spines["bottom"].set_color('white')
     ax1.spines["top"].set_alpha(0)
     ax1.spines["right"].set_alpha(0)
     ax1.set_facecolor((0,0,0,0))
     fig1.patch.set_alpha(0)
+    
     
     plot1 = ax1.plot(time_periods,avg,label="Avg",color="red")
     plot2 = ax1.plot(time_periods,total_tweets,label="Total Tweets",color="cyan")
@@ -324,7 +370,7 @@ def visualise_word_signals(df):
     sell_patch = mpatches.Patch(color=cmap(0.8), label='Sell-Signal')
     plt.legend(handles=[buy_patch,sell_patch])
     #plt.tight_layout()
-    plt.setp(ax1.get_yticklabels(), rotation=30, horizontalalignment='right')
+
     #ax1.xaxis.set_major_locator(AutoLocator())
     #ax1.xaxis.set_major_formatter(formatter)
     st.pyplot(plt)
