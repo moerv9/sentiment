@@ -14,8 +14,9 @@ from logging.handlers import RotatingFileHandler
 from time import sleep
 from streamlit_autorefresh import st_autorefresh
 from dateutil import tz
-from matplotlib.ticker import (MultipleLocator,AutoMinorLocator)
+from matplotlib.ticker import (MultipleLocator,AutoMinorLocator,MaxNLocator,AutoLocator,AutoMinorLocator)
 import matplotlib.dates as mdates
+import matplotlib.patches as mpatches
 from words import get_sent_meaning,conv_sent_score_to_meaning
 from financial_data import getminutedata,get_timestamps_for_trades,get_signal_by_sent_score
 import pytz
@@ -31,6 +32,9 @@ from config import ConfigDB
 #Uncomment for local Dev
 DB_URL = ConfigDB().DB_URL
 
+cmap = plt.cm.get_cmap("turbo")#('RdYlBu')
+date_locator = mdates.AutoDateLocator(minticks=6, maxticks=20)
+formatter = mdates.ConciseDateFormatter(date_locator)
 
 def get_Heroku_DB(today=True):
     conn = psycopg2.connect(DB_URL, sslmode="require")
@@ -88,8 +92,6 @@ def split_DF_by_time(df,time_frame,timestamp):
         timedelt = timestamp - timedelta(hours= time_frame)
         mask = (df.index < pd.to_datetime(timestamp))
         df = df.loc[mask]
-        print("Df < tmestamp")
-        print(df)
     mask = (df.index > timedelt)
     df = df.loc[mask]
 
@@ -133,9 +135,9 @@ def resample_df(df,interval, filter_neutral=False,by_day=False):
         count_tweets = df.resample(f"1H",label="right").count()#count Tweets
         mean_df = df.resample(f"{interval}T",label="right").mean().sort_index(ascending=False)
     count_tweets.rename(columns={"Sentiment Score" : "Total Tweets"},inplace=True)
-    
     mean_df.rename(columns={"Sentiment Score" : "Avg"},inplace=True)
     df["Sent is"] = df["Sentiment Score"].apply(conv_sent_score_to_meaning)
+
     
     mean_df["Sent is"] = mean_df["Avg"].apply(conv_sent_score_to_meaning)
     resampled_mean_tweetcount = pd.concat([mean_df,count_tweets],axis="columns")
@@ -160,9 +162,9 @@ def resample_df(df,interval, filter_neutral=False,by_day=False):
 def show_charts(df, data):
     #setup
     fig, axs = plt.subplots(2,1,sharex=True,constrained_layout=True)#figsize=(10, 4))
-    locator = mdates.AutoDateLocator(minticks=6, maxticks=20)
-    formatter = mdates.ConciseDateFormatter(locator)
+
     plt.rcParams['font.size'] = '8'
+    # plt.rcParams["figure.figsize"] = (6,4)
     #colors
     for nn,ax in enumerate(axs):
         axs[nn].title.set_color("white")
@@ -175,8 +177,8 @@ def show_charts(df, data):
         axs[nn].spines["top"].set_alpha(0)
         axs[nn].spines["right"].set_alpha(0)
         axs[nn].set_facecolor((0,0,0,0))
-        axs[nn].xaxis.set_major_locator(locator)
-        axs[nn].xaxis.set_minor_locator(locator)
+        axs[nn].xaxis.set_major_locator(date_locator)
+        axs[nn].xaxis.set_minor_locator(date_locator)
         axs[nn].xaxis.set_major_formatter(formatter)
     fig.patch.set_alpha(0)
     
@@ -189,10 +191,12 @@ def show_charts(df, data):
     x1 = data.index
     y1 = data.Close    
     buy_marker, sell_marker,_,_ = get_timestamps_for_trades(df,x1)
+    print(buy_marker)
+    print(sell_marker)
     #first plot for btc price
     axs[0].set_title(f"Sent > 0.2 => Buy")
-    axs[0].plot(x1,y1,"^",label="buy",color="g",markersize=3,markevery=buy_marker)
-    axs[0].plot(x1,y1,"v",label="sell",color="r",markersize=3,markevery=sell_marker)
+    axs[0].plot(x1,y1,"^",label="buy",color=cmap(0.25),markersize=4,markevery=buy_marker)
+    axs[0].plot(x1,y1,"v",label="sell",color=cmap(0.8),markersize=4,markevery=sell_marker)
     axs[0].plot(x1,y1,label="BTC Price",color="w",linewidth=1,markersize=3)
     
     #third plot for sentiment
@@ -207,7 +211,6 @@ def show_charts(df, data):
 
 #TODO
 def visualise_timeperiods(df):
-    print(df.columns)
     time_periods ,avg, total_tweets,signal = df.index,df["Avg"], df["Total Tweets"],df["Signal"]
     fig1, ax1 = plt.subplots()
     ax1.title.set_color("white")
@@ -227,36 +230,100 @@ def visualise_timeperiods(df):
     ax1.legend()
     st.pyplot(fig1)
     
-    
 
 
-def show_cake_diagram(df):
-    labels = [i for i in df["Sentiment"]]
-    sizes = [i for i in df["Percentage"]]
-    colors = ['#99ff99','#66b3ff','#ff9999','#ffcc99','#ff99cc']
+def show_cake_diagram(df,which):
+    if which == "percentage":
+        lst = df.values.tolist()
+        for i in range(len(lst)):
+            if lst[i][0] == "Positive":
+                lst[i].append(cmap(0.25))
+            elif lst[i][0] == "Very Positive":
+                lst[i].append(cmap(0.15))
+            elif lst[i][0] == "Negative":
+                lst[i].append(cmap(0.8))#("#f7ff99")
+            elif lst[i][0] == "Very Negative":
+                lst[i].append(cmap(0.9))
+            elif lst[i][0] == "Neutral":
+                lst[i].append(cmap(0.55))
+        #labels = [i for i in df["Sentiment"]]
+        #sizes = [i for i in df["Percentage"]]
+        labels = [i[0] for i in lst]
+        sizes = [i[2] for i in lst]
+        colors = [i[3] for i in lst]
+        '''
+        #99ff99 = green v/very positive
+        #66b3ff = lightblue
+        #ff9999 = rosa
+        #ffcc99 = orange
+        #ff99cc = red
+        #f7ff99 = yellow
+        #FEE08A = neutral
+        #ff9999 = negative
+        #B2172B = very negative
+        '''
+        
+    elif which == "signal count":
+        lst = df.values.tolist()
+        for i in range(len(lst)):
+            if lst[i][0] == "BUY":
+                lst[i].append(cmap(0.25))
+            else:
+                lst[i].append(cmap(0.8))
+        labels = [i[0] for i in lst]
+        sizes = [i[1] for i in lst]
+        colors = [i[2] for i in lst]
+
     fig1, ax1 = plt.subplots()
     patches,texts, autotexts = ax1.pie(sizes, labels=labels, autopct='%1.1f%%',  startangle=90,colors=colors,radius=.3)#textprops=dict(color="w"),shadow=True,
     for text in texts:
         text.set_color('white')
     for autotext in autotexts:
-        autotext.set_color('grey')
-    #plt.rcParams['figure.facecolor'] = (0.5, 0.0, 0.0, 0.5)
-    #fig1.set_facecolor(color=None)
+        autotext.set_color('white')
+
     fig1.patch.set_alpha(0)
     ax1.axis('equal')
-    ax1.set_title("Positive Tweets")
-    plt.setp(autotexts, size=14, weight="bold")
+    plt.setp(autotexts, size=10) #weight="bold"
+    plt.setp(texts, size=10) #weight="bold"
     plt.tight_layout()
-    #plt.show()
     st.pyplot(plt)
     
-#TODO
-# def show_bar_chart(df):
-#     sizes = [i for i in df["Percentage"]]
-#     labels = [i for i in df["Sentiment"]]
-#     plt.rcParams['figure.facecolor'] = (0, 0.0, 0.0, 0)
-#     fig1, ax = plt.subplots()
-#     ax.bar(1,sizes[0])
-#     ax.bar(1,sizes[1])
-#     plt.tight_layout()
-#     st.pyplot(plt)
+def visualise_word_signals(df):
+    lst = df.values.tolist()
+    for i in range(len(lst)):
+        if lst[i][2] == "BUY":
+            lst[i].append(cmap(0.25))
+        else:
+            lst[i].append(cmap(0.8))
+    labels = [i[0] for i in lst]
+    count = [i[1] for i in lst]
+    buy_or_sell = [i[2] for i in lst]
+    colors = [i[3] for i in lst]
+    
+    fig1, ax1 = plt.subplots()
+    ax1.xaxis.label.set_color('white') 
+    ax1.yaxis.label.set_color('white')
+    ax1.tick_params(axis='y', colors='white')
+    ax1.tick_params(axis='x', colors='white')
+    ax1.spines["left"].set_color('white')
+    ax1.spines["bottom"].set_color('white')
+    ax1.spines["top"].set_alpha(0)
+    ax1.spines["right"].set_alpha(0)
+    ax1.set_facecolor((0,0,0,0))
+    fig1.patch.set_alpha(0)
+    ax1.set_xlabel("Count")
+    #ax1.xaxis.set_ticks(range(len(labels)))
+    ax1.xaxis.set_major_locator(MaxNLocator(integer=True))
+    ax = ax1.barh(labels,width=count,color = colors, height=0.7)
+    ax1.invert_yaxis()
+    ax1.bar_label(ax,label_type="center",color="white")
+    buy_patch = mpatches.Patch(color=cmap(0.25), label='Buy-Signal')
+    sell_patch = mpatches.Patch(color=cmap(0.8), label='Sell-Signal')
+    plt.legend(handles=[buy_patch,sell_patch])
+    #plt.tight_layout()
+    plt.setp(ax1.get_yticklabels(), rotation=30, horizontalalignment='right')
+    #ax1.xaxis.set_major_locator(AutoLocator())
+    #ax1.xaxis.set_major_formatter(formatter)
+    st.pyplot(plt)
+    
+

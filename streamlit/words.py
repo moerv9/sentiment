@@ -10,7 +10,7 @@ import numpy as np
 from collections import Counter
 from financial_data import get_buy_or_sell_signal
 
-my_stopwords={"amp","the","and","to","it","as","a","an","in","by","is","that","be","of","or"}
+my_stopwords={"amp","the","and","to","it","as","a","an","in","by","is","that","be","of","or","on","its","at","you","this","for","with","has","what","i","will","just","eth","bitcoin","bnb","ethereum","cardano","btc","usdt","my","crypto","cryptocurrency","we","if","from"}
 sentiment_model = SentimentIntensityAnalyzer()
 
 
@@ -26,16 +26,27 @@ def conv_sent_score_to_meaning(num):
         return("Positive")
     elif num > 0.6:
         return("Very Positive")
-    elif num < 0.2 and num >= -0.6:
+    elif num <= 0.20 and num >= -0.6:
         return("Negative")
     elif num < - 0.6 :
         return("Very Negative")
     else:
         return("Neutral")
+    
+
 
 
 
 def get_signal_by_keywords(df):
+    """Analyse all Tweets for Keywords and return Words, Count, Signal
+
+    Args:
+        df (DataFrame): Input Dataframe with Column "Tweet"
+
+    Returns:
+        df (DataFrame): Columns: Words,Count,Signal
+        signal_count_df (DataFrame): Columns: Signal, Count
+    """
     all_words = ' '.join([tweets for tweets in df["Tweet"]])
     words = list(all_words.split(" "))
     cleaned_words = [x for x in words if not bool(re.search('\d|_|\$|\amp|\/', x))]
@@ -46,16 +57,17 @@ def get_signal_by_keywords(df):
     wordcount = pd.value_counts(np.array(cleaned_words))
     df = pd.DataFrame(wordcount,columns=["Count"])
     df["Words"] = df.index
-    df = df[["Words","Count"]].sort_values(by=["Count"],ascending=False)
+    df = df[["Words","Count"]]
     df.reset_index(drop=True, inplace=True)
     df["Signal"] = df["Words"].apply(get_buy_or_sell_signal)
     df = df.dropna(subset=["Signal"])
-    grouped_df = df.groupby(by=["Signal"],as_index=False,sort=False).agg({"Count":"sum"})
-
+    signal_count_df = df.groupby(by=["Signal"],as_index=False,sort=False).agg({"Count":"sum"})
+    
     #sent_list = [sentiment_model.polarity_scores(words).get("compound") for words in df["Words"]] #Sent for each word
     #df["Sentiment"] = get_sent_meaning(sent_list)
     #df_count = df.groupby(df["Sentiment"], dropna=True).count() #count words for each sentiment "pos, neg, ..."
-    return df, grouped_df
+    return df.sort_values(by=["Count","Signal"],ascending=False), signal_count_df
+
 
 
 
@@ -64,14 +76,14 @@ def show_wordCloud(df,df_contains_tweet):
         all_words = ' '.join([tweets for tweets in df["Tweet"]])
 
         wordcloud1 = WordCloud(relative_scaling=0.5,max_words=50,stopwords=my_stopwords,
-                            width=500, height=250,collocations=False, random_state=1, max_font_size=100, background_color=None,colormap="viridis_r").generate(all_words)
+                            width=700, height=350,collocations=False, random_state=1, max_font_size=100, background_color=None,colormap="turbo").generate(all_words) #viridis_r
     elif df_contains_tweet == False:
         df.reset_index(drop=True, inplace=True)
         df.index = df["Words"] 
         df = df.drop(columns=["Signal","Words"])
         wordcloud1 = WordCloud(relative_scaling=0.5,max_words=50,stopwords=my_stopwords,
-                            width=500, height=250,collocations=False, random_state=1, max_font_size=100, background_color=None,colormap="viridis_r").generate_from_frequencies(df)
-    fig1 = plt.figure(figsize=(20, 10))
+                            width=700, height=450,collocations=False, random_state=1, max_font_size=100, background_color=None,colormap="viridis_r").generate_from_frequencies(df)
+    fig1 = plt.figure()
     fig1.patch.set_alpha(0)
     plt.imshow(wordcloud1, interpolation="bilinear")
     plt.axis('off')

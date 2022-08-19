@@ -154,7 +154,6 @@ The next thing is to find and delete all the duplicates. As can be seen in Figur
 </br>
 
 
-
 The first approach was as follows: Adding the collected tweets to a list, and after the list had 40 items, run a function that checks for duplicates and deletes them. There were about 40 collected items a minute, so it seemed like a good choice.
 
 The following function converts the list to a Pandas Dataframe and checks for duplicate Tweets with their innate `duplicated()`-method. The `keep=False`-parameter deletes the found duplicates.

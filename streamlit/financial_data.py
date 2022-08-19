@@ -75,9 +75,9 @@ def getDateData(symbol,interval, start_str, end_str):
 #df = getDateData(asset,"1m","12 July, 2022 20:00:00","12 July,2022 22:00:00")
 
 def get_buy_or_sell_signal(word):
-    if word in ["buy","up","bullish","bought","high","pump","growth","uptrend","revolution","hold","love","trust","bull","#pump","success","hodl"]:
+    if word in ["buy","up","bullish","bought","high","pump","growth","uptrend","revolution","hold","love","trust","bull","#pump","success","hodl","like","profit","gain"]:
         return "BUY"
-    elif word in ["sell","down","bearish","sold","never","bad","low","dump","decline","downfall","downtrend","decay","recession","regess","short","hate","#short","#dump","loss","lost","lose"]:
+    elif word in ["sell","down","bearish","sold","never","bad","low","dump","decline","downfall","downtrend","decay","recession","short","hate","#short","#dump","loss","lost","lose"]:
         return "SELL"
 
 def get_signal_by_sent_score(score):
@@ -96,7 +96,7 @@ sell_time = []
 def get_timestamps_for_trades(avg_count_df,btc_timestamps):
     avg_count_df.sort_index(ascending=False)
     for i in range(len(avg_count_df)):
-        if avg_count_df["Avg"].values[i] >= 0.2:
+        if avg_count_df["Avg"].values[i] > 0.2:
             buy_vals.append(avg_count_df.index[i])#[Timestamp('2022-08-09 14:00:00'), ,...]
         else:
             sell_vals.append(avg_count_df.index[i])
