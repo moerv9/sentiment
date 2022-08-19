@@ -129,8 +129,12 @@ def trade(last_avg_df):
                     side =  i["side"]
                     fundss = float(i["funds"])
             accounts = kSubClient.get_accounts(account_type = "trade")
-            new_usdt_balance = float(accounts[0]["balance"])
-            new_btc_balance = float(accounts[1]["balance"])
+            if accounts[0]["currency"] == "BTC":
+                new_usdt_balance = float(accounts[1]["balance"])
+                new_btc_balance = float(accounts[0]["balance"])
+            else:
+                new_usdt_balance = float(accounts[0]["balance"])
+                new_btc_balance = float(accounts[1]["balance"])
             print(f"New Balances: {new_usdt_balance} $ and {new_btc_balance} btc.")
             trade = Trade_Table(pd.to_datetime(last_avg_df.name), last_avg_df["Avg"], time, symbol, side, fundss, fee, order["orderId"], new_usdt_balance, new_btc_balance)
 

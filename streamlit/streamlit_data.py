@@ -5,7 +5,6 @@ from matplotlib.collections import LineCollection
 from matplotlib.colors import ListedColormap, BoundaryNorm
 import pandas as pd
 import numpy as np
-
 import os
 import logging
 from datetime import date, time, timedelta,datetime
@@ -70,6 +69,10 @@ def get_Heroku_DB(today=True):
     
     query = "select * from trade_data where id > 28 order by id desc;"
     df_trades = pd.read_sql(query, conn)
+    df_trades = df_trades.rename(columns={"avg": "Avg"})
+    df_trades.index = df_trades["avgTime"]
+    df_trades.index = df_trades.index + timedelta(hours=2)
+    df_trades.drop(columns=["avgTime","id"],inplace=True)
 
     return df.sort_index(ascending=False), df_trades, len(duplicates)
 

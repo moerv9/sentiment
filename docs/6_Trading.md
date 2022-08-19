@@ -224,6 +224,27 @@ Therefore, a few print statements are left in the final code.
 
 </br>
 
+## Challenges
+
+### Getting false Account Balance
+
+The System was trading fine for a couple of days, but then, all of a sudden, it did not execute any trades for a couple timestamps. 
+As can be seen in Figures XXX and XXX below, the USDT and BTC Balance are switched, and the system tried to buy for an amount of *0* USDT, which did not work. Interestingly, in the below figure XXX, you can see that this was not a consistent state since there are some trades at random timestamps. The problem lay with Kucoin. When acquiring the current account balances, USDT normally came before BTC. However, this order seems to be switched at random. This unforeseen coincidence needed to be checked by the system and be acted upon.
+
+![no trade exec](./img/trading/No_trade_exec-fundswrong.png)
+
+![got wrong acc balance](./img/trading/got_wrong_acc_balance.png)
+
+
+
+
+
+</br>
+
+---
+
+</br>
+
 <div style="display: inline;" >
 <a href="https://github.com/moerv9/sentiment/blob/main/docs/5_Sentiment.md"><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter: Sentiment</button></a>
 <a href=https://github.com/moerv9/sentiment/blob/main/docs/7_Visualisation.md"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Visualisation ></button></a>

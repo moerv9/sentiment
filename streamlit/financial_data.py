@@ -24,7 +24,6 @@ kMainClient = kucoinClient(kconf.KUCOIN_KEY, kconf.KUCOIN_SECRET,kconf.KUCOIN_PA
 
 def get_kucoin_data():
     accounts = kSubClient.get_accounts(account_type = "trade")
-    
     if accounts[0]["currency"] == "BTC":
         btc_balance = float(accounts[0]["balance"])
         usdt_balance = float(accounts[1]["balance"])

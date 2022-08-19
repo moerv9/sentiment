@@ -166,7 +166,7 @@ if not hide_Charts:
     st.markdown("---")
 
 
-last_trade_time = df_trades["avgTime"][0]
+last_trade_time = df_trades.index[0]
 second_last_avg = resampled_mean_tweetcount.head(2).iloc[1]
 st.subheader(f"Last Trade for Timestamp: {last_trade_time}")
 
@@ -183,5 +183,6 @@ if not hide_trades:
     #TODO: als chart visualisieren
     st.subheader("Last Trades")
     st.dataframe(df_trades)
+    show_charts(split_DF_by_time(df_trades,96,False),data)
 
 
