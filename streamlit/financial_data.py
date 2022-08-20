@@ -4,7 +4,8 @@ from matplotlib.animation import FuncAnimation
 from binance import Client as bClient
 from kucoin.client import Client as kucoinClient
 from binance.enums import *
-
+import json
+import requests
 import pandas as pd
 import os
 import streamlit as st
@@ -31,9 +32,15 @@ def get_kucoin_data():
         usdt_balance = float(accounts[0]["balance"])
         btc_balance = float(accounts[1]["balance"])
     #print(f"USDT: {usdt_balance}, BTC: {btc_balance}")
-    btc_price = binance_client.get_symbol_ticker(symbol="BTCUSDT")["price"]
-    btc_in_usdt = float(btc_balance) * float(btc_price)
-    return usdt_balance, btc_balance, btc_in_usdt
+    kucoin_btc_in_usdt= float(kSubClient.get_fiat_prices(symbol="BTC",base="USD").get("BTC"))
+    url = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"
+    data = requests.get(url)
+    data = data.json()
+    current_btc_price = float(data["price"])
+
+    real_btc_in_usdt = float(btc_balance) * float(current_btc_price)
+    sandbox_btc_in_usdt = float(btc_balance) * float(kucoin_btc_in_usdt)
+    return usdt_balance, btc_balance, round(kucoin_btc_in_usdt,2),round(sandbox_btc_in_usdt,2), round(real_btc_in_usdt,2), round(current_btc_price,2)
 
 
 def getminutedata(symbol,interval, lookback):

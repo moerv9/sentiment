@@ -155,21 +155,30 @@ if not hide_Wordcloud_and_TweetSent:
 
 
 
-last_trade_time = df_trades.index[0]
+last_trade_time = df_trades["tradeAt"][0]#df_trades.index[0]
 second_last_avg = resampled_mean_tweetcount.head(2).iloc[1]
-st.subheader(f"Last Trade for Timestamp: {last_trade_time}")
+st.subheader(f"Last Trade at {last_trade_time}")
 
 
 if not hide_trades:
     st.subheader("Trades")
-    col1,col2,col3 = st.columns(3)
+    col1,col2,col3,col4,col5 = st.columns(3)
     with col1:
         st.metric(label="Starting Balance", value="5000 USDT")
     with col2:
-        st.metric(label = f"Current Balance", value = f"{int(get_kucoin_data()[0])} USDT")
+        st.metric(label = f"Current USDT Holdings", value = f"{int(get_kucoin_data()[0])} USDT")
     with col3:
-        st.metric(label="Current BTC",value=f"{get_kucoin_data()[1]} ₿ = {get_kucoin_data()[2]}")
-    #TODO: als chart visualisieren
+        st.metric(label="Current BTC Holdings",value=f"{get_kucoin_data()[1]} ₿")
+        
+    col1,col2,col3,col4 = st.columns(4)
+    with col1: 
+        st.metric(label="Current BTC Price",value=f"{get_kucoin_data()[5]} $")
+    with col2:
+        st.metric(label="Holdings with real BTC Price",value=f"{get_kucoin_data()[4]} $")
+    with col3:
+        st.metric(label="Current BTC Price in Sandbox",value=f"{get_kucoin_data()[2]} $")
+    with col4:
+        st.metric(label="Holdings with Sandbox Price" ,value=f"{get_kucoin_data()[3]} $")
     st.subheader("Last Trades")
     important_df_trades = df_trades[["side","usdt_balance","btc_balance","fee"]]
     #st.dataframe(important_df_trades)

@@ -33,7 +33,7 @@ from config import ConfigDB
 DB_URL = ConfigDB().DB_URL
 
 cmap = plt.cm.get_cmap("turbo")#('RdYlBu')
-date_locator = mdates.AutoDateLocator(minticks=4, maxticks=16)
+date_locator = mdates.AutoDateLocator(minticks=10, maxticks=20)
 formatter = mdates.ConciseDateFormatter(date_locator)
 #xtick_formatter = mdates.AutoDateFormatter(date_locator)
 #cut_date_format = mdates.DateFormatter('%d-%m %H:%M')
