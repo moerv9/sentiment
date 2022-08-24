@@ -132,7 +132,7 @@ Since this looked promising it was implemented to real-time Papertrading in the 
 
 
 </br>
-In the [trade](../sentiment/trade.py) file are the following methods:
+In the [trade](#TODO) file are the following methods:
 The first method collects all the Data for the single tweets and stores them in a pandas DataFrame. This is neded to delete the duplicates with the following methods:
 
 </br>
@@ -232,12 +232,55 @@ The System was trading fine for a couple of days, but then, all of a sudden, it 
 As can be seen in Figures XXX and XXX below, the USDT and BTC Balance are switched, and the system tried to buy for an amount of *0* USDT, which did not work. Interestingly, in the below figure XXX, you can see that this was not a consistent state since there are some trades at random timestamps. The problem lay with Kucoin. When acquiring the current account balances, USDT normally came before BTC. However, this order seems to be switched at random. This unforeseen coincidence needed to be checked by the system and be acted upon.
 
 ![no trade exec](./img/trading/No_trade_exec-fundswrong.png)
+##### *Figure 17: Logs from Heroku: No Trade was executed because the size or fund parameter was false*
+</br>
 
 ![got wrong acc balance](./img/trading/got_wrong_acc_balance.png)
+##### *Figure 18: Wrong Account Balance on Kucoin*
+</br>
 
 
 
+### Different Sandbox Prices
+The biggest challenge came with the sandbox. All the trading worked perfectly, but it was weird to see that the first trade of 250 $ equalled a BTC amount of 0.06, which would be more than 1300 $. This didn't make any sense.
 
+Since these different prices were not prone to bitcoin alone, but all coins had different prices in the sandbox, the Kucoin Support was contacted.
+
+The answer, in Figure #TODO below, confirmed that the prices in the sandbox are just different and another solution was needed.
+
+![Kucoin Answer](./img/trading/kucoin_answer.png)
+##### *Figure 19: Email from Kucoin regarding the different Bictoin Prices*
+</br>
+
+The solution was to get the correct price from somewhere else and in this case: Binance.
+
+To convert the current BTC Holdings a real-time price was needed. 
+
+This is done with a few lines of code and a typical HTML-Request:
+
+```
+url = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"
+data = requests.get(url)
+data = data.json()
+```
+
+To get all the historical data from Binance, the python-binance wrapper was used:
+
+```
+frame = pd.DataFrame(binance_client.get_historical_klines(symbol,interval,lookback))
+frame = frame.iloc[:,:6]
+frame.columns= ["Time","Open","High","Low","Close","Volume"]
+frame = frame.set_index("Time")
+frame.index = pd.to_datetime(frame.index,unit="ms")
+frame.index = frame.index + timedelta(hours=2) #utc to local
+frame
+```
+
+The result looked like this:
+
+![Binance Frame](./img/trading/binance_frame.png)
+##### *Figure 20: Prices (ohlc) and Volume for Bitcoin from Binance*
+</br>
 
 </br>
 

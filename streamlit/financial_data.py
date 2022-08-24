@@ -7,23 +7,36 @@ from binance.enums import *
 import json
 import requests
 import pandas as pd
+import numpy as np
 import os
 import streamlit as st
 from matplotlib.ticker import MultipleLocator
 import matplotlib.dates as mdates
+import re
 
 #Config
 import sys
 sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
-from config import ConfigBinance,ConfigKucoin
+from config import ConfigBinance, ConfigKucoin
 
 kconf = ConfigKucoin()
+bconf = ConfigBinance()
 #Init Binance Client
-binance_client = bClient(ConfigBinance().BINANCE_API_KEY,ConfigBinance().BINANCE_API_SECRET)
+binance_client = bClient(bconf.BINANCE_API_KEY, bconf.BINANCE_API_SECRET)
 kSubClient = kucoinClient(kconf.KUCOIN_SUB_KEY, kconf.KUCOIN_SUB_SECRET,kconf.KUCOIN_SUB_PASS,sandbox=True)
 kMainClient = kucoinClient(kconf.KUCOIN_KEY, kconf.KUCOIN_SECRET,kconf.KUCOIN_PASS,sandbox=True)
 
 def get_kucoin_data():
+    """Get account balances, price for btc
+
+    Returns:
+        usdt_balance: Account Balance in USDT
+        btc_balance: Account Balance in BTC
+        kucoin_btc_in_usdt: Get Kucoin Sandbox Price for BTC 
+        sandbox_btc_in_usdt: Convert BTC account Balance to USDT
+        real_btc_in_usdt : Convert btc account balance to real-time btc price
+        current_btc_price: Get current Btc Price
+    """
     accounts = kSubClient.get_accounts(account_type = "trade")
     if accounts[0]["currency"] == "BTC":
         btc_balance = float(accounts[0]["balance"])
@@ -44,6 +57,16 @@ def get_kucoin_data():
 
 
 def getminutedata(symbol,interval, lookback):
+    """Get Historical Price Data from Binance
+
+    Args:
+        symbol (String): "BTC-USDT"
+        interval (int): interval to group the timeframes
+        lookback (int): total past timeframe
+
+    Returns:
+        _type_: _description_
+    """
     if interval == 60:
         interval = "1h"
     elif interval == 120:
@@ -72,6 +95,17 @@ def getminutedata(symbol,interval, lookback):
     return frame
 
 def getDateData(symbol,interval, start_str, end_str):
+    """Get Binance Data for defined days
+
+    Args:
+        symbol (String): "BTC-USDT"
+        interval (int): interval to group the timeframes
+        start_str (String): Start Date
+        end_str (String): End Date
+
+    Returns:
+        frame: DataFrame
+    """
     frame = pd.DataFrame(binance_client.get_historical_klines(symbol,interval,start_str,end_str))
     frame = frame.iloc[:,:6]
     frame.columns= ["Time","Open","High","Low","Close","Volume"]
@@ -87,7 +121,7 @@ def getDateData(symbol,interval, start_str, end_str):
 #df = getDateData(asset,"1m","12 July, 2022 20:00:00","12 July,2022 22:00:00")
 
 def get_buy_or_sell_signal(word):
-    if word in ["buy","up","bullish","bought","high","pump","growth","uptrend","revolution","hold","love","trust","bull","#pump","success","hodl","like","profit","gain"]:
+    if word in ["buy","up","bullish","bought","high","pump","growth","uptrend","revolution","hold","love","trust","bull","#pump","success","hodl","like","profit","gain","long"]:
         return "BUY"
     elif word in ["sell","down","bearish","sold","never","bad","low","dump","decline","downfall","downtrend","decay","recession","short","hate","#short","#dump","loss","lost","lose"]:
         return "SELL"
@@ -98,33 +132,34 @@ def get_signal_by_sent_score(score):
     if score <= 0.2:
         return "SELL"
     
-sell_vals = []
-buy_vals = []
-plot_buy_marker  = []
-plot_sell_marker  = []
-buy_time = []
-sell_time = []
 
-def get_timestamps_for_trades(avg_count_df,btc_timestamps):
-    avg_count_df.sort_index(ascending=False)
-    for i in range(len(avg_count_df)):
-        if avg_count_df["avg"].values[i] > 0.2:
-            buy_vals.append(avg_count_df.index[i])#[Timestamp('2022-08-09 14:00:00'), ,...]
-        else:
-            sell_vals.append(avg_count_df.index[i])
-    for i in range(len(btc_timestamps)):
-        if btc_timestamps.values[i] in buy_vals:
-            buy_time.append(pd.to_datetime(btc_timestamps.values[i],utc=True))
-            plot_buy_marker.append(i) #[1, 2, 7, 8, 10, 11, 12, 13, ...]
-        elif btc_timestamps.values[i] in sell_vals:
-            plot_sell_marker.append(i)
-            sell_time.append(pd.to_datetime(btc_timestamps.values[i],utc=True))
-    #df = pd.Series(data=True,index=buy_time)
-    
-    #print(pd.Series(buy_time))
-    #price_for_date_df = [x.strftime("%d %B, %Y %H:%M:%S") for x in buy_time] #['05 August, 2022 17:00:00', ...]
-    #price_for_date_df = getDateData("BTCUSDT","1h",price_for_date_df[0],price_for_date_df[1])
-    #print(price_for_date_df.to_string())
-    
-    return plot_buy_marker, plot_sell_marker,buy_time,sell_time
+def get_signal_by_keywords(df):
+    """Analyse all Tweets for Keywords and return Words, Count, Signal
 
+    Args:
+        df (DataFrame): Input Dataframe with Column "Tweet"
+
+    Returns:
+        df (DataFrame): Columns: Words,Count,Signal
+        signal_count_df (DataFrame): Columns: Signal, Count
+    """
+    all_words = ' '.join([tweets for tweets in df["Tweet"]])
+    words = list(all_words.split(" "))
+    cleaned_words = [x for x in words if not bool(re.search('\d|_|\$|\amp|\/', x))]
+    cleaned_words = [re.sub(r"\.|\!|\,|\(|\)|\-|\?|\;|\\","",x) for x in cleaned_words]
+    cleaned_words = [x for x in cleaned_words if not bool(re.search("you|my|your|if|me|so|do|us|see|im|a|the|an|the|to|in|for|of|or|by|with|is|on|that|be|it|he", x))]
+    cleaned_words = [x for x in cleaned_words if not len(x)==1]
+    
+    wordcount = pd.value_counts(np.array(cleaned_words))
+    df = pd.DataFrame(wordcount,columns=["Count"])
+    df["Words"] = df.index
+    df = df[["Words","Count"]]
+    df.reset_index(drop=True, inplace=True)
+    df["Signal"] = df["Words"].apply(get_buy_or_sell_signal)
+    df = df.dropna(subset=["Signal"])
+    signal_count_df = df.groupby(by=["Signal"],as_index=False,sort=False).agg({"Count":"sum"})
+    
+    #sent_list = [sentiment_model.polarity_scores(words).get("compound") for words in df["Words"]] #Sent for each word
+    #df["Sentiment"] = get_sent_meaning(sent_list)
+    #df_count = df.groupby(df["Sentiment"], dropna=True).count() #count words for each sentiment "pos, neg, ..."
+    return df.sort_values(by=["Count","Signal"],ascending=False), signal_count_df

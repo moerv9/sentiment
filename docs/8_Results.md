@@ -17,6 +17,7 @@ It has been an awesome and interesting project from the start and I have learned
 - Running scripts in the background on cloud provider Heroku
 - Building and adding to a real-time database with Postgres
 - Building a strategy for trading and testing it in real-time inside a sandbox from a crypto brokerage
+- Visualisation with Matplotlib
 
 
 
@@ -33,12 +34,17 @@ It has been an awesome and interesting project from the start and I have learned
 
 ## Outlook
 
+### Better Strategies
 Because of the short time of this project, further strategies or improvements of the sentiment strategy were not implemented.
 A few other strategies were:
 - Looking for single words for "bullish" or "bearish" sentiment
 - Using technical indicators like the 20-SMA (20 day single moving average) in combination with sentiment analysis
 - Ratio of positive / negative sentiment crossing a particular treshhold
 - calculating the weighted average instead of a normal average
+
+### Different Coins
+Since there are way too many Cryptocurrencies and no way to have an overview over all of them, a good approach for trading with sentiment could be to listen to plenty of coins at the same time and then trade the coin that gets the most hype at the moment and then sell everything when the hype stops.
+
 
 </br>
 

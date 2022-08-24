@@ -29,7 +29,7 @@ Subjectivity lies between [0,1]. Subjectivity quantifies the amount of personal 
 
 </br>
 
-### [Vader]((https://github.com/cjhutto/vaderSentiment#about-the-scoring)) 
+### [Vader]((https://github.com/cjhutto/vaderSentiment)) 
 Vader (Valence Aware Dictionary and sEntiment Reasoner) does the same thing as TextBlob, but it is especially good for social media sentiment analysis, because it uses some heuristics to improve their calculations.
 They not only calculate the polarity (positive or negative), but also the intensity/valence of each sentiment on a scale from -4 to +4. Meaning, that the word "Good" has an intensity of 1.9, the word "Great" of 3.1. This value, coming from observation and experience, will be taken into account for the calculation.
 They also use intensifiers or degree modifiers to either increase or decrease the intensity. This is more accurate than models who only use a lexicon of words. They also understand emoticons like ":D" or emojis and many slang words like "kinda" (instead of "kind of").

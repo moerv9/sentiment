@@ -5,10 +5,9 @@ from posixpath import split
 from re import S
 import streamlit as st
 from streamlit_autorefresh import st_autorefresh
-from words import get_signals
-from streamlit_data import get_Heroku_DB,calc_mean_sent,show_charts,show_cake_diagram,resample_df, split_DF_by_time,visualise_timeperiods,visualise_word_signals,show_trade_chart
-from words import show_wordCloud,get_signal_by_keywords
-from financial_data import getminutedata,getDateData,get_kucoin_data
+from streamlit_data import get_Heroku_DB, get_sent_percentage, resample_df, split_DF_by_time
+from visualise import show_cake_diagram, show_trade_chart, show_wordCloud, visualise_word_signals
+from financial_data import getminutedata,getDateData,get_kucoin_data, get_signal_by_keywords
 from matplotlib.collections import LineCollection
 from matplotlib.colors import ListedColormap, BoundaryNorm
 import numpy as np
@@ -19,8 +18,6 @@ st.set_page_config(
     page_title="Sentiment", 
     layout="wide", 
     )
-
-
 
 count = st_autorefresh(interval=1000*60*5, key="sent")
 
@@ -34,12 +31,12 @@ def loading_data_from_heroku_database():
 
 
 with st.sidebar:
-    st.info("Turn on Darkmode in upper right settings!")
-    hide_explanation = st.checkbox(label="Hide Explanation",value=True)
-    hide_most_important_metrics = st.checkbox(label="Hide most important metrics",value=True)
-    hide_single_tweets = st.checkbox(label="Hide Last Collected Tweets",value=True)
-    hide_sentiment = st.checkbox(label="Hide Sentiment Metrics",value=True)
-    hide_Wordcloud_and_TweetSent = st.checkbox(label="Hide Word Analysis",value=True)
+    st.info("Turn on Darkmode in upper right settings!\nPress 'R', if any error occurs.")
+    hide_explanation = st.checkbox(label="Hide Explanation",value=False)
+    hide_most_important_metrics = st.checkbox(label="Hide most important metrics",value=False)
+    hide_single_tweets = st.checkbox(label="Hide Last Collected Tweets",value=False)
+    hide_sentiment = st.checkbox(label="Hide Sentiment Metrics",value=False)
+    hide_Wordcloud_and_TweetSent = st.checkbox(label="Hide Word Analysis",value=False)
     hide_trades = st.checkbox(label="Hide Trades",value=False)
     intervals = 60 #rst.select_slider("Resample Timeperiod by X Minutes",options=[1,5,15,30,60,120,360],value=60)
 
@@ -47,26 +44,21 @@ with st.sidebar:
 #Convert Database to Dataframe
 df, df_trades, duplicates  = loading_data_from_heroku_database()
 
-
-st.subheader(f"{date.today().strftime('%d-%m-%Y')} - Bitcoin")
-
+st.subheader(f"{date.today().strftime('%d-%m-%Y')} - Bitcoin Sentiment Trading")
 
 single_sent_scores_df,resampled_mean_tweetcount,mean_follower = resample_df(df, intervals, True, False)#(split_DF_by_time(df,lookback_timeframe),intervals,True)
 
+
 last_avail_tweets_1h = split_DF_by_time(df,1,resampled_mean_tweetcount.index[0]) # gets all the last tweets from the last available timestamp - 1h
-
-
-#calculates the Mean/Average for the past time and in sums of min_range (Default 5 Minutes)
-percentage_btc_df = calc_mean_sent(last_avail_tweets_1h,False)
 
 
 
 if not hide_explanation:
     st.subheader("Explanation")
-    st.write("This is a site to visualise a few metrics from the project")
-    st.markdown("**[Social Signal Sentiment-Based Prediction for Cryptocurrency Trading](https://github.com/moerv9/sentiment)**")
+    st.markdown("**This is a site to visualise a few metrics from the project: [Social Signal Sentiment-Based Prediction for Cryptocurrency Trading](https://github.com/moerv9/sentiment)**")
     st.write("The project aims to analyse the sentiment/opinion from tweets on Twitter about Bitcoin and converts these into trading-signals.")
-    st.write("The sentiment score is a number between -1 and 1. "
+    st.markdown(
+                "The sentiment score is calculated by [vader](https://github.com/cjhutto/vaderSentiment) and is between -1 and 1. "
                 "Values above 0.2 indicate a positive Sentiment and a Buy-Signal. Values below are negative and indicate a Sell-Signal.")
     st.write("Below you can have a look at different real-time metrics.")
     st.write("Click the checkboxes on the left sidebar to hide/show metrics.")
@@ -76,25 +68,22 @@ if not hide_explanation:
 if not hide_most_important_metrics:
     st.subheader("Most important Metrics")
     col1,col2 = st.columns(2)
+    current_time = resampled_mean_tweetcount.index[0]
     current_sent = resampled_mean_tweetcount["Avg"].head(1)
     current_sent_is = resampled_mean_tweetcount["Sent is"].head(1)[0]
     current_signal = resampled_mean_tweetcount["Signal"].head(1)[0]
     with col1:
-        st.metric(label="Current Sentiment",value = round(current_sent,4),delta=current_sent_is,delta_color="off")
+        st.metric(label=f"Last collected Sentiment: {current_time}",value = round(current_sent,4),delta=current_sent_is,delta_color="off")
     with col2:
         st.metric(label="Current Signal",value=current_signal)
     st.markdown("---")
     
-
-
 
 if not hide_single_tweets:
     st.subheader("Last collected Tweets")
     rows = st.slider("Rows to retrieve:",step=5,min_value=5,max_value=500,value=5)
     st.dataframe(df.head(rows))
     st.markdown("---")
-
-
 
 
 #Gets single words in the tweets and their frequencies + sentiment
@@ -121,10 +110,10 @@ if not hide_sentiment:
     with col1:
         st.text("Tweet sentiment for the last hour")
         #st.dataframe(percentage_btc_df)
-        show_cake_diagram(df = percentage_btc_df,which = "percentage")
+        show_cake_diagram(df = get_sent_percentage(last_avail_tweets_1h,False),which = "percentage")
     with col2:
         #TODO: als chart in most important metrics
-        st.text(f"Last 5 Periods with Average Sentiment and total amount of Tweets")
+        st.text(f"Last Periods with Average Sentiment and total amount of Tweets")
         st.dataframe(resampled_mean_tweetcount.head(5))
         #visualise_timeperiods(resampled_mean_tweetcount.head(5))
     st.markdown("---")
@@ -153,38 +142,51 @@ if not hide_Wordcloud_and_TweetSent:
 
 
 
-
-
-last_trade_time = df_trades["tradeAt"][0]#df_trades.index[0]
-second_last_avg = resampled_mean_tweetcount.head(2).iloc[1]
-st.subheader(f"Last Trade at {last_trade_time}")
-
-
 if not hide_trades:
-    st.subheader("Trades")
-    col1,col2,col3,col4,col5 = st.columns(3)
+    last_trade_time = df_trades["tradeAt"][0]#df_trades.index[0]
+    second_last_avg = resampled_mean_tweetcount.head(2).iloc[1]
+    st.subheader(f"Last Trade at: {str(last_trade_time)[:-10]}")
+    
+    st.text("Account Metrics")
+    col1,col2,col3,col4 = st.columns(4)
     with col1:
-        st.metric(label="Starting Balance", value="5000 USDT")
+        st.metric(label="Starting USDT Balance", value="5000 $")
     with col2:
-        st.metric(label = f"Current USDT Holdings", value = f"{int(get_kucoin_data()[0])} USDT")
+        st.metric(label = f"Current USDT Holdings", value = f"{int(get_kucoin_data()[0])} $")
     with col3:
         st.metric(label="Current BTC Holdings",value=f"{get_kucoin_data()[1]} ₿")
+    with col4:
+        st.metric(label="Executed Trades",value=df_trades.shape[0])
         
+    st.write("#")
+    st.text("Current BTC Holdings")
     col1,col2,col3,col4 = st.columns(4)
     with col1: 
         st.metric(label="Current BTC Price",value=f"{get_kucoin_data()[5]} $")
     with col2:
         st.metric(label="Holdings with real BTC Price",value=f"{get_kucoin_data()[4]} $")
     with col3:
-        st.metric(label="Current BTC Price in Sandbox",value=f"{get_kucoin_data()[2]} $")
+        st.metric(label="Sandbox BTC Price",value=f"{get_kucoin_data()[2]} $")
     with col4:
         st.metric(label="Holdings with Sandbox Price" ,value=f"{get_kucoin_data()[3]} $")
+
+    st.write("#")
     st.subheader("Last Trades")
-    important_df_trades = df_trades[["side","usdt_balance","btc_balance","fee"]]
-    #st.dataframe(important_df_trades)
     time_frame = 24
     #data = getminutedata("BTCUSDT",intervals,time_frame)
     #show_charts(split_DF_by_time(df_trades,time_frame,False),data)
     show_trade_chart(split_DF_by_time(df_trades,96,False))
+    
+    with st.expander("Show Trade List"):
+        st.text("Last Trades")
+        important_df_trades = df_trades
+        important_df_trades["avg from"] = important_df_trades.index
+        important_df_trades.index = important_df_trades["side"]
+        important_df_trades = important_df_trades[["tradeAt","usdt_balance","btc_balance","fee","avg","avg from"]]
+        rows = st.slider(label="",min_value = 1,value=5,max_value = len(important_df_trades))
+        st.dataframe(important_df_trades.head(rows))
+        
+        
+
 
 
