@@ -1,3 +1,7 @@
+'''
+streamlit_data.py
+Functions to edit the data from the databases: Splitting the Dataframe, calculate average and convert to signals.
+'''
 import psycopg2
 import pandas as pd
 import logging

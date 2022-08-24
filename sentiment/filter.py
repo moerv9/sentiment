@@ -1,10 +1,11 @@
-from datetime import datetime, time
+'''
+filter.py
+Functions to filter the tweets by checking for blacklisted words, duplicates and unnecessary symbols
+'''
 import logging
 import re
 import demoji
-from dateutil import tz
 import pandas as pd
-
 logger = logging.getLogger(__name__)
     
 def check_blacklist(body):

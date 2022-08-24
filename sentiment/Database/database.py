@@ -5,8 +5,6 @@ It starts a session in which all the sql statements are added and commited.
 '''
 
 # Imports
-from venv import create
-from requests import session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base

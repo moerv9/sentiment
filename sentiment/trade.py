@@ -1,8 +1,12 @@
+'''
+trade.py
+Functions that are executed every hour in Heroku Scheduler. 
+'''
 from time import sleep
 import pandas as pd
 import psycopg2
 import os
-from datetime import datetime, timedelta,timezone
+from datetime import datetime, timedelta
 from Database.Trade import Trade_Table
 from Database.database import session_scope
 from kucoin.client import Client as kucoinClient
@@ -20,6 +24,16 @@ conn = psycopg2.connect(DB_URL, sslmode="require")
 
 
 def get_Heroku_DB():
+    """Get and edit tweet data from Heroku database. 
+    - Converts Timestamp to local timezone
+    - Deletes duplicates
+    - Filters neutral tweets
+    - Resample Tweets to 1h and calculate count and average
+    
+
+    Returns:
+        df: Columns: Timestamp, Total Tweets, Avg
+    """
     print("Getting data from Today")
     limit=100000
     query = f"select * from tweet_data where Tweet_Date > current_date order by id desc limit {limit};"
@@ -61,6 +75,13 @@ def get_Heroku_DB():
 
 
 def trade(last_avg_df):
+    """Trade Function.
+    Gets current account balance. If Sentiment > 0.2 -> Buy, else Sell.
+    Gets metrics about account and trade and adds it to heroku database.
+
+    Args:
+        last_avg_df (DataFrame): second latest timeperiod. (The last timeperiod is the actual one that the data is still being added to. Thus the second last )
+    """
     accounts = kSubClient.get_accounts(account_type = "trade")
     print(f"Starting trade process at {datetime.now()}")
     average = str(last_avg_df["Avg"])
@@ -145,6 +166,9 @@ def trade(last_avg_df):
             print(f"Exeption: {e}")  
 
 def trade_main():
+    """Main Function to execute the trade
+        Checks if a trade has already been made and either starts a trade or not.
+    """
     try:
         df =  get_Heroku_DB()
         second_last_avg = df.head(2).iloc[1]

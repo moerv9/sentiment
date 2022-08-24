@@ -2,14 +2,10 @@
 keywords.py
 Initially designed to work for multiple coins, thus the Keyword dict. 
 Just set the keywords in the runner.py to "btc,ada,eth,bnb,xrp" to search for all these coins.
-For simplification and to not overload the Database I've just searched for Bitcoin.
+For simplification and to not overload the Database it was simplified to just search for Bitcoin.
 
 '''
-import os, logging, argparse
-from logging.handlers import RotatingFileHandler
-import re
 
-logger = logging.getLogger(__name__)
 default_keyword_dict ={
                 "btc":["$btc","#btc","bitcoin","#bitcoin"],
                 "ada":["#ada","$ada","cardano"],
@@ -38,7 +34,7 @@ class Keywords():
                         if word in keywords:
                             self.keyword_dict[word] = default_keyword_dict[word]
         except:
-            logger.warning("Error in Keyword input")
+            print("Error in Keyword input")
 
         self.keyword_lst = self.build_keyword_list()
 

@@ -1,7 +1,9 @@
-
+'''
+visualise.py
+Functions to visualise the price chart and words.
+'''
 import streamlit as st
 import matplotlib.pyplot as plt
-from dateutil import tz
 from matplotlib.ticker import (MultipleLocator,AutoMinorLocator,MaxNLocator,AutoLocator,AutoMinorLocator)
 import matplotlib.dates as mdates
 import matplotlib.patches as mpatches
@@ -66,27 +68,6 @@ def show_trade_chart(df):
     st.pyplot(fig1)
     
 
-#TODO
-def visualise_timeperiods(df):
-    time_periods ,avg, total_tweets,signal = df.index,df["Avg"], df["Total Tweets"],df["Signal"]
-    fig1, ax1 = plt.subplots()
-    ax1.title.set_color("white")
-    ax1.xaxis.label.set_color('white') 
-    ax1.yaxis.label.set_color('white')
-    ax1.tick_params(axis='x', colors='white',labelrotation=30)
-    ax1.tick_params(axis='y', colors='white')
-    ax1.spines["left"].set_color('white')
-    ax1.spines["bottom"].set_color('white')
-    ax1.spines["top"].set_alpha(0)
-    ax1.spines["right"].set_alpha(0)
-    ax1.set_facecolor((0,0,0,0))
-    fig1.patch.set_alpha(0)
-    
-    plot1 = ax1.plot(time_periods,avg,label="Avg",color="red")
-    plot2 = ax1.plot(time_periods,total_tweets,label="Total Tweets",color="cyan")
-    ax1.legend()
-    st.pyplot(fig1)
-    
 
 
 def show_cake_diagram(df, which):

@@ -9,10 +9,7 @@ import os, logging, argparse
 from logging.handlers import RotatingFileHandler
 from listener import StreamListener
 from keywords import Keywords
-from datetime import datetime,date, time 
-from IPython.display import display
-from Database.exporter import Export
-import trade
+from datetime import date
 
 # Logging
 # Changed this to "sentiment/Logs" for heroku. normally would just say "Logs"
@@ -51,8 +48,12 @@ class Runner():
         #Export(listener, export_interval)
         
     
-#Method to allow the script to be executed via terminal
 def parse_args():
+    """Execute Script with Arguments via Terminal
+
+    Returns:
+        args: keywords
+    """
     parser = argparse.ArgumentParser(description='Runner for Twitter Listener')
     parser.add_argument("-k", "--keywords", type=str, required=True,
                         help="Keywords to filter Stream,Input like = \"btc,eth\". Currently supported btc, eth, ada, bnb, xrp")
@@ -60,7 +61,9 @@ def parse_args():
                         help="Exporting to Json in an Interval (min:0.5)")
     args = parser.parse_args()
     return args
-    
+
+
+# Uncomment if the script should be run via terminal
 # run python3 runner.py -k "btc,eth,ada" -i 5
 # if __name__=="__main__":
 #     keywords = parse_args().keywords.split(",")

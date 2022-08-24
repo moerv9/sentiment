@@ -1,17 +1,14 @@
-from datetime import timedelta,datetime
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
+'''
+financial_data.py
+Functions to get the data from Kucoin, get prices from Binance and for building Signals.
+'''
+from datetime import timedelta
 from binance import Client as bClient
 from kucoin.client import Client as kucoinClient
 from binance.enums import *
-import json
 import requests
 import pandas as pd
 import numpy as np
-import os
-import streamlit as st
-from matplotlib.ticker import MultipleLocator
-import matplotlib.dates as mdates
 import re
 
 #Config

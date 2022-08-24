@@ -1,8 +1,6 @@
 # Visualisation with Streamlit
 
 
-
-
 When scripts are running in the background and acting on their own, a lot of work will never be seen.
 Since all the tweet and trade data are stored in a database and the sentiment analysis and price charts can be visualised in plots and diagrams, it was specified in the requirements ([FR 60]).
 
@@ -17,7 +15,7 @@ In the following section are explanations for the single parts that have been vi
 This site is hosted at streamlit and if it is working correctly, the real-time current sentiment and trading data should be seen [there](#TODO:streamlit link).
 However, since they won't host it forever and will shut it down eventually, a screenshot of the site was taken at 24th August 2022 and is used to explain everything below. 
 
-A video was made to explain the whole visualisation in total and can be seen on Youtube.
+A video was made to explain the whole visualisation in total. (The video is also in the [visualisation](./img/visualisation/) folder)
 
 [![Watch the Video](https://img.youtube.com/vi/bHvFifWAr1A/hqdefault.jpg)](https://youtu.be/bHvFifWAr1A)
 
@@ -84,6 +82,8 @@ It stems from the following Subdivision of Words:
 | - #pump          | - #dump              |
 | - long           | - loss & lost & lose |
 
+</br>
+
 It is very interesting to see that most of the words at this time were positive and signaling a buy trade in comparison to the overall negative sentiment of all tweets. 
 
 It would be a good idea to build a strategy based on the usage of these words and compare it to the overall sentiment-strategy. Out of time shortage, this couldn't be implemented during this project. 
@@ -106,6 +106,8 @@ Figure 27 shows the last trades, visualised with the corresponding real-time bit
 A valuable statement can be made with this chart:
 
 > The sentiment about bitcoin on twitter is as volatile as the bitcoin price.
+
+</br>
 
 Buying at the lowest price and buying at the highest is the ultimate goal of trading. Since this is achieved very rarely and near impossible to persevere, fast trading looks for indicators to buy or sell quickly vs. Long-Term Investors, who normally ride out short-time losses. The strategy here was very simple and did not really take into account if a position of BTC is already held or if a sell-trade is being executed at a very bad price. The last part of the chart is a great example for this. The Buy-Trade happened on the 23th at 20:00 at the lowest price and then went only up afterwards, but the sentiment was always negative, so every hour a portion was sold. The system could wait for the first price drop after an uptrend and then sell. Same for the other way around. This would hold positions longer and lead to a better cost-average-effect.
 

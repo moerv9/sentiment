@@ -1,14 +1,18 @@
+'''
+listener.py
+Main Class for listening to Tweets with Tweepy.
+Initialises the tweepy Stream and filters the tweets in the on_status method.
+Finally adds the tweet to the Heroku Database with SQL-Alchemy
+'''
 #Imports
 import tweepy
 import logging
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-from datetime import datetime, timedelta
+from datetime import datetime
 from time import sleep
-from collections import defaultdict
 from Database.database import init_db, session_scope
-from filter import check_blacklist,cleanTweets,check_duplicates
+from filter import check_blacklist,cleanTweets
 from Database.Tweet import Tweet
-import pandas as pd
 
 #Config
 import sys

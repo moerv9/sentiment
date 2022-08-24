@@ -1,18 +1,14 @@
-from datetime import date, datetime, timedelta
-from logging.handlers import RotatingFileHandler
-import os, logging, time
-from posixpath import split
-from re import S
+'''
+01_💬_Tweet-Sentiment.py
+Main File to visualise all the data from tweets, sentiment and trades with Streamlit.
+'''
+from datetime import date
 import streamlit as st
 from streamlit_autorefresh import st_autorefresh
 from streamlit_data import get_Heroku_DB, get_sent_percentage, resample_df, split_DF_by_time
 from visualise import show_cake_diagram, show_trade_chart, show_wordCloud, visualise_word_signals
-from financial_data import getminutedata,getDateData,get_kucoin_data, get_signal_by_keywords
-from matplotlib.collections import LineCollection
-from matplotlib.colors import ListedColormap, BoundaryNorm
-import numpy as np
-import matplotlib.colors as mcolors
-import pandas as pd
+from financial_data import get_kucoin_data, get_signal_by_keywords
+
 
 st.set_page_config(
     page_title="Sentiment", 
