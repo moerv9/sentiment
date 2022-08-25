@@ -108,7 +108,6 @@ if not hide_sentiment:
         #st.dataframe(percentage_btc_df)
         show_cake_diagram(df = get_sent_percentage(last_avail_tweets_1h,False),which = "percentage")
     with col2:
-        #TODO: als chart in most important metrics
         st.text(f"Last Periods with Average Sentiment and total amount of Tweets")
         st.dataframe(resampled_mean_tweetcount.head(5))
         #visualise_timeperiods(resampled_mean_tweetcount.head(5))
