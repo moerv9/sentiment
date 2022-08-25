@@ -57,7 +57,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Runner for Twitter Listener')
     parser.add_argument("-k", "--keywords", type=str, required=True,
                         help="Keywords to filter Stream,Input like = \"btc,eth\". Currently supported btc, eth, ada, bnb, xrp")
-    parser.add_argument("-i","--interval",type=float,required=True,
+    parser.add_argument("-i","--interval",type=float,required=False,
                         help="Exporting to Json in an Interval (min:0.5)")
     args = parser.parse_args()
     return args
@@ -71,5 +71,7 @@ def parse_args():
 #     interval = parse_args().interval
 #     Runner(keywords,interval)
 
-
+# Uncomment the following line to run this script via terminal without keywords
+# or if run with heroku 
+# add keywords like Runner(['btc','ada','eth'])
 Runner(['btc'])

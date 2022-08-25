@@ -91,11 +91,11 @@ Building the strategy to make signals when a trade (buy or sell) should be execu
 
 At first, the idea was to calculate the average of sentiment for a particular time period and if this average reaches a certain threshold, a trade should be executed.
 
-In the left table in the image below you see the Timestamp, Sentiment Score and the corresponding meaning for *each tweet*.
+In the left table in Figure 14 you see the Timestamp, Sentiment Score and the corresponding meaning for *each tweet*.
 
 ![60 min Sentiment Average and Amount of Tweets](./img/trading/60min-avg-count.png)
 
-##### *Figure 12: Sentiment for a single tweet on the left, Average Sentiment and counted Tweets for a timeperiod of 1h*
+##### *Figure 14: Sentiment for a single tweet on the left, Average Sentiment and counted Tweets for a timeperiod of 1h*
 </br>
 
 
@@ -127,13 +127,14 @@ Since this looked promising it was implemented to real-time Papertrading in the 
 </br>
 
 ![Strategy #1](./img/trading/strategy%20%231.png)
-##### *Figure 13: Charts for Bitcoin Price and Average Sentiment with corresponding signals*
+##### *Figure 15: Charts for Bitcoin Price and Average Sentiment with corresponding signals*
 </br>
 
 
+
 </br>
-In the [trade](#TODO) file are the following methods:
-The first method collects all the Data for the single tweets and stores them in a pandas DataFrame. This is neded to delete the duplicates with the following methods:
+
+The [trade](../sentiment/trade.py)-file starts with the essential function to collect all the single tweets from the database and stores them in a pandas DataFrame. This is needed to delete the duplicates with the following methods:
 
 </br>
 
@@ -168,7 +169,7 @@ These two series get concatenated together to have one table:
 
 ![last three averages](./img/trading/last_avg.png)
 
-##### *Figure 14: Last three time periods with average, total tweets and signal*
+##### *Figure 16: Last three time periods with average, total tweets and signal*
 </br>
 
 
@@ -180,13 +181,13 @@ Then, if the signal indicates buy, a market order will be created with 5% of the
 A sell order will sell a quarter of the current bitcoin holdings.
 
 At last, some metrics from the trade are uploaded into a separate table on Heroku for a better overview of the trades and later calculation of current PNL (Profit and Loss).
-An excerpt from this table is shown below in figure 15. It contains the sentiment average and the time period, as well as information about the trade itself. The last balances are actually the balances after the trade was made. So, it is possible, to look back at all the balances without gaps. 
+An excerpt from this table is shown below in figure 17. It contains the sentiment average and the time period, as well as information about the trade itself. The last balances are actually the balances after the trade was made. So, it is possible, to look back at all the balances without gaps. 
 
 </br>
 
 ![latest trades from Heroku DB](./img/trading/last_trades_from_Heroku.png)
 
-##### *Figure 15: Last Trades with Kucoin Sub-Account*
+##### *Figure 17: Last Trades with Kucoin Sub-Account*
 </br>
 
 
@@ -199,12 +200,12 @@ An excerpt from this table is shown below in figure 15. It contains the sentimen
 ## Looking at the trades
 
 
-Figure 16 shows the Heroku Logs. At first, the runner is started, that listens to the tweets and adds them to the database. When you see the line `Listening to tweets now...`, you know, everything is working properly.
+Figure 18 shows the Heroku Logs. At first, the runner is started, that listens to the tweets and adds them to the database. When you see the line `Listening to tweets now...`, you know, everything is working properly.
 
 </br>
 
 ![Heroku Logs](./img/trading/scheduled_trading.png)
-##### *Figure 16: Logs from Heroku on scheduled trades*
+##### *Figure 18: Logs from Heroku on scheduled trades*
 </br>
 
 
@@ -229,14 +230,14 @@ Therefore, a few print statements are left in the final code.
 ### Getting false Account Balance
 
 The System was trading fine for a couple of days, but then, all of a sudden, it did not execute any trades for a couple timestamps. 
-As can be seen in Figures XXX and XXX below, the USDT and BTC Balance are switched, and the system tried to buy for an amount of *0* USDT, which did not work. Interestingly, in the below figure XXX, you can see that this was not a consistent state since there are some trades at random timestamps. The problem lay with Kucoin. When acquiring the current account balances, USDT normally came before BTC. However, this order seems to be switched at random. This unforeseen coincidence needed to be checked by the system and be acted upon.
+As can be seen in figure 19 below, the USDT and BTC Balance are switched, and the system tried to buy for an amount of *0* USDT, which did not work. Interestingly, in figure 20, you can see that this was not a consistent state since there are some trades at random timestamps. The problem lay with Kucoin. When acquiring the current account balances, USDT normally came before BTC. However, this order seems to be switched at random. This unforeseen coincidence needed to be checked by the system and be acted upon.
 
 ![no trade exec](./img/trading/No_trade_exec-fundswrong.png)
-##### *Figure 17: Logs from Heroku: No Trade was executed because the size or fund parameter was false*
+##### *Figure 19: Logs from Heroku: No Trade was executed because the size or fund parameter was false*
 </br>
 
 ![got wrong acc balance](./img/trading/got_wrong_acc_balance.png)
-##### *Figure 18: Wrong Account Balance on Kucoin*
+##### *Figure 20: Wrong Account Balance on Kucoin*
 </br>
 
 
@@ -246,10 +247,10 @@ The biggest challenge came with the sandbox. All the trading worked perfectly, b
 
 Since these different prices were not prone to bitcoin alone, but all coins had different prices in the sandbox, the Kucoin Support was contacted.
 
-The answer, in Figure #TODO below, confirmed that the prices in the sandbox are just different and another solution was needed.
+The answer (figure 21), confirmed that the prices in the sandbox are just different and another solution was needed.
 
 ![Kucoin Answer](./img/trading/kucoin_answer.png)
-##### *Figure 19: Email from Kucoin regarding the different Bictoin Prices*
+##### *Figure 21: Email from Kucoin regarding the different Bictoin Prices*
 </br>
 
 The solution was to get the correct price from somewhere else and in this case: Binance.
@@ -267,7 +268,7 @@ data = data.json()
 To get all the historical data from Binance, the python-binance wrapper was used:
 
 ```
-frame = pd.DataFrame(binance_client.get_historical_klines(symbol,interval,lookback))
+frame = pd.DataFrame(binance_client.get_historical_klines(symbol,1,lookback))
 frame = frame.iloc[:,:6]
 frame.columns= ["Time","Open","High","Low","Close","Volume"]
 frame = frame.set_index("Time")
@@ -279,8 +280,13 @@ frame
 The result looked like this:
 
 ![Binance Frame](./img/trading/binance_frame.png)
-##### *Figure 20: Prices (ohlc) and Volume for Bitcoin from Binance*
+##### *Figure 22: Prices (ohlc) and Volume for Bitcoin from Binance*
 </br>
+
+The method `get_historical_klines()` accepts arguments to look for intervals in a past time period. For example, in figure 22 we are looking for the past day ("1d") with intervals of one minute ("1m").
+
+The timestamp and the closing price were then used for further calculations and [visualisations](./7_Visualisation.md#figure-27-chart-of-last-trades).
+
 
 </br>
 

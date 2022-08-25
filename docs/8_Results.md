@@ -1,6 +1,6 @@
 # Results 
 
-Beginning the automatic trading on sentiment at the 16th of August 2022 with a balance of 5000$ USDT.
+Beginning the automatic trading on sentiment at the 16th of August 2022 with a balance of 5000$ USDT. 
 
 
 # Conclusion

@@ -38,6 +38,18 @@ Output:
 
 </br>
 
+A first test with Tweepy was a simple tweet with the authors account was done with only one line of code:
+
+![tweepy one line](./img/moerv9_tweet_with_tweepy.png)
+
+##### *Figure 8: Tweet Status with Tweepy*
+</br>
+
+![tweet from moerv9](./img/moerv9_tweet.png)
+##### *Figure 9: Tweet on Twitter*
+</br>
+
+
 ---
 ### What does the Law say?
 
@@ -146,11 +158,11 @@ After cleaning, it looks like this:
 </br>
 
 ## Duplicates
-The next thing is to find and delete all the duplicates. As can be seen in Figure 8, the same tweet was tweeted 10 times in one minute. It is the exact same tweet, and it kept on tweeting for quite a bit. Since this is obviously a bot, a way to filter out these duplicates was needed.
+The next thing is to find and delete all the duplicates. As can be seen in Figure 10, the same tweet was tweeted 10 times in one minute. It is the exact same tweet, and it kept on tweeting for quite a bit. Since this is obviously a bot, a way to filter out these duplicates was needed.
 
 <img src=./img/sentiment/duplicatetweets.png width=900/>
 
-##### *Figure 8: Duplicate Tweets in a 1 Min. time period*
+##### *Figure 10: Duplicate Tweets in a 1 Min. time period*
 </br>
 
 

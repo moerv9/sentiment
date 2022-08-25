@@ -1,4 +1,5 @@
 import os, time, logging, schedule
+from tkinter import W
 import pandas as pd
 import psycopg2
 from datetime import datetime,date, timedelta
@@ -20,8 +21,8 @@ class Export():
         self.schedule(interval)
         
     def export_to_json(self):
-        #Changed this to "sentiment/Json" for heroku. normally would just say "Json" -> could catch that
-        json_dir = 'sentiment/Logs/Json/'
+        #Change this to "sentiment/Json" for heroku. normally would just say "Json" 
+        json_dir = 'Logs/Json/'
         date_dir = date.today().strftime('%d-%m-%Y')
         final_dir = os.path.join(json_dir,date_dir)
         if not os.path.exists(final_dir):
@@ -67,47 +68,6 @@ class Export():
             sent_avg = sentiment_col.sum() / len(sentiment_col)
             return sent_avg  
         
-    def dump_clean_database(self):
-        conn = psycopg2.connect(conf.DB_URL,sslmode="require")
-        cur = conn.cursor()
-        cur.execute("Select exists(select from pg_tables where tablename='tweet_data')")
-        if cur.fetchone() == True:
-            cur.execute("select count(*) from tweet__data")
-            results = cur.fetchone()
-            if results > 9000:
-                query2 = f"delete from tweet_data where Tweet_Date < (current_date - Integer '1') "
-                cur.execute(query2)
-                query3 = f"delete from tweet_data where id in (select id from tweet_data order by id asc limit 100);"
-                cur.execute(query3)
-                conn.commit()
-                json_dir = 'sentiment/Logs/Json/'
-                date_dir = date.today().strftime('%d-%m-%Y')
-                final_dir = os.path.join(json_dir,date_dir)
-                if not os.path.exists(final_dir):
-                    os.mkdir(final_dir)
-                    print(f"Created new Directory for {date_dir}")
-                    logger.info(f"Created new Directory for {date_dir}")
-                json_file = os.path.join(final_dir,f"{date_dir}_dbdump.json")
-                df.to_json(json_file,orient="index",indent=4) 
-                
-
-                
-            else:
-                query = f"select * from tweet_data where Tweet_Date < (current_date - Integer '1') order by id desc;"
-                df = pd.read_sql(query,conn)
-                columns = {"body": "Tweet",
-                            "keyword": "Keyword",
-                            "tweet_date": "Timestamp",
-                            "location": "Location",
-                            "verified_user": "User verified",
-                            "followers": "Followers",
-                            "user_since": "User created",
-                            "sentiment": "Sentiment Score",
-                            "sentiment_meaning": "Null"}
-                df = df.drop(columns=["sentiment_meaning"])
-                df = df.rename(columns=columns)
-                df["Timestamp"] = df["Timestamp"] + timedelta(hours=2)
-        
         
         
     def cleanDates(self,date):
@@ -126,16 +86,12 @@ class Export():
     ## SCHEDULER
     #The function exporting to json will be repeated in the schedule 
     def repeat_func(self):
-        pass
-        # self.tweet_dict = self.listener.tweet_dict
-        # if self.tweet_dict:
-        # logger.info(f"{self.listener.sum_collected_tweets} Tweets collected")
-            #self.export_to_json() #UNCOMMENT IF YOU WANT TO EXPORT LOCALLY TO JSON
-        #self.dump_database()  #UNCOMMENT WHEN USING HEROKU DB
-            # listener.clean_list()
+        self.tweet_dict = self.listener.tweet_dict
+        if self.tweet_dict:
+            self.export_to_json() 
     #Method for schedule task execution
     def schedule(self,interval=5):
-            schedule.every(interval).minutes.do(self.dump_clean_database)
+            schedule.every(interval).minutes.do(self.export_to_json)
             while True:
                 schedule.run_pending()
                 time.sleep(1)

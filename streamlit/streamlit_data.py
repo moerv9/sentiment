@@ -21,13 +21,25 @@ DB_URL = ConfigDB().DB_URL
 
 
 def get_sent_meaning(sent_list):
+    """Apply the function to convert the sentiment scores to a meaning like "positive, negative, ..." to a whole column
+
+    Args:
+        sent_list (Column): Dataframe Column to apply function to
+
+    Returns:
+        list: Sentiment Meaning
+    """
     sent_meaning_list = []
     for num in sent_list:
         sent_meaning_list.append(conv_sent_score_to_meaning(num))
-    #mean_avg = sum(sent_list) / len(sent_list)
     return sent_meaning_list
 
 def conv_sent_score_to_meaning(num):
+    """convert number to sentiment meaning
+
+    Args:
+        num (float): sentiment score
+    """
     if num > 0.2 and num <= 0.6:
         return("Positive")
     elif num > 0.6:

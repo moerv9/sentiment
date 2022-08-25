@@ -70,6 +70,8 @@
 The code editor used was Visual Studio Code with their tremendous amount of extensions.
 Particular helpful extensions were the [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) Notebook, the [TabNine](https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode) AI supported Autocomplete and the [LTeX](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex) LanguageTool that checked grammar and spell Markdown files. This way it was possible to directly write the documentation inside VSCode.
 
+### Environment Setup
+
 To ensure version control for used python libraries the package and environment management system [Conda](https://docs.conda.io/en/latest/) was used.
 
 With conda environments it is possible to work with defined python and package versions.
@@ -85,11 +87,6 @@ To create an environment from an existing `requirements.txt` file add this to th
 
 `conda create --name myenv --file requirements.txt`
 
-Export to requirements.txt or requirements.yml with
-
-- `conda env export > environment.yml`
-
-- `pip freeze > requirements.txt`
 
 The following packages were used:
 
@@ -115,6 +112,40 @@ The following packages were used:
 - postgres
 - python-binance
 - python-kucoin
+
+Export to requirements.txt or requirements.yml with
+
+- `conda env export > environment.yml`
+
+- `pip freeze > requirements.txt`
+
+</br>
+
+---
+
+</br>
+
+### Local Development
+
+#### **Tweepy Stream and local Export**
+
+1. Activate the conda environment with required packages (see above)
+2. Get your own API-Keys from Twitter API and Kucoin Sandbox and add them to .env-file
+3. Set up a Postgres Database and add DB_URL to .env
+4. Edit runner.py : 
+    - Uncomment line 48 for local export
+    - Either add the keywords for the coins in the last line:   </br>
+Runner(['btc','ada','eth'])) </br>
+    </br> or Uncomment lines 66 - 72  
+
+5. run script via terminal: </br>
+        `python3 runner.py -k "btc,eth,ada" -i 5`
+
+#### **Streamlit**
+
+    1. cd streamlit
+    2. streamlit run 01_💬_Tweet-Sentiment.py
+    3. open http://localhost:8501
 
 </br>
 

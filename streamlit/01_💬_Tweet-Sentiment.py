@@ -34,7 +34,7 @@ with st.sidebar:
     hide_sentiment = st.checkbox(label="Hide Sentiment Metrics",value=False)
     hide_Wordcloud_and_TweetSent = st.checkbox(label="Hide Word Analysis",value=False)
     hide_trades = st.checkbox(label="Hide Trades",value=False)
-    intervals = 60 #rst.select_slider("Resample Timeperiod by X Minutes",options=[1,5,15,30,60,120,360],value=60)
+    intervals = 60 
 
 #Get Dataframes
 #Convert Database to Dataframe
@@ -48,7 +48,7 @@ single_sent_scores_df,resampled_mean_tweetcount,mean_follower = resample_df(df, 
 last_avail_tweets_1h = split_DF_by_time(df,1,resampled_mean_tweetcount.index[0]) # gets all the last tweets from the last available timestamp - 1h
 
 
-
+# explanation section
 if not hide_explanation:
     st.subheader("Explanation")
     st.markdown("**This is a site to visualise a few metrics from the project: [Social Signal Sentiment-Based Prediction for Cryptocurrency Trading](https://github.com/moerv9/sentiment)**")
@@ -61,6 +61,7 @@ if not hide_explanation:
     st.markdown("---")
 
 
+# Most important metrics section
 if not hide_most_important_metrics:
     st.subheader("Most important Metrics")
     col1,col2 = st.columns(2)
@@ -73,8 +74,9 @@ if not hide_most_important_metrics:
     with col2:
         st.metric(label="Current Signal",value=current_signal)
     st.markdown("---")
-    
 
+
+# section with dataframe for last collected tweets
 if not hide_single_tweets:
     st.subheader("Last collected Tweets")
     rows = st.slider("Rows to retrieve:",step=5,min_value=5,max_value=500,value=5)
@@ -82,8 +84,7 @@ if not hide_single_tweets:
     st.markdown("---")
 
 
-#Gets single words in the tweets and their frequencies + sentiment
-#freq_df = get_signals(past_btc_df_for_timerange,intervals)
+# section for metrics of sentiment
 if not hide_sentiment:
     st.subheader("Sentiment Metrics")
     col1,col2 = st.columns(2)
@@ -94,7 +95,6 @@ if not hide_sentiment:
         st.metric(label=f"Collected Tweets", value=df.shape[0])
     with col2:
         st.metric(label="Deleted Duplicates",value=f"{int(duplicates/df.shape[0]*100)} %")
-
     with col3:
         st.metric(label = f"Collected Tweets", value = split_DF_by_time(df,24,False).shape[0])
     with col4:
@@ -113,31 +113,26 @@ if not hide_sentiment:
         st.dataframe(resampled_mean_tweetcount.head(5))
         #visualise_timeperiods(resampled_mean_tweetcount.head(5))
     st.markdown("---")
-        
+
+
+# section for word analysis
 if not hide_Wordcloud_and_TweetSent:
     st.subheader("Word Analysis")
     signal_by_keywords_df = get_signal_by_keywords(last_avail_tweets_1h)
     col1,col2,col3 = st.columns(3)   
     with col1:
         st.text("Most used Words in the last hour")
-        #show_wordCloud(words_df[0],False)
         show_wordCloud(last_avail_tweets_1h,True)
     with col2:
         st.text("Most used Words that indicate Buy or Sell")
-        #st.dataframe(signal_by_keywords_df[0])
         visualise_word_signals(signal_by_keywords_df[0])
     with col3:
         st.text("Total Proportions")
         show_cake_diagram(df = signal_by_keywords_df[1],which="signal count")
-        #st.dataframe( words_df[1])
-    #st.text(f"Word Frequency in all Tweets for last {lookback_timeframe} hours ")
-    #st.text(freq_df)
-    # st.text("Total Signal Count")
-    # st.dataframe(signals_count)
     st.markdown("---")
 
 
-
+# section for trades
 if not hide_trades:
     last_trade_time = df_trades["tradeAt"][0]#df_trades.index[0]
     second_last_avg = resampled_mean_tweetcount.head(2).iloc[1]
@@ -169,8 +164,6 @@ if not hide_trades:
     st.write("#")
     st.subheader("Last Trades")
     time_frame = 24
-    #data = getminutedata("BTCUSDT",intervals,time_frame)
-    #show_charts(split_DF_by_time(df_trades,time_frame,False),data)
     show_trade_chart(split_DF_by_time(df_trades,96,False))
     
     with st.expander("Show Trade List"):

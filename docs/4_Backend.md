@@ -60,7 +60,7 @@ More on the trading part [here](6_Trading.md).
 </br>
 
 ![Heroku Scheduler Add-On](./img/heroku/heroku_scheduler.png)
-##### *Figure 9: Scheduler Add-On on Heroku*
+##### *Figure 11: Scheduler Add-On on Heroku*
 </br>
 
 
@@ -78,7 +78,7 @@ Heroku Dataclips offers to run SQL queries and view the output directly in the B
 </br>
 
 ![Heroku Tweet Database Dataclip](./img/heroku/heroku_tweet_dataclip.png)
-##### *Figure 10: Dataclip to view the Tweet database with SQL queries*
+##### *Figure 12: Dataclip to view the Tweet database with SQL queries*
 </br>
 
 
@@ -117,7 +117,7 @@ But nothing happened. A week passed, and the database was filling up until I got
 
 <img src=./img/heroku//heroku_email_databasefull.PNG width=300 alt="Email from Heroku: Database Full"/> 
 
-##### *Figure 11: Email from Heroku: Database Row Limit reached*
+##### *Figure 13: Email from Heroku: Database Row Limit reached*
 </br>
 
 
