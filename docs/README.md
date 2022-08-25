@@ -2,8 +2,7 @@
 
 ## Table of Contents
 
-- Readme
-    - Abstract
+- ReadMe
     - [Code-Editor](#code-editor)
     - [Folder-Structure](#folder-structure)
 
@@ -23,11 +22,9 @@
   - [Trading](./6_Trading.md)
   - [Visualisation](./7_Visualisation.md)
 
-- [Results](./8_Results.md)
+- [Conclusion](./8_Conclusion.md)
 
 - [Appendices](9_Appendices.md)
-  - Class Diagram
-  - Example of Usage (video/bilder)
 
 </br>
 
@@ -35,20 +32,14 @@
 
 </br>
 
-## Abstract
 
-## TODO Put Task, Approach and achieved goals in a few words here
-
-</br>
-
----
+## Start with the Documentation
 
 </br>
-
-## Continue with the Documentation
 
 <div style="display: inline;" >
-<a href="https://github.com/moerv9/sentiment/blob/main/docs/0_Introduction.md"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Introduction ></button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/0_Introduction.md"><button type="button"  style=" border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;     margin:0 auto;
+    display:block;">First Chapter: Introduction ></button></a>
 </div>
 
 </br>

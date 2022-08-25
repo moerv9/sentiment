@@ -156,7 +156,7 @@ Summing up, there is a lot of improvement for different strategies to trade cryp
 
 <div style="display: inline;" >
 <a href="https://github.com/moerv9/sentiment/blob/main/docs/6_Trading.md"><button onclick="" type="button"  style="border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">< Previous Chapter: Trading</button></a>
-<a href="https://github.com/moerv9/sentiment/blob/main/docs/8_Results.md"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Results ></button></a>
+<a href="https://github.com/moerv9/sentiment/blob/main/docs/8_Conclusion.md"><button type="button"  style="float:right; border: 2px white solid; background-color: transparent; color:white; border-radius: 8px; padding: 10px;">Next Chapter: Conclusion ></button></a>
 </div>
 
 </br>

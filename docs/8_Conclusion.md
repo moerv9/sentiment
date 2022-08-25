@@ -91,7 +91,7 @@ I shouldn't have spent that much time on visualisation when most functionality w
 
 However, this project has sparked my interest in data analysis and visualisation in such a fun way, that I can picture myself in this career path.
 
-For this, I really want to thank [Yannik Heinze](https://chainsulting.de/contact/) and [Robert Manzke](https://www.fh-kiel.de/fachbereiche/informatik-und-elektrotechnik/wir-ueber-uns/lehre/professuren-und-lehrkraefte-fuer-besondere-aufgaben-lfba/manzke-prof-dr-robert/) for giving me the opportunity to work on this project and hopefully be of use for further projects.
+For this, I really want to thank [Yannik Heinze](y.heinze@chainsulting.de) and [Robert Manzke](https://www.fh-kiel.de/fachbereiche/informatik-und-elektrotechnik/wir-ueber-uns/lehre/professuren-und-lehrkraefte-fuer-besondere-aufgaben-lfba/manzke-prof-dr-robert/) for giving me the opportunity to work on this project and hopefully be of use for further projects.
 
 
 </br>
