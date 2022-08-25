@@ -36,12 +36,19 @@ The site starts by explaining what a sentiment is and shows the `last collected 
 ![explanation](./img/visualisation/explanation.png)
 ##### *Figure 24: Explanation and most important Metrics*
 </br>
+</br>
+
+### Last collected Tweets
 
 With a slider, the rows of single tweets to retrieve from the database can be adapted (Figure 25). It is basically the same table as in the Data-Acquisition-Section, but now in real-time. It was very good to work with streamlit during the whole development phase to have a look at the current status of the heroku database without needing to go through the whole heroku dashboard (which takes quite a few steps to look at the dataclip of the database).
 
 ![last collected tweets](./img/visualisation/last_coll_tweets.png)
 ##### *Figure 25: Last collected tweets with some metrics*
 </br>
+
+</br>
+
+### Sentiment Metrics
 
 Figure 26 shows some metrics about sentiment. At the date of collection (24-08-2022), a total of 40k Tweets were collected in the past four days and 8273 in the past 24h. The average follower count was 13.314, which is okay, considered only accounts under 500 followers are filtered. It means there are quite a lot of accounts with a high follower account, speaking for a high quality of tweets.
 
@@ -56,6 +63,9 @@ The table shows the last five time periods with the calculated sentiment average
 ![sent metrics](./img/visualisation/sent_metrics.png)
 ##### *Figure 26: Sentiment Metrics*
 </br>
+</br>
+
+### Word Analysis
 
 The wordcloud on the left visualises the usage and frequency of words in all the tweets from the last time period. 
 
@@ -91,11 +101,14 @@ It would be a good idea to build a strategy based on the usage of these words an
 ![word analysis](./img/visualisation/word_analysis.png)
 ##### *Figure 27: Word Metrics*
 </br>
+</br>
+
+### Trading
 
 For the trading part the first thing to have a look at are the most important metrics.
 The trading was started on the 16th August 2022 and after 8 days, a total of 90 trades were executed. The current holdings stood at 1785 $ USDT and the Bitcoin Balance was 0.0117 ₿ Bitcoin. 
 
-As being said in [Challenges](6_Trading.md#different-sandbox-prices) in the Trading-Section, the sandbox price is different from the real price of bitcoin. It was attempted to find a factor, but the sandbox price was changed differently. This meant, the results could not be evaluated that easily. At this time the holdings in bitcoin equalled 250$, which would lead to a total loss of 2965 $. 
+As being said in [Challenges](6_Trading.md#different-sandbox-prices) in the Trading-Section, the sandbox price is different from the real price of bitcoin. It was attempted to find a factor, but the sandbox price has unusual and incomprehensible price movements. This meant, the results could not be evaluated that easily. At the time of writing (24th August, 9:46) the holdings in bitcoin equalled 250$, which would lead to a total loss of 2965 $. 
 
 ![account metrics](./img/visualisation/acc_metrics.png)
 ##### *Figure 28: Kucoin Account Metrics*
@@ -109,7 +122,9 @@ A valuable statement can be made with this chart:
 
 </br>
 
-Buying at the lowest price and buying at the highest is the ultimate goal of trading. Since this is achieved very rarely and near impossible to persevere, fast trading looks for indicators to buy or sell quickly vs. Long-Term Investors, who normally ride out short-time losses. The strategy here was very simple and did not really take into account if a position of BTC is already held or if a sell-trade is being executed at a very bad price. The last part of the chart is a great example for this. The Buy-Trade happened on the 23th at 20:00 at the lowest price and then went only up afterwards, but the sentiment was always negative, so every hour a portion was sold. The system could wait for the first price drop after an uptrend and then sell. Same for the other way around. This would hold positions longer and lead to a better cost-average-effect.
+Buying at the lowest price and buying at the highest is the ultimate goal of trading. Since this is achieved very rarely and near impossible to persevere, fast trading looks for indicators to buy or sell quickly. Long-Term Investors on the other hand normally ride out short-time losses. 
+
+The strategy here was very simple and did not really take into account if a position of BTC is already held or if a sell-trade is being executed at a very bad price. The last part of the chart is a great example for this. The Buy-Trade happened on the 23th at 20:00 at the lowest price and then went only up afterwards, but the sentiment was always negative, so every hour a portion was sold. The system could wait for the first price drop after an uptrend and then sell. Same for the other way around. This would hold positions longer and lead to a better cost-average-effect.
 
 This could be one way to improve the strategy. As can be seen below, a lot of trades are made during the day, because the system is scheduled to act every hour. If there wasn't that much price movement in Bitcoin, the trading times would be spread wider apart. For example, every 6 or even 12 hours. But this would mean that the calculated average moves more to *neutral*, which would decrease the significance of the score.
 

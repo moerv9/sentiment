@@ -6,8 +6,8 @@ from datetime import date
 import streamlit as st
 from streamlit_autorefresh import st_autorefresh
 from streamlit_data import get_Heroku_DB, get_sent_percentage, resample_df, split_DF_by_time
-from visualise import show_cake_diagram, show_trade_chart, show_wordCloud, visualise_word_signals
-from financial_data import get_kucoin_data, get_signal_by_keywords
+from visualise import show_cake_diagram, show_trade_chart, show_wordCloud, visualise_word_signals,visualise_acc_balance
+from financial_data import get_kucoin_data, get_signal_by_keywords,calc_pnl
 
 
 st.set_page_config(
@@ -28,11 +28,11 @@ def loading_data_from_heroku_database():
 
 with st.sidebar:
     st.info("Turn on Darkmode in upper right settings!\nPress 'R', if any error occurs.")
-    hide_explanation = st.checkbox(label="Hide Explanation",value=False)
-    hide_most_important_metrics = st.checkbox(label="Hide most important metrics",value=False)
-    hide_single_tweets = st.checkbox(label="Hide Last Collected Tweets",value=False)
-    hide_sentiment = st.checkbox(label="Hide Sentiment Metrics",value=False)
-    hide_Wordcloud_and_TweetSent = st.checkbox(label="Hide Word Analysis",value=False)
+    hide_explanation = st.checkbox(label="Hide Explanation",value=True)
+    hide_most_important_metrics = st.checkbox(label="Hide most important metrics",value=True)
+    hide_single_tweets = st.checkbox(label="Hide Last Collected Tweets",value=True)
+    hide_sentiment = st.checkbox(label="Hide Sentiment Metrics",value=True)
+    hide_Wordcloud_and_TweetSent = st.checkbox(label="Hide Word Analysis",value=True)
     hide_trades = st.checkbox(label="Hide Trades",value=False)
     intervals = 60 
 
@@ -130,16 +130,16 @@ if not hide_Wordcloud_and_TweetSent:
         st.text("Total Proportions")
         show_cake_diagram(df = signal_by_keywords_df[1],which="signal count")
     st.markdown("---")
-
+    
 
 # section for trades
 if not hide_trades:
     last_trade_time = df_trades["tradeAt"][0]#df_trades.index[0]
     second_last_avg = resampled_mean_tweetcount.head(2).iloc[1]
     st.subheader(f"Last Trade at: {str(last_trade_time)[:-10]}")
-    
+    sum_fees = round(df_trades["fee"].sum(),2)
     st.text("Account Metrics")
-    col1,col2,col3,col4 = st.columns(4)
+    col1,col2,col3,col4,col5 = st.columns(5)
     with col1:
         st.metric(label="Starting USDT Balance", value="5000 $")
     with col2:
@@ -148,6 +148,8 @@ if not hide_trades:
         st.metric(label="Current BTC Holdings",value=f"{get_kucoin_data()[1]} ₿")
     with col4:
         st.metric(label="Executed Trades",value=df_trades.shape[0])
+    with col5:
+        st.metric(label="Total Fees",value = f"{sum_fees} $")
         
     st.write("#")
     st.text("Current BTC Holdings")
@@ -166,6 +168,7 @@ if not hide_trades:
     time_frame = 24
     show_trade_chart(split_DF_by_time(df_trades,96,False))
     
+    
     with st.expander("Show Trade List"):
         st.text("Last Trades")
         important_df_trades = df_trades
@@ -175,7 +178,14 @@ if not hide_trades:
         rows = st.slider(label="",min_value = 1,value=5,max_value = len(important_df_trades))
         st.dataframe(important_df_trades.head(rows))
         
+    st.subheader("Account Balance")
+    pnl_df = calc_pnl(df_trades)
+    visualise_acc_balance(pnl_df)
+    with st.expander("Show Account Balance Table"):
+        st.dataframe(pnl_df)
+    
         
+
 
 
 

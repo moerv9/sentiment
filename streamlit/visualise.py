@@ -43,6 +43,8 @@ def show_trade_chart(df):
     ax1.xaxis.set_minor_locator(date_locator)
     ax1.xaxis.set_major_formatter(formatter)
     
+    ax1.set_ylabel("Price ($)")
+    
     trade_timeperiods = df.filter(items=["side"]) #.values um die tradeAt zu bekommen
     data = getminutedata("BTCUSDT",1,96)
     di = data.index
@@ -50,9 +52,12 @@ def show_trade_chart(df):
     lst = []
     sell = []
     buy = []
+    print(f"len di: {len(di)}")
+    print(f"len tt: {len(trade_timeperiods)}")
     for i in range(len(di)):
         if di.values[i] in trade_timeperiods.index:
             lst.append(dc.values[i])
+
     for y in range(len(trade_timeperiods)):
         if trade_timeperiods["side"][y] == "sell":
             sell.append(y)
@@ -67,8 +72,32 @@ def show_trade_chart(df):
     ax1.legend()
     st.pyplot(fig1)
     
+def visualise_acc_balance(df):
+    plt.clf()
+    fig1, ax1 = plt.subplots(figsize=(8,4))
+    ax1.xaxis.label.set_color('white') 
+    ax1.yaxis.label.set_color('white')
+    ax1.tick_params(axis='y', colors='white')
+    ax1.tick_params(axis='x', colors='white',labelrotation=30)
+    ax1.spines["left"].set_color('white')
+    ax1.spines["bottom"].set_color('white')
+    ax1.spines["top"].set_alpha(0)
+    ax1.spines["right"].set_alpha(0)
+    ax1.set_facecolor((0,0,0,0))
+    fig1.patch.set_alpha(0)
+    ax1.xaxis.set_major_locator(date_locator)
+    ax1.xaxis.set_minor_locator(date_locator)
+    ax1.xaxis.set_major_formatter(formatter)
 
-
+    ax1.set_ylabel("Price ($)")
+    
+    ax1.plot(df.index, df.acc_binance_balance, label = "Acc. Balance (Binance Price)",color = cmap(0.68),linewidth = 1)
+    ax1.plot(df.index, df.acc_kucoin_balance, label = "Acc. Balance (Kucoin Price)",color = cmap(0.35),linewidth = 1)
+    ax1.axhline(y=5000,linestyle=":",color=cmap(0.15),linewidth=0.5)   
+    
+    fig1.autofmt_xdate()
+    ax1.legend()
+    st.pyplot(fig1)
 
 def show_cake_diagram(df, which):
     """Show Cake Diagram for either the percentages or the signal count

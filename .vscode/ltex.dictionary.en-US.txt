@@ -4,3 +4,4 @@ bil
 analysing
 visualisation
 visualise
+Kucoin

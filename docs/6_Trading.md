@@ -247,7 +247,7 @@ The biggest challenge came with the sandbox. All the trading worked perfectly, b
 
 Since these different prices were not prone to bitcoin alone, but all coins had different prices in the sandbox, the Kucoin Support was contacted.
 
-The answer (figure 21), confirmed that the prices in the sandbox are just different and another solution was needed.
+The answer (figure 21), confirmed that the prices in the sandbox are just different, and another solution was needed.
 
 ![Kucoin Answer](./img/trading/kucoin_answer.png)
 ##### *Figure 21: Email from Kucoin regarding the different Bictoin Prices*
