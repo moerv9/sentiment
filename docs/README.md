@@ -2,8 +2,10 @@
 
 ## Table of Contents
 
-- ReadMe
+- Development Environment ([below](#development-enviroment))
     - [Code-Editor](#code-editor)
+    - [Environment Setup](#environment-setup)
+    - [Local Development](#local-development)
     - [Folder-Structure](#folder-structure)
 
 - [Introduction](0_Introduction.md)
@@ -50,11 +52,9 @@
 </br>
 </br>
 
-## Development
+## Development Environment
 
 </br>
-
-
 
 ### Code Editor
 
