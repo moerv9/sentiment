@@ -47,6 +47,9 @@
 </br>
 </br>
 
+(A PDF file containing all chapters is [here](./pdf/CryptoCurrencyTradingBasedOnSocialSignalSentiment.pdf))
+
+
 ---
 
 </br>
