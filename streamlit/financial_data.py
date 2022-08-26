@@ -13,16 +13,21 @@ import re
 import streamlit as st
 
 #Config
-import sys
-sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
+# import sys
+# sys.path.insert(0,"/Users/marvinottersberg/Documents/GitHub/sentiment/")
 from config import ConfigBinance, ConfigKucoin
 
 kconf = ConfigKucoin()
 bconf = ConfigBinance()
+BINANCE_API_KEY = st.secrets["BINANCE_API_KEY"] #bconf.BINANCE_API_KEY
+BINANCE_API_SECRET = st.secrets["BINANCE_API_SECRET"] #bconf.BINANCE_API_SECRET)
+KUCOIN_SUB_KEY = st.secrets["KUCOIN_SUB_KEY"]
+KUCOIN_SUB_SECRET = st.secrets["KUCOIN_SUB_SECRET"]
+KUCOIN_SUB_PASS = st.secrets["KUCOIN_SUB_PASS"]
 #Init Binance Client
-binance_client = bClient(bconf.BINANCE_API_KEY, bconf.BINANCE_API_SECRET)
-kSubClient = kucoinClient(kconf.KUCOIN_SUB_KEY, kconf.KUCOIN_SUB_SECRET,kconf.KUCOIN_SUB_PASS,sandbox=True)
-kMainClient = kucoinClient(kconf.KUCOIN_KEY, kconf.KUCOIN_SECRET,kconf.KUCOIN_PASS,sandbox=True)
+binance_client = bClient(BINANCE_API_KEY, BINANCE_API_SECRET)
+kSubClient = kucoinClient(KUCOIN_SUB_KEY, KUCOIN_SUB_SECRET, KUCOIN_SUB_PASS,sandbox=True)
+#kMainClient = kucoinClient(kconf.KUCOIN_KEY, kconf.KUCOIN_SECRET,kconf.KUCOIN_PASS,sandbox=True)
 
 def get_current_btc_price():
     url = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"
