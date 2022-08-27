@@ -19,11 +19,16 @@ from config import ConfigBinance, ConfigKucoin
 
 kconf = ConfigKucoin()
 bconf = ConfigBinance()
-BINANCE_API_KEY = st.secrets["BINANCE_API_KEY"] #bconf.BINANCE_API_KEY
-BINANCE_API_SECRET = st.secrets["BINANCE_API_SECRET"] #bconf.BINANCE_API_SECRET)
-KUCOIN_SUB_KEY = st.secrets["KUCOIN_SUB_KEY"]
-KUCOIN_SUB_SECRET = st.secrets["KUCOIN_SUB_SECRET"]
-KUCOIN_SUB_PASS = st.secrets["KUCOIN_SUB_PASS"]
+# BINANCE_API_KEY = st.secrets["BINANCE_API_KEY"] 
+# BINANCE_API_SECRET = st.secrets["BINANCE_API_SECRET"] 
+# KUCOIN_SUB_KEY = st.secrets["KUCOIN_SUB_KEY"]
+# KUCOIN_SUB_SECRET = st.secrets["KUCOIN_SUB_SECRET"]
+# KUCOIN_SUB_PASS = st.secrets["KUCOIN_SUB_PASS"]
+BINANCE_API_KEY = bconf.BINANCE_API_KEY
+BINANCE_API_SECRET = bconf.BINANCE_API_SECRET
+KUCOIN_SUB_KEY = kconf.KUCOIN_SUB_KEY
+KUCOIN_SUB_SECRET = kconf.KUCOIN_SUB_SECRET
+KUCOIN_SUB_PASS = kconf.KUCOIN_SUB_PASS
 #Init Binance Client
 binance_client = bClient(BINANCE_API_KEY, BINANCE_API_SECRET)
 kSubClient = kucoinClient(KUCOIN_SUB_KEY, KUCOIN_SUB_SECRET, KUCOIN_SUB_PASS,sandbox=True)
@@ -188,6 +193,7 @@ def get_signal_by_keywords(df):
 
 def calc_pnl(df):
     trade_timeperiods = df.filter(items=["funds","side","fee","usdt_balance","btc_balance"]) 
+    temp_df_time = trade_timeperiods.index
     # Binance
     data = getDateData("BTCUSDT","1h","16 Aug, 2022",datetime.now().strftime("%d %b, %Y"))
     di = data.index
@@ -207,7 +213,6 @@ def calc_pnl(df):
 
     prices = pd.Series(lst)
     kprices = pd.Series(klst)
-    temp_df_time = trade_timeperiods.index
     temp_df = pd.concat([trade_timeperiods.reset_index(drop=True),prices.reset_index(drop=True)],axis=1)
     temp_df.rename(columns={0:"binance btc price"},inplace=True)
     

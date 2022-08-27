@@ -13,12 +13,12 @@ logger = logging.getLogger(__name__)
 
 # Config
 #os.sys.path.insert(0, "/Users/marvinottersberg/Documents/GitHub/sentiment")
-#from config import ConfigDB
+from config import ConfigDB
 
 #Uncomment for Streamlit Deployment 
-DB_URL = st.secrets["DB_URL"]
+#DB_URL = st.secrets["DB_URL"]
 #Uncomment for local Dev
-#DB_URL = ConfigDB().DB_URL
+DB_URL = ConfigDB().DB_URL
 
 
 def get_sent_meaning(sent_list):
