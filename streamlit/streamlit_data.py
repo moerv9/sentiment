@@ -7,6 +7,7 @@ import pandas as pd
 import logging
 from datetime import timedelta, datetime
 from financial_data import get_signal_by_sent_score
+import streamlit as st
 
 logger = logging.getLogger(__name__)
 

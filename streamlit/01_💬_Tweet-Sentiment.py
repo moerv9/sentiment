@@ -27,14 +27,17 @@ def loading_data_from_heroku_database():
 
 
 with st.sidebar:
-    st.info("Turn on Darkmode in upper right settings!\nPress 'R', if any error occurs.")
-    hide_explanation = st.checkbox(label="Hide Explanation",value=True)
-    hide_most_important_metrics = st.checkbox(label="Hide most important metrics",value=True)
-    hide_single_tweets = st.checkbox(label="Hide Last Collected Tweets",value=True)
-    hide_sentiment = st.checkbox(label="Hide Sentiment Metrics",value=True)
-    hide_Wordcloud_and_TweetSent = st.checkbox(label="Hide Word Analysis",value=True)
+    st.write("Change Visibility")
+    hide_explanation = st.checkbox(label="Hide Explanation",value=False)
+    hide_most_important_metrics = st.checkbox(label="Hide most important metrics",value=False)
+    hide_single_tweets = st.checkbox(label="Hide Last Collected Tweets",value=False)
+    hide_sentiment = st.checkbox(label="Hide Sentiment Metrics",value=False)
+    hide_Wordcloud_and_TweetSent = st.checkbox(label="Hide Word Analysis",value=False)
     hide_trades = st.checkbox(label="Hide Trades",value=False)
-    intervals = 60 
+    hide_acc_balance = st.checkbox(label="Hide Account Balance",value=False)
+    st.info("Turn on Darkmode in upper right settings!")
+    st.info("Press 'R', if any error occurs.")
+intervals = 60 
 
 #Get Dataframes
 #Convert Database to Dataframe
@@ -43,7 +46,6 @@ df, df_trades, duplicates  = loading_data_from_heroku_database()
 st.subheader(f"{date.today().strftime('%d-%m-%Y')} - Bitcoin Sentiment Trading")
 
 single_sent_scores_df,resampled_mean_tweetcount,mean_follower = resample_df(df, intervals, True, False)#(split_DF_by_time(df,lookback_timeframe),intervals,True)
-
 
 last_avail_tweets_1h = split_DF_by_time(df,1,resampled_mean_tweetcount.index[0]) # gets all the last tweets from the last available timestamp - 1h
 
@@ -60,6 +62,7 @@ if not hide_explanation:
     st.write("Click the checkboxes on the left sidebar to hide/show metrics.")
     st.markdown("---")
 
+st.write("#")
 
 # Most important metrics section
 if not hide_most_important_metrics:
@@ -83,6 +86,7 @@ if not hide_single_tweets:
     st.dataframe(df.head(rows))
     st.markdown("---")
 
+st.write("#")
 
 # section for metrics of sentiment
 if not hide_sentiment:
@@ -113,6 +117,7 @@ if not hide_sentiment:
         #visualise_timeperiods(resampled_mean_tweetcount.head(5))
     st.markdown("---")
 
+st.write("#")
 
 # section for word analysis
 if not hide_Wordcloud_and_TweetSent:
@@ -130,7 +135,7 @@ if not hide_Wordcloud_and_TweetSent:
         show_cake_diagram(df = signal_by_keywords_df[1],which="signal count")
     st.markdown("---")
     
-
+st.write("#")
 # section for trades
 if not hide_trades:
     last_trade_time = df_trades["tradeAt"][0]#df_trades.index[0]
@@ -165,21 +170,29 @@ if not hide_trades:
     st.write("#")
     st.subheader("Last Trades")
     time_frame = 24
-    show_trade_chart(split_DF_by_time(df_trades,96,False))
-    
-    
+    try:
+        show_trade_chart(split_DF_by_time(df_trades,96,False))
+    except Exception as e:
+        st.warning("Price Data couldn't be displayed. Reloading with 'R' might fix it.")
+        print(f"Chart Exception: {e}")
+    st.write("#")
     with st.expander("Show Trade List"):
         st.text("Last Trades")
-        important_df_trades = df_trades
+        important_df_trades = df_trades.copy()
         important_df_trades["avg from"] = important_df_trades.index
         important_df_trades.index = important_df_trades["side"]
         important_df_trades = important_df_trades[["tradeAt","usdt_balance","btc_balance","fee","avg","avg from"]]
         rows = st.slider(label="",min_value = 1,value=5,max_value = len(important_df_trades))
         st.dataframe(important_df_trades.head(rows))
-        
+    st.markdown("---")
+
+st.write("#")
+
+if not hide_acc_balance:
     st.subheader("Account Balance")
     pnl_df = calc_pnl(df_trades)
     visualise_acc_balance(pnl_df)
+    st.write("#")
     with st.expander("Show Account Balance Table"):
         st.dataframe(pnl_df)
     

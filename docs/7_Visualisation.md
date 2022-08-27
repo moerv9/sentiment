@@ -124,7 +124,7 @@ A valuable statement can be made with this chart:
 
 Buying at the lowest price and buying at the highest is the ultimate goal of trading. Since this is achieved very rarely and near impossible to persevere, fast trading looks for indicators to buy or sell quickly. Long-Term Investors on the other hand normally ride out short-time losses. 
 
-The strategy here was very simple and did not really take into account if a position of BTC is already held or if a sell-trade is being executed at a very bad price. The last part of the chart is a great example for this. The Buy-Trade happened on the 23th at 20:00 at the lowest price and then went only up afterwards, but the sentiment was always negative, so every hour a portion was sold. The system could wait for the first price drop after an uptrend and then sell. Same for the other way around. This would hold positions longer and lead to a better cost-average-effect.
+The strategy here was very simple and did not really take into account if a position of BTC is already held or if a sell-trade is being executed at a very bad price. The last part of the chart is a great example for this. The Buy-Trade happened on the 23rd August at 20:00 at the lowest price and then went only up afterwards, but the sentiment was always negative, so every hour a portion was sold. The system could wait for the first price drop after an uptrend and then sell. Same for the other way around. This would hold positions longer and lead to a better cost-average-effect.
 
 This could be one way to improve the strategy. As can be seen below, a lot of trades are made during the day, because the system is scheduled to act every hour. If there wasn't that much price movement in Bitcoin, the trading times would be spread wider apart. For example, every 6 or even 12 hours. But this would mean that the calculated average moves more to *neutral*, which would decrease the significance of the score.
 
@@ -135,10 +135,12 @@ This could be one way to improve the strategy. As can be seen below, a lot of tr
 Figure 30 shows the list of all trades with some more metrics.
 The first column shows if the trade was a buy or a sell. 
 "TradeAt", "Avg" and "AvgFrom" are self-explanatory.
-An important note for the Balances: They are taken after the trade. 
+The balances are taken **after** the trade. 
 The fee is very important if it comes to a more detailed calculation of Profit-And-Loss, as being said by Garcia and Schweitzer:
 
 > “Trading costs can potentially erode the profitability of trading strategies, especially if they require many movements." [3]
+
+At this point and after nearly `90` trades, the total fees are about 10$, which is neglectable. 
 
 </br>
 
