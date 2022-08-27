@@ -12,7 +12,7 @@ In this project, [Pandas](https://pandas.pydata.org) was used for data analysis 
 
 In the following section are explanations for the single parts that have been visualised on a Website as stated in [FR 60].
 
-This site is hosted at streamlit and if it is working correctly, the real-time current sentiment and trading data should be seen [there](#TODO:streamlit link).
+This site is hosted at streamlit and if it is working correctly, the real-time current sentiment and trading data should be seen [there](https://moerv9-sentiment-streamlit01--tweet-sentiment-streamlit--cf9fs0.streamlitapp.com/).
 However, since they won't host it forever and will shut it down eventually, a screenshot of the site was taken at 24th August 2022 and is used to explain everything below. 
 
 A video was made to explain the whole visualisation in total. (The video is also in the [visualisation](./img/visualisation/) folder)
