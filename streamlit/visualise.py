@@ -52,8 +52,8 @@ def show_trade_chart(df):
     lst = []
     sell = []
     buy = []
-    print(f"len di: {len(di)}")
-    print(f"len tt: {len(trade_timeperiods)}")
+    # print(f"len di: {len(di)}")
+    # print(f"len tt: {len(trade_timeperiods)}")
     for i in range(len(di)):
         if di.values[i] in trade_timeperiods.index:
             lst.append(dc.values[i])

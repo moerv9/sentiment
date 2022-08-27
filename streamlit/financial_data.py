@@ -19,16 +19,16 @@ from config import ConfigBinance, ConfigKucoin
 
 kconf = ConfigKucoin()
 bconf = ConfigBinance()
-# BINANCE_API_KEY = st.secrets["BINANCE_API_KEY"] 
-# BINANCE_API_SECRET = st.secrets["BINANCE_API_SECRET"] 
-# KUCOIN_SUB_KEY = st.secrets["KUCOIN_SUB_KEY"]
-# KUCOIN_SUB_SECRET = st.secrets["KUCOIN_SUB_SECRET"]
-# KUCOIN_SUB_PASS = st.secrets["KUCOIN_SUB_PASS"]
-BINANCE_API_KEY = bconf.BINANCE_API_KEY
-BINANCE_API_SECRET = bconf.BINANCE_API_SECRET
-KUCOIN_SUB_KEY = kconf.KUCOIN_SUB_KEY
-KUCOIN_SUB_SECRET = kconf.KUCOIN_SUB_SECRET
-KUCOIN_SUB_PASS = kconf.KUCOIN_SUB_PASS
+BINANCE_API_KEY = st.secrets["BINANCE_API_KEY"] 
+BINANCE_API_SECRET = st.secrets["BINANCE_API_SECRET"] 
+KUCOIN_SUB_KEY = st.secrets["KUCOIN_SUB_KEY"]
+KUCOIN_SUB_SECRET = st.secrets["KUCOIN_SUB_SECRET"]
+KUCOIN_SUB_PASS = st.secrets["KUCOIN_SUB_PASS"]
+# BINANCE_API_KEY = bconf.BINANCE_API_KEY
+# BINANCE_API_SECRET = bconf.BINANCE_API_SECRET
+# KUCOIN_SUB_KEY = kconf.KUCOIN_SUB_KEY
+# KUCOIN_SUB_SECRET = kconf.KUCOIN_SUB_SECRET
+# KUCOIN_SUB_PASS = kconf.KUCOIN_SUB_PASS
 #Init Binance Client
 binance_client = bClient(BINANCE_API_KEY, BINANCE_API_SECRET)
 kSubClient = kucoinClient(KUCOIN_SUB_KEY, KUCOIN_SUB_SECRET, KUCOIN_SUB_PASS,sandbox=True)
@@ -199,9 +199,12 @@ def calc_pnl(df):
     di = data.index
     dc = data.Close
     lst = []
+    #print(di)
     for i in range(len(di)):
         if di.values[i] in trade_timeperiods.index:
             lst.append(dc.values[i])
+    # print(trade_timeperiods.head(10))
+    # print(lst) 
     # Kucoin
     kdata = get_kucoin_klines()
     ki = kdata.index
@@ -210,6 +213,7 @@ def calc_pnl(df):
     for i in range(len(ki)):
         if ki.values[i] in trade_timeperiods.index:
             klst.append(kc.values[i])
+    #print(klst) 
 
     prices = pd.Series(lst)
     kprices = pd.Series(klst)
@@ -219,6 +223,7 @@ def calc_pnl(df):
     temp_df = pd.concat([temp_df.reset_index(drop=True),kprices.reset_index(drop=True)],axis=1)
     temp_df.rename(columns={0:"kucoin btc price"},inplace=True)
     temp_df.index = temp_df_time
+    print(temp_df.head(5))
     #temp_df["fee_usdt"] = temp_df["fee"].apply(lambda x: x * temp_df["btc/usdt"] )
     temp_df = temp_df.assign(binance_btc_usdt=lambda x: (x['binance btc price'] * x['btc_balance']))
     temp_df = temp_df.assign(kucoin_btc_usdt=lambda x : (x["btc_balance"] * x["kucoin btc price"]))

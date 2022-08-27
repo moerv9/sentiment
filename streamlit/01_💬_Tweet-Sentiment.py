@@ -178,7 +178,7 @@ if not hide_trades:
     st.write("#")
     with st.expander("Show Trade List"):
         st.text("Last Trades")
-        important_df_trades = df_trades
+        important_df_trades = df_trades.copy()
         important_df_trades["avg from"] = important_df_trades.index
         important_df_trades.index = important_df_trades["side"]
         important_df_trades = important_df_trades[["tradeAt","usdt_balance","btc_balance","fee","avg","avg from"]]
