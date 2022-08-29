@@ -19,7 +19,7 @@ Two of the primarily used tools for NLP for python are compared in the next sect
 </br>
 
 
-## Tools for Natural Language Processing 
+## Tools for NLP
 </br>
 
 ### [TextBlob](https://github.com/sloria/textblob)

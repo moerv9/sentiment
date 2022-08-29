@@ -1,6 +1,6 @@
 # Requirements Analysis
 
-To access the requirements, one normally would use a stakeholder analysis.
+To access the requirements, one normally would use a [stakeholder analysis](9_Appendices.md#s).
 
 Since this project is more like a research project, it is not really intended to be used as a product outside of Chainsulting. Thus, the primary and only stakeholder is one of the CEO's of Chainsulting, Yannik Heinze, who is keen on finding out about the effects of sentiment on trading performance.
 

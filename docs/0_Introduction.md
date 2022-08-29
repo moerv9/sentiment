@@ -10,19 +10,19 @@ It will analyse specific signals in social networks and their impact on trading 
 
 ## Motivation
 
-As being said by Schoen et al. [1] about social media: 
+As being said by Schoen et al. [[1](9_Appendices.md#literature--bibliography)] about social media: 
 > “… little is known about their overall potential, limitations and general applicability to different domains.”
 
-Chainsulting, a blockchain-company from Flensburg is keen on finding out if the idea behind social signals is working and interested in trying out new trading methods. Also, they are open for publishing this project, as it will greatly contribute to a scientific area where not much has been done before. It is obvious, that if an automatic trading bot can increase the revenue this will not likely be published. 
-Natural Language Processing is a big part in today's world of big data and their impact is yet to be studied.
+Chainsulting, a [blockchain](9_Appendices.md#b)-company from Flensburg is keen on finding out if the idea behind social signals is working and interested in trying out new trading methods. Also, they are open for publishing this project, as it will greatly contribute to a scientific area where not much has been done before. It is obvious, that if an automatic trading bot can increase the revenue this will not likely be published. 
+[Natural Language Processing (NLP)](9_Appendices.md#n) is a big part in today's world of big data and their impact is yet to be studied. 
 
 </br>
 
 ## Context
-This project will find context in the R&D Department of Chainsulting, a blockchain-company based in Flensburg.
+This project will find context in the [R&D](9_Appendices.md#abbreviations) Department of Chainsulting, a blockchain-company based in Flensburg.
 Contact person will be Yannik Heinze, CEO of Chainsulting ([Email](y.heinze@chainsulting.de)).
 
-> “Chainsulting is a consulting and development company, on the subject of Distributed Ledger Technology (DLT) & Digital Assets. We show ways, opportunities, risks and offer comprehensive solutions. “ [4]
+> “Chainsulting is a consulting and development company, on the subject of Distributed Ledger Technology (DLT) & Digital Assets. We show ways, opportunities, risks and offer comprehensive solutions. “ [[2](9_Appendices.md#literature--bibliography)]
 
 More about Chainsulting on their [Website](https://chainsulting.de) or [GitHub Profile](https://github.com/chainsulting).
 
@@ -34,20 +34,20 @@ More about Chainsulting on their [Website](https://chainsulting.de) or [GitHub P
 ### First Phase: Research
 
 The amount of data social media can offer is just too big to grasp, but it can be used to an advantage in trading. A study from 2013 has already shown that search trends have an impact on the price of Bitcoin:
-> "Speculation and trend chasing evidently dominate the BitCoin price dynamics." [2]
+> "Speculation and trend chasing evidently dominate the BitCoin price dynamics." [[3](9_Appendices.md#literature--bibliography)]
 
 There exists a lot of different social networks (Instagram, Twitter, Facebook, etc.) and after comparing them with respect to their user base, availability of API’s and other factors, it will be clear which one is best for this project.
 
-To find the right cryptocurrency for this project, the Top 5 Coins based on market capitalisation are compared in relation to their trading volume, user base, API Access, amount of tweets about the cashtag($btc, $eth, etc.), etc.
+To find the right cryptocurrency for this project, the top five Coins based on market capitalisation ([MCap](9_Appendices.md#m)) are compared in relation to their trading volume, user base, API Access, amount of tweets about the [cashtag]((9_Appendices.md#c))($btc, $eth, etc.).
 
 If it finds a real-world use-case the costs of trading need to be considered as well. 
-As Garcia and Schweitzer [3] are saying in their research: “Trading costs can potentially erode the profitability of trading strategies, especially if they require many movements.” 
+As Garcia and Schweitzer [[4](9_Appendices.md#literature--bibliography)] are saying in their research: “Trading costs can potentially erode the profitability of trading strategies, especially if they require many movements.” 
 
 The last part of research is to find a suitable programming language.
 
 ### Second Phase: Development
 
-The development phase starts with the acquisition of data followed by the calculation of sentiment about the chosen cryptocurrency.
+The development phase starts with the acquisition of data followed by the calculation of [sentiment](9_Appendices.md#s) about the chosen cryptocurrency.
 For the backend, a service is needed where the script for data acquisition can run in the background and store all the data in a database.
 At last, a strategy for trading is built and executed.
 

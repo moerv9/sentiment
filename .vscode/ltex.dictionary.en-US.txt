@@ -5,3 +5,6 @@ analysing
 visualisation
 visualise
 Kucoin
+capitalisation
+MCap
+Capitalisation

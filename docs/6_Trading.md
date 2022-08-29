@@ -136,7 +136,7 @@ Since this looked promising it was implemented to real-time Papertrading in the 
 
 ### Drop duplicates
 
-The [trade](../sentiment/trade.py)-file starts with the essential function to collect all the single tweets from the database and stores them in a pandas DataFrame. This is needed to delete the duplicates with the following methods:
+The [trade](../sentiment/trade.py)-file starts with the essential function to collect all the single tweets from the database and stores them in a pandas DataFrame. As explained in [Data Acquisition](3_Data%20Acquisition.md#duplicates), this is needed to delete the duplicates with the following methods:
 
 </br>
 
