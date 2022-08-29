@@ -54,8 +54,7 @@ Output:
 > TextBlob: 0.475 </br>
 > Vader: 0.7684
 
-As can be seen the difference is quite huge between those two values.
-The sentiment scores for the dataset of tweets were quite similar from both TextBlob and Vader. Considering, that Vader was built for social media sentiment analysis and uses special heuristics to improve the overall performance, compared to other NLP-Tools, Vader will be used to get the sentiment for each tweet in this project ([FR 20]).
+There is a big difference between those two values, but the sentiment scores for the whole dataset of tweets were very similar from both TextBlob and Vader. Considering, that Vader was built for social media sentiment analysis and uses special heuristics to improve the overall performance, compared to other NLP-Tools, Vader will be used to get the sentiment for each tweet in this project [FR 20](2_Concept.md#should-have).
 
 Vader gives sentiment score between -1 and 1 for each tweet, normally meaning, that positive values mean a positive sentiment and negative values mean a negative sentiment. To differentiate even further, the decision has been made to classify values above 0.6 to be *"Very Positive"* and values below -0.6 to be '"Very Negative"*.
 
@@ -80,8 +79,8 @@ The final classification:
 To make better trading decisions some more filters and data cleaning after reading the tweet data from the database is needed.
 
 Since sentiment analysis libraries are obviously not able to declare a sentiment polarity to all the words in the world, it tends to classify a lot of the words and thus their tweets as neutral.
-When going through the acquired database, there were a lot of *neutral* tweets. This would decrease the impact of positive and negative tweets in the calcuation and since most of the tweets were not really useful tweets anyway, they were excluded. Many neutral tweets contained bad grammar, random words, only hashtags or a lot of gibberish.
-Filtering out neutral tweets was a necessary step and is achieved with just one line of code [See here](6_Trading.md#filtering-neutral-tweetshttps://www.salesforce.com/in/saas/).
+When going through the acquired database, there were a lot of *neutral* tweets. This would decrease the impact of positive and negative tweets in the calculation and since most of the tweets were not really useful tweets anyway, they were excluded. Many neutral tweets contained bad grammar, random words, only hashtags or a lot of gibberish.
+Filtering out neutral tweets was a necessary step and is achieved with just one line of code ([See here](6_Trading.md#filtering-neutral-tweets)).
 
 With these sentiment values and their meaning at hand some more calculations will be made to build a [strategy](6_Trading.md#strategy) for signals, when a buy or sell order is made.
 

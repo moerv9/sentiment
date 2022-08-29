@@ -32,6 +32,9 @@ https://www.octoparse.com/blog/5-things-you-need-to-know-before-scraping-data-fr
 </br>
 
 ### A
+- API
+An Application Programming Interface allows two distinct software programs to communicate with each other and use their services. A software's user doesn't get in touch with an API since it works in the background and is only used by the programmer for it's unique features.
+
 - Arbitrage
 The process of buying a stock, cryptocurrency or commodity in one place and selling in another at the same time to achieve a profit from different prices.
 
@@ -52,10 +55,17 @@ The conversion of a data object with it's state into another byte-sized format t
 A currency that is issued by the government and not backed by any commodity, such as Gold. Central Banks control how much money is printed.
 Examples: Euro, US-Dollar, Yen
 
+### G
+- Google Authenticator
+An App by Google that generates a 6 digit code every minute which can be used when sigining in with 2-Way-Authentification.
 
 ### H
 - HTTP Request
 The message from a client to get information from a server. 
+
+### J
+- Jupyter Notebooks
+A web-based tool for interactive and fast coding. It is structured as executable cells, which can contain either code, text (markdown), mathematics or plots.
 
 ### M
 - Market Capitalisation / MCap
@@ -68,7 +78,10 @@ Computational processing of natural language using rules and methods from lingui
 Examples: Autocomplete, Spell-Check in Word Processors
 
 ### P
-- pump & dump
+- Papertrading
+A simulation of the real stock or crypto market, which allows trading with real prices but virtual money.
+
+- Pump & Dump
 The fraudulent practice of spreading (false) information about a stock or cryptocurrency to "pump" up the price artificially to be able to sell all the holdings at a high price and therefore dump the price again.
 ### R
 - Regular Expressions / Regex
@@ -76,8 +89,14 @@ The fraudulent practice of spreading (false) information about a stock or crypto
 *Regular Expressions* are searchable patterns inside a string, consisting out of multiple single characters.
 
 ### S
+- Sandbox
+A testing environment to securely try out code without affecting the running software. 
+
 - Sentiment
 The overall opinion, mood, feeling about a particular topic. Mostly used in business context for expressing the "feeling" about a stock or cryptocurrency.
+
+- Software-as-a-Service / Saas
+Accessing software through the internet without dealing with software or hardware problems. Providers, such as Google or Amazon offer on-demand-service, support, scalability and security.
 
 - Stablecoin
 A stablecoin is a "stable" cryptocurrency, because it is pegged to a FIAT-Currency (see FIAT) like the US-Dollar or Gold and therefore not volatile.
@@ -93,10 +112,13 @@ An overview over people and organisations and their different amount of influenc
 
 |   |  |
 |------|------------------------------|
+| CLI | Command-Line-Interface |
 | e.g. | exampli gratia,  for example |
 | MCap | Market capitalisation |
 | NLP     | Natural Language Processing                             |
 | R&D | Research & Development |
+| SQL | Structured Query Language |
+
 
 </br>
 

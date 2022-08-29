@@ -6,13 +6,15 @@
 Tweepy uses two ways of searching for tweets: Searching through the history or listening to real-time tweets.
 One approach would be to schedule a task, e.g. for every hour, that searches the history of tweets and does the trading afterwards. However, after looking closer into the Documentation, it was discovered that the search service with the Twitter API doesn't show all available tweets. This would lead to incomplete data, which would deflect the strategy and therefore wasn't an option.
 
-When listening to real-time tweets, the python script needs to run the whole time in the background ([FR 80]). It is no option to only run it on the local machine when it is intended to run for days or weeks. When the laptop is closed, the script stops running.
+When listening to real-time tweets, the python script needs to run the whole time in the background [[FR 80](2_Concept.md#should-have)]. 
 
-That is where cloud platforms as services come in handy. Today, most of the [Software-as-a-Service](https://www.salesforce.com/in/saas/)-products (SaaS) run in some sort of cloud since it is not very desirable for smaller companies to run and maintain servers for their clients when other bigger corporations such as Google, Amazon or Microsoft offer better, more scalable and cheaper services.
+It is no option to only run it on the local machine when it is intended to run for days or weeks. When the laptop is closed, the script stops running.
 
-For this project, [Heroku](https://www.heroku.com/) was used as the cloud provider, because it works well with Python, has a free tier available and an easy-to-use Postgres Database Add-On ([FR 70]) and GitHub Continuous Integration.
+That is where cloud platforms as services come in handy. Today, most of the [Software-as-a-Service](9_Appendices.md#s) run in some sort of cloud since it is not very desirable for smaller companies to run and maintain servers for their clients when other bigger corporations such as Google, Amazon or Microsoft offer better, more scalable and cheaper services.
 
-Heroku works with containerization: It automatically detects a change in the GitHub Repository and starts a new Deployment. Because this did not always work, it is still possible to manually deploy in the Heroku Dashboard or with the Heroku CLI.
+For this project, [Heroku](https://www.heroku.com/) was used as the cloud provider, because it works well with Python, has a free tier available and an easy-to-use Postgres Database Add-On [FR 70](2_Concept.md#should-have) and an automatic GitHub Deploy.
+
+Heroku works with containerization: It automatically detects a change in the GitHub Repository and starts a new Deployment. Because this did not always work, it is still possible to manually deploy in the Heroku Dashboard or with the Heroku [CLI](9_Appendices.md#abbreviations).
 
 Heroku will then package the code and dependencies and runs it in lightweight, scalable and isolated containers, which are called *dynos*.
 In the free tier you have free 550 dynos each month and every time a web service is called, or a script (worker) is run a dyno is consumed. 
@@ -26,13 +28,14 @@ Using Heroku allows to run the script in the background, store data in a databas
 </br>
 
 ## Setting up Heroku
-Creating an App in the Heroku Dashboard and initializing it with our codebase in VSCode was the first thing to do. The easiest way to do this is by connecting the Heroku App with the GitHub Repository. But since we were using the Heroku Account from Chainsulting and are not able to access their GitHub account, it was not possible to use GitHub Continuous Integration. Instead, manually deploy every change of code from the terminal with `git push heroku main`.
+Creating an App in the Heroku Dashboard and initialising it with our codebase in VSCode was the first thing to do. The easiest way to do this is by connecting the Heroku App with the GitHub Repository. But since we were using the Heroku Account from Chainsulting and are not able to access their GitHub account, it was not possible to use the automatic GitHub Deploy. Instead, manually deploy every change of code from the terminal with `git push heroku main`.
 
 Secondly, the [Heroku Postgres](https://devcenter.heroku.com/articles/heroku-postgresql) Add-On was added and credentials were stored inside the Config Variables of the Heroku Dashboard.
 
-Our connection with the Database from our python code is established with psycopg2 and SQLAlchemy.
+Our connection with the Database from our python code is established with psycopg2 and SQLAlchemy, which are both libraries for working with SQL and Postgres Databases.
 Psycopg2 reads the data and SQLAlchemy is responsible for creating a session and then commits the data to the database.
 
+</br>
 
 The following example shows how to connect to the database and read the data into a Pandas DataFrame by using a simple SQL Statement.
 ```

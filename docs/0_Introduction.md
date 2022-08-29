@@ -36,7 +36,7 @@ More about Chainsulting on their [Website](https://chainsulting.de) or [GitHub P
 The amount of data social media can offer is just too big to grasp, but it can be used to an advantage in trading. A study from 2013 has already shown that search trends have an impact on the price of Bitcoin:
 > "Speculation and trend chasing evidently dominate the BitCoin price dynamics." [[3](9_Appendices.md#literature--bibliography)]
 
-There exists a lot of different social networks (Instagram, Twitter, Facebook, etc.) and after comparing them with respect to their user base, availability of API’s and other factors, it will be clear which one is best for this project.
+There exists a lot of different social networks (Instagram, Twitter, Facebook, etc.) and after comparing them with respect to their user base, availability of [API’s](9_Appendices.md#a) and other factors, it will be clear which one is best for this project.
 
 To find the right cryptocurrency for this project, the top five Coins based on market capitalisation ([MCap](9_Appendices.md#m)) are compared in relation to their trading volume, user base, API Access, amount of tweets about the [cashtag]((9_Appendices.md#c))($btc, $eth, etc.).
 

@@ -2,7 +2,8 @@
 </br>
 
 ## Retrieving and Processing of Tweets with the Twitter API
-The development phase starts with the acquisition of data from Twitter, as being stated in the *Must-Have*-Requirements (compare [[FR 10]](/2_Concept.md#must-have)).
+The development phase starts with the acquisition of data from Twitter, as being stated in the *Must-Have*-Requirements  [[FR 10]](/2_Concept.md#must-have).
+
 Instead of dealing with [HTTP Requests](9_Appendices.md#h), [Data Serialisation](9_Appendices.md#d) and Rate Limits it is easier to use pre-built libraries to access the Twitter API and be able to focus more on building functionality. There are hundreds of different libraries, but I've found two to be standing out and compared them: [Twint](https://github.com/twintproject/twint) and [Tweepy](https://www.tweepy.org).
 
 </br>
@@ -124,7 +125,7 @@ These metrics are collected to filter the tweets, so we have more high quality d
 </br>
 
 ## Filter Tweets 
-The data needs to be as significant as it can be, which means Tweets from Bots should not be included since they are deflecting the overall opinion by spreading the **exact** same opinion/tweet repeatedly. Applying filters is increasing the quality of the final product [FR 50].
+The data needs to be as significant as it can be, which means Tweets from Bots should not be included since they are deflecting the overall opinion by spreading the **exact** same opinion/tweet repeatedly. Applying filters is increasing the quality of the final product [[FR 50](2_Concept.md#should-have)].
 
 But what differentiates a tweet by a bot from a tweet by a human?
 1. Bots often retweet

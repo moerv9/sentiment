@@ -2,15 +2,15 @@
 
 
 When scripts are running in the background and acting on their own, a lot of work will never be seen.
-Since all the tweet and trade data are stored in a database and the sentiment analysis and price charts can be visualised in plots and diagrams, it was specified in the requirements ([FR 60]).
+Since all the tweet and trade data are stored in a database and the sentiment analysis and price charts can be visualised in plots and diagrams.
 
-[Streamlit](https://streamlit.io) is an open-source Framework for building simple and interactive Machine-Learning and Data Science Web-Apps. It was perfect for this project, because it contained all the features for charts and dataframes and was easy to implement and therefore allowed rapid prototyping. 
+[Streamlit](https://streamlit.io) is an open-source Framework for building simple and interactive Machine-Learning and Data Science Web-Apps. It was perfect for this project, because it contained all the features for charts and DataFrames and was easy to implement and therefore allowed rapid prototyping. 
 
-Actually, Streamlit and Jupyter Notebooks were used to test the code before it entered Heroku, because each execution on Heroku consumed dynos and obviously increased the row count in the database. The jupyter notebooks can be found in this [folder](./jupyter_notebooks/), but are not used in this documentation and therefore a bit messy.
+Actually, Streamlit and [Jupyter Notebooks](9_Appendices.md#j) were used to test the code before it entered Heroku, because each execution on Heroku consumed dynos and obviously increased the row count in the database. The jupyter notebooks can be found in this [folder](./jupyter_notebooks/), but are not used in this documentation and therefore a bit messy.
 
 In this project, [Pandas](https://pandas.pydata.org) was used for data analysis and [Matplotlib](https://matplotlib.org) to visualise the data. They both work seamlessly with streamlit.
 
-In the following section are explanations for the single parts that have been visualised on a Website as stated in [FR 60].
+In the following section are explanations for the single parts that have been visualised on a Website as required in [FR 60](2_Concept.md#should-have).
 
 This site is hosted at streamlit and if it is working correctly, the real-time current sentiment and trading data should be seen [there](https://moerv9-sentiment-streamlit01--tweet-sentiment-streamlit--cf9fs0.streamlitapp.com/).
 However, since they won't host it forever and will shut it down eventually, a screenshot of the site was taken at 24th August 2022 and is used to explain everything below. 

@@ -22,9 +22,9 @@ The following table shows the full comparison of five cryptocurrency API's, whic
 When it came to the decision which API to use, it was quite easy to filter out the ones that weren't suitable. 
 CoinBase was the first to drop because it has only five coins and no currently active python libraries available. 
 
-Coinmarketcap was also not very intriguing because it has limited Endpoints and no historical Data. Paying 29$ a month for 1 month of historical data didn't seem worth it when others offer it for free. Their python wrapper was also not very detailed.
+Coinmarketcap was also not very intriguing because it has limited Endpoints and no historical data. Paying 29$ a month for 1 month of historical data didn't seem worth it when others offer it for free. Their python wrapper was also not very detailed.
 
-I personally use Kraken, so the ID Verification wouldn't even be a problem, but they do not offer a test/sandbox environment. Their way of working with request limits is also very different to the others and seemed to be a limiting factor.
+I personally use Kraken, so the ID Verification wouldn't even be a problem, but they do not offer a test/[sandbox](9_Appendices.md#s) environment. Their way of working with request limits is also very different to the others and seemed to be a limiting factor.
 But the biggest problem with Kraken was that there is no recently updated python wrapper available. 
 
 Kucoin offers many currencies and the most free requests per minute, but reported some performance issues, which lead to the decision to Binance. At least at first. 
@@ -44,13 +44,13 @@ Then it was time to implement the trading strategy into the Binance sandbox and 
 </br>
 
 ## Kucoin API
-After registration you need to go through a verification process. Typically, this is a call with a person that verifies your identity or uploading a photo of a personal ID-Card, but Kucoin only needs verification via Google Authenticator. 
+After registration you need to go through a verification process. Typically, this is a call with a person that verifies your identity or uploading a photo of a personal ID-Card, but Kucoin only needs verification via [Google Authenticator](9_Appendices.md#g). 
 
 After that the API-Keys could be generated. These Keys are needed to connect and verify the Client with the API.
 
 The [*python-kucoin*](https://github.com/sammchardy/python-kucoin/) wrapper helps with the Kucoin API, so there is no need to manually connect with the API via HTTP-Requests.
 
-Acquiring data from the Kucoin API is fairly easy. Getting the latest price for BTCUSDT, the account balance, and making a market order are all done with a few lines of code. As can be seen below in the output, the current USDT Balance in the account is over 48k USDT. Kucoin offers every account a virtual amount of 250k USDT (~11 BTC) to trade with in their sandbox environment. They also offer Sub-Accounts, which is great to test a strategy for a specific amount of money, without risking to lose it all, when something goes wrong. This meant, papertrading could be performed and evaluated.
+Acquiring data from the Kucoin API is fairly easy. Getting the latest price for BTCUSDT, the account balance, and making a market order are all done with a few lines of code. As can be seen below in the output, the current USDT Balance in the account is over 48k USDT. Kucoin offers every account a virtual amount of 250k USDT (~11 BTC) to trade with in their sandbox environment. They also offer Sub-Accounts, which is great to test a strategy for a specific amount of money, without risking to lose it all, when something goes wrong. This meant, [papertrading](9_Appendices.md#p) could be performed and evaluated.
 
 ```
 from kucoin.client import Client as kucoinClient
@@ -87,11 +87,11 @@ order = kClient.create_market_order('BTC-USDT', kClient.SIDE_BUY, funds = funds)
 
 ## Strategy
 
-Building the strategy to make signals when a trade (buy or sell) should be executed, was a real challenge. There are hundreds of different strategies on different technical indicators, but now the buy or sell signal should be based on the sentiment of tweets on Twitter ([FR 30]).
+Building the strategy to make signals when a trade (buy or sell) should be executed, was a real challenge. There are hundreds of different strategies on different technical indicators, but now the buy or sell signal should be based on the sentiment of tweets on Twitter [FR 30](2_Concept.md#must-have).
 
 At first, the idea was to calculate the average of sentiment for a particular time period and if this average reaches a certain threshold, a trade should be executed.
 
-In the left table in Figure 14 you see the Timestamp, Sentiment Score and the corresponding meaning for *each tweet*.
+In the left table in Figure 14 you see the timestamp, sentiment score and the corresponding meaning for *each tweet*.
 
 ![60 min Sentiment Average and Amount of Tweets](./img/trading/60min-avg-count.png)
 
@@ -122,7 +122,7 @@ This is why the threshold is set to 0.2.
 
 ## Papertrading  
 The image below shows the sentiment and bitcoin price from August 5th till August 6th. If the sentiment is above 0.2 (positive or very positive) it is marked as a buy signal in the chart (green triangle).
-Since this looked promising it was implemented to real-time Papertrading in the Kucoin Sandbox ([FR 40]).
+Since this looked promising it was implemented to real-time papertrading in the Kucoin Sandbox [FR 40](2_Concept.md#must-have).
 
 </br>
 
@@ -157,7 +157,7 @@ df.drop_duplicates(
 
 ### Filtering neutral tweets
 
-Afterwards, the neutral tweets are filtered and the rest are counted and the mean/avg is calculated for a resampled interval of 1h. This means all the timestamps from 1h (e.g. from 16:00 - 17:00) are grouped and a function is applied to all of them. This function could be to summarize, count or calculate the mean/avg. 
+Afterwards, the neutral tweets are filtered, and the rest are counted and the mean/avg is calculated for a resampled interval of 1h. This means all the timestamps from 1h (e.g. from 16:00 - 17:00) are grouped, and a function is applied to all of them. This function could be to summarize, count or calculate the mean/avg. 
 
 </br>
 
@@ -187,7 +187,7 @@ Then, if the signal indicates buy, a market order will be created with 5% of the
 
 A sell order will sell a quarter of the current bitcoin holdings.
 
-At last, some metrics from the trade are uploaded into a separate table on Heroku for a better overview of the trades and later calculation of current PNL (Profit and Loss).
+At last, some metrics from the trade are uploaded into a separate table on Heroku for a better overview of the trades and later calculation of current Profit and Loss (PNL).
 An excerpt from this table is shown below in figure 17. It contains the sentiment average and the time period, as well as information about the trade itself. The last balances are actually the balances after the trade was made. So, it is possible, to look back at all the balances without gaps. 
 
 </br>
@@ -216,11 +216,9 @@ Figure 18 shows the Heroku Logs. At first, the runner is started, that listens t
 </br>
 
 
-
-
 As explained in the Backend-Section, the scheduler is executing the trading script every hour.
 
-The sentiment average is shown and the Balances before and after the trade.
+The sentiment average is shown and the balances before and after the trade.
 It also says if a trade already exists and then either starts a new trade or does nothing.
 
 The Heroku logs were an essential part of the development-phase, since they allowed for a good way of debugging. Usually, no *`print`*-statements are left in the final code, when it's entering the production phase. However, Heroku seems to only print the `print`-statements rather than from the logging-library, which is otherwise used. 
@@ -236,7 +234,7 @@ Therefore, a few print statements are left in the final code.
 
 ### Getting false Account Balance
 
-The System was trading fine for a couple of days, but then, all of a sudden, it did not execute any trades for a couple timestamps. 
+The system was trading fine for a couple of days, but then, all of a sudden, it did not execute any trades for a couple timestamps. 
 As can be seen in figure 19 below, the USDT and BTC Balance are switched, and the system tried to buy for an amount of *0* USDT, which did not work. Interestingly, in figure 20, you can see that this was not a consistent state since there are some trades at random timestamps. The problem lay with Kucoin. When acquiring the current account balances, USDT normally came before BTC. However, this order seems to be switched at random. This unforeseen coincidence needed to be checked by the system and be acted upon.
 
 ![no trade exec](./img/trading/No_trade_exec-fundswrong.png)

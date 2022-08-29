@@ -4,7 +4,7 @@
 </br>
 
 ## Coin Comparison
-In March 2022, there were a total of 18000 cryptocurrencies. To minimize the number of coins for comparison, it is wise to look at the biggest coins by MCap (see Figure 1). They are the most known and impactful.
+By the end of 2013, there were only 50 cryptocurrencies. Today (July 2022), there are over 20000 cryptocurrencies. To minimize the number of coins for comparison, it is wise to look at the biggest coins by MCap (see Figure 1). They are the most known and impactful.
 
 ![Coinmarketcap from the 5.3.2022](./img/research/coinmcap_532022.jpeg)
 ##### *Figure 1: Snapshot from the 5th March 2022 from [Coinmarketcap](https://coinmarketcap.com)*
@@ -126,9 +126,11 @@ Building a modular model in a way that it can retrieve tweets about any coin was
 </br>
 
 ## Choosing a programming language
-*Python* was the best choice as a programming language for this project. Not only had the developer a good amount of experience with it, further more offers Python the needed libraries to analyse and visualise data in a way that allows for rapid prototyping.
+*Python* was the best choice as a programming language for this project. Not only had the author a good amount of experience with it, further more offers Python the needed libraries to analyse and visualise data in a way that allows for rapid prototyping.
+It also has the needed wrappers for working with different trading brokers.
 
-
+Another good choice would've been JavaScript because it is most used and best for developing websites. However, visualisation was only one part of the project, and it is just easier to work with Python when dealing with large amount of data.
+Python offers fast prototyping with Jupyter Notebooks, where one can execute small scripts to test out functions very easily and requires less boilerplate code compared to JavaScript.
 </br>
 
 ---
