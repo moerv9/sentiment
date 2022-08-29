@@ -103,7 +103,7 @@ I am not only collecting the tweet but some other information/metrics about the 
 
 </br>
 
-Using the Location to filter for different timezones, so it is possible to enable the bot at different places at different times. It would be more efficient to collect tweets p.e. from America when most people are awake and able to tweet and not asleep. The problem is that the Location is not automatically read and set by Twitter, but rather manually set by the user. This means it is nearly useless to filter it since some tweets are from *"Everywhere"* or from the *"Magic Internet Bank"*, as can be seen in the table above.
+Using the Location to filter for different time zones, so it is possible to enable the bot at different places at different times. For example, it would be more efficient to collect tweets from America, when most people there are awake and able to tweet and not asleep. The problem is that the location is not automatically read and set by Twitter, but rather manually set by the user. This means it is nearly useless to filter it since some tweets are from *"Everywhere"* or from the *"Magic Internet Bank"*, as can be seen in the table above.
 
 For the tweet the timestamp, the found keyword and the calculated sentiment are included. More about sentiment in [this](/5_Sentiment.md) section.
 
@@ -130,9 +130,11 @@ But what differentiates a tweet by a bot from a tweet by a human?
 Accounts with less than 500 followers or when they have just been created in the last two months are filtered out. Also Retweets and Tweets that contain blacklisted Words like *Giveaway, Free or Gift*.
 
 The next step is cleaning the tweet itself. 
-Most often a tweet can contain a lot of characters like *underscores, hashtags or emojis* and special characters like *"&amp"* (which is used in Html entities for a normal "&"-Symbol. There was one in one of Elon Musks Tweet [above](#elon-musks-latest-tweets)).
+Most often a tweet can contain a lot of characters like *underscores, hashtags or emojis* and special characters like *"&amp"* (which is used in Html entities for a normal "&"-Symbol. There was one in one of Elon Musks tweets [above](#elon-musks-latest-tweets)).
 
-With the help of regex functions it can be done to filter and substitute words or symbols that are not useful. This is an excerpt from the `cleanTweets`-Function in the [filter.py](../sentiment/filter.py) file:
+With the help of regex functions it can be done to filter and substitute words or symbols that are not useful. *Regular Expressions* are searchable patterns inside a string, consisting out of multiple single characters. With the python module `re`, it is possible to search and substitute desired character patterns inside strings. 
+
+The following excerpt shows, how regex-functions are used in the function `cleanTweets`  in the [filter.py](../sentiment/filter.py) file:
 ```
 text = re.sub(r'@[A-Za-z0-9]+',"",text,flags=re.IGNORECASE) 
 text = re.sub(r'_*|\+*',"",text) # removes _ and +
@@ -168,7 +170,7 @@ The next thing is to find and delete all the duplicates. As can be seen in Figur
 
 The first approach was as follows: Adding the collected tweets to a list, and after the list had 40 items, run a function that checks for duplicates and deletes them. There were about 40 collected items a minute, so it seemed like a good choice.
 
-The following function converts the list to a Pandas Dataframe and checks for duplicate Tweets with their innate `duplicated()`-method. The `keep=False`-parameter deletes the found duplicates.
+The following function converts the list to a Pandas DataFrame and checks for duplicate Tweets with their innate `duplicated()`-method. The `keep=False`-parameter deletes the found duplicates.
 
     def check_duplicates(tweet_list):
         cols = ["Tweet", "Keyword", "Time", 

@@ -1,7 +1,7 @@
 # Sentiment
 The goal is to find out if trading cryptocurrency based on the overall opinion about a cryptocurrency on Twitter is able to make profits.
 
-Therefore, we need to find the opinions and metrics to objectively compare these opinions from People about a particular topic, in this case Bitcoin. 
+Therefore, we need to find the opinions and metrics to objectively compare these opinions from people about a particular topic, in this case Bitcoin. 
 This is where *sentiment analysis* comes in handy.
 
 Sentiment analysis is a part of *Natural Language Processing (NLP)* to systematically identify and classify opinions from text. 
@@ -81,9 +81,9 @@ To make better trading decisions some more filters and data cleaning after readi
 
 Since sentiment analysis libraries are obviously not able to declare a sentiment polarity to all the words in the world, it tends to classify a lot of the words and thus their tweets as neutral.
 When going through the acquired database, there were a lot of *neutral* tweets. This would decrease the impact of positive and negative tweets in the calcuation and since most of the tweets were not really useful tweets anyway, they were excluded. Many neutral tweets contained bad grammar, random words, only hashtags or a lot of gibberish.
-Filtering out neutral tweets was a necessary step and is achieved with just one line of code [See here](/6_Trading.md#papertrading).
+Filtering out neutral tweets was a necessary step and is achieved with just one line of code [See here](6_Trading.md#filtering-neutral-tweetshttps://www.salesforce.com/in/saas/).
 
-With these sentiment values and their meaning at hand some more calculations will be made to build a [strategy](Trading.md#strategy) for signals, when a buy or sell order is made.
+With these sentiment values and their meaning at hand some more calculations will be made to build a [strategy](6_Trading.md#strategy) for signals, when a buy or sell order is made.
 
 </br>
 

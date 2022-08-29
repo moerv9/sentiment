@@ -15,7 +15,7 @@ In the following section are explanations for the single parts that have been vi
 This site is hosted at streamlit and if it is working correctly, the real-time current sentiment and trading data should be seen [there](https://moerv9-sentiment-streamlit01--tweet-sentiment-streamlit--cf9fs0.streamlitapp.com/).
 However, since they won't host it forever and will shut it down eventually, a screenshot of the site was taken at 24th August 2022 and is used to explain everything below. 
 
-A video was made to explain the whole visualisation in total. (The video is also in the [visualisation](./img/visualisation/) folder)
+A video was made to explain the whole visualisation in total. (Which is also in the [visualisation](./img/visualisation/) folder)
 
 [![Watch the Video](https://img.youtube.com/vi/bHvFifWAr1A/hqdefault.jpg)](https://youtu.be/bHvFifWAr1A)
 
@@ -122,7 +122,7 @@ A valuable statement can be made with this chart:
 
 </br>
 
-Buying at the lowest price and buying at the highest is the ultimate goal of trading. Since this is achieved very rarely and near impossible to persevere, fast trading looks for indicators to buy or sell quickly. Long-Term Investors on the other hand normally ride out short-time losses. 
+Buying at the lowest price and selling at the highest is the ultimate goal of trading. Since this is achieved very rarely and near impossible to persevere, fast trading looks for indicators to buy or sell quickly. Long-Term Investors on the other hand normally ride out short-time losses. 
 
 The strategy here was very simple and did not really take into account if a position of BTC is already held or if a sell-trade is being executed at a very bad price. The last part of the chart is a great example for this. The Buy-Trade happened on the 23rd August at 20:00 at the lowest price and then went only up afterwards, but the sentiment was always negative, so every hour a portion was sold. The system could wait for the first price drop after an uptrend and then sell. Same for the other way around. This would hold positions longer and lead to a better cost-average-effect.
 

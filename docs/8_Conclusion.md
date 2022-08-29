@@ -24,7 +24,7 @@ As can be seen in figure 31 below, the account balances didn't really work as a 
 This has been the limiting factor when interpreting the results.
 However, after a small time of profits at the 20th August, the chart shows a clear downward trend for both lines. As being said before, a rather simple strategy was chosen to primarily test if everything works on the technical side and not to make big gains. Although, seeing that this type of trading is easily implemented and can run in the background, moving this system a level up by improving the filters and implementing different strategies, it would lead to better results. 
 
-There a many more strategies that could have been tested, and a few are described below in the Outlook-Section.
+There are many more strategies that could have been tested, and a few are described below in the Outlook-Section.
 
 ![acc balance chart](./img/results/chart_acc_balances.png)
 
@@ -55,7 +55,7 @@ A few other strategies were:
 - Calculating the weighted average instead of a normal average
 - Ratio of positive / negative sentiment crossing a particular threshold
 
-Since there are way too many Cryptocurrencies and no way to have an overview over all of them, a good approach for trading with sentiment could be to listen to plenty of coins at the same time and then trade the coin that gets the most hype and then sell everything when the hype stops. 
+Since there are way too many Cryptocurrencies and no way to have an overview over all of them, a good approach for trading with sentiment could be to listen to plenty of coins at the same time and trade the coin that gets the most hype and afterwards sell everything when the hype stops. 
 
 Building a modular system was actually the first approach and the infrastructure to listen to multiple tweets is basically set.
 The factor that prevented the final implementation of this modular system was the row limit of the database. The Twitter API also has a limit for keywords, but this wasn't reached.

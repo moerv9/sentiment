@@ -1,14 +1,42 @@
 # Social Signal Sentiment-Based Prediction for Cryptocurrency Trading
 
+
+## Abstract
+
+This project is keen on exploring the connection between the sentiment on a social-media platform about a cryptocurrency and the correlating price.
+
+The approach has been to sample the sentiment from previously collected real-time tweets from Twitter. Afterwards, signals have been derived from these sentiment scores and a trading strategy was built. The system was designed to work in the background, store data in a postgres database and trade on its own. It does this with the help of Heroku and a Scheduler, that checks every hour, if a trade should be made or not.
+
+Insights of this project, like tweets, sentiment and trade metrics have been visualised on streamlit and can be seen with the link or in the preview below.
+
+</br>
+
+#### [![See Real-Time Metrics on Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://moerv9-sentiment-streamlit01--tweet-sentiment-streamlit--cf9fs0.streamlitapp.com/) 
+
+</br>
+
+or watch the video (snapshot from 24th August, 2022):
+
+</br>
+
+[![visualisation Video ](https://img.youtube.com/vi/bHvFifWAr1A/hqdefault.jpg)](https://youtu.be/bHvFifWAr1A)
+
+</br>
+
+---
+
+</br>
+
 ## Table of Contents
 
-- [Abstract](#abstract)
+- This Readme
+    - [Abstract](#abstract)
 
-- [Development Environment](#development-enviroment)
-    - [Code-Editor](#code-editor)
-    - [Environment Setup](#environment-setup)
-    - [Local Development](#local-development)
-    - [Folder-Structure](#folder-structure)
+    - [Development Environment](#development-enviroment)
+        - [Code-Editor](#code-editor)
+        - [Environment Setup](#environment-setup)
+        - [Local Development](#local-development)
+        - [Folder-Structure](#folder-structure)
 
 </br>
 
@@ -36,36 +64,11 @@
 
 - [Appendices](9_Appendices.md)
 
-</br>
-
----
 
 </br>
 
-## Abstract
 
-This project is keen on exploring the connection between the sentiment on a social-media platform about a cryptocurrency and the correlating price.
-
-The approach has been to sample the sentiment from previously collected real-time tweets from Twitter. Afterwards, signals have been derived from these sentiment scores and a trading strategy was built. The system was designed to work in the background, store data in a postgres database and trade on its own. It does this with the help of [Heroku](http://heroku.com) and a Scheduler, that checks every hour, if a trade should be made or not.
-
-All the insights of this project, like tweets, sentiment and trade metrics have been visualised on streamlit and can be seen with the link or in the preview below.
-
-</br>
-
-#### See Real-Time Metrics on Streamlit: [![See Real-Time Metrics on Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://moerv9-sentiment-streamlit01--tweet-sentiment-streamlit--cf9fs0.streamlitapp.com/)
-
-</br>
-Watch the Video (snapshot from 24th August, 2022):
-
-[![visualisation Video ](https://img.youtube.com/vi/bHvFifWAr1A/hqdefault.jpg)](https://youtu.be/bHvFifWAr1A)
-
-</br>
-
----
-
-</br>
-
-## Start with the Documentation
+### Documentation starts here
 
 </br>
 
@@ -183,7 +186,7 @@ Runner(['btc','ada','eth'])) </br>
 
 | **main - Folder** |                            |
 |-------------------|------------------------------------------|
-| config.py         | File to get the Environment-Variabes     |
+| config.py         | File to get the Environment-Variables     |
 | Procfile          | A Heroku file for starting the processes |
 | docs              | Contains the ordered Documentation       |
 
@@ -212,9 +215,9 @@ Runner(['btc','ada','eth'])) </br>
 
 | **streamlit - Folder**      |   |
 |-------------------------|---|
-| 01_💬_Tweet-Sentiment.py | Main File to visualise all the data from tweets, sentiment and trades with Streamlit  |
+| 01_💬_Tweet-Sentiment.py | Main File to visualise all the data from tweets, sentiment and trades with Streamlit (*01...* is streamlit-notation for multiple pages) |
 | financial_data.py       | Functions to get the data from Heroku Database, get prices from Binance and for building Signals  |
-| streamlit_data.py       | Functions to edit the data from the databases: Splitting the Dataframe, calculate average and convert to signals.  |
+| streamlit_data.py       | Functions to edit the data from the databases: Splitting the DataFrame, calculate average and convert to signals.  |
 | visualise.py            | Functions to visualise the price chart and words.   |
 
 

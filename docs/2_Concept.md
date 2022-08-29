@@ -18,7 +18,7 @@ The requirements are structured as functional and non-functional with three cate
 
 </br>
 
-## Functional Requirements
+## Functional Requirements [FR]
 
 ### *Must-Have*
 | **Nr.** | **Description**                                           |
@@ -56,7 +56,7 @@ The requirements are structured as functional and non-functional with three cate
 
 </br>
 
-## Non-Functional Requirements
+## Non-Functional Requirements [NFR]
 ### *Must-Have*
 | **Nr.** | **Description**                                           |
 |---------|-----------------------------------------------------------|

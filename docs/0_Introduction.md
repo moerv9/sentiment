@@ -3,7 +3,7 @@
 
 ## Social Signal Sentiment-Based Prediction for Cryptocurrency Trading.
 
-This Project is supposed to cover two topics:
+This project is supposed to cover two topics:
 It will analyse specific signals in social networks and their impact on trading digital assets, specifically cryptocurrency. This research will be used in a real-world test with the development of a bot that automatically trades cryptocurrency while considering the analysis of social signals.
 
 </br>

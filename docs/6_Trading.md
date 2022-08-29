@@ -134,6 +134,8 @@ Since this looked promising it was implemented to real-time Papertrading in the 
 
 </br>
 
+### Drop duplicates
+
 The [trade](../sentiment/trade.py)-file starts with the essential function to collect all the single tweets from the database and stores them in a pandas DataFrame. This is needed to delete the duplicates with the following methods:
 
 </br>
@@ -152,7 +154,12 @@ df.drop_duplicates(
     )
 ```
 </br>
-Afterwards, the neutral tweets are filtered and the rest are counted and the mean/avg is calculated for a resampled interval of 1h. This means all the timestamps from 1h (p.e. from 16:00 - 17:00) are grouped and a function is applied to all of them. This function could be to summarize, count or calculate the mean/avg. 
+
+### Filtering neutral tweets
+
+Afterwards, the neutral tweets are filtered and the rest are counted and the mean/avg is calculated for a resampled interval of 1h. This means all the timestamps from 1h (e.g. from 16:00 - 17:00) are grouped and a function is applied to all of them. This function could be to summarize, count or calculate the mean/avg. 
+
+</br>
 
 ```
 df = df[df["Sentiment Score"] != 0.0]
