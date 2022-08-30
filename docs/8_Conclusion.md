@@ -8,9 +8,10 @@ It can be said, that all the *Must-Have* and *Should-Have*-Requirements have bee
 The system listens and filters real-time tweets, builds signals from a calculated sentiment and trades based on these signals.
 It can run in the background and stores all important data inside a database and lastly visualises all insightful data on a website.
 
-The use of different strategies and Machine-Learning to improve the strategy couldn't be achieved. Since there were only *Optional*-Requirements, this was accepted.
+The use of different strategies and Machine-Learning to improve the strategy couldn't be achieved. This was accepted, because there were only *optional* requirements.
 
-With [research](1_Research.md) on the used cryptocurrencies and social-media platform and the publication on GitHub, the non-functional requirements have been successfully achieved.
+The non-functional requirements have been successfully achieved by
+[researching](1_Research.md) cryptocurrencies and social-media platforms and publishing this project on GitHub.
 
 </br>
 
@@ -78,14 +79,15 @@ It has been an awesome and interesting project from the start and I have learned
 - Building a whole python project from start to finish by myself
 - Running scripts in the background on cloud provider Heroku
 - Building and adding to a real-time database with Postgres
-- Building a strategy for trading and testing it in real-time inside a sandbox from a crypto brokerage
+- Building a strategy for trading and testing it in real-time inside a sandbox from a crypto broker
+- Data Analysis with Pandas
 - Visualisation with Matplotlib
 
 There are a few things, I would do different next time:
 
-I shouldn't have spent that much time figuring out a beautiful documentation platform ([mkdocs](https://www.mkdocs.org) and [gitbook](https://www.gitbook.com)), that wasn't used in the end, but rather look for a simpler solution, that is easily implemented. 
+I shouldn't have spent that much time figuring out a beautiful documentation platform ([mkdocs](https://www.mkdocs.org) and [gitbook](https://www.gitbook.com)), that wasn't used in the end, but rather look for a simpler solution that is easily implemented. 
 
-Some improvements in time-management are also needed. I would make a better plan with SMART goals that are not too hard to reach, so you can see a lot of progress very fast.
+Some improvements in time-management are also needed. I would make a better plan with SMART goals that are not too hard to reach, so I would see a lot of progress very fast.
 
 I shouldn't have spent that much time on visualisation when most functionality wasn't done yet.
 

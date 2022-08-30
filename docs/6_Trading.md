@@ -3,7 +3,7 @@
 ## Choosing an API
 There are a lot of exchanges for trading cryptocurrencies. Which all have pros and so leads to a comparison of APIs with respect to this project's use case. It is important that the API has a good and easy documentation and an extensive python library/wrapper.
 
-The following table shows the full comparison of five cryptocurrency API's, which was made using this [Article](https://www.abstractapi.com/guides/best-crypto-currency-apis):
+The following table shows the full comparison of five cryptocurrency API's [10]:
 
 
 | **Platform**                                  | [Binance](https://www.binance.com/en/binance-api)                                                                                                                                                       | [CoinBase](https://www.coinbase.com/cloud)                                            | [Kucoin](https://www.kucoin.com/api)                                                                           | [Coinmarketcap](https://coinmarketcap.com/api/)                                                                               | [Kraken](https://docs.kraken.com/rest/)                                                                                                                                                                                      |

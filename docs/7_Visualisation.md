@@ -10,11 +10,10 @@ Actually, Streamlit and [Jupyter Notebooks](9_Appendices.md#j) were used to test
 
 In this project, [Pandas](https://pandas.pydata.org) was used for data analysis and [Matplotlib](https://matplotlib.org) to visualise the data. They both work seamlessly with streamlit.
 
-In the following section are explanations for the single parts that have been visualised on a Website as required in [FR 60](2_Concept.md#should-have).
+In the following section are explanations with screenshots (from the 24th August 2022) for the single parts that have been visualised on a Website [[FR 60](2_Concept.md#should-have)].
 
-Screenshots of the site were taken at 24th August 2022 and are used to explain everything below. 
 
-A video was made to explain the whole visualisation in total (Which is also in the [visualisation](./img/visualisation/) folder).
+A video was made to explain the whole visualisation in total (It is also in the [visualisation](./img/visualisation/) folder).
 
 [![Watch the Video](https://img.youtube.com/vi/bHvFifWAr1A/hqdefault.jpg)](https://youtu.be/bHvFifWAr1A)
 
@@ -30,7 +29,7 @@ A video was made to explain the whole visualisation in total (Which is also in t
 
 ## Final Visualisation
 
-The site starts by explaining what a sentiment is and shows the `last collected Sentiment` and the `correspending Signal`. The site is structured in a way the whole project was planned. First came the collection of tweets, followed by the sentiment analysis and lastly the trading part.
+The site starts by explaining what a sentiment is and shows the `last collected sentiment` and the `correspending signal`. The site is structured in a way the whole project was planned. First came the collection of tweets, followed by the sentiment analysis and lastly the trading part.
 
 ![explanation](./img/visualisation/explanation.png)
 ##### *Figure 24: Explanation and most important Metrics*
@@ -39,7 +38,7 @@ The site starts by explaining what a sentiment is and shows the `last collected 
 
 ### Last collected Tweets
 
-With a slider, the rows of single tweets to retrieve from the database can be adapted (Figure 25). It is basically the same table as in the Data-Acquisition-Section, but now in real-time. It was very good to work with streamlit during the whole development phase to have a look at the current status of the heroku database without needing to go through the whole heroku dashboard (which takes quite a few steps to look at the dataclip of the database).
+With a slider, the rows of single tweets to retrieve from the database can be adapted (Figure 25). It is basically the same table as in the [Data-Acquisition](3_Data%20Acquisition.md#tweet-metrics)-Section, but now in real-time. It was very good to work with streamlit during the whole development phase to have a look at the current status of the heroku database without needing to go through the whole heroku dashboard (which takes quite a few steps to look at the dataclip of the database).
 
 ![last collected tweets](./img/visualisation/last_coll_tweets.png)
 ##### *Figure 25: Last collected tweets with some metrics*
@@ -55,6 +54,8 @@ Over a few days, the average of deleted duplicates has always been around 45%.
 
 > Nearly half of all tweets are duplicates! Presumably by bots.
 
+</br>
+
 This is a very high number and show how many bots are tweeting and trying to influence the opinion about Bitcoin. It has been the most eye-opening fact from this project.
 The cake diagram on the left shows the sentiment for the last timeframe. It corresponds to the first line from the table on the right. Neutral tweets have been removed as being explained in [Sentiment](5_Sentiment.md#more-filters).
 The table shows the last five time periods with the calculated sentiment average and total tweets. This was the base for the trading-part.
@@ -69,7 +70,7 @@ The table shows the last five time periods with the calculated sentiment average
 The wordcloud on the left visualises the usage and frequency of words in all the tweets from the last time period. 
 
 In the middle, the usage of words which signal a buy- or sell-signal is shown. 
-It stems from the following Subdivision of Words:
+It stems from the following subdivision of words:
 
 | BUY-Signal       | SELL-Signal          |
 |------------------|----------------------|
@@ -93,9 +94,10 @@ It stems from the following Subdivision of Words:
 
 </br>
 
-It is very interesting to see that most of the words at this time were positive and signaling a buy trade in comparison to the overall negative sentiment of all tweets. 
 
-It would be a good idea to build a strategy based on the usage of these words and compare it to the overall sentiment-strategy. Out of time shortage, this couldn't be implemented during this project. 
+This word analysis was primarily done to eventually build a strategy based on the usage of these words and compare it to the overall sentiment-strategy. Out of time shortage, this couldn't be implemented during this project, but lead to some interesting insights.
+
+The overall sentiment of all tweets was negative, but most of the above used words signaled a buy-trade (Figure 27).
 
 ![word analysis](./img/visualisation/word_analysis.png)
 ##### *Figure 27: Word Metrics*
@@ -109,16 +111,21 @@ The trading was started on the 16th August 2022 and after 8 days, a total of 90 
 
 As being said in [Challenges](6_Trading.md#different-sandbox-prices) in the Trading-Section, the sandbox price is different from the real price of bitcoin. It was attempted to find a factor, but the sandbox price has unusual and incomprehensible price movements. This meant, the results could not be evaluated that easily. At the time of writing (24th August, 9:46) the holdings in bitcoin equalled 250$, which would lead to a total loss of 2965 $. 
 
+
 ![account metrics](./img/visualisation/acc_metrics.png)
 ##### *Figure 28: Kucoin Account Metrics*
 </br>
 
-Figure 28 shows the last trades, visualised with the corresponding real-time bitcoin price. Working with Matplotlib to visualise the data has been an essential part for understanding the collected data and make predictions. 
+Figure 29 shows the last trades, visualised with the corresponding real-time bitcoin price. Working with Matplotlib to visualise the data has been an essential part for understanding the collected data and make predictions. 
 
 A valuable statement can be made with this chart:
 
 > The sentiment about bitcoin on twitter is as volatile as the bitcoin price.
 
+</br>
+
+![last trades chart](./img/visualisation/last_trades_chart.png)
+##### *Figure 29: Chart of last trades*
 </br>
 
 Buying at the lowest price and selling at the highest is the ultimate goal of trading. Since this is achieved very rarely and near impossible to persevere, fast trading looks for indicators to buy or sell quickly. Long-Term Investors on the other hand normally ride out short-time losses. 
@@ -127,9 +134,7 @@ The strategy here was very simple and did not really take into account if a posi
 
 This could be one way to improve the strategy. As can be seen below, a lot of trades are made during the day, because the system is scheduled to act every hour. If there wasn't that much price movement in Bitcoin, the trading times would be spread wider apart. For example, every 6 or even 12 hours. But this would mean that the calculated average moves more to *neutral*, which would decrease the significance of the score.
 
-![last trades chart](./img/visualisation/last_trades_chart.png)
-##### *Figure 29: Chart of last trades*
-</br>
+
 
 Figure 30 shows the list of all trades with some more metrics.
 The first column shows if the trade was a buy or a sell. 
@@ -137,9 +142,13 @@ The first column shows if the trade was a buy or a sell.
 The balances are taken **after** the trade. 
 The fee is very important if it comes to a more detailed calculation of Profit-And-Loss, as being said by Garcia and Schweitzer:
 
+</br>
+
 > “Trading costs can potentially erode the profitability of trading strategies, especially if they require many movements." [3]
 
-At this point and after nearly `90` trades, the total fees are about 10$, which is neglectable. 
+</br>
+
+At this point and after nearly `90` trades, the total fees are about 10$, which is negligible.
 
 </br>
 
@@ -148,6 +157,7 @@ At this point and after nearly `90` trades, the total fees are about 10$, which 
 </br>
 
 Summing up, there is a lot of improvement for different strategies to trade cryptocurrency based on the sentiment, but the foundation of all the technological necessities has been set.
+Visualising these metrics has been very insightful and helped a lot when figuring out the next steps and see what happens in the background. This way of development was similar to test-driven-development, because it allowed for easy debugging and testing locally before deploying to the real-time release.
 
 </br>
 
