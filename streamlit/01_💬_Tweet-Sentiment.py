@@ -82,6 +82,7 @@ if not hide_most_important_metrics:
 # section with dataframe for last collected tweets
 if not hide_single_tweets:
     st.subheader("Last collected Tweets")
+    st.text("The table below shows all the data that is collected with the Twitter API.")
     rows = st.slider("Rows to retrieve:",step=5,min_value=5,max_value=500,value=5)
     st.dataframe(df.head(rows))
     st.markdown("---")
@@ -176,7 +177,7 @@ if not hide_trades:
         st.warning("Price Data couldn't be displayed. Reloading with 'R' might fix it.")
         print(f"Chart Exception: {e}")
     st.write("#")
-    with st.expander("Show Trade List"):
+    with st.expander("Have a look at each trade."):
         st.text("Last Trades")
         important_df_trades = df_trades.copy()
         important_df_trades["avg from"] = important_df_trades.index
@@ -189,11 +190,11 @@ if not hide_trades:
 st.write("#")
 
 if not hide_acc_balance:
-    st.subheader("Account Balance")
+    st.subheader("Account Balance over time")
     pnl_df = calc_pnl(df_trades)
     visualise_acc_balance(pnl_df)
     st.write("#")
-    with st.expander("Show Account Balance Table"):
+    with st.expander("Have a look at the account balances after each trade."):
         st.dataframe(pnl_df)
     
         
