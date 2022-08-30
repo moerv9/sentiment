@@ -26,6 +26,8 @@ https://www.octoparse.com/blog/5-things-you-need-to-know-before-scraping-data-fr
 
 [10] https://www.abstractapi.com/guides/best-crypto-currency-apis
 
+[11] https://www.bloomberg.com/news/articles/2022-07-07/twitter-reiterates-that-spam-bots-are-well-under-5-of-users
+
 ---
 
 </br>

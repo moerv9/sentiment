@@ -50,13 +50,46 @@ With a slider, the rows of single tweets to retrieve from the database can be ad
 
 Figure 26 shows some metrics about sentiment. At the date of collection (24-08-2022), a total of 40k Tweets were collected in the past four days and 8273 in the past 24h. The average follower count was 13.314, which is okay, considered only accounts under 500 followers are filtered. It means there are quite a lot of accounts with a high follower account, speaking for a high quality of tweets.
 
-Over a few days, the average of deleted duplicates has always been around 45%.
+</br>
 
-> Nearly half of all tweets are duplicates! Presumably by bots.
+> More than a quarter of all tweets are duplicates! Presumably posted by bots.
 
 </br>
 
-This is a very high number and show how many bots are tweeting and trying to influence the opinion about Bitcoin. It has been the most eye-opening fact from this project.
+In the [Data-Acquisition](3_Data%20Acquisition.md#duplicates)-Section it was already seen, that more than half of all tweets were duplicates. But because this was only a snapshot from one single moment, a further analysis over a longer period of time had to be made. 
+
+The Results from looking for duplicates at two time periods from the whole database were as follows:
+
+```
+Time period 1: 1st August - 12th August
+30731 duplicates in 100000 tweets from 20113 users.
+
+time period: 20th August - 27th August
+26604 duplicates in 100000 tweets from 17690 users.
+```
+</br>
+
+More than a quarter of tweets were duplicates and unique users were 20 % or less. 
+In other words: 
+
+> Nearly a third of all tweets were coming from the same 80% of accounts.
+
+</br>
+
+These two values are not as high as 42 % (Figure 26), but show that there are many bots tweeting and trying to influence the opinion about Bitcoin. It has been the most eye-opening fact from this project.
+
+It is particularly interesting because Elon Musk's attempt from April 2022 to buy Twitter is on hold because Twitter will not publish evidence about how they calculate the amount of bots on Twitter:
+
+</br>
+
+> "Twitter has repeatedly said that spam bots represent less than 5% of its total user base. Musk, meanwhile, has complained that the number is much higher, and has threatened to walk away from his agreement to buy the company for $44 billion until he gets confirmation about Twitter’s bot percentage." [11]
+
+</br>
+
+If this project could easily find an indicator for the amount of bots, it makes you wonder why Twitter can't or better **won't** say, how many bots are on their platform. 
+
+</br>
+
 The cake diagram on the left shows the sentiment for the last timeframe. It corresponds to the first line from the table on the right. Neutral tweets have been removed as being explained in [Sentiment](5_Sentiment.md#more-filters).
 The table shows the last five time periods with the calculated sentiment average and total tweets. This was the base for the trading-part.
 
@@ -109,18 +142,18 @@ The overall sentiment of all tweets was negative, but most of the above used wor
 For the trading part the first thing to have a look at are the most important metrics.
 The trading was started on the 16th August 2022 and after 8 days, a total of 90 trades were executed. The current holdings stood at 1785 $ USDT and the Bitcoin Balance was 0.0117 ₿ Bitcoin. 
 
-As being said in [Challenges](6_Trading.md#different-sandbox-prices) in the Trading-Section, the sandbox price is different from the real price of bitcoin. It was attempted to find a factor, but the sandbox price has unusual and incomprehensible price movements. This meant, the results could not be evaluated that easily. At the time of writing (24th August, 9:46) the holdings in bitcoin equalled 250$, which would lead to a total loss of 2965 $. 
+As being said in [Challenges](6_Trading.md#different-sandbox-prices) in the Trading-Section, the sandbox price is different from the real price of Bitcoin. It was attempted to find a factor, but the sandbox price has unusual and incomprehensible price movements. This meant, the results could not be evaluated that easily. At the time of writing (24th August, 9:46) the holdings in Bitcoin equalled 250$, which would lead to a total loss of 2965 $. 
 
 
 ![account metrics](./img/visualisation/acc_metrics.png)
 ##### *Figure 28: Kucoin Account Metrics*
 </br>
 
-Figure 29 shows the last trades, visualised with the corresponding real-time bitcoin price. Working with Matplotlib to visualise the data has been an essential part for understanding the collected data and make predictions. 
+Figure 29 shows the last trades, visualised with the corresponding real-time Bitcoin price. Working with Matplotlib to visualise the data has been an essential part for understanding the collected data and make predictions. 
 
 A valuable statement can be made with this chart:
 
-> The sentiment about bitcoin on twitter is as volatile as the bitcoin price.
+> The sentiment about Bitcoin on Twitter is as volatile as the Bitcoin price.
 
 </br>
 
@@ -134,19 +167,11 @@ The strategy here was very simple and did not really take into account if a posi
 
 This could be one way to improve the strategy. As can be seen below, a lot of trades are made during the day, because the system is scheduled to act every hour. If there wasn't that much price movement in Bitcoin, the trading times would be spread wider apart. For example, every 6 or even 12 hours. But this would mean that the calculated average moves more to *neutral*, which would decrease the significance of the score.
 
-
-
 Figure 30 shows the list of all trades with some more metrics.
 The first column shows if the trade was a buy or a sell. 
 "TradeAt", "Avg" and "AvgFrom" are self-explanatory.
 The balances are taken **after** the trade. 
-The fee is very important if it comes to a more detailed calculation of Profit-And-Loss, as being said by Garcia and Schweitzer:
-
-</br>
-
-> “Trading costs can potentially erode the profitability of trading strategies, especially if they require many movements." [3]
-
-</br>
+The fee is very important if it comes to a more detailed calculation of Profit-And-Loss, as being stated in the Introduction.
 
 At this point and after nearly `90` trades, the total fees are about 10$, which is negligible.
 

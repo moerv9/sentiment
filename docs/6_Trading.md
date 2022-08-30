@@ -121,7 +121,7 @@ This is why the threshold is set to 0.2.
 </br> 
 
 ## Papertrading  
-The image below shows the sentiment and bitcoin price from August 5th till August 6th. If the sentiment is above 0.2 (positive or very positive) it is marked as a buy signal in the chart (green triangle).
+The image below shows the sentiment and Bitcoin price from August 5th till August 6th. If the sentiment is above 0.2 (positive or very positive) it is marked as a buy signal in the chart (green triangle).
 Since this looked promising it was implemented to real-time papertrading in the Kucoin Sandbox [FR 40](2_Concept.md#must-have).
 
 </br>
@@ -185,7 +185,7 @@ And these last three timestamps are important for the trading. The first row is 
 This is why the second row will be selected as the trading decision. Firstly, it will be checked if a trade was already made for this timestamp.
 Then, if the signal indicates buy, a market order will be created with 5% of the available USDT Balance (after a check, if there are any funds available).
 
-A sell order will sell a quarter of the current bitcoin holdings.
+A sell order will sell a quarter of the current Bitcoin holdings.
 
 At last, some metrics from the trade are uploaded into a separate table on Heroku for a better overview of the trades and later calculation of current Profit and Loss (PNL).
 An excerpt from this table is shown below in figure 17. It contains the sentiment average and the time period, as well as information about the trade itself. The last balances are actually the balances after the trade was made. So, it is possible, to look back at all the balances without gaps. 
@@ -250,7 +250,7 @@ As can be seen in figure 19 below, the USDT and BTC Balance are switched, and th
 ### Different Sandbox Prices
 The biggest challenge came with the sandbox. All the trading worked perfectly, but it was weird to see that the first trade of 250 $ equalled a BTC amount of 0.06, which would be more than 1300 $. This didn't make any sense.
 
-Since these different prices were not prone to bitcoin alone, but all coins had different prices in the sandbox, the Kucoin Support was contacted.
+Since these different prices were not prone to Bitcoin alone, but all coins had different prices in the sandbox, the Kucoin Support was contacted.
 
 The answer (figure 21), confirmed that the prices in the sandbox are just different, and another solution was needed.
 

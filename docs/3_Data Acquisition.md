@@ -196,8 +196,12 @@ Unfortunately this lead to the following problem:
 
 Firstly, even though this function found and deleted some duplicates nearly every time it was called, checking only 40 tweets at a time is not sufficient to delete **all** duplicates.
 
-When applying this function to the whole database, it deleted 17318 duplicates from a total of 32698. More than 50% duplicate Tweets is massive! This would've deflected the calculation of the sentiment significantly. 
-This lead to the decision to apply the deletion of duplicates for the entire database before calculation of the sentiment. 
+When applying this function to the whole database, it deleted 17318 duplicates from a total of 32698. 
+
+> More than 50% of tweets are **duplicates**. That is massive!
+
+This would've deflected the calculation of the sentiment significantly. 
+This lead to the decision to apply the deletion of duplicates for the entire database before calculating the sentiment. 
 
 </br>
 
