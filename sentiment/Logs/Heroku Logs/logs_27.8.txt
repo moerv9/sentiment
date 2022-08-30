@@ -1,0 +1,1497 @@
+2022-08-23T19:00:19.859988+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-23T19:00:36.241983+00:00 app[scheduler.5626]: Selling for 0.01655
+2022-08-23T19:00:36.655426+00:00 app[scheduler.5626]: SELL ORDER executed with 0.01655 at 2022-08-23 19:00:36.655364
+2022-08-23T19:00:47.631735+00:00 app[scheduler.5626]: New Balances: 1695.20216432 $ and 0.04966404 btc.
+2022-08-23T19:00:47.632850+00:00 app[scheduler.5626]: Added Trade to Heroku DB
+2022-08-23T19:00:47.987410+00:00 heroku[scheduler.5626]: Process exited with status 0
+2022-08-23T19:00:48.070932+00:00 heroku[scheduler.5626]: State changed from up to complete
+2022-08-23T20:01:27.378574+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-23T20:01:39.064574+00:00 heroku[scheduler.2580]: Starting process with command `python sentiment/trade.py`
+2022-08-23T20:01:39.829543+00:00 heroku[scheduler.2580]: State changed from starting to up
+2022-08-23T20:01:44.198386+00:00 app[scheduler.2580]: Getting data from Today
+2022-08-23T20:01:44.200490+00:00 app[scheduler.2580]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-23T20:01:44.200491+00:00 app[scheduler.2580]: warnings.warn(
+2022-08-23T20:01:44.347137+00:00 app[scheduler.2580]: Deleted 2124 duplicates from a total of 9111
+2022-08-23T20:01:44.370535+00:00 app[scheduler.2580]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-23T20:01:44.370539+00:00 app[scheduler.2580]: warnings.warn(
+2022-08-23T20:01:44.372983+00:00 app[scheduler.2580]: Check if a trade exists for 2022-08-23 21:00:00
+2022-08-23T20:01:44.372994+00:00 app[scheduler.2580]: Last Trade at: 2022-08-23 21:00:00
+2022-08-23T20:01:44.373007+00:00 app[scheduler.2580]: Trade already made for 2022-08-23 21:00:00
+2022-08-23T20:01:44.653336+00:00 heroku[scheduler.2580]: Process exited with status 0
+2022-08-23T20:01:44.815650+00:00 heroku[scheduler.2580]: State changed from up to complete
+2022-08-23T21:01:01.062184+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-23T21:01:12.570608+00:00 heroku[scheduler.9574]: Starting process with command `python sentiment/trade.py`
+2022-08-23T21:01:13.428929+00:00 heroku[scheduler.9574]: State changed from starting to up
+2022-08-23T21:01:16.682682+00:00 app[scheduler.9574]: Getting data from Today
+2022-08-23T21:01:16.685206+00:00 app[scheduler.9574]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-23T21:01:16.685207+00:00 app[scheduler.9574]: warnings.warn(
+2022-08-23T21:01:16.908716+00:00 app[scheduler.9574]: Deleted 2235 duplicates from a total of 9663
+2022-08-23T21:01:16.928590+00:00 app[scheduler.9574]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-23T21:01:16.928591+00:00 app[scheduler.9574]: warnings.warn(
+2022-08-23T21:01:16.931053+00:00 app[scheduler.9574]: Check if a trade exists for 2022-08-23 21:00:00
+2022-08-23T21:01:16.931058+00:00 app[scheduler.9574]: Last Trade at: 2022-08-23 21:00:00
+2022-08-23T21:01:16.931069+00:00 app[scheduler.9574]: Trade already made for 2022-08-23 21:00:00
+2022-08-23T21:01:17.276854+00:00 heroku[scheduler.9574]: Process exited with status 0
+2022-08-23T21:01:17.398401+00:00 heroku[scheduler.9574]: State changed from up to complete
+2022-08-23T22:01:15.312562+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-23T22:01:28.701565+00:00 heroku[scheduler.2888]: Starting process with command `python sentiment/trade.py`
+2022-08-23T22:01:29.706329+00:00 heroku[scheduler.2888]: State changed from starting to up
+2022-08-23T22:01:32.906868+00:00 app[scheduler.2888]: Getting data from Today
+2022-08-23T22:01:32.932471+00:00 app[scheduler.2888]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-23T22:01:32.932477+00:00 app[scheduler.2888]: warnings.warn(
+2022-08-23T22:01:33.186161+00:00 app[scheduler.2888]: Deleted 2346 duplicates from a total of 10272
+2022-08-23T22:01:33.214989+00:00 app[scheduler.2888]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-23T22:01:33.214991+00:00 app[scheduler.2888]: warnings.warn(
+2022-08-23T22:01:33.220773+00:00 app[scheduler.2888]: Check if a trade exists for 2022-08-23 22:00:00
+2022-08-23T22:01:33.220811+00:00 app[scheduler.2888]: Last Trade at: 2022-08-23 21:00:00
+2022-08-23T22:01:33.220886+00:00 app[scheduler.2888]: No Trade. Starting Trade for 2022-08-23 22:00:00
+2022-08-23T22:01:33.563580+00:00 app[scheduler.2888]: Starting trade process at 2022-08-23 22:01:33.563521
+2022-08-23T22:01:33.563652+00:00 app[scheduler.2888]: Sent Avg: 0.17898440779610195
+2022-08-23T22:01:33.563672+00:00 app[scheduler.2888]: USDT Balance: 1695.20216432 $
+2022-08-23T22:01:33.563682+00:00 app[scheduler.2888]: BTC Balance: 0.04966404
+2022-08-23T22:01:33.563699+00:00 app[scheduler.2888]: Selling for 0.01242
+2022-08-23T22:01:34.290796+00:00 app[scheduler.2888]: SELL ORDER executed with 0.01242 at 2022-08-23 22:01:34.290719
+2022-08-23T22:01:46.632567+00:00 app[scheduler.2888]: New Balances: 1732.42490432 $ and 0.03724404 btc.
+2022-08-23T22:01:46.634091+00:00 app[scheduler.2888]: Added Trade to Heroku DB
+2022-08-23T22:01:46.947899+00:00 heroku[scheduler.2888]: Process exited with status 0
+2022-08-23T22:01:47.299900+00:00 heroku[scheduler.2888]: State changed from up to complete
+2022-08-23T23:00:23.372218+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-23T23:00:34.468980+00:00 heroku[scheduler.1580]: Starting process with command `python sentiment/trade.py`
+2022-08-23T23:00:35.167157+00:00 heroku[scheduler.1580]: State changed from starting to up
+2022-08-23T23:00:38.523074+00:00 app[scheduler.1580]: Getting data from Today
+2022-08-23T23:00:38.525544+00:00 app[scheduler.1580]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-23T23:00:38.525545+00:00 app[scheduler.1580]: warnings.warn(
+2022-08-23T23:00:38.716142+00:00 app[scheduler.1580]: Deleted 2478 duplicates from a total of 10892
+2022-08-23T23:00:38.751297+00:00 app[scheduler.1580]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-23T23:00:38.751298+00:00 app[scheduler.1580]: warnings.warn(
+2022-08-23T23:00:38.755106+00:00 app[scheduler.1580]: Check if a trade exists for 2022-08-23 23:00:00
+2022-08-23T23:00:38.755108+00:00 app[scheduler.1580]: Last Trade at: 2022-08-23 22:00:00
+2022-08-23T23:00:38.755128+00:00 app[scheduler.1580]: No Trade. Starting Trade for 2022-08-23 23:00:00
+2022-08-23T23:00:39.078270+00:00 app[scheduler.1580]: Starting trade process at 2022-08-23 23:00:39.078176
+2022-08-23T23:00:39.078643+00:00 app[scheduler.1580]: Sent Avg: 0.20720332749562173
+2022-08-23T23:00:39.078699+00:00 app[scheduler.1580]: USDT Balance: 1732.42490432 $
+2022-08-23T23:00:39.078726+00:00 app[scheduler.1580]: BTC Balance: 0.03724404
+2022-08-23T23:00:39.078777+00:00 app[scheduler.1580]: Selling for 0.00931
+2022-08-23T23:00:39.455310+00:00 app[scheduler.1580]: SELL ORDER executed with 0.00931 at 2022-08-23 23:00:39.455230
+2022-08-23T23:00:49.925972+00:00 app[scheduler.1580]: New Balances: 1760.32697432 $ and 0.02793404 btc.
+2022-08-23T23:00:49.927666+00:00 app[scheduler.1580]: Added Trade to Heroku DB
+2022-08-23T23:00:50.314687+00:00 heroku[scheduler.1580]: Process exited with status 0
+2022-08-23T23:00:50.392021+00:00 heroku[scheduler.1580]: State changed from up to complete
+2022-08-24T00:01:24.497157+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T00:01:37.948605+00:00 heroku[scheduler.8203]: Starting process with command `python sentiment/trade.py`
+2022-08-24T00:01:38.710653+00:00 heroku[scheduler.8203]: State changed from starting to up
+2022-08-24T00:01:43.770149+00:00 app[scheduler.8203]: Getting data from Today
+2022-08-24T00:01:43.773302+00:00 app[scheduler.8203]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T00:01:43.773303+00:00 app[scheduler.8203]: warnings.warn(
+2022-08-24T00:01:43.847601+00:00 app[scheduler.8203]: Exception at 2022-08-24 00:01:43.847508: 'Float64Index' object has no attribute 'floor'
+2022-08-24T00:01:44.265122+00:00 heroku[scheduler.8203]: Process exited with status 0
+2022-08-24T00:01:44.418057+00:00 heroku[scheduler.8203]: State changed from up to complete
+2022-08-24T01:00:53.607320+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T01:01:09.190585+00:00 heroku[scheduler.6967]: Starting process with command `python sentiment/trade.py`
+2022-08-24T01:01:10.096676+00:00 heroku[scheduler.6967]: State changed from starting to up
+2022-08-24T01:01:14.274109+00:00 app[scheduler.6967]: Getting data from Today
+2022-08-24T01:01:14.276509+00:00 app[scheduler.6967]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T01:01:14.276511+00:00 app[scheduler.6967]: warnings.warn(
+2022-08-24T01:01:14.364018+00:00 app[scheduler.6967]: Deleted 36 duplicates from a total of 245
+2022-08-24T01:01:14.391847+00:00 app[scheduler.6967]: Exception at 2022-08-24 01:01:14.391764: single positional indexer is out-of-bounds
+2022-08-24T01:01:14.768166+00:00 heroku[scheduler.6967]: Process exited with status 0
+2022-08-24T01:01:15.163640+00:00 heroku[scheduler.6967]: State changed from up to complete
+2022-08-24T02:00:42.840748+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T02:00:54.492691+00:00 heroku[scheduler.5965]: Starting process with command `python sentiment/trade.py`
+2022-08-24T02:00:55.111878+00:00 heroku[scheduler.5965]: State changed from starting to up
+2022-08-24T02:00:58.500730+00:00 app[scheduler.5965]: Getting data from Today
+2022-08-24T02:00:58.503607+00:00 app[scheduler.5965]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T02:00:58.503608+00:00 app[scheduler.5965]: warnings.warn(
+2022-08-24T02:00:58.659450+00:00 app[scheduler.5965]: Deleted 180 duplicates from a total of 848
+2022-08-24T02:00:58.685142+00:00 app[scheduler.5965]: Exception at 2022-08-24 02:00:58.685065: single positional indexer is out-of-bounds
+2022-08-24T02:00:59.019524+00:00 heroku[scheduler.5965]: Process exited with status 0
+2022-08-24T02:00:59.095327+00:00 heroku[scheduler.5965]: State changed from up to complete
+2022-08-24T03:00:43.474439+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T03:00:54.720069+00:00 heroku[scheduler.1086]: Starting process with command `python sentiment/trade.py`
+2022-08-24T03:00:55.389701+00:00 heroku[scheduler.1086]: State changed from starting to up
+2022-08-24T03:01:00.933663+00:00 app[scheduler.1086]: Getting data from Today
+2022-08-24T03:01:00.936400+00:00 app[scheduler.1086]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T03:01:00.936401+00:00 app[scheduler.1086]: warnings.warn(
+2022-08-24T03:01:01.675214+00:00 app[scheduler.1086]: Deleted 355 duplicates from a total of 1448
+2022-08-24T03:01:01.700599+00:00 app[scheduler.1086]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T03:01:01.700601+00:00 app[scheduler.1086]: warnings.warn(
+2022-08-24T03:01:01.704015+00:00 app[scheduler.1086]: Check if a trade exists for 2022-08-24 03:00:00
+2022-08-24T03:01:01.704031+00:00 app[scheduler.1086]: Last Trade at: 2022-08-23 23:00:00
+2022-08-24T03:01:01.704067+00:00 app[scheduler.1086]: No Trade. Starting Trade for 2022-08-24 03:00:00
+2022-08-24T03:01:02.060812+00:00 app[scheduler.1086]: Starting trade process at 2022-08-24 03:01:02.060746
+2022-08-24T03:01:02.060860+00:00 app[scheduler.1086]: Sent Avg: 0.16457086466165413
+2022-08-24T03:01:02.060880+00:00 app[scheduler.1086]: USDT Balance: 1760.32697432 $
+2022-08-24T03:01:02.060891+00:00 app[scheduler.1086]: BTC Balance: 0.02793404
+2022-08-24T03:01:02.060906+00:00 app[scheduler.1086]: Selling for 0.00698
+2022-08-24T03:01:02.494533+00:00 app[scheduler.1086]: SELL ORDER executed with 0.00698 at 2022-08-24 03:01:02.494472
+2022-08-24T03:01:13.766248+00:00 app[scheduler.1086]: New Balances: 1781.24603432 $ and 0.02095404 btc.
+2022-08-24T03:01:13.767347+00:00 app[scheduler.1086]: Added Trade to Heroku DB
+2022-08-24T03:01:14.137962+00:00 heroku[scheduler.1086]: Process exited with status 0
+2022-08-24T03:01:14.225602+00:00 heroku[scheduler.1086]: State changed from up to complete
+2022-08-24T04:00:59.187104+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T04:01:11.083589+00:00 heroku[scheduler.9077]: Starting process with command `python sentiment/trade.py`
+2022-08-24T04:01:11.774388+00:00 heroku[scheduler.9077]: State changed from starting to up
+2022-08-24T04:01:14.827507+00:00 app[scheduler.9077]: Getting data from Today
+2022-08-24T04:01:14.829432+00:00 app[scheduler.9077]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T04:01:14.829433+00:00 app[scheduler.9077]: warnings.warn(
+2022-08-24T04:01:14.960413+00:00 app[scheduler.9077]: Deleted 484 duplicates from a total of 1980
+2022-08-24T04:01:14.978078+00:00 app[scheduler.9077]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T04:01:14.978080+00:00 app[scheduler.9077]: warnings.warn(
+2022-08-24T04:01:14.980205+00:00 app[scheduler.9077]: Check if a trade exists for 2022-08-24 03:00:00
+2022-08-24T04:01:14.980208+00:00 app[scheduler.9077]: Last Trade at: 2022-08-24 03:00:00
+2022-08-24T04:01:14.980237+00:00 app[scheduler.9077]: Trade already made for 2022-08-24 03:00:00
+2022-08-24T04:01:15.264384+00:00 heroku[scheduler.9077]: Process exited with status 0
+2022-08-24T04:01:15.522751+00:00 heroku[scheduler.9077]: State changed from up to complete
+2022-08-24T05:00:36.793736+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T05:00:48.331180+00:00 heroku[scheduler.7790]: Starting process with command `python sentiment/trade.py`
+2022-08-24T05:00:49.163887+00:00 heroku[scheduler.7790]: State changed from starting to up
+2022-08-24T05:00:52.635130+00:00 app[scheduler.7790]: Getting data from Today
+2022-08-24T05:00:52.637375+00:00 app[scheduler.7790]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T05:00:52.637377+00:00 app[scheduler.7790]: warnings.warn(
+2022-08-24T05:00:52.861777+00:00 app[scheduler.7790]: Deleted 592 duplicates from a total of 2488
+2022-08-24T05:00:52.878166+00:00 app[scheduler.7790]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T05:00:52.878168+00:00 app[scheduler.7790]: warnings.warn(
+2022-08-24T05:00:52.880720+00:00 app[scheduler.7790]: Check if a trade exists for 2022-08-24 04:00:00
+2022-08-24T05:00:52.880724+00:00 app[scheduler.7790]: Last Trade at: 2022-08-24 03:00:00
+2022-08-24T05:00:52.880746+00:00 app[scheduler.7790]: No Trade. Starting Trade for 2022-08-24 04:00:00
+2022-08-24T05:00:53.186814+00:00 app[scheduler.7790]: Starting trade process at 2022-08-24 05:00:53.186757
+2022-08-24T05:00:53.186865+00:00 app[scheduler.7790]: Sent Avg: 0.17732193158953724
+2022-08-24T05:00:53.186884+00:00 app[scheduler.7790]: USDT Balance: 1781.24603432 $
+2022-08-24T05:00:53.186903+00:00 app[scheduler.7790]: BTC Balance: 0.02095404
+2022-08-24T05:00:53.186918+00:00 app[scheduler.7790]: Selling for 0.00524
+2022-08-24T05:00:53.530275+00:00 app[scheduler.7790]: SELL ORDER executed with 0.00524 at 2022-08-24 05:00:53.530215
+2022-08-24T05:01:04.714344+00:00 app[scheduler.7790]: New Balances: 1783.50745064 $ and 0.01571404 btc.
+2022-08-24T05:01:04.715528+00:00 app[scheduler.7790]: Added Trade to Heroku DB
+2022-08-24T05:01:05.072859+00:00 heroku[scheduler.7790]: Process exited with status 0
+2022-08-24T05:01:05.117329+00:00 heroku[scheduler.7790]: State changed from up to complete
+2022-08-24T06:00:08.750162+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T06:00:19.532212+00:00 heroku[scheduler.7339]: Starting process with command `python sentiment/trade.py`
+2022-08-24T06:00:20.229109+00:00 heroku[scheduler.7339]: State changed from starting to up
+2022-08-24T06:00:24.726919+00:00 app[scheduler.7339]: Getting data from Today
+2022-08-24T06:00:24.730119+00:00 app[scheduler.7339]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T06:00:24.730120+00:00 app[scheduler.7339]: warnings.warn(
+2022-08-24T06:00:24.883109+00:00 app[scheduler.7339]: Deleted 727 duplicates from a total of 2973
+2022-08-24T06:00:24.910006+00:00 app[scheduler.7339]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T06:00:24.910007+00:00 app[scheduler.7339]: warnings.warn(
+2022-08-24T06:00:24.913007+00:00 app[scheduler.7339]: Check if a trade exists for 2022-08-24 04:00:00
+2022-08-24T06:00:24.913027+00:00 app[scheduler.7339]: Last Trade at: 2022-08-24 04:00:00
+2022-08-24T06:00:24.913028+00:00 app[scheduler.7339]: Trade already made for 2022-08-24 04:00:00
+2022-08-24T06:00:25.211476+00:00 heroku[scheduler.7339]: Process exited with status 0
+2022-08-24T06:00:25.280714+00:00 heroku[scheduler.7339]: State changed from up to complete
+2022-08-24T07:00:44.566583+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T07:00:57.317536+00:00 heroku[scheduler.5906]: Starting process with command `python sentiment/trade.py`
+2022-08-24T07:00:58.060195+00:00 heroku[scheduler.5906]: State changed from starting to up
+2022-08-24T07:01:01.282613+00:00 app[scheduler.5906]: Getting data from Today
+2022-08-24T07:01:01.284830+00:00 app[scheduler.5906]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T07:01:01.284830+00:00 app[scheduler.5906]: warnings.warn(
+2022-08-24T07:01:02.152987+00:00 app[scheduler.5906]: Deleted 871 duplicates from a total of 3504
+2022-08-24T07:01:02.170652+00:00 app[scheduler.5906]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T07:01:02.170654+00:00 app[scheduler.5906]: warnings.warn(
+2022-08-24T07:01:02.172864+00:00 app[scheduler.5906]: Check if a trade exists for 2022-08-24 05:00:00
+2022-08-24T07:01:02.172868+00:00 app[scheduler.5906]: Last Trade at: 2022-08-24 04:00:00
+2022-08-24T07:01:02.172887+00:00 app[scheduler.5906]: No Trade. Starting Trade for 2022-08-24 05:00:00
+2022-08-24T07:01:02.994905+00:00 app[scheduler.5906]: Starting trade process at 2022-08-24 07:01:02.994830
+2022-08-24T07:01:02.994968+00:00 app[scheduler.5906]: Sent Avg: 0.183570893970894
+2022-08-24T07:01:02.994993+00:00 app[scheduler.5906]: USDT Balance: 1783.50745064 $
+2022-08-24T07:01:02.995007+00:00 app[scheduler.5906]: BTC Balance: 0.01571404
+2022-08-24T07:01:02.995027+00:00 app[scheduler.5906]: Selling for 0.00393
+2022-08-24T07:01:03.347978+00:00 app[scheduler.5906]: SELL ORDER executed with 0.00393 at 2022-08-24 07:01:03.347920
+2022-08-24T07:01:13.777786+00:00 app[scheduler.5906]: New Balances: 1785.19958681 $ and 0.01178404 btc.
+2022-08-24T07:01:13.778898+00:00 app[scheduler.5906]: Added Trade to Heroku DB
+2022-08-24T07:01:14.071636+00:00 heroku[scheduler.5906]: Process exited with status 0
+2022-08-24T07:01:14.291887+00:00 heroku[scheduler.5906]: State changed from up to complete
+2022-08-24T08:01:27.208579+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T08:01:42.627638+00:00 heroku[scheduler.3620]: Starting process with command `python sentiment/trade.py`
+2022-08-24T08:01:43.553378+00:00 heroku[scheduler.3620]: State changed from starting to up
+2022-08-24T08:01:47.075293+00:00 app[scheduler.3620]: Getting data from Today
+2022-08-24T08:01:47.079099+00:00 app[scheduler.3620]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T08:01:47.079100+00:00 app[scheduler.3620]: warnings.warn(
+2022-08-24T08:01:47.222978+00:00 app[scheduler.3620]: Deleted 958 duplicates from a total of 3883
+2022-08-24T08:01:47.251511+00:00 app[scheduler.3620]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T08:01:47.251518+00:00 app[scheduler.3620]: warnings.warn(
+2022-08-24T08:01:47.254734+00:00 app[scheduler.3620]: Check if a trade exists for 2022-08-24 05:00:00
+2022-08-24T08:01:47.254746+00:00 app[scheduler.3620]: Last Trade at: 2022-08-24 05:00:00
+2022-08-24T08:01:47.254766+00:00 app[scheduler.3620]: Trade already made for 2022-08-24 05:00:00
+2022-08-24T08:01:47.595932+00:00 heroku[scheduler.3620]: Process exited with status 0
+2022-08-24T08:01:47.652932+00:00 heroku[scheduler.3620]: State changed from up to complete
+2022-08-24T09:01:12.151276+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T09:01:22.616759+00:00 heroku[scheduler.7790]: Starting process with command `python sentiment/trade.py`
+2022-08-24T09:01:23.274825+00:00 heroku[scheduler.7790]: State changed from starting to up
+2022-08-24T09:01:26.251445+00:00 app[scheduler.7790]: Getting data from Today
+2022-08-24T09:01:26.254566+00:00 app[scheduler.7790]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T09:01:26.254568+00:00 app[scheduler.7790]: warnings.warn(
+2022-08-24T09:01:26.411681+00:00 app[scheduler.7790]: Deleted 1044 duplicates from a total of 4239
+2022-08-24T09:01:26.440137+00:00 app[scheduler.7790]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T09:01:26.440139+00:00 app[scheduler.7790]: warnings.warn(
+2022-08-24T09:01:26.443473+00:00 app[scheduler.7790]: Check if a trade exists for 2022-08-24 07:00:00
+2022-08-24T09:01:26.443476+00:00 app[scheduler.7790]: Last Trade at: 2022-08-24 05:00:00
+2022-08-24T09:01:26.443516+00:00 app[scheduler.7790]: No Trade. Starting Trade for 2022-08-24 07:00:00
+2022-08-24T09:01:26.936134+00:00 app[scheduler.7790]: Starting trade process at 2022-08-24 09:01:26.936074
+2022-08-24T09:01:26.936185+00:00 app[scheduler.7790]: Sent Avg: 0.1523293650793651
+2022-08-24T09:01:26.936205+00:00 app[scheduler.7790]: USDT Balance: 1785.19958681 $
+2022-08-24T09:01:26.936219+00:00 app[scheduler.7790]: BTC Balance: 0.01178404
+2022-08-24T09:01:26.936236+00:00 app[scheduler.7790]: Selling for 0.00295
+2022-08-24T09:01:27.265188+00:00 app[scheduler.7790]: SELL ORDER executed with 0.00295 at 2022-08-24 09:01:27.265128
+2022-08-24T09:01:38.513519+00:00 app[scheduler.7790]: New Balances: 1786.59678322 $ and 0.00883404 btc.
+2022-08-24T09:01:38.514560+00:00 app[scheduler.7790]: Added Trade to Heroku DB
+2022-08-24T09:01:38.808858+00:00 heroku[scheduler.7790]: Process exited with status 0
+2022-08-24T09:01:39.252046+00:00 heroku[scheduler.7790]: State changed from up to complete
+2022-08-24T10:01:04.577318+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T10:01:15.434220+00:00 heroku[scheduler.9046]: Starting process with command `python sentiment/trade.py`
+2022-08-24T10:01:16.038956+00:00 heroku[scheduler.9046]: State changed from starting to up
+2022-08-24T10:01:19.181660+00:00 app[scheduler.9046]: Getting data from Today
+2022-08-24T10:01:19.183908+00:00 app[scheduler.9046]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T10:01:19.183909+00:00 app[scheduler.9046]: warnings.warn(
+2022-08-24T10:01:19.353034+00:00 app[scheduler.9046]: Deleted 1239 duplicates from a total of 4829
+2022-08-24T10:01:19.371376+00:00 app[scheduler.9046]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T10:01:19.371378+00:00 app[scheduler.9046]: warnings.warn(
+2022-08-24T10:01:19.373772+00:00 app[scheduler.9046]: Check if a trade exists for 2022-08-24 11:00:00
+2022-08-24T10:01:19.373807+00:00 app[scheduler.9046]: Last Trade at: 2022-08-24 07:00:00
+2022-08-24T10:01:19.373807+00:00 app[scheduler.9046]: No Trade. Starting Trade for 2022-08-24 11:00:00
+2022-08-24T10:01:19.794993+00:00 app[scheduler.9046]: Starting trade process at 2022-08-24 10:01:19.794922
+2022-08-24T10:01:19.795044+00:00 app[scheduler.9046]: Sent Avg: 0.25961666666666666
+2022-08-24T10:01:19.795062+00:00 app[scheduler.9046]: USDT Balance: 1786.59678322 $
+2022-08-24T10:01:19.795072+00:00 app[scheduler.9046]: BTC Balance: 0.00883404
+2022-08-24T10:01:19.795083+00:00 app[scheduler.9046]: Buying for 89
+2022-08-24T10:01:31.626358+00:00 app[scheduler.9046]: New Balances: 1697.50781333 $ and 0.0226711 btc.
+2022-08-24T10:01:31.627441+00:00 app[scheduler.9046]: Added Trade to Heroku DB
+2022-08-24T10:01:31.943471+00:00 heroku[scheduler.9046]: Process exited with status 0
+2022-08-24T10:01:32.261067+00:00 heroku[scheduler.9046]: State changed from up to complete
+2022-08-24T11:00:35.364890+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T11:00:45.820241+00:00 heroku[scheduler.5493]: Starting process with command `python sentiment/trade.py`
+2022-08-24T11:00:46.440367+00:00 heroku[scheduler.5493]: State changed from starting to up
+2022-08-24T11:00:49.593447+00:00 app[scheduler.5493]: Getting data from Today
+2022-08-24T11:00:49.595633+00:00 app[scheduler.5493]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T11:00:49.595634+00:00 app[scheduler.5493]: warnings.warn(
+2022-08-24T11:00:49.731722+00:00 app[scheduler.5493]: Deleted 1395 duplicates from a total of 5330
+2022-08-24T11:00:49.752621+00:00 app[scheduler.5493]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T11:00:49.752622+00:00 app[scheduler.5493]: warnings.warn(
+2022-08-24T11:00:49.754886+00:00 app[scheduler.5493]: Check if a trade exists for 2022-08-24 11:00:00
+2022-08-24T11:00:49.754894+00:00 app[scheduler.5493]: Last Trade at: 2022-08-24 11:00:00
+2022-08-24T11:00:49.754894+00:00 app[scheduler.5493]: Trade already made for 2022-08-24 11:00:00
+2022-08-24T11:00:50.029241+00:00 heroku[scheduler.5493]: Process exited with status 0
+2022-08-24T11:00:50.101636+00:00 heroku[scheduler.5493]: State changed from up to complete
+2022-08-24T12:01:05.853348+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T12:01:19.585804+00:00 heroku[scheduler.1305]: Starting process with command `python sentiment/trade.py`
+2022-08-24T12:01:20.309466+00:00 heroku[scheduler.1305]: State changed from starting to up
+2022-08-24T12:01:24.030592+00:00 app[scheduler.1305]: Getting data from Today
+2022-08-24T12:01:24.032902+00:00 app[scheduler.1305]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T12:01:24.032903+00:00 app[scheduler.1305]: warnings.warn(
+2022-08-24T12:01:24.171291+00:00 app[scheduler.1305]: Deleted 1509 duplicates from a total of 5858
+2022-08-24T12:01:24.196815+00:00 app[scheduler.1305]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T12:01:24.196816+00:00 app[scheduler.1305]: warnings.warn(
+2022-08-24T12:01:24.201037+00:00 app[scheduler.1305]: Check if a trade exists for 2022-08-24 12:00:00
+2022-08-24T12:01:24.201058+00:00 app[scheduler.1305]: Last Trade at: 2022-08-24 11:00:00
+2022-08-24T12:01:24.201098+00:00 app[scheduler.1305]: No Trade. Starting Trade for 2022-08-24 12:00:00
+2022-08-24T12:01:24.598584+00:00 app[scheduler.1305]: Starting trade process at 2022-08-24 12:01:24.598516
+2022-08-24T12:01:24.598652+00:00 app[scheduler.1305]: Sent Avg: 0.19725221088435374
+2022-08-24T12:01:24.598674+00:00 app[scheduler.1305]: USDT Balance: 1697.50781333 $
+2022-08-24T12:01:24.598691+00:00 app[scheduler.1305]: BTC Balance: 0.0226711
+2022-08-24T12:01:24.598784+00:00 app[scheduler.1305]: Selling for 0.00567
+2022-08-24T12:01:25.059674+00:00 app[scheduler.1305]: SELL ORDER executed with 0.00567 at 2022-08-24 12:01:25.059615
+2022-08-24T12:01:35.632194+00:00 app[scheduler.1305]: New Balances: 1699.94913956 $ and 0.0170011 btc.
+2022-08-24T12:01:35.633629+00:00 app[scheduler.1305]: Added Trade to Heroku DB
+2022-08-24T12:01:35.959528+00:00 heroku[scheduler.1305]: Process exited with status 0
+2022-08-24T12:01:36.096247+00:00 heroku[scheduler.1305]: State changed from up to complete
+2022-08-24T13:00:41.773447+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T13:00:53.616943+00:00 heroku[scheduler.2585]: Starting process with command `python sentiment/trade.py`
+2022-08-24T13:00:54.349397+00:00 heroku[scheduler.2585]: State changed from starting to up
+2022-08-24T13:00:58.185480+00:00 app[scheduler.2585]: Getting data from Today
+2022-08-24T13:00:58.188563+00:00 app[scheduler.2585]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T13:00:58.188564+00:00 app[scheduler.2585]: warnings.warn(
+2022-08-24T13:00:58.414772+00:00 app[scheduler.2585]: Deleted 1643 duplicates from a total of 6328
+2022-08-24T13:00:58.441128+00:00 app[scheduler.2585]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T13:00:58.441164+00:00 app[scheduler.2585]: warnings.warn(
+2022-08-24T13:00:58.444982+00:00 app[scheduler.2585]: Check if a trade exists for 2022-08-24 12:00:00
+2022-08-24T13:00:58.445017+00:00 app[scheduler.2585]: Last Trade at: 2022-08-24 12:00:00
+2022-08-24T13:00:58.445050+00:00 app[scheduler.2585]: Trade already made for 2022-08-24 12:00:00
+2022-08-24T13:00:58.770917+00:00 heroku[scheduler.2585]: Process exited with status 0
+2022-08-24T13:00:58.825849+00:00 heroku[scheduler.2585]: State changed from up to complete
+2022-08-24T14:01:12.257414+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T14:01:24.551883+00:00 heroku[scheduler.4197]: Starting process with command `python sentiment/trade.py`
+2022-08-24T14:01:25.535765+00:00 heroku[scheduler.4197]: State changed from starting to up
+2022-08-24T14:01:29.487168+00:00 app[scheduler.4197]: Getting data from Today
+2022-08-24T14:01:29.490425+00:00 app[scheduler.4197]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T14:01:29.490427+00:00 app[scheduler.4197]: warnings.warn(
+2022-08-24T14:01:29.650502+00:00 app[scheduler.4197]: Deleted 1733 duplicates from a total of 6746
+2022-08-24T14:01:29.677588+00:00 app[scheduler.4197]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T14:01:29.677590+00:00 app[scheduler.4197]: warnings.warn(
+2022-08-24T14:01:29.680835+00:00 app[scheduler.4197]: Check if a trade exists for 2022-08-24 12:00:00
+2022-08-24T14:01:29.680838+00:00 app[scheduler.4197]: Last Trade at: 2022-08-24 12:00:00
+2022-08-24T14:01:29.680894+00:00 app[scheduler.4197]: Trade already made for 2022-08-24 12:00:00
+2022-08-24T14:01:30.004012+00:00 heroku[scheduler.4197]: Process exited with status 0
+2022-08-24T14:01:30.263826+00:00 heroku[scheduler.4197]: State changed from up to complete
+2022-08-24T15:01:14.941966+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T15:01:25.714303+00:00 heroku[scheduler.7814]: Starting process with command `python sentiment/trade.py`
+2022-08-24T15:01:26.475941+00:00 heroku[scheduler.7814]: State changed from starting to up
+2022-08-24T15:01:29.280556+00:00 app[scheduler.7814]: Getting data from Today
+2022-08-24T15:01:29.283405+00:00 app[scheduler.7814]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T15:01:29.283405+00:00 app[scheduler.7814]: warnings.warn(
+2022-08-24T15:01:29.442682+00:00 app[scheduler.7814]: Deleted 1982 duplicates from a total of 7393
+2022-08-24T15:01:29.468164+00:00 app[scheduler.7814]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T15:01:29.468170+00:00 app[scheduler.7814]: warnings.warn(
+2022-08-24T15:01:29.471548+00:00 app[scheduler.7814]: Check if a trade exists for 2022-08-24 13:00:00
+2022-08-24T15:01:29.471554+00:00 app[scheduler.7814]: Last Trade at: 2022-08-24 12:00:00
+2022-08-24T15:01:29.471584+00:00 app[scheduler.7814]: No Trade. Starting Trade for 2022-08-24 13:00:00
+2022-08-24T15:01:29.846883+00:00 app[scheduler.7814]: Starting trade process at 2022-08-24 15:01:29.846815
+2022-08-24T15:01:29.846935+00:00 app[scheduler.7814]: Sent Avg: 0.2051917808219178
+2022-08-24T15:01:29.846947+00:00 app[scheduler.7814]: USDT Balance: 1699.94913956 $
+2022-08-24T15:01:29.846951+00:00 app[scheduler.7814]: BTC Balance: 0.0170011
+2022-08-24T15:01:29.846971+00:00 app[scheduler.7814]: Selling for 0.00425
+2022-08-24T15:01:30.277093+00:00 app[scheduler.7814]: SELL ORDER executed with 0.00425 at 2022-08-24 15:01:30.277034
+2022-08-24T15:01:40.814933+00:00 app[scheduler.7814]: New Balances: 1701.77905781 $ and 0.0127511 btc.
+2022-08-24T15:01:40.816416+00:00 app[scheduler.7814]: Added Trade to Heroku DB
+2022-08-24T15:01:41.170691+00:00 heroku[scheduler.7814]: Process exited with status 0
+2022-08-24T15:01:41.283048+00:00 heroku[scheduler.7814]: State changed from up to complete
+2022-08-24T16:01:08.362603+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T16:01:23.071639+00:00 heroku[scheduler.5419]: Starting process with command `python sentiment/trade.py`
+2022-08-24T16:01:23.948828+00:00 heroku[scheduler.5419]: State changed from starting to up
+2022-08-24T16:01:27.811173+00:00 app[scheduler.5419]: Getting data from Today
+2022-08-24T16:01:27.813439+00:00 app[scheduler.5419]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T16:01:27.813440+00:00 app[scheduler.5419]: warnings.warn(
+2022-08-24T16:01:28.045609+00:00 app[scheduler.5419]: Deleted 2113 duplicates from a total of 7944
+2022-08-24T16:01:28.067200+00:00 app[scheduler.5419]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T16:01:28.067215+00:00 app[scheduler.5419]: warnings.warn(
+2022-08-24T16:01:28.069681+00:00 app[scheduler.5419]: Check if a trade exists for 2022-08-24 13:00:00
+2022-08-24T16:01:28.069685+00:00 app[scheduler.5419]: Last Trade at: 2022-08-24 13:00:00
+2022-08-24T16:01:28.069698+00:00 app[scheduler.5419]: Trade already made for 2022-08-24 13:00:00
+2022-08-24T16:01:28.410992+00:00 heroku[scheduler.5419]: Process exited with status 0
+2022-08-24T16:01:28.516228+00:00 heroku[scheduler.5419]: State changed from up to complete
+2022-08-24T17:01:25.573641+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T17:01:36.806453+00:00 heroku[scheduler.2386]: Starting process with command `python sentiment/trade.py`
+2022-08-24T17:01:37.469516+00:00 heroku[scheduler.2386]: State changed from starting to up
+2022-08-24T17:01:40.983567+00:00 app[scheduler.2386]: Getting data from Today
+2022-08-24T17:01:40.986092+00:00 app[scheduler.2386]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T17:01:40.986092+00:00 app[scheduler.2386]: warnings.warn(
+2022-08-24T17:01:41.131003+00:00 app[scheduler.2386]: Deleted 2201 duplicates from a total of 8399
+2022-08-24T17:01:41.151597+00:00 app[scheduler.2386]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T17:01:41.151599+00:00 app[scheduler.2386]: warnings.warn(
+2022-08-24T17:01:41.154396+00:00 app[scheduler.2386]: Check if a trade exists for 2022-08-24 13:00:00
+2022-08-24T17:01:41.154399+00:00 app[scheduler.2386]: Last Trade at: 2022-08-24 13:00:00
+2022-08-24T17:01:41.154410+00:00 app[scheduler.2386]: Trade already made for 2022-08-24 13:00:00
+2022-08-24T17:01:41.473871+00:00 heroku[scheduler.2386]: Process exited with status 0
+2022-08-24T17:01:41.643971+00:00 heroku[scheduler.2386]: State changed from up to complete
+2022-08-24T18:00:40.230027+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T18:00:51.605288+00:00 heroku[scheduler.6003]: Starting process with command `python sentiment/trade.py`
+2022-08-24T18:00:51.605288+00:00 heroku[scheduler.6003]: Starting process with command `python sentiment/trade.py`
+2022-08-24T18:00:52.532138+00:00 heroku[scheduler.6003]: State changed from starting to up
+2022-08-24T18:00:55.659427+00:00 app[scheduler.6003]: Getting data from Today
+2022-08-24T18:00:55.662623+00:00 app[scheduler.6003]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T18:00:55.662623+00:00 app[scheduler.6003]: warnings.warn(
+2022-08-24T18:00:56.137409+00:00 app[scheduler.6003]: Deleted 2347 duplicates from a total of 8890
+2022-08-24T18:00:56.158127+00:00 app[scheduler.6003]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T18:00:56.158143+00:00 app[scheduler.6003]: warnings.warn(
+2022-08-24T18:00:56.164235+00:00 app[scheduler.6003]: Check if a trade exists for 2022-08-24 17:00:00
+2022-08-24T18:00:56.164250+00:00 app[scheduler.6003]: Last Trade at: 2022-08-24 13:00:00
+2022-08-24T18:00:56.164269+00:00 app[scheduler.6003]: No Trade. Starting Trade for 2022-08-24 17:00:00
+2022-08-24T18:00:56.488969+00:00 app[scheduler.6003]: Starting trade process at 2022-08-24 18:00:56.488908
+2022-08-24T18:00:56.489054+00:00 app[scheduler.6003]: Sent Avg: 0.22503307888040713
+2022-08-24T18:00:56.489073+00:00 app[scheduler.6003]: USDT Balance: 1701.77905781 $
+2022-08-24T18:00:56.489084+00:00 app[scheduler.6003]: BTC Balance: 0.0127511
+2022-08-24T18:00:56.489095+00:00 app[scheduler.6003]: Buying for 85
+2022-08-24T18:01:08.382363+00:00 app[scheduler.6003]: New Balances: 1616.69408439 $ and 0.02596627 btc.
+2022-08-24T18:01:08.384024+00:00 app[scheduler.6003]: Added Trade to Heroku DB
+2022-08-24T18:01:08.767206+00:00 heroku[scheduler.6003]: Process exited with status 0
+2022-08-24T18:01:08.942516+00:00 heroku[scheduler.6003]: State changed from up to complete
+2022-08-24T19:00:20.532330+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T19:00:33.500291+00:00 heroku[scheduler.6566]: Starting process with command `python sentiment/trade.py`
+2022-08-24T19:00:34.085697+00:00 heroku[scheduler.6566]: State changed from starting to up
+2022-08-24T19:00:38.683400+00:00 app[scheduler.6566]: Getting data from Today
+2022-08-24T19:00:38.699943+00:00 app[scheduler.6566]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T19:00:38.699945+00:00 app[scheduler.6566]: warnings.warn(
+2022-08-24T19:00:38.966895+00:00 app[scheduler.6566]: Deleted 2574 duplicates from a total of 9483
+2022-08-24T19:00:39.018165+00:00 app[scheduler.6566]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T19:00:39.018167+00:00 app[scheduler.6566]: warnings.warn(
+2022-08-24T19:00:39.022198+00:00 app[scheduler.6566]: Check if a trade exists for 2022-08-24 18:00:00
+2022-08-24T19:00:39.022200+00:00 app[scheduler.6566]: Last Trade at: 2022-08-24 17:00:00
+2022-08-24T19:00:39.022207+00:00 app[scheduler.6566]: No Trade. Starting Trade for 2022-08-24 18:00:00
+2022-08-24T19:00:39.393125+00:00 app[scheduler.6566]: Starting trade process at 2022-08-24 19:00:39.393054
+2022-08-24T19:00:39.393197+00:00 app[scheduler.6566]: Sent Avg: 0.23446494845360824
+2022-08-24T19:00:39.393221+00:00 app[scheduler.6566]: USDT Balance: 1616.69408439 $
+2022-08-24T19:00:39.393232+00:00 app[scheduler.6566]: BTC Balance: 0.02596627
+2022-08-24T19:00:39.393245+00:00 app[scheduler.6566]: Buying for 80
+2022-08-24T19:00:50.847113+00:00 app[scheduler.6566]: New Balances: 1536.61409048 $ and 0.03840408 btc.
+2022-08-24T19:00:50.849471+00:00 app[scheduler.6566]: Added Trade to Heroku DB
+2022-08-24T19:00:51.372577+00:00 heroku[scheduler.6566]: Process exited with status 0
+2022-08-24T19:00:51.433994+00:00 heroku[scheduler.6566]: State changed from up to complete
+2022-08-24T19:05:18.164780+00:00 heroku[worker.1]: Cycling
+2022-08-24T19:05:18.166847+00:00 heroku[worker.1]: State changed from up to starting
+2022-08-24T19:05:19.979074+00:00 heroku[worker.1]: Stopping all processes with SIGTERM
+2022-08-24T19:05:20.543032+00:00 heroku[worker.1]: Process exited with status 143
+2022-08-24T19:05:31.268029+00:00 heroku[worker.1]: Starting process with command `python3 sentiment/runner.py`
+2022-08-24T19:05:31.907571+00:00 heroku[worker.1]: State changed from starting to up
+2022-08-24T19:05:36.005969+00:00 app[worker.1]: Getting data from Today
+2022-08-24T19:05:36.006844+00:00 app[worker.1]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T19:05:36.006845+00:00 app[worker.1]: warnings.warn(
+2022-08-24T19:05:36.206487+00:00 app[worker.1]: Deleted 2574 duplicates from a total of 9514
+2022-08-24T19:05:36.225626+00:00 app[worker.1]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T19:05:36.225627+00:00 app[worker.1]: warnings.warn(
+2022-08-24T19:05:36.228089+00:00 app[worker.1]: Check if a trade exists for 2022-08-24 18:00:00
+2022-08-24T19:05:36.228090+00:00 app[worker.1]: Last Trade at: 2022-08-24 18:00:00
+2022-08-24T19:05:36.228104+00:00 app[worker.1]: Trade already made for 2022-08-24 18:00:00
+2022-08-24T19:05:36.515787+00:00 app[worker.1]: Listening to tweets now...
+2022-08-24T20:00:18.993497+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T20:00:32.549908+00:00 heroku[scheduler.1527]: Starting process with command `python sentiment/trade.py`
+2022-08-24T20:00:33.258453+00:00 heroku[scheduler.1527]: State changed from starting to up
+2022-08-24T20:00:38.104161+00:00 app[scheduler.1527]: Getting data from Today
+2022-08-24T20:00:38.107875+00:00 app[scheduler.1527]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T20:00:38.107876+00:00 app[scheduler.1527]: warnings.warn(
+2022-08-24T20:00:38.522371+00:00 app[scheduler.1527]: Deleted 2706 duplicates from a total of 10062
+2022-08-24T20:00:38.554818+00:00 app[scheduler.1527]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T20:00:38.554824+00:00 app[scheduler.1527]: warnings.warn(
+2022-08-24T20:00:38.562372+00:00 app[scheduler.1527]: Check if a trade exists for 2022-08-24 21:00:00
+2022-08-24T20:00:38.562374+00:00 app[scheduler.1527]: Last Trade at: 2022-08-24 18:00:00
+2022-08-24T20:00:38.562376+00:00 app[scheduler.1527]: No Trade. Starting Trade for 2022-08-24 21:00:00
+2022-08-24T20:00:38.904123+00:00 app[scheduler.1527]: Starting trade process at 2022-08-24 20:00:38.904059
+2022-08-24T20:00:38.904188+00:00 app[scheduler.1527]: Sent Avg: 0.1462830985915493
+2022-08-24T20:00:38.904210+00:00 app[scheduler.1527]: USDT Balance: 1536.61409048 $
+2022-08-24T20:00:38.904221+00:00 app[scheduler.1527]: BTC Balance: 0.03840408
+2022-08-24T20:00:38.904239+00:00 app[scheduler.1527]: Selling for 0.0096
+2022-08-24T20:00:39.414444+00:00 app[scheduler.1527]: SELL ORDER executed with 0.0096 at 2022-08-24 20:00:39.414280
+2022-08-24T20:00:50.136359+00:00 app[scheduler.1527]: New Balances: 1540.74755288 $ and 0.02880408 btc.
+2022-08-24T20:00:50.138709+00:00 app[scheduler.1527]: Added Trade to Heroku DB
+2022-08-24T20:00:50.607787+00:00 heroku[scheduler.1527]: Process exited with status 0
+2022-08-24T20:00:50.767479+00:00 heroku[scheduler.1527]: State changed from up to complete
+2022-08-24T21:00:27.097159+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T21:00:37.852605+00:00 heroku[scheduler.4964]: Starting process with command `python sentiment/trade.py`
+2022-08-24T21:00:38.432412+00:00 heroku[scheduler.4964]: State changed from starting to up
+2022-08-24T21:00:41.510931+00:00 app[scheduler.4964]: Getting data from Today
+2022-08-24T21:00:41.513842+00:00 app[scheduler.4964]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T21:00:41.513846+00:00 app[scheduler.4964]: warnings.warn(
+2022-08-24T21:00:41.816857+00:00 app[scheduler.4964]: Deleted 2826 duplicates from a total of 10692
+2022-08-24T21:00:41.849450+00:00 app[scheduler.4964]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T21:00:41.849451+00:00 app[scheduler.4964]: warnings.warn(
+2022-08-24T21:00:41.852759+00:00 app[scheduler.4964]: Check if a trade exists for 2022-08-24 21:00:00
+2022-08-24T21:00:41.852760+00:00 app[scheduler.4964]: Last Trade at: 2022-08-24 21:00:00
+2022-08-24T21:00:41.852778+00:00 app[scheduler.4964]: Trade already made for 2022-08-24 21:00:00
+2022-08-24T21:00:42.187769+00:00 heroku[scheduler.4964]: Process exited with status 0
+2022-08-24T21:00:42.274830+00:00 heroku[scheduler.4964]: State changed from up to complete
+2022-08-24T22:01:16.166183+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T22:01:28.095633+00:00 heroku[scheduler.1916]: Starting process with command `python sentiment/trade.py`
+2022-08-24T22:01:28.710191+00:00 heroku[scheduler.1916]: State changed from starting to up
+2022-08-24T22:01:31.409836+00:00 app[scheduler.1916]: Getting data from Today
+2022-08-24T22:01:31.412770+00:00 app[scheduler.1916]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T22:01:31.412770+00:00 app[scheduler.1916]: warnings.warn(
+2022-08-24T22:01:31.692970+00:00 app[scheduler.1916]: Deleted 2989 duplicates from a total of 11417
+2022-08-24T22:01:31.714056+00:00 app[scheduler.1916]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T22:01:31.714058+00:00 app[scheduler.1916]: warnings.warn(
+2022-08-24T22:01:31.716358+00:00 app[scheduler.1916]: Check if a trade exists for 2022-08-24 22:00:00
+2022-08-24T22:01:31.716373+00:00 app[scheduler.1916]: Last Trade at: 2022-08-24 21:00:00
+2022-08-24T22:01:31.716402+00:00 app[scheduler.1916]: No Trade. Starting Trade for 2022-08-24 22:00:00
+2022-08-24T22:01:32.056093+00:00 app[scheduler.1916]: Starting trade process at 2022-08-24 22:01:32.056028
+2022-08-24T22:01:32.056143+00:00 app[scheduler.1916]: Sent Avg: 0.23279641744548285
+2022-08-24T22:01:32.056161+00:00 app[scheduler.1916]: USDT Balance: 1540.74755288 $
+2022-08-24T22:01:32.056172+00:00 app[scheduler.1916]: BTC Balance: 0.02880408
+2022-08-24T22:01:32.056183+00:00 app[scheduler.1916]: Buying for 77
+2022-08-24T22:01:43.585089+00:00 app[scheduler.1916]: New Balances: 1463.67057242 $ and 0.04077547 btc.
+2022-08-24T22:01:43.586118+00:00 app[scheduler.1916]: Added Trade to Heroku DB
+2022-08-24T22:01:43.931415+00:00 heroku[scheduler.1916]: Process exited with status 0
+2022-08-24T22:01:44.201180+00:00 heroku[scheduler.1916]: State changed from up to complete
+2022-08-24T23:00:10.114584+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-24T23:00:21.286037+00:00 heroku[scheduler.8634]: Starting process with command `python sentiment/trade.py`
+2022-08-24T23:00:21.879412+00:00 heroku[scheduler.8634]: State changed from starting to up
+2022-08-24T23:00:25.337599+00:00 app[scheduler.8634]: Getting data from Today
+2022-08-24T23:00:25.339865+00:00 app[scheduler.8634]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T23:00:25.339866+00:00 app[scheduler.8634]: warnings.warn(
+2022-08-24T23:00:25.570422+00:00 app[scheduler.8634]: Deleted 3103 duplicates from a total of 12007
+2022-08-24T23:00:25.593934+00:00 app[scheduler.8634]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-24T23:00:25.593962+00:00 app[scheduler.8634]: warnings.warn(
+2022-08-24T23:00:25.597362+00:00 app[scheduler.8634]: Check if a trade exists for 2022-08-24 22:00:00
+2022-08-24T23:00:25.597369+00:00 app[scheduler.8634]: Last Trade at: 2022-08-24 22:00:00
+2022-08-24T23:00:25.597391+00:00 app[scheduler.8634]: Trade already made for 2022-08-24 22:00:00
+2022-08-24T23:00:25.901467+00:00 heroku[scheduler.8634]: Process exited with status 0
+2022-08-24T23:00:25.996847+00:00 heroku[scheduler.8634]: State changed from up to complete
+2022-08-25T00:01:28.697896+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T00:01:42.996074+00:00 heroku[scheduler.7288]: Starting process with command `python sentiment/trade.py`
+2022-08-25T00:01:43.682415+00:00 heroku[scheduler.7288]: State changed from starting to up
+2022-08-25T00:01:48.808306+00:00 app[scheduler.7288]: Getting data from Today
+2022-08-25T00:01:48.811562+00:00 app[scheduler.7288]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T00:01:48.811564+00:00 app[scheduler.7288]: warnings.warn(
+2022-08-25T00:01:49.470786+00:00 app[scheduler.7288]: Exception at 2022-08-25 00:01:49.470706: 'Float64Index' object has no attribute 'floor'
+2022-08-25T00:01:49.850281+00:00 heroku[scheduler.7288]: Process exited with status 0
+2022-08-25T00:01:49.907039+00:00 heroku[scheduler.7288]: State changed from up to complete
+2022-08-25T01:01:32.294929+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T01:01:43.739603+00:00 heroku[scheduler.5714]: Starting process with command `python sentiment/trade.py`
+2022-08-25T01:01:44.470736+00:00 heroku[scheduler.5714]: State changed from starting to up
+2022-08-25T01:01:47.081146+00:00 app[scheduler.5714]: Getting data from Today
+2022-08-25T01:01:47.083457+00:00 app[scheduler.5714]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T01:01:47.083458+00:00 app[scheduler.5714]: warnings.warn(
+2022-08-25T01:01:47.185583+00:00 app[scheduler.5714]: Exception at 2022-08-25 01:01:47.185502: 'Float64Index' object has no attribute 'floor'
+2022-08-25T01:01:47.479790+00:00 heroku[scheduler.5714]: Process exited with status 0
+2022-08-25T01:01:47.580169+00:00 heroku[scheduler.5714]: State changed from up to complete
+2022-08-25T02:01:26.229229+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T02:01:37.956853+00:00 heroku[scheduler.2217]: Starting process with command `python sentiment/trade.py`
+2022-08-25T02:01:38.740630+00:00 heroku[scheduler.2217]: State changed from starting to up
+2022-08-25T02:01:42.363599+00:00 app[scheduler.2217]: Getting data from Today
+2022-08-25T02:01:42.366381+00:00 app[scheduler.2217]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T02:01:42.366382+00:00 app[scheduler.2217]: warnings.warn(
+2022-08-25T02:01:42.455344+00:00 app[scheduler.2217]: Exception at 2022-08-25 02:01:42.455269: 'Float64Index' object has no attribute 'floor'
+2022-08-25T02:01:42.781011+00:00 heroku[scheduler.2217]: Process exited with status 0
+2022-08-25T02:01:42.831954+00:00 heroku[scheduler.2217]: State changed from up to complete
+2022-08-25T03:00:53.537432+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T03:01:06.178891+00:00 heroku[scheduler.3810]: Starting process with command `python sentiment/trade.py`
+2022-08-25T03:01:08.056789+00:00 heroku[scheduler.3810]: State changed from starting to up
+2022-08-25T03:01:11.186206+00:00 app[scheduler.3810]: Getting data from Today
+2022-08-25T03:01:11.189382+00:00 app[scheduler.3810]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T03:01:11.189382+00:00 app[scheduler.3810]: warnings.warn(
+2022-08-25T03:01:11.311696+00:00 app[scheduler.3810]: Exception at 2022-08-25 03:01:11.311566: 'Float64Index' object has no attribute 'floor'
+2022-08-25T03:01:11.632514+00:00 heroku[scheduler.3810]: Process exited with status 0
+2022-08-25T03:01:11.728218+00:00 heroku[scheduler.3810]: State changed from up to complete
+2022-08-25T04:00:59.104136+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T04:01:11.171869+00:00 heroku[scheduler.3673]: Starting process with command `python sentiment/trade.py`
+2022-08-25T04:01:11.760804+00:00 heroku[scheduler.3673]: State changed from starting to up
+2022-08-25T04:01:14.253333+00:00 app[scheduler.3673]: Getting data from Today
+2022-08-25T04:01:14.255304+00:00 app[scheduler.3673]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T04:01:14.255306+00:00 app[scheduler.3673]: warnings.warn(
+2022-08-25T04:01:14.855431+00:00 app[scheduler.3673]: Deleted 106 duplicates from a total of 307
+2022-08-25T04:01:14.876871+00:00 app[scheduler.3673]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T04:01:14.876873+00:00 app[scheduler.3673]: warnings.warn(
+2022-08-25T04:01:14.881520+00:00 app[scheduler.3673]: Check if a trade exists for 2022-08-25 03:00:00
+2022-08-25T04:01:14.881523+00:00 app[scheduler.3673]: Last Trade at: 2022-08-24 22:00:00
+2022-08-25T04:01:14.881551+00:00 app[scheduler.3673]: No Trade. Starting Trade for 2022-08-25 03:00:00
+2022-08-25T04:01:15.180277+00:00 app[scheduler.3673]: Starting trade process at 2022-08-25 04:01:15.180221
+2022-08-25T04:01:15.180333+00:00 app[scheduler.3673]: Sent Avg: 0.08595333333333334
+2022-08-25T04:01:15.180349+00:00 app[scheduler.3673]: USDT Balance: 1463.67057242 $
+2022-08-25T04:01:15.180359+00:00 app[scheduler.3673]: BTC Balance: 0.04077547
+2022-08-25T04:01:15.180374+00:00 app[scheduler.3673]: Selling for 0.01019
+2022-08-25T04:01:15.579739+00:00 app[scheduler.3673]: SELL ORDER executed with 0.01019 at 2022-08-25 04:01:15.579682
+2022-08-25T04:01:26.679473+00:00 app[scheduler.3673]: New Balances: 1468.05807053 $ and 0.03058547 btc.
+2022-08-25T04:01:26.680541+00:00 app[scheduler.3673]: Added Trade to Heroku DB
+2022-08-25T04:01:26.921331+00:00 heroku[scheduler.3673]: Process exited with status 0
+2022-08-25T04:01:27.056630+00:00 heroku[scheduler.3673]: State changed from up to complete
+2022-08-25T05:00:38.073213+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T05:00:48.825998+00:00 heroku[scheduler.8912]: Starting process with command `python sentiment/trade.py`
+2022-08-25T05:00:49.486331+00:00 heroku[scheduler.8912]: State changed from starting to up
+2022-08-25T05:00:52.329614+00:00 app[scheduler.8912]: Getting data from Today
+2022-08-25T05:00:52.331744+00:00 app[scheduler.8912]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T05:00:52.331744+00:00 app[scheduler.8912]: warnings.warn(
+2022-08-25T05:00:52.439114+00:00 app[scheduler.8912]: Deleted 300 duplicates from a total of 957
+2022-08-25T05:00:52.460088+00:00 app[scheduler.8912]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T05:00:52.460090+00:00 app[scheduler.8912]: warnings.warn(
+2022-08-25T05:00:52.463206+00:00 app[scheduler.8912]: Check if a trade exists for 2022-08-25 06:00:00
+2022-08-25T05:00:52.463209+00:00 app[scheduler.8912]: Last Trade at: 2022-08-25 03:00:00
+2022-08-25T05:00:52.463234+00:00 app[scheduler.8912]: No Trade. Starting Trade for 2022-08-25 06:00:00
+2022-08-25T05:00:52.787963+00:00 app[scheduler.8912]: Starting trade process at 2022-08-25 05:00:52.787900
+2022-08-25T05:00:52.788028+00:00 app[scheduler.8912]: Sent Avg: 0.29457676767676766
+2022-08-25T05:00:52.788057+00:00 app[scheduler.8912]: USDT Balance: 1468.05807053 $
+2022-08-25T05:00:52.788060+00:00 app[scheduler.8912]: BTC Balance: 0.03058547
+2022-08-25T05:00:52.788082+00:00 app[scheduler.8912]: Buying for 73
+2022-08-25T05:01:04.379913+00:00 app[scheduler.8912]: New Balances: 1394.98517303 $ and 0.0315521 btc.
+2022-08-25T05:01:04.380962+00:00 app[scheduler.8912]: Added Trade to Heroku DB
+2022-08-25T05:01:04.715446+00:00 heroku[scheduler.8912]: Process exited with status 0
+2022-08-25T05:01:04.840601+00:00 heroku[scheduler.8912]: State changed from up to complete
+2022-08-25T06:00:18.583924+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T06:00:31.121075+00:00 heroku[scheduler.3477]: Starting process with command `python sentiment/trade.py`
+2022-08-25T06:00:31.832835+00:00 heroku[scheduler.3477]: State changed from starting to up
+2022-08-25T06:00:36.671391+00:00 app[scheduler.3477]: Getting data from Today
+2022-08-25T06:00:36.675902+00:00 app[scheduler.3477]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T06:00:36.675904+00:00 app[scheduler.3477]: warnings.warn(
+2022-08-25T06:00:36.798234+00:00 app[scheduler.3477]: Deleted 447 duplicates from a total of 1488
+2022-08-25T06:00:36.824945+00:00 app[scheduler.3477]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T06:00:36.824947+00:00 app[scheduler.3477]: warnings.warn(
+2022-08-25T06:00:36.828602+00:00 app[scheduler.3477]: Check if a trade exists for 2022-08-25 07:00:00
+2022-08-25T06:00:36.828610+00:00 app[scheduler.3477]: Last Trade at: 2022-08-25 06:00:00
+2022-08-25T06:00:36.828610+00:00 app[scheduler.3477]: No Trade. Starting Trade for 2022-08-25 07:00:00
+2022-08-25T06:00:37.120469+00:00 app[scheduler.3477]: Starting trade process at 2022-08-25 06:00:37.120396
+2022-08-25T06:00:37.120520+00:00 app[scheduler.3477]: Sent Avg: 0.2524231441048035
+2022-08-25T06:00:37.120523+00:00 app[scheduler.3477]: USDT Balance: 1394.98517303 $
+2022-08-25T06:00:37.120535+00:00 app[scheduler.3477]: BTC Balance: 0.0315521
+2022-08-25T06:00:37.120538+00:00 app[scheduler.3477]: Buying for 69
+2022-08-25T06:00:49.095443+00:00 app[scheduler.3477]: New Balances: 1325.91657023 $ and 0.03246576 btc.
+2022-08-25T06:00:49.096896+00:00 app[scheduler.3477]: Added Trade to Heroku DB
+2022-08-25T06:00:49.494408+00:00 heroku[scheduler.3477]: Process exited with status 0
+2022-08-25T06:00:49.651962+00:00 heroku[scheduler.3477]: State changed from up to complete
+2022-08-25T06:39:23.478754+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-25T06:41:12.666110+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-25T06:42:37.785137+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-25T06:44:02.903467+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-25T06:45:28.032786+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-25T06:46:53.173494+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-25T07:00:29.480330+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T07:00:40.509608+00:00 heroku[scheduler.9018]: Starting process with command `python sentiment/trade.py`
+2022-08-25T07:00:41.366209+00:00 heroku[scheduler.9018]: State changed from starting to up
+2022-08-25T07:00:44.453221+00:00 app[scheduler.9018]: Getting data from Today
+2022-08-25T07:00:44.455746+00:00 app[scheduler.9018]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T07:00:44.455748+00:00 app[scheduler.9018]: warnings.warn(
+2022-08-25T07:00:44.592334+00:00 app[scheduler.9018]: Deleted 601 duplicates from a total of 1947
+2022-08-25T07:00:44.611013+00:00 app[scheduler.9018]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T07:00:44.611014+00:00 app[scheduler.9018]: warnings.warn(
+2022-08-25T07:00:44.613098+00:00 app[scheduler.9018]: Check if a trade exists for 2022-08-25 07:00:00
+2022-08-25T07:00:44.613102+00:00 app[scheduler.9018]: Last Trade at: 2022-08-25 07:00:00
+2022-08-25T07:00:44.613115+00:00 app[scheduler.9018]: Trade already made for 2022-08-25 07:00:00
+2022-08-25T07:00:44.929324+00:00 heroku[scheduler.9018]: Process exited with status 0
+2022-08-25T07:00:45.028961+00:00 heroku[scheduler.9018]: State changed from up to complete
+2022-08-25T08:01:13.435462+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T08:01:23.581544+00:00 heroku[scheduler.2078]: Starting process with command `python sentiment/trade.py`
+2022-08-25T08:01:24.220910+00:00 heroku[scheduler.2078]: State changed from starting to up
+2022-08-25T08:01:26.923294+00:00 app[scheduler.2078]: Getting data from Today
+2022-08-25T08:01:26.925454+00:00 app[scheduler.2078]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T08:01:26.925455+00:00 app[scheduler.2078]: warnings.warn(
+2022-08-25T08:01:27.124177+00:00 app[scheduler.2078]: Deleted 687 duplicates from a total of 2478
+2022-08-25T08:01:27.140194+00:00 app[scheduler.2078]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T08:01:27.140195+00:00 app[scheduler.2078]: warnings.warn(
+2022-08-25T08:01:27.142492+00:00 app[scheduler.2078]: Check if a trade exists for 2022-08-25 08:00:00
+2022-08-25T08:01:27.142502+00:00 app[scheduler.2078]: Last Trade at: 2022-08-25 07:00:00
+2022-08-25T08:01:27.142516+00:00 app[scheduler.2078]: No Trade. Starting Trade for 2022-08-25 08:00:00
+2022-08-25T08:01:27.509268+00:00 app[scheduler.2078]: Starting trade process at 2022-08-25 08:01:27.509214
+2022-08-25T08:01:27.509319+00:00 app[scheduler.2078]: Sent Avg: 0.2512035460992908
+2022-08-25T08:01:27.509335+00:00 app[scheduler.2078]: USDT Balance: 1325.91657023 $
+2022-08-25T08:01:27.509345+00:00 app[scheduler.2078]: BTC Balance: 0.03246576
+2022-08-25T08:01:27.509357+00:00 app[scheduler.2078]: Buying for 66
+2022-08-25T08:01:38.297335+00:00 app[scheduler.2078]: New Balances: 1259.85062148 $ and 0.0333397 btc.
+2022-08-25T08:01:38.298410+00:00 app[scheduler.2078]: Added Trade to Heroku DB
+2022-08-25T08:01:38.589765+00:00 heroku[scheduler.2078]: Process exited with status 0
+2022-08-25T08:01:38.634796+00:00 heroku[scheduler.2078]: State changed from up to complete
+2022-08-25T09:00:15.748680+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T09:00:26.510827+00:00 heroku[scheduler.8436]: Starting process with command `python sentiment/trade.py`
+2022-08-25T09:00:27.510817+00:00 heroku[scheduler.8436]: State changed from starting to up
+2022-08-25T09:00:30.528283+00:00 app[scheduler.8436]: Getting data from Today
+2022-08-25T09:00:30.530612+00:00 app[scheduler.8436]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T09:00:30.530613+00:00 app[scheduler.8436]: warnings.warn(
+2022-08-25T09:00:30.663621+00:00 app[scheduler.8436]: Deleted 1303 duplicates from a total of 3649
+2022-08-25T09:00:30.682305+00:00 app[scheduler.8436]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T09:00:30.682307+00:00 app[scheduler.8436]: warnings.warn(
+2022-08-25T09:00:30.684783+00:00 app[scheduler.8436]: Check if a trade exists for 2022-08-25 08:00:00
+2022-08-25T09:00:30.684785+00:00 app[scheduler.8436]: Last Trade at: 2022-08-25 08:00:00
+2022-08-25T09:00:30.684800+00:00 app[scheduler.8436]: Trade already made for 2022-08-25 08:00:00
+2022-08-25T09:00:31.000632+00:00 heroku[scheduler.8436]: Process exited with status 0
+2022-08-25T09:00:31.145823+00:00 heroku[scheduler.8436]: State changed from up to complete
+2022-08-25T09:31:36.386083+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-25T09:33:23.559822+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-25T09:35:10.261162+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-25T09:36:35.377168+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-25T09:38:00.495256+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-25T09:39:25.607293+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-25T09:40:50.723455+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-25T09:42:15.838734+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-25T09:43:40.952566+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-25T10:01:24.219246+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T10:01:34.224566+00:00 heroku[scheduler.5557]: Starting process with command `python sentiment/trade.py`
+2022-08-25T10:01:34.839056+00:00 heroku[scheduler.5557]: State changed from starting to up
+2022-08-25T10:01:37.802030+00:00 app[scheduler.5557]: Getting data from Today
+2022-08-25T10:01:37.804562+00:00 app[scheduler.5557]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T10:01:37.804563+00:00 app[scheduler.5557]: warnings.warn(
+2022-08-25T10:01:37.994929+00:00 app[scheduler.5557]: Deleted 1541 duplicates from a total of 4259
+2022-08-25T10:01:38.012441+00:00 app[scheduler.5557]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T10:01:38.012442+00:00 app[scheduler.5557]: warnings.warn(
+2022-08-25T10:01:38.014830+00:00 app[scheduler.5557]: Check if a trade exists for 2022-08-25 09:00:00
+2022-08-25T10:01:38.014849+00:00 app[scheduler.5557]: Last Trade at: 2022-08-25 08:00:00
+2022-08-25T10:01:38.014857+00:00 app[scheduler.5557]: No Trade. Starting Trade for 2022-08-25 09:00:00
+2022-08-25T10:01:38.444010+00:00 app[scheduler.5557]: Starting trade process at 2022-08-25 10:01:38.443951
+2022-08-25T10:01:38.444075+00:00 app[scheduler.5557]: Sent Avg: 0.29596152647975077
+2022-08-25T10:01:38.444087+00:00 app[scheduler.5557]: USDT Balance: 1259.85062148 $
+2022-08-25T10:01:38.444098+00:00 app[scheduler.5557]: BTC Balance: 0.0333397
+2022-08-25T10:01:38.444109+00:00 app[scheduler.5557]: Buying for 62
+2022-08-25T10:01:50.050698+00:00 app[scheduler.5557]: New Balances: 1197.78896742 $ and 0.03416067 btc.
+2022-08-25T10:01:50.051735+00:00 app[scheduler.5557]: Added Trade to Heroku DB
+2022-08-25T10:01:50.422150+00:00 heroku[scheduler.5557]: Process exited with status 0
+2022-08-25T10:01:50.501526+00:00 heroku[scheduler.5557]: State changed from up to complete
+2022-08-25T11:01:01.652592+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T11:01:11.877816+00:00 heroku[scheduler.9016]: Starting process with command `python sentiment/trade.py`
+2022-08-25T11:01:12.471879+00:00 heroku[scheduler.9016]: State changed from starting to up
+2022-08-25T11:01:15.410184+00:00 app[scheduler.9016]: Getting data from Today
+2022-08-25T11:01:15.413121+00:00 app[scheduler.9016]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T11:01:15.413123+00:00 app[scheduler.9016]: warnings.warn(
+2022-08-25T11:01:15.576901+00:00 app[scheduler.9016]: Deleted 1832 duplicates from a total of 5107
+2022-08-25T11:01:15.596252+00:00 app[scheduler.9016]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T11:01:15.596253+00:00 app[scheduler.9016]: warnings.warn(
+2022-08-25T11:01:15.599393+00:00 app[scheduler.9016]: Check if a trade exists for 2022-08-25 09:00:00
+2022-08-25T11:01:15.599411+00:00 app[scheduler.9016]: Last Trade at: 2022-08-25 09:00:00
+2022-08-25T11:01:15.599434+00:00 app[scheduler.9016]: Trade already made for 2022-08-25 09:00:00
+2022-08-25T11:01:15.897931+00:00 heroku[scheduler.9016]: Process exited with status 0
+2022-08-25T11:01:15.995344+00:00 heroku[scheduler.9016]: State changed from up to complete
+2022-08-25T12:00:30.765628+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T12:00:41.997139+00:00 heroku[scheduler.8831]: Starting process with command `python sentiment/trade.py`
+2022-08-25T12:00:42.857803+00:00 heroku[scheduler.8831]: State changed from starting to up
+2022-08-25T12:00:46.171583+00:00 app[scheduler.8831]: Getting data from Today
+2022-08-25T12:00:46.173490+00:00 app[scheduler.8831]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T12:00:46.173490+00:00 app[scheduler.8831]: warnings.warn(
+2022-08-25T12:00:46.361151+00:00 app[scheduler.8831]: Deleted 2024 duplicates from a total of 5676
+2022-08-25T12:00:46.391382+00:00 app[scheduler.8831]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T12:00:46.391384+00:00 app[scheduler.8831]: warnings.warn(
+2022-08-25T12:00:46.395080+00:00 app[scheduler.8831]: Check if a trade exists for 2022-08-25 10:00:00
+2022-08-25T12:00:46.395117+00:00 app[scheduler.8831]: Last Trade at: 2022-08-25 09:00:00
+2022-08-25T12:00:46.395136+00:00 app[scheduler.8831]: No Trade. Starting Trade for 2022-08-25 10:00:00
+2022-08-25T12:00:46.917412+00:00 app[scheduler.8831]: Starting trade process at 2022-08-25 12:00:46.917352
+2022-08-25T12:00:46.917499+00:00 app[scheduler.8831]: Sent Avg: 0.2171654574132492
+2022-08-25T12:00:46.917539+00:00 app[scheduler.8831]: USDT Balance: 1197.78896742 $
+2022-08-25T12:00:46.917566+00:00 app[scheduler.8831]: BTC Balance: 0.03416067
+2022-08-25T12:00:46.917595+00:00 app[scheduler.8831]: Buying for 59
+2022-08-25T12:00:58.320686+00:00 app[scheduler.8831]: New Balances: 1138.72996742 $ and 0.03494192 btc.
+2022-08-25T12:00:58.322203+00:00 app[scheduler.8831]: Added Trade to Heroku DB
+2022-08-25T12:00:58.686885+00:00 heroku[scheduler.8831]: Process exited with status 0
+2022-08-25T12:00:58.756722+00:00 heroku[scheduler.8831]: State changed from up to complete
+2022-08-25T13:00:32.968574+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T13:00:44.465843+00:00 heroku[scheduler.1560]: Starting process with command `python sentiment/trade.py`
+2022-08-25T13:00:45.383954+00:00 heroku[scheduler.1560]: State changed from starting to up
+2022-08-25T13:00:48.564600+00:00 app[scheduler.1560]: Getting data from Today
+2022-08-25T13:00:48.567022+00:00 app[scheduler.1560]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T13:00:48.567023+00:00 app[scheduler.1560]: warnings.warn(
+2022-08-25T13:00:48.750163+00:00 app[scheduler.1560]: Deleted 2279 duplicates from a total of 6441
+2022-08-25T13:00:48.769929+00:00 app[scheduler.1560]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T13:00:48.769933+00:00 app[scheduler.1560]: warnings.warn(
+2022-08-25T13:00:48.772280+00:00 app[scheduler.1560]: Check if a trade exists for 2022-08-25 11:00:00
+2022-08-25T13:00:48.772291+00:00 app[scheduler.1560]: Last Trade at: 2022-08-25 10:00:00
+2022-08-25T13:00:48.772305+00:00 app[scheduler.1560]: No Trade. Starting Trade for 2022-08-25 11:00:00
+2022-08-25T13:00:49.129257+00:00 app[scheduler.1560]: Starting trade process at 2022-08-25 13:00:49.129190
+2022-08-25T13:00:49.129302+00:00 app[scheduler.1560]: Sent Avg: 0.24682036199095023
+2022-08-25T13:00:49.129321+00:00 app[scheduler.1560]: USDT Balance: 1138.72996742 $
+2022-08-25T13:00:49.129333+00:00 app[scheduler.1560]: BTC Balance: 0.03494192
+2022-08-25T13:00:49.129343+00:00 app[scheduler.1560]: Buying for 56
+2022-08-25T13:01:01.060718+00:00 app[scheduler.1560]: New Balances: 1082.67437743 $ and 0.03568344 btc.
+2022-08-25T13:01:01.061934+00:00 app[scheduler.1560]: Added Trade to Heroku DB
+2022-08-25T13:01:01.487410+00:00 heroku[scheduler.1560]: Process exited with status 0
+2022-08-25T13:01:01.547379+00:00 heroku[scheduler.1560]: State changed from up to complete
+2022-08-25T14:00:35.820345+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T14:00:47.212330+00:00 heroku[scheduler.7219]: Starting process with command `python sentiment/trade.py`
+2022-08-25T14:00:47.901475+00:00 heroku[scheduler.7219]: State changed from starting to up
+2022-08-25T14:00:50.759772+00:00 app[scheduler.7219]: Getting data from Today
+2022-08-25T14:00:50.763963+00:00 app[scheduler.7219]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T14:00:50.763964+00:00 app[scheduler.7219]: warnings.warn(
+2022-08-25T14:00:50.990268+00:00 app[scheduler.7219]: Deleted 2656 duplicates from a total of 7519
+2022-08-25T14:00:51.008299+00:00 app[scheduler.7219]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T14:00:51.008301+00:00 app[scheduler.7219]: warnings.warn(
+2022-08-25T14:00:51.010491+00:00 app[scheduler.7219]: Check if a trade exists for 2022-08-25 15:00:00
+2022-08-25T14:00:51.010505+00:00 app[scheduler.7219]: Last Trade at: 2022-08-25 11:00:00
+2022-08-25T14:00:51.010529+00:00 app[scheduler.7219]: No Trade. Starting Trade for 2022-08-25 15:00:00
+2022-08-25T14:00:51.384699+00:00 app[scheduler.7219]: Starting trade process at 2022-08-25 14:00:51.384641
+2022-08-25T14:00:51.384768+00:00 app[scheduler.7219]: Sent Avg: 0.20643409610983982
+2022-08-25T14:00:51.384796+00:00 app[scheduler.7219]: USDT Balance: 1082.67437743 $
+2022-08-25T14:00:51.384814+00:00 app[scheduler.7219]: BTC Balance: 0.03568344
+2022-08-25T14:00:51.384840+00:00 app[scheduler.7219]: Selling for 0.00892
+2022-08-25T14:00:51.983099+00:00 app[scheduler.7219]: SELL ORDER executed with 0.00892 at 2022-08-25 14:00:51.983044
+2022-08-25T14:01:02.797513+00:00 app[scheduler.7219]: New Balances: 1086.51505291 $ and 0.02676344 btc.
+2022-08-25T14:01:02.798628+00:00 app[scheduler.7219]: Added Trade to Heroku DB
+2022-08-25T14:01:03.196051+00:00 heroku[scheduler.7219]: Process exited with status 0
+2022-08-25T14:01:03.244532+00:00 heroku[scheduler.7219]: State changed from up to complete
+2022-08-25T15:00:14.618513+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T15:00:25.615078+00:00 heroku[scheduler.1184]: Starting process with command `python sentiment/trade.py`
+2022-08-25T15:00:26.536256+00:00 heroku[scheduler.1184]: State changed from starting to up
+2022-08-25T15:00:29.272715+00:00 app[scheduler.1184]: Getting data from Today
+2022-08-25T15:00:29.274928+00:00 app[scheduler.1184]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T15:00:29.274929+00:00 app[scheduler.1184]: warnings.warn(
+2022-08-25T15:00:29.459068+00:00 app[scheduler.1184]: Deleted 2874 duplicates from a total of 8286
+2022-08-25T15:00:29.476549+00:00 app[scheduler.1184]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T15:00:29.476550+00:00 app[scheduler.1184]: warnings.warn(
+2022-08-25T15:00:29.479007+00:00 app[scheduler.1184]: Check if a trade exists for 2022-08-25 15:00:00
+2022-08-25T15:00:29.479015+00:00 app[scheduler.1184]: Last Trade at: 2022-08-25 15:00:00
+2022-08-25T15:00:29.479015+00:00 app[scheduler.1184]: Trade already made for 2022-08-25 15:00:00
+2022-08-25T15:00:29.745255+00:00 heroku[scheduler.1184]: Process exited with status 0
+2022-08-25T15:00:29.795152+00:00 heroku[scheduler.1184]: State changed from up to complete
+2022-08-25T16:00:30.127945+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T16:00:41.582782+00:00 heroku[scheduler.1207]: Starting process with command `python sentiment/trade.py`
+2022-08-25T16:00:42.303299+00:00 heroku[scheduler.1207]: State changed from starting to up
+2022-08-25T16:00:45.846599+00:00 app[scheduler.1207]: Getting data from Today
+2022-08-25T16:00:45.849149+00:00 app[scheduler.1207]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T16:00:45.849150+00:00 app[scheduler.1207]: warnings.warn(
+2022-08-25T16:00:46.063132+00:00 app[scheduler.1207]: Deleted 3038 duplicates from a total of 8884
+2022-08-25T16:00:46.089109+00:00 app[scheduler.1207]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T16:00:46.089111+00:00 app[scheduler.1207]: warnings.warn(
+2022-08-25T16:00:46.091807+00:00 app[scheduler.1207]: Check if a trade exists for 2022-08-25 16:00:00
+2022-08-25T16:00:46.091819+00:00 app[scheduler.1207]: Last Trade at: 2022-08-25 15:00:00
+2022-08-25T16:00:46.091821+00:00 app[scheduler.1207]: No Trade. Starting Trade for 2022-08-25 16:00:00
+2022-08-25T16:00:46.470320+00:00 app[scheduler.1207]: Starting trade process at 2022-08-25 16:00:46.470253
+2022-08-25T16:00:46.470402+00:00 app[scheduler.1207]: Sent Avg: 0.251462023653088
+2022-08-25T16:00:46.470655+00:00 app[scheduler.1207]: USDT Balance: 1086.51505291 $
+2022-08-25T16:00:46.470657+00:00 app[scheduler.1207]: BTC Balance: 0.02676344
+2022-08-25T16:00:46.470668+00:00 app[scheduler.1207]: Buying for 54
+2022-08-25T16:00:58.010955+00:00 app[scheduler.1207]: New Balances: 1032.46123229 $ and 0.02747848 btc.
+2022-08-25T16:00:58.011983+00:00 app[scheduler.1207]: Added Trade to Heroku DB
+2022-08-25T16:00:58.361533+00:00 heroku[scheduler.1207]: Process exited with status 0
+2022-08-25T16:00:58.409285+00:00 heroku[scheduler.1207]: State changed from up to complete
+2022-08-25T17:00:21.721304+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T17:00:33.216753+00:00 heroku[scheduler.1825]: Starting process with command `python sentiment/trade.py`
+2022-08-25T17:00:33.911381+00:00 heroku[scheduler.1825]: State changed from starting to up
+2022-08-25T17:00:37.372598+00:00 app[scheduler.1825]: Getting data from Today
+2022-08-25T17:00:37.375549+00:00 app[scheduler.1825]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T17:00:37.375549+00:00 app[scheduler.1825]: warnings.warn(
+2022-08-25T17:00:37.570830+00:00 app[scheduler.1825]: Deleted 3214 duplicates from a total of 9515
+2022-08-25T17:00:37.600187+00:00 app[scheduler.1825]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T17:00:37.600189+00:00 app[scheduler.1825]: warnings.warn(
+2022-08-25T17:00:37.603032+00:00 app[scheduler.1825]: Check if a trade exists for 2022-08-25 16:00:00
+2022-08-25T17:00:37.603037+00:00 app[scheduler.1825]: Last Trade at: 2022-08-25 16:00:00
+2022-08-25T17:00:37.603060+00:00 app[scheduler.1825]: Trade already made for 2022-08-25 16:00:00
+2022-08-25T17:00:37.903494+00:00 heroku[scheduler.1825]: Process exited with status 0
+2022-08-25T17:00:38.011961+00:00 heroku[scheduler.1825]: State changed from up to complete
+2022-08-25T18:00:15.716255+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T18:00:26.411603+00:00 heroku[scheduler.6361]: Starting process with command `python sentiment/trade.py`
+2022-08-25T18:00:27.108733+00:00 heroku[scheduler.6361]: State changed from starting to up
+2022-08-25T18:00:30.783154+00:00 app[scheduler.6361]: Getting data from Today
+2022-08-25T18:00:30.786112+00:00 app[scheduler.6361]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T18:00:30.786114+00:00 app[scheduler.6361]: warnings.warn(
+2022-08-25T18:00:31.009023+00:00 app[scheduler.6361]: Deleted 3399 duplicates from a total of 10126
+2022-08-25T18:00:31.037911+00:00 app[scheduler.6361]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T18:00:31.037920+00:00 app[scheduler.6361]: warnings.warn(
+2022-08-25T18:00:31.040033+00:00 app[scheduler.6361]: Check if a trade exists for 2022-08-25 16:00:00
+2022-08-25T18:00:31.040050+00:00 app[scheduler.6361]: Last Trade at: 2022-08-25 16:00:00
+2022-08-25T18:00:31.040065+00:00 app[scheduler.6361]: Trade already made for 2022-08-25 16:00:00
+2022-08-25T18:00:31.336188+00:00 heroku[scheduler.6361]: Process exited with status 0
+2022-08-25T18:00:31.389496+00:00 heroku[scheduler.6361]: State changed from up to complete
+2022-08-25T19:00:43.349202+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T19:00:54.161110+00:00 heroku[scheduler.6252]: Starting process with command `python sentiment/trade.py`
+2022-08-25T19:00:54.733230+00:00 heroku[scheduler.6252]: State changed from starting to up
+2022-08-25T19:00:57.229839+00:00 app[scheduler.6252]: Getting data from Today
+2022-08-25T19:00:57.232206+00:00 app[scheduler.6252]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T19:00:57.232207+00:00 app[scheduler.6252]: warnings.warn(
+2022-08-25T19:00:57.424982+00:00 app[scheduler.6252]: Deleted 3779 duplicates from a total of 10932
+2022-08-25T19:00:57.446330+00:00 app[scheduler.6252]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T19:00:57.446331+00:00 app[scheduler.6252]: warnings.warn(
+2022-08-25T19:00:57.449568+00:00 app[scheduler.6252]: Check if a trade exists for 2022-08-25 17:00:00
+2022-08-25T19:00:57.449569+00:00 app[scheduler.6252]: Last Trade at: 2022-08-25 16:00:00
+2022-08-25T19:00:57.449587+00:00 app[scheduler.6252]: No Trade. Starting Trade for 2022-08-25 17:00:00
+2022-08-25T19:00:57.746534+00:00 app[scheduler.6252]: Starting trade process at 2022-08-25 19:00:57.746472
+2022-08-25T19:00:57.746599+00:00 app[scheduler.6252]: Sent Avg: 0.24060113924050636
+2022-08-25T19:00:57.746617+00:00 app[scheduler.6252]: USDT Balance: 1032.46123229 $
+2022-08-25T19:00:57.746629+00:00 app[scheduler.6252]: BTC Balance: 0.02747848
+2022-08-25T19:00:57.746648+00:00 app[scheduler.6252]: Buying for 51
+2022-08-25T19:01:09.123172+00:00 app[scheduler.6252]: New Balances: 981.41082168 $ and 0.02815379 btc.
+2022-08-25T19:01:09.124225+00:00 app[scheduler.6252]: Added Trade to Heroku DB
+2022-08-25T19:01:09.414913+00:00 heroku[scheduler.6252]: Process exited with status 0
+2022-08-25T19:01:09.812223+00:00 heroku[scheduler.6252]: State changed from up to complete
+2022-08-25T19:28:42.148130+00:00 heroku[worker.1]: Cycling
+2022-08-25T19:28:42.150727+00:00 heroku[worker.1]: State changed from up to starting
+2022-08-25T19:28:42.911542+00:00 heroku[worker.1]: Stopping all processes with SIGTERM
+2022-08-25T19:28:43.080180+00:00 heroku[worker.1]: Process exited with status 143
+2022-08-25T19:28:53.474968+00:00 heroku[worker.1]: Starting process with command `python3 sentiment/runner.py`
+2022-08-25T19:28:54.076224+00:00 heroku[worker.1]: State changed from starting to up
+2022-08-25T19:28:57.968709+00:00 app[worker.1]: Getting data from Today
+2022-08-25T19:28:57.969233+00:00 app[worker.1]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T19:28:57.969233+00:00 app[worker.1]: warnings.warn(
+2022-08-25T19:28:58.134353+00:00 app[worker.1]: Deleted 3926 duplicates from a total of 11310
+2022-08-25T19:28:58.153889+00:00 app[worker.1]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T19:28:58.153890+00:00 app[worker.1]: warnings.warn(
+2022-08-25T19:28:58.156141+00:00 app[worker.1]: Check if a trade exists for 2022-08-25 17:00:00
+2022-08-25T19:28:58.156143+00:00 app[worker.1]: Last Trade at: 2022-08-25 17:00:00
+2022-08-25T19:28:58.156163+00:00 app[worker.1]: Trade already made for 2022-08-25 17:00:00
+2022-08-25T19:28:58.424811+00:00 app[worker.1]: Listening to tweets now...
+2022-08-25T20:01:17.612271+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T20:01:28.505633+00:00 heroku[scheduler.7903]: Starting process with command `python sentiment/trade.py`
+2022-08-25T20:01:29.118925+00:00 heroku[scheduler.7903]: State changed from starting to up
+2022-08-25T20:01:32.028948+00:00 app[scheduler.7903]: Getting data from Today
+2022-08-25T20:01:32.032389+00:00 app[scheduler.7903]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T20:01:32.032390+00:00 app[scheduler.7903]: warnings.warn(
+2022-08-25T20:01:32.280398+00:00 app[scheduler.7903]: Deleted 4110 duplicates from a total of 11804
+2022-08-25T20:01:32.313079+00:00 app[scheduler.7903]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T20:01:32.313796+00:00 app[scheduler.7903]: warnings.warn(
+2022-08-25T20:01:32.313807+00:00 app[scheduler.7903]: Check if a trade exists for 2022-08-25 18:00:00
+2022-08-25T20:01:32.313807+00:00 app[scheduler.7903]: Last Trade at: 2022-08-25 17:00:00
+2022-08-25T20:01:32.313808+00:00 app[scheduler.7903]: No Trade. Starting Trade for 2022-08-25 18:00:00
+2022-08-25T20:01:32.622386+00:00 app[scheduler.7903]: Starting trade process at 2022-08-25 20:01:32.622318
+2022-08-25T20:01:32.622440+00:00 app[scheduler.7903]: Sent Avg: 0.19282869198312236
+2022-08-25T20:01:32.622465+00:00 app[scheduler.7903]: USDT Balance: 981.41082168 $
+2022-08-25T20:01:32.622478+00:00 app[scheduler.7903]: BTC Balance: 0.02815379
+2022-08-25T20:01:32.622638+00:00 app[scheduler.7903]: Selling for 0.00704
+2022-08-25T20:01:33.020188+00:00 app[scheduler.7903]: SELL ORDER executed with 0.00704 at 2022-08-25 20:01:33.020106
+2022-08-25T20:01:44.474890+00:00 app[scheduler.7903]: New Balances: 984.44202744 $ and 0.02111379 btc.
+2022-08-25T20:01:44.475867+00:00 app[scheduler.7903]: Added Trade to Heroku DB
+2022-08-25T20:01:44.833766+00:00 heroku[scheduler.7903]: Process exited with status 0
+2022-08-25T20:01:45.671119+00:00 heroku[scheduler.7903]: State changed from up to complete
+2022-08-25T21:00:56.045393+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T21:01:07.655471+00:00 heroku[scheduler.2496]: Starting process with command `python sentiment/trade.py`
+2022-08-25T21:01:08.343812+00:00 heroku[scheduler.2496]: State changed from starting to up
+2022-08-25T21:01:11.739002+00:00 app[scheduler.2496]: Getting data from Today
+2022-08-25T21:01:11.741889+00:00 app[scheduler.2496]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T21:01:11.741889+00:00 app[scheduler.2496]: warnings.warn(
+2022-08-25T21:01:11.990159+00:00 app[scheduler.2496]: Deleted 4478 duplicates from a total of 12761
+2022-08-25T21:01:12.018139+00:00 app[scheduler.2496]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T21:01:12.018141+00:00 app[scheduler.2496]: warnings.warn(
+2022-08-25T21:01:12.020783+00:00 app[scheduler.2496]: Check if a trade exists for 2022-08-25 22:00:00
+2022-08-25T21:01:12.020800+00:00 app[scheduler.2496]: Last Trade at: 2022-08-25 18:00:00
+2022-08-25T21:01:12.020820+00:00 app[scheduler.2496]: No Trade. Starting Trade for 2022-08-25 22:00:00
+2022-08-25T21:01:12.340779+00:00 app[scheduler.2496]: Starting trade process at 2022-08-25 21:01:12.340720
+2022-08-25T21:01:12.340856+00:00 app[scheduler.2496]: Sent Avg: 0.22309009584664538
+2022-08-25T21:01:12.340893+00:00 app[scheduler.2496]: USDT Balance: 984.44202744 $
+2022-08-25T21:01:12.340893+00:00 app[scheduler.2496]: BTC Balance: 0.02111379
+2022-08-25T21:01:12.340907+00:00 app[scheduler.2496]: Buying for 49
+2022-08-25T21:01:24.199378+00:00 app[scheduler.2496]: New Balances: 935.3933862 $ and 0.02176262 btc.
+2022-08-25T21:01:24.200900+00:00 app[scheduler.2496]: Added Trade to Heroku DB
+2022-08-25T21:01:24.548680+00:00 heroku[scheduler.2496]: Process exited with status 0
+2022-08-25T21:01:24.675478+00:00 heroku[scheduler.2496]: State changed from up to complete
+2022-08-25T22:00:13.537669+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T22:00:24.135216+00:00 heroku[scheduler.8257]: Starting process with command `python sentiment/trade.py`
+2022-08-25T22:00:24.893724+00:00 heroku[scheduler.8257]: State changed from starting to up
+2022-08-25T22:00:27.826006+00:00 app[scheduler.8257]: Getting data from Today
+2022-08-25T22:00:27.829252+00:00 app[scheduler.8257]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T22:00:27.829254+00:00 app[scheduler.8257]: warnings.warn(
+2022-08-25T22:00:28.069687+00:00 app[scheduler.8257]: Deleted 4753 duplicates from a total of 13547
+2022-08-25T22:00:28.092187+00:00 app[scheduler.8257]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T22:00:28.092199+00:00 app[scheduler.8257]: warnings.warn(
+2022-08-25T22:00:28.095743+00:00 app[scheduler.8257]: Check if a trade exists for 2022-08-25 22:00:00
+2022-08-25T22:00:28.095746+00:00 app[scheduler.8257]: Last Trade at: 2022-08-25 22:00:00
+2022-08-25T22:00:28.095764+00:00 app[scheduler.8257]: Trade already made for 2022-08-25 22:00:00
+2022-08-25T22:00:28.380889+00:00 heroku[scheduler.8257]: Process exited with status 0
+2022-08-25T22:00:28.446752+00:00 heroku[scheduler.8257]: State changed from up to complete
+2022-08-25T22:46:56.075511+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-25T23:00:46.781198+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-25T23:00:58.570888+00:00 heroku[scheduler.6308]: Starting process with command `python sentiment/trade.py`
+2022-08-25T23:00:59.261922+00:00 heroku[scheduler.6308]: State changed from starting to up
+2022-08-25T23:01:02.288379+00:00 app[scheduler.6308]: Getting data from Today
+2022-08-25T23:01:02.291402+00:00 app[scheduler.6308]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T23:01:02.291402+00:00 app[scheduler.6308]: warnings.warn(
+2022-08-25T23:01:03.311647+00:00 app[scheduler.6308]: Deleted 4857 duplicates from a total of 14160
+2022-08-25T23:01:03.331805+00:00 app[scheduler.6308]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-25T23:01:03.331807+00:00 app[scheduler.6308]: warnings.warn(
+2022-08-25T23:01:03.334674+00:00 app[scheduler.6308]: Check if a trade exists for 2022-08-25 23:00:00
+2022-08-25T23:01:03.334690+00:00 app[scheduler.6308]: Last Trade at: 2022-08-25 22:00:00
+2022-08-25T23:01:03.334712+00:00 app[scheduler.6308]: No Trade. Starting Trade for 2022-08-25 23:00:00
+2022-08-25T23:01:03.729493+00:00 app[scheduler.6308]: Starting trade process at 2022-08-25 23:01:03.729421
+2022-08-25T23:01:03.729551+00:00 app[scheduler.6308]: Sent Avg: 0.21914376811594205
+2022-08-25T23:01:03.729573+00:00 app[scheduler.6308]: USDT Balance: 935.3933862 $
+2022-08-25T23:01:03.729586+00:00 app[scheduler.6308]: BTC Balance: 0.02176262
+2022-08-25T23:01:03.729600+00:00 app[scheduler.6308]: Buying for 46
+2022-08-25T23:01:15.399307+00:00 app[scheduler.6308]: New Balances: 889.34739901 $ and 0.02237173 btc.
+2022-08-25T23:01:15.400558+00:00 app[scheduler.6308]: Added Trade to Heroku DB
+2022-08-25T23:01:15.795832+00:00 heroku[scheduler.6308]: Process exited with status 0
+2022-08-25T23:01:16.298155+00:00 heroku[scheduler.6308]: State changed from up to complete
+2022-08-26T00:01:22.303647+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T00:01:33.425862+00:00 heroku[scheduler.7934]: Starting process with command `python sentiment/trade.py`
+2022-08-26T00:01:34.006236+00:00 heroku[scheduler.7934]: State changed from starting to up
+2022-08-26T00:01:36.775774+00:00 app[scheduler.7934]: Getting data from Today
+2022-08-26T00:01:36.777823+00:00 app[scheduler.7934]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T00:01:36.777824+00:00 app[scheduler.7934]: warnings.warn(
+2022-08-26T00:01:36.868190+00:00 app[scheduler.7934]: Exception at 2022-08-26 00:01:36.868122: 'Float64Index' object has no attribute 'floor'
+2022-08-26T00:01:37.129679+00:00 heroku[scheduler.7934]: Process exited with status 0
+2022-08-26T00:01:37.207272+00:00 heroku[scheduler.7934]: State changed from up to complete
+2022-08-26T01:01:01.550901+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T01:01:12.233769+00:00 heroku[scheduler.2259]: Starting process with command `python sentiment/trade.py`
+2022-08-26T01:01:13.110142+00:00 heroku[scheduler.2259]: State changed from starting to up
+2022-08-26T01:01:15.710010+00:00 app[scheduler.2259]: Getting data from Today
+2022-08-26T01:01:15.712628+00:00 app[scheduler.2259]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T01:01:15.712629+00:00 app[scheduler.2259]: warnings.warn(
+2022-08-26T01:01:15.804379+00:00 app[scheduler.2259]: Exception at 2022-08-26 01:01:15.804309: 'Float64Index' object has no attribute 'floor'
+2022-08-26T01:01:16.078295+00:00 heroku[scheduler.2259]: Process exited with status 0
+2022-08-26T01:01:16.214457+00:00 heroku[scheduler.2259]: State changed from up to complete
+2022-08-26T02:00:49.149197+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T02:01:00.256749+00:00 heroku[scheduler.3159]: Starting process with command `python sentiment/trade.py`
+2022-08-26T02:01:00.878486+00:00 heroku[scheduler.3159]: State changed from starting to up
+2022-08-26T02:01:04.458128+00:00 app[scheduler.3159]: Getting data from Today
+2022-08-26T02:01:04.461056+00:00 app[scheduler.3159]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T02:01:04.461056+00:00 app[scheduler.3159]: warnings.warn(
+2022-08-26T02:01:04.565114+00:00 app[scheduler.3159]: Exception at 2022-08-26 02:01:04.565027: 'Float64Index' object has no attribute 'floor'
+2022-08-26T02:01:04.887252+00:00 heroku[scheduler.3159]: Process exited with status 0
+2022-08-26T02:01:05.079904+00:00 heroku[scheduler.3159]: State changed from up to complete
+2022-08-26T03:00:15.280632+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T03:00:27.307604+00:00 heroku[scheduler.9983]: Starting process with command `python sentiment/trade.py`
+2022-08-26T03:00:27.880158+00:00 heroku[scheduler.9983]: State changed from starting to up
+2022-08-26T03:00:31.822360+00:00 app[scheduler.9983]: Getting data from Today
+2022-08-26T03:00:31.824845+00:00 app[scheduler.9983]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T03:00:31.824846+00:00 app[scheduler.9983]: warnings.warn(
+2022-08-26T03:00:31.924087+00:00 app[scheduler.9983]: Exception at 2022-08-26 03:00:31.923993: 'Float64Index' object has no attribute 'floor'
+2022-08-26T03:00:32.235526+00:00 heroku[scheduler.9983]: Process exited with status 0
+2022-08-26T03:00:32.332308+00:00 heroku[scheduler.9983]: State changed from up to complete
+2022-08-26T04:00:47.880510+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T04:00:59.298201+00:00 heroku[scheduler.2200]: Starting process with command `python sentiment/trade.py`
+2022-08-26T04:01:00.030750+00:00 heroku[scheduler.2200]: State changed from starting to up
+2022-08-26T04:01:03.391813+00:00 app[scheduler.2200]: Getting data from Today
+2022-08-26T04:01:03.394277+00:00 app[scheduler.2200]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T04:01:03.394279+00:00 app[scheduler.2200]: warnings.warn(
+2022-08-26T04:01:03.549934+00:00 app[scheduler.2200]: Deleted 136 duplicates from a total of 628
+2022-08-26T04:01:03.567569+00:00 app[scheduler.2200]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T04:01:03.567570+00:00 app[scheduler.2200]: warnings.warn(
+2022-08-26T04:01:03.570133+00:00 app[scheduler.2200]: Check if a trade exists for 2022-08-26 03:00:00
+2022-08-26T04:01:03.570136+00:00 app[scheduler.2200]: Last Trade at: 2022-08-25 23:00:00
+2022-08-26T04:01:03.570153+00:00 app[scheduler.2200]: No Trade. Starting Trade for 2022-08-26 03:00:00
+2022-08-26T04:01:03.871311+00:00 app[scheduler.2200]: Starting trade process at 2022-08-26 04:01:03.871261
+2022-08-26T04:01:03.871369+00:00 app[scheduler.2200]: Sent Avg: 0.030111864406779664
+2022-08-26T04:01:03.871388+00:00 app[scheduler.2200]: USDT Balance: 889.34739901 $
+2022-08-26T04:01:03.871398+00:00 app[scheduler.2200]: BTC Balance: 0.02237173
+2022-08-26T04:01:03.871414+00:00 app[scheduler.2200]: Selling for 0.00559
+2022-08-26T04:01:04.269158+00:00 app[scheduler.2200]: SELL ORDER executed with 0.00559 at 2022-08-26 04:01:04.269093
+2022-08-26T04:01:15.716831+00:00 app[scheduler.2200]: New Balances: 891.75427972 $ and 0.01678173 btc.
+2022-08-26T04:01:15.717911+00:00 app[scheduler.2200]: Added Trade to Heroku DB
+2022-08-26T04:01:16.046896+00:00 heroku[scheduler.2200]: Process exited with status 0
+2022-08-26T04:01:16.154369+00:00 heroku[scheduler.2200]: State changed from up to complete
+2022-08-26T05:00:35.441135+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T05:00:45.835367+00:00 heroku[scheduler.4486]: Starting process with command `python sentiment/trade.py`
+2022-08-26T05:00:46.588506+00:00 heroku[scheduler.4486]: State changed from starting to up
+2022-08-26T05:00:49.728474+00:00 app[scheduler.4486]: Getting data from Today
+2022-08-26T05:00:49.730772+00:00 app[scheduler.4486]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T05:00:49.730773+00:00 app[scheduler.4486]: warnings.warn(
+2022-08-26T05:00:49.863445+00:00 app[scheduler.4486]: Deleted 277 duplicates from a total of 1245
+2022-08-26T05:00:49.881134+00:00 app[scheduler.4486]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T05:00:49.881136+00:00 app[scheduler.4486]: warnings.warn(
+2022-08-26T05:00:49.884110+00:00 app[scheduler.4486]: Check if a trade exists for 2022-08-26 06:00:00
+2022-08-26T05:00:49.884120+00:00 app[scheduler.4486]: Last Trade at: 2022-08-26 03:00:00
+2022-08-26T05:00:49.884121+00:00 app[scheduler.4486]: No Trade. Starting Trade for 2022-08-26 06:00:00
+2022-08-26T05:00:50.186869+00:00 app[scheduler.4486]: Starting trade process at 2022-08-26 05:00:50.186787
+2022-08-26T05:00:50.186920+00:00 app[scheduler.4486]: Sent Avg: 0.15186145833333334
+2022-08-26T05:00:50.186938+00:00 app[scheduler.4486]: USDT Balance: 891.75427972 $
+2022-08-26T05:00:50.186946+00:00 app[scheduler.4486]: BTC Balance: 0.01678173
+2022-08-26T05:00:50.186963+00:00 app[scheduler.4486]: Selling for 0.0042
+2022-08-26T05:00:50.501929+00:00 app[scheduler.4486]: SELL ORDER executed with 0.0042 at 2022-08-26 05:00:50.501841
+2022-08-26T05:01:01.480053+00:00 app[scheduler.4486]: New Balances: 893.56266952 $ and 0.01258173 btc.
+2022-08-26T05:01:01.481089+00:00 app[scheduler.4486]: Added Trade to Heroku DB
+2022-08-26T05:01:01.914017+00:00 heroku[scheduler.4486]: Process exited with status 0
+2022-08-26T05:01:02.034255+00:00 heroku[scheduler.4486]: State changed from up to complete
+2022-08-26T06:00:52.671736+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T06:01:03.449050+00:00 heroku[scheduler.4179]: Starting process with command `python sentiment/trade.py`
+2022-08-26T06:01:04.114528+00:00 heroku[scheduler.4179]: State changed from starting to up
+2022-08-26T06:01:07.155656+00:00 app[scheduler.4179]: Getting data from Today
+2022-08-26T06:01:07.157955+00:00 app[scheduler.4179]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T06:01:07.157956+00:00 app[scheduler.4179]: warnings.warn(
+2022-08-26T06:01:07.296343+00:00 app[scheduler.4179]: Deleted 539 duplicates from a total of 1961
+2022-08-26T06:01:07.316271+00:00 app[scheduler.4179]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T06:01:07.316272+00:00 app[scheduler.4179]: warnings.warn(
+2022-08-26T06:01:07.318933+00:00 app[scheduler.4179]: Check if a trade exists for 2022-08-26 07:00:00
+2022-08-26T06:01:07.318936+00:00 app[scheduler.4179]: Last Trade at: 2022-08-26 06:00:00
+2022-08-26T06:01:07.318952+00:00 app[scheduler.4179]: No Trade. Starting Trade for 2022-08-26 07:00:00
+2022-08-26T06:01:07.613474+00:00 app[scheduler.4179]: Starting trade process at 2022-08-26 06:01:07.613418
+2022-08-26T06:01:07.613528+00:00 app[scheduler.4179]: Sent Avg: 0.22833802469135803
+2022-08-26T06:01:07.613547+00:00 app[scheduler.4179]: USDT Balance: 893.56266952 $
+2022-08-26T06:01:07.613557+00:00 app[scheduler.4179]: BTC Balance: 0.01258173
+2022-08-26T06:01:07.613568+00:00 app[scheduler.4179]: Buying for 44
+2022-08-26T06:01:18.965312+00:00 app[scheduler.4179]: New Balances: 849.51920766 $ and 0.01316435 btc.
+2022-08-26T06:01:18.966438+00:00 app[scheduler.4179]: Added Trade to Heroku DB
+2022-08-26T06:01:19.301148+00:00 heroku[scheduler.4179]: Process exited with status 0
+2022-08-26T06:01:19.497999+00:00 heroku[scheduler.4179]: State changed from up to complete
+2022-08-26T07:00:47.696325+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T07:00:59.028213+00:00 heroku[scheduler.5629]: Starting process with command `python sentiment/trade.py`
+2022-08-26T07:00:59.704501+00:00 heroku[scheduler.5629]: State changed from starting to up
+2022-08-26T07:01:02.898996+00:00 app[scheduler.5629]: Getting data from Today
+2022-08-26T07:01:02.901893+00:00 app[scheduler.5629]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T07:01:02.901894+00:00 app[scheduler.5629]: warnings.warn(
+2022-08-26T07:01:03.054212+00:00 app[scheduler.5629]: Deleted 819 duplicates from a total of 2663
+2022-08-26T07:01:03.077936+00:00 app[scheduler.5629]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T07:01:03.077937+00:00 app[scheduler.5629]: warnings.warn(
+2022-08-26T07:01:03.080536+00:00 app[scheduler.5629]: Check if a trade exists for 2022-08-26 07:00:00
+2022-08-26T07:01:03.080540+00:00 app[scheduler.5629]: Last Trade at: 2022-08-26 07:00:00
+2022-08-26T07:01:03.080553+00:00 app[scheduler.5629]: Trade already made for 2022-08-26 07:00:00
+2022-08-26T07:01:03.392112+00:00 heroku[scheduler.5629]: Process exited with status 0
+2022-08-26T07:01:03.505146+00:00 heroku[scheduler.5629]: State changed from up to complete
+2022-08-26T08:00:24.965797+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T08:00:35.655097+00:00 heroku[scheduler.7820]: Starting process with command `python sentiment/trade.py`
+2022-08-26T08:00:36.330252+00:00 heroku[scheduler.7820]: State changed from starting to up
+2022-08-26T08:00:39.363637+00:00 app[scheduler.7820]: Getting data from Today
+2022-08-26T08:00:39.366527+00:00 app[scheduler.7820]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T08:00:39.366527+00:00 app[scheduler.7820]: warnings.warn(
+2022-08-26T08:00:39.534808+00:00 app[scheduler.7820]: Deleted 1267 duplicates from a total of 3542
+2022-08-26T08:00:39.560685+00:00 app[scheduler.7820]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T08:00:39.560687+00:00 app[scheduler.7820]: warnings.warn(
+2022-08-26T08:00:39.563734+00:00 app[scheduler.7820]: Check if a trade exists for 2022-08-26 08:00:00
+2022-08-26T08:00:39.563748+00:00 app[scheduler.7820]: Last Trade at: 2022-08-26 07:00:00
+2022-08-26T08:00:39.563772+00:00 app[scheduler.7820]: No Trade. Starting Trade for 2022-08-26 08:00:00
+2022-08-26T08:00:39.890897+00:00 app[scheduler.7820]: Starting trade process at 2022-08-26 08:00:39.890846
+2022-08-26T08:00:39.890950+00:00 app[scheduler.7820]: Sent Avg: 0.24200419426048564
+2022-08-26T08:00:39.890969+00:00 app[scheduler.7820]: USDT Balance: 849.51920766 $
+2022-08-26T08:00:39.890980+00:00 app[scheduler.7820]: BTC Balance: 0.01316435
+2022-08-26T08:00:39.890991+00:00 app[scheduler.7820]: Buying for 42
+2022-08-26T08:00:52.422451+00:00 app[scheduler.7820]: New Balances: 807.47751517 $ and 0.01372049 btc.
+2022-08-26T08:00:52.423990+00:00 app[scheduler.7820]: Added Trade to Heroku DB
+2022-08-26T08:00:52.763639+00:00 heroku[scheduler.7820]: Process exited with status 0
+2022-08-26T08:00:52.836407+00:00 heroku[scheduler.7820]: State changed from up to complete
+2022-08-26T09:01:05.454719+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T09:01:19.324022+00:00 heroku[scheduler.6491]: Starting process with command `python sentiment/trade.py`
+2022-08-26T09:01:20.018170+00:00 heroku[scheduler.6491]: State changed from starting to up
+2022-08-26T09:01:23.850104+00:00 app[scheduler.6491]: Getting data from Today
+2022-08-26T09:01:23.852457+00:00 app[scheduler.6491]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T09:01:23.852459+00:00 app[scheduler.6491]: warnings.warn(
+2022-08-26T09:01:23.986418+00:00 app[scheduler.6491]: Deleted 1415 duplicates from a total of 4086
+2022-08-26T09:01:24.008548+00:00 app[scheduler.6491]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T09:01:24.008550+00:00 app[scheduler.6491]: warnings.warn(
+2022-08-26T09:01:24.011162+00:00 app[scheduler.6491]: Check if a trade exists for 2022-08-26 09:00:00
+2022-08-26T09:01:24.011199+00:00 app[scheduler.6491]: Last Trade at: 2022-08-26 08:00:00
+2022-08-26T09:01:24.011235+00:00 app[scheduler.6491]: No Trade. Starting Trade for 2022-08-26 09:00:00
+2022-08-26T09:01:24.302604+00:00 app[scheduler.6491]: Starting trade process at 2022-08-26 09:01:24.302535
+2022-08-26T09:01:24.302714+00:00 app[scheduler.6491]: Sent Avg: 0.21113930041152262
+2022-08-26T09:01:24.302768+00:00 app[scheduler.6491]: USDT Balance: 807.47751517 $
+2022-08-26T09:01:24.302780+00:00 app[scheduler.6491]: BTC Balance: 0.01372049
+2022-08-26T09:01:24.302800+00:00 app[scheduler.6491]: Buying for 40
+2022-08-26T09:01:36.046352+00:00 app[scheduler.6491]: New Balances: 767.43759205 $ and 0.01425015 btc.
+2022-08-26T09:01:36.047496+00:00 app[scheduler.6491]: Added Trade to Heroku DB
+2022-08-26T09:01:36.366721+00:00 heroku[scheduler.6491]: Process exited with status 0
+2022-08-26T09:01:36.460047+00:00 heroku[scheduler.6491]: State changed from up to complete
+2022-08-26T10:00:53.283532+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T10:01:04.323267+00:00 heroku[scheduler.2486]: Starting process with command `python sentiment/trade.py`
+2022-08-26T10:01:05.155665+00:00 heroku[scheduler.2486]: State changed from starting to up
+2022-08-26T10:01:08.478403+00:00 app[scheduler.2486]: Getting data from Today
+2022-08-26T10:01:08.480715+00:00 app[scheduler.2486]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T10:01:08.480717+00:00 app[scheduler.2486]: warnings.warn(
+2022-08-26T10:01:08.657206+00:00 app[scheduler.2486]: Deleted 1516 duplicates from a total of 4720
+2022-08-26T10:01:08.674860+00:00 app[scheduler.2486]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T10:01:08.674862+00:00 app[scheduler.2486]: warnings.warn(
+2022-08-26T10:01:08.678394+00:00 app[scheduler.2486]: Check if a trade exists for 2022-08-26 09:00:00
+2022-08-26T10:01:08.678395+00:00 app[scheduler.2486]: Last Trade at: 2022-08-26 09:00:00
+2022-08-26T10:01:08.678397+00:00 app[scheduler.2486]: Trade already made for 2022-08-26 09:00:00
+2022-08-26T10:01:08.983923+00:00 heroku[scheduler.2486]: Process exited with status 0
+2022-08-26T10:01:09.040513+00:00 heroku[scheduler.2486]: State changed from up to complete
+2022-08-26T10:39:59.504277+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-26T10:41:24.699092+00:00 app[worker.1]: Rate Limit Exceeded, Sleep for 1 Min
+2022-08-26T11:00:42.187241+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T11:00:53.084152+00:00 heroku[scheduler.8579]: Starting process with command `python sentiment/trade.py`
+2022-08-26T11:00:53.681241+00:00 heroku[scheduler.8579]: State changed from starting to up
+2022-08-26T11:00:56.514425+00:00 app[scheduler.8579]: Getting data from Today
+2022-08-26T11:00:56.516930+00:00 app[scheduler.8579]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T11:00:56.516931+00:00 app[scheduler.8579]: warnings.warn(
+2022-08-26T11:00:56.675019+00:00 app[scheduler.8579]: Deleted 1644 duplicates from a total of 5229
+2022-08-26T11:00:56.697130+00:00 app[scheduler.8579]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T11:00:56.697138+00:00 app[scheduler.8579]: warnings.warn(
+2022-08-26T11:00:56.700055+00:00 app[scheduler.8579]: Check if a trade exists for 2022-08-26 09:00:00
+2022-08-26T11:00:56.700062+00:00 app[scheduler.8579]: Last Trade at: 2022-08-26 09:00:00
+2022-08-26T11:00:56.700065+00:00 app[scheduler.8579]: Trade already made for 2022-08-26 09:00:00
+2022-08-26T11:00:56.983681+00:00 heroku[scheduler.8579]: Process exited with status 0
+2022-08-26T11:00:57.039586+00:00 heroku[scheduler.8579]: State changed from up to complete
+2022-08-26T12:01:14.214926+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T12:01:26.243656+00:00 heroku[scheduler.3743]: Starting process with command `python sentiment/trade.py`
+2022-08-26T12:01:27.002603+00:00 heroku[scheduler.3743]: State changed from starting to up
+2022-08-26T12:01:29.765022+00:00 app[scheduler.3743]: Getting data from Today
+2022-08-26T12:01:29.771872+00:00 app[scheduler.3743]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T12:01:29.771874+00:00 app[scheduler.3743]: warnings.warn(
+2022-08-26T12:01:29.952970+00:00 app[scheduler.3743]: Deleted 1919 duplicates from a total of 5937
+2022-08-26T12:01:29.971995+00:00 app[scheduler.3743]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T12:01:29.971998+00:00 app[scheduler.3743]: warnings.warn(
+2022-08-26T12:01:29.974805+00:00 app[scheduler.3743]: Check if a trade exists for 2022-08-26 10:00:00
+2022-08-26T12:01:29.974829+00:00 app[scheduler.3743]: Last Trade at: 2022-08-26 09:00:00
+2022-08-26T12:01:29.974842+00:00 app[scheduler.3743]: No Trade. Starting Trade for 2022-08-26 10:00:00
+2022-08-26T12:01:30.293744+00:00 app[scheduler.3743]: Starting trade process at 2022-08-26 12:01:30.293692
+2022-08-26T12:01:30.293803+00:00 app[scheduler.3743]: Sent Avg: 0.1518859375
+2022-08-26T12:01:30.293821+00:00 app[scheduler.3743]: USDT Balance: 767.43759205 $
+2022-08-26T12:01:30.293831+00:00 app[scheduler.3743]: BTC Balance: 0.01425015
+2022-08-26T12:01:30.293847+00:00 app[scheduler.3743]: Selling for 0.00356
+2022-08-26T12:01:30.725313+00:00 app[scheduler.3743]: SELL ORDER executed with 0.00356 at 2022-08-26 12:01:30.725251
+2022-08-26T12:01:42.109256+00:00 app[scheduler.3743]: New Balances: 768.97041769 $ and 0.01069015 btc.
+2022-08-26T12:01:42.110746+00:00 app[scheduler.3743]: Added Trade to Heroku DB
+2022-08-26T12:01:42.425211+00:00 heroku[scheduler.3743]: Process exited with status 0
+2022-08-26T12:01:42.610391+00:00 heroku[scheduler.3743]: State changed from up to complete
+2022-08-26T13:00:35.131520+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T13:00:46.015389+00:00 heroku[scheduler.7643]: Starting process with command `python sentiment/trade.py`
+2022-08-26T13:00:46.766560+00:00 heroku[scheduler.7643]: State changed from starting to up
+2022-08-26T13:00:49.990914+00:00 app[scheduler.7643]: Getting data from Today
+2022-08-26T13:00:49.993970+00:00 app[scheduler.7643]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T13:00:49.993971+00:00 app[scheduler.7643]: warnings.warn(
+2022-08-26T13:00:50.179853+00:00 app[scheduler.7643]: Deleted 2016 duplicates from a total of 6391
+2022-08-26T13:00:50.208589+00:00 app[scheduler.7643]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T13:00:50.208593+00:00 app[scheduler.7643]: warnings.warn(
+2022-08-26T13:00:50.211360+00:00 app[scheduler.7643]: Check if a trade exists for 2022-08-26 10:00:00
+2022-08-26T13:00:50.211506+00:00 app[scheduler.7643]: Last Trade at: 2022-08-26 10:00:00
+2022-08-26T13:00:50.211507+00:00 app[scheduler.7643]: Trade already made for 2022-08-26 10:00:00
+2022-08-26T13:00:50.536542+00:00 heroku[scheduler.7643]: Process exited with status 0
+2022-08-26T13:00:50.667680+00:00 heroku[scheduler.7643]: State changed from up to complete
+2022-08-26T14:01:16.825966+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T14:01:34.055167+00:00 heroku[scheduler.1427]: Starting process with command `python sentiment/trade.py`
+2022-08-26T14:01:35.099837+00:00 heroku[scheduler.1427]: State changed from starting to up
+2022-08-26T14:01:38.975017+00:00 app[scheduler.1427]: Getting data from Today
+2022-08-26T14:01:38.978109+00:00 app[scheduler.1427]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T14:01:38.978109+00:00 app[scheduler.1427]: warnings.warn(
+2022-08-26T14:01:39.140367+00:00 app[scheduler.1427]: Deleted 2171 duplicates from a total of 7125
+2022-08-26T14:01:39.168460+00:00 app[scheduler.1427]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T14:01:39.168462+00:00 app[scheduler.1427]: warnings.warn(
+2022-08-26T14:01:39.171767+00:00 app[scheduler.1427]: Check if a trade exists for 2022-08-26 11:00:00
+2022-08-26T14:01:39.171786+00:00 app[scheduler.1427]: Last Trade at: 2022-08-26 10:00:00
+2022-08-26T14:01:39.171804+00:00 app[scheduler.1427]: No Trade. Starting Trade for 2022-08-26 11:00:00
+2022-08-26T14:01:39.464623+00:00 app[scheduler.1427]: Starting trade process at 2022-08-26 14:01:39.464546
+2022-08-26T14:01:39.464694+00:00 app[scheduler.1427]: Sent Avg: 0.18031590909090908
+2022-08-26T14:01:39.464708+00:00 app[scheduler.1427]: USDT Balance: 768.97041769 $
+2022-08-26T14:01:39.464722+00:00 app[scheduler.1427]: BTC Balance: 0.01069015
+2022-08-26T14:01:39.464742+00:00 app[scheduler.1427]: Selling for 0.00267
+2022-08-26T14:01:39.940972+00:00 app[scheduler.1427]: SELL ORDER executed with 0.00267 at 2022-08-26 14:01:39.940910
+2022-08-26T14:01:51.327519+00:00 app[scheduler.1427]: New Balances: 770.12003692 $ and 0.00802015 btc.
+2022-08-26T14:01:51.328612+00:00 app[scheduler.1427]: Added Trade to Heroku DB
+2022-08-26T14:01:51.646651+00:00 heroku[scheduler.1427]: Process exited with status 0
+2022-08-26T14:01:51.701351+00:00 heroku[scheduler.1427]: State changed from up to complete
+2022-08-26T15:00:48.469242+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T15:00:58.589113+00:00 heroku[scheduler.2173]: Starting process with command `python sentiment/trade.py`
+2022-08-26T15:00:59.216548+00:00 heroku[scheduler.2173]: State changed from starting to up
+2022-08-26T15:01:01.911145+00:00 app[scheduler.2173]: Getting data from Today
+2022-08-26T15:01:01.913610+00:00 app[scheduler.2173]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T15:01:01.913611+00:00 app[scheduler.2173]: warnings.warn(
+2022-08-26T15:01:02.597028+00:00 app[scheduler.2173]: Deleted 2279 duplicates from a total of 7644
+2022-08-26T15:01:02.614137+00:00 app[scheduler.2173]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T15:01:02.614138+00:00 app[scheduler.2173]: warnings.warn(
+2022-08-26T15:01:02.616338+00:00 app[scheduler.2173]: Check if a trade exists for 2022-08-26 11:00:00
+2022-08-26T15:01:02.616342+00:00 app[scheduler.2173]: Last Trade at: 2022-08-26 11:00:00
+2022-08-26T15:01:02.616359+00:00 app[scheduler.2173]: Trade already made for 2022-08-26 11:00:00
+2022-08-26T15:01:02.863735+00:00 heroku[scheduler.2173]: Process exited with status 0
+2022-08-26T15:01:02.992835+00:00 heroku[scheduler.2173]: State changed from up to complete
+2022-08-26T16:00:19.944953+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T16:00:30.228966+00:00 heroku[scheduler.2201]: Starting process with command `python sentiment/trade.py`
+2022-08-26T16:00:30.892668+00:00 heroku[scheduler.2201]: State changed from starting to up
+2022-08-26T16:00:33.780850+00:00 app[scheduler.2201]: Getting data from Today
+2022-08-26T16:00:33.783108+00:00 app[scheduler.2201]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T16:00:33.783109+00:00 app[scheduler.2201]: warnings.warn(
+2022-08-26T16:00:34.008052+00:00 app[scheduler.2201]: Deleted 2399 duplicates from a total of 8105
+2022-08-26T16:00:34.028257+00:00 app[scheduler.2201]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T16:00:34.028260+00:00 app[scheduler.2201]: warnings.warn(
+2022-08-26T16:00:34.030942+00:00 app[scheduler.2201]: Check if a trade exists for 2022-08-26 11:00:00
+2022-08-26T16:00:34.031055+00:00 app[scheduler.2201]: Last Trade at: 2022-08-26 11:00:00
+2022-08-26T16:00:34.031055+00:00 app[scheduler.2201]: Trade already made for 2022-08-26 11:00:00
+2022-08-26T16:00:34.313398+00:00 heroku[scheduler.2201]: Process exited with status 0
+2022-08-26T16:00:34.541940+00:00 heroku[scheduler.2201]: State changed from up to complete
+2022-08-26T17:00:53.803225+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T17:01:04.693836+00:00 heroku[scheduler.4994]: Starting process with command `python sentiment/trade.py`
+2022-08-26T17:01:05.298185+00:00 heroku[scheduler.4994]: State changed from starting to up
+2022-08-26T17:01:08.851393+00:00 app[scheduler.4994]: Getting data from Today
+2022-08-26T17:01:08.853509+00:00 app[scheduler.4994]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T17:01:08.853510+00:00 app[scheduler.4994]: warnings.warn(
+2022-08-26T17:01:09.190509+00:00 app[scheduler.4994]: Deleted 2488 duplicates from a total of 8733
+2022-08-26T17:01:09.212789+00:00 app[scheduler.4994]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T17:01:09.212791+00:00 app[scheduler.4994]: warnings.warn(
+2022-08-26T17:01:09.215805+00:00 app[scheduler.4994]: Check if a trade exists for 2022-08-26 16:00:00
+2022-08-26T17:01:09.215818+00:00 app[scheduler.4994]: Last Trade at: 2022-08-26 11:00:00
+2022-08-26T17:01:09.215834+00:00 app[scheduler.4994]: No Trade. Starting Trade for 2022-08-26 16:00:00
+2022-08-26T17:01:09.593271+00:00 app[scheduler.4994]: Starting trade process at 2022-08-26 17:01:09.593203
+2022-08-26T17:01:09.593339+00:00 app[scheduler.4994]: Sent Avg: 0.20324412393162394
+2022-08-26T17:01:09.593361+00:00 app[scheduler.4994]: USDT Balance: 770.12003692 $
+2022-08-26T17:01:09.593375+00:00 app[scheduler.4994]: BTC Balance: 0.00802015
+2022-08-26T17:01:09.593396+00:00 app[scheduler.4994]: Selling for 0.00201
+2022-08-26T17:01:10.794392+00:00 app[scheduler.4994]: SELL ORDER executed with 0.00201 at 2022-08-26 17:01:10.794310
+2022-08-26T17:01:21.735326+00:00 app[scheduler.4994]: New Balances: 770.98548061 $ and 0.00601015 btc.
+2022-08-26T17:01:21.736953+00:00 app[scheduler.4994]: Added Trade to Heroku DB
+2022-08-26T17:01:22.102158+00:00 heroku[scheduler.4994]: Process exited with status 0
+2022-08-26T17:01:22.211735+00:00 heroku[scheduler.4994]: State changed from up to complete
+2022-08-26T18:00:43.903304+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T18:00:54.868650+00:00 heroku[scheduler.5343]: Starting process with command `python sentiment/trade.py`
+2022-08-26T18:00:55.580592+00:00 heroku[scheduler.5343]: State changed from starting to up
+2022-08-26T18:00:59.830351+00:00 app[scheduler.5343]: Getting data from Today
+2022-08-26T18:00:59.832716+00:00 app[scheduler.5343]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T18:00:59.832717+00:00 app[scheduler.5343]: warnings.warn(
+2022-08-26T18:00:59.989405+00:00 app[scheduler.5343]: Deleted 2718 duplicates from a total of 9378
+2022-08-26T18:01:00.009926+00:00 app[scheduler.5343]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T18:01:00.009928+00:00 app[scheduler.5343]: warnings.warn(
+2022-08-26T18:01:00.012772+00:00 app[scheduler.5343]: Check if a trade exists for 2022-08-26 16:00:00
+2022-08-26T18:01:00.012777+00:00 app[scheduler.5343]: Last Trade at: 2022-08-26 16:00:00
+2022-08-26T18:01:00.012790+00:00 app[scheduler.5343]: Trade already made for 2022-08-26 16:00:00
+2022-08-26T18:01:00.311839+00:00 heroku[scheduler.5343]: Process exited with status 0
+2022-08-26T18:01:00.380635+00:00 heroku[scheduler.5343]: State changed from up to complete
+2022-08-26T19:00:54.815939+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T19:01:05.718665+00:00 heroku[scheduler.1171]: Starting process with command `python sentiment/trade.py`
+2022-08-26T19:01:06.594218+00:00 heroku[scheduler.1171]: State changed from starting to up
+2022-08-26T19:01:09.562212+00:00 app[scheduler.1171]: Getting data from Today
+2022-08-26T19:01:09.564766+00:00 app[scheduler.1171]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T19:01:09.564768+00:00 app[scheduler.1171]: warnings.warn(
+2022-08-26T19:01:09.763791+00:00 app[scheduler.1171]: Deleted 2909 duplicates from a total of 10119
+2022-08-26T19:01:09.783494+00:00 app[scheduler.1171]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T19:01:09.783495+00:00 app[scheduler.1171]: warnings.warn(
+2022-08-26T19:01:09.786191+00:00 app[scheduler.1171]: Check if a trade exists for 2022-08-26 17:00:00
+2022-08-26T19:01:09.786211+00:00 app[scheduler.1171]: Last Trade at: 2022-08-26 16:00:00
+2022-08-26T19:01:09.786230+00:00 app[scheduler.1171]: No Trade. Starting Trade for 2022-08-26 17:00:00
+2022-08-26T19:01:10.167646+00:00 app[scheduler.1171]: Starting trade process at 2022-08-26 19:01:10.167581
+2022-08-26T19:01:10.167719+00:00 app[scheduler.1171]: Sent Avg: 0.2198765042979943
+2022-08-26T19:01:10.167741+00:00 app[scheduler.1171]: USDT Balance: 770.98548061 $
+2022-08-26T19:01:10.167753+00:00 app[scheduler.1171]: BTC Balance: 0.00601015
+2022-08-26T19:01:10.167768+00:00 app[scheduler.1171]: Buying for 38
+2022-08-26T19:01:21.921851+00:00 app[scheduler.1171]: New Balances: 732.94808281 $ and 0.00651332 btc.
+2022-08-26T19:01:21.923454+00:00 app[scheduler.1171]: Added Trade to Heroku DB
+2022-08-26T19:01:22.220861+00:00 heroku[scheduler.1171]: Process exited with status 0
+2022-08-26T19:01:22.417901+00:00 heroku[scheduler.1171]: State changed from up to complete
+2022-08-26T19:49:51.690706+00:00 heroku[worker.1]: Cycling
+2022-08-26T19:49:51.694455+00:00 heroku[worker.1]: State changed from up to starting
+2022-08-26T19:49:52.525354+00:00 heroku[worker.1]: Stopping all processes with SIGTERM
+2022-08-26T19:49:52.774783+00:00 heroku[worker.1]: Process exited with status 143
+2022-08-26T19:50:02.900093+00:00 heroku[worker.1]: Starting process with command `python3 sentiment/runner.py`
+2022-08-26T19:50:03.743579+00:00 heroku[worker.1]: State changed from starting to up
+2022-08-26T19:50:08.093072+00:00 app[worker.1]: Getting data from Today
+2022-08-26T19:50:08.093674+00:00 app[worker.1]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T19:50:08.093674+00:00 app[worker.1]: warnings.warn(
+2022-08-26T19:50:08.256971+00:00 app[worker.1]: Deleted 3000 duplicates from a total of 10646
+2022-08-26T19:50:08.277291+00:00 app[worker.1]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T19:50:08.277294+00:00 app[worker.1]: warnings.warn(
+2022-08-26T19:50:08.282277+00:00 app[worker.1]: Check if a trade exists for 2022-08-26 17:00:00
+2022-08-26T19:50:08.282328+00:00 app[worker.1]: Last Trade at: 2022-08-26 17:00:00
+2022-08-26T19:50:08.282379+00:00 app[worker.1]: Trade already made for 2022-08-26 17:00:00
+2022-08-26T19:50:08.585895+00:00 app[worker.1]: Listening to tweets now...
+2022-08-26T20:00:27.644947+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T20:00:41.053893+00:00 heroku[scheduler.5859]: Starting process with command `python sentiment/trade.py`
+2022-08-26T20:00:41.985747+00:00 heroku[scheduler.5859]: State changed from starting to up
+2022-08-26T20:00:46.248886+00:00 app[scheduler.5859]: Getting data from Today
+2022-08-26T20:00:46.251525+00:00 app[scheduler.5859]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T20:00:46.251526+00:00 app[scheduler.5859]: warnings.warn(
+2022-08-26T20:00:46.493900+00:00 app[scheduler.5859]: Deleted 3015 duplicates from a total of 10755
+2022-08-26T20:00:46.521042+00:00 app[scheduler.5859]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T20:00:46.521051+00:00 app[scheduler.5859]: warnings.warn(
+2022-08-26T20:00:46.524574+00:00 app[scheduler.5859]: Check if a trade exists for 2022-08-26 21:00:00
+2022-08-26T20:00:46.524590+00:00 app[scheduler.5859]: Last Trade at: 2022-08-26 17:00:00
+2022-08-26T20:00:46.524607+00:00 app[scheduler.5859]: No Trade. Starting Trade for 2022-08-26 21:00:00
+2022-08-26T20:00:46.838088+00:00 app[scheduler.5859]: Starting trade process at 2022-08-26 20:00:46.838021
+2022-08-26T20:00:46.838203+00:00 app[scheduler.5859]: Sent Avg: 0.09310160714285713
+2022-08-26T20:00:46.838243+00:00 app[scheduler.5859]: USDT Balance: 732.94808281 $
+2022-08-26T20:00:46.838270+00:00 app[scheduler.5859]: BTC Balance: 0.00651332
+2022-08-26T20:00:46.838308+00:00 app[scheduler.5859]: Selling for 0.00163
+2022-08-26T20:00:47.169762+00:00 app[scheduler.5859]: SELL ORDER executed with 0.00163 at 2022-08-26 20:00:47.169636
+2022-08-26T20:00:58.564472+00:00 app[scheduler.5859]: New Balances: 733.64991028 $ and 0.00488332 btc.
+2022-08-26T20:00:58.568531+00:00 app[scheduler.5859]: Added Trade to Heroku DB
+2022-08-26T20:00:58.992364+00:00 heroku[scheduler.5859]: Process exited with status 0
+2022-08-26T20:00:59.198871+00:00 heroku[scheduler.5859]: State changed from up to complete
+2022-08-26T21:01:00.286544+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T21:01:11.228743+00:00 heroku[scheduler.7035]: Starting process with command `python sentiment/trade.py`
+2022-08-26T21:01:11.911033+00:00 heroku[scheduler.7035]: State changed from starting to up
+2022-08-26T21:01:15.080332+00:00 app[scheduler.7035]: Getting data from Today
+2022-08-26T21:01:15.082553+00:00 app[scheduler.7035]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T21:01:15.082554+00:00 app[scheduler.7035]: warnings.warn(
+2022-08-26T21:01:15.354865+00:00 app[scheduler.7035]: Deleted 3102 duplicates from a total of 11391
+2022-08-26T21:01:15.378344+00:00 app[scheduler.7035]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T21:01:15.378345+00:00 app[scheduler.7035]: warnings.warn(
+2022-08-26T21:01:15.381391+00:00 app[scheduler.7035]: Check if a trade exists for 2022-08-26 22:00:00
+2022-08-26T21:01:15.381415+00:00 app[scheduler.7035]: Last Trade at: 2022-08-26 21:00:00
+2022-08-26T21:01:15.381440+00:00 app[scheduler.7035]: No Trade. Starting Trade for 2022-08-26 22:00:00
+2022-08-26T21:01:15.676017+00:00 app[scheduler.7035]: Starting trade process at 2022-08-26 21:01:15.675966
+2022-08-26T21:01:15.676076+00:00 app[scheduler.7035]: Sent Avg: 0.2159264705882353
+2022-08-26T21:01:15.676096+00:00 app[scheduler.7035]: USDT Balance: 733.64991028 $
+2022-08-26T21:01:15.676108+00:00 app[scheduler.7035]: BTC Balance: 0.00488332
+2022-08-26T21:01:15.676120+00:00 app[scheduler.7035]: Buying for 36
+2022-08-26T21:01:27.218240+00:00 app[scheduler.7035]: New Balances: 697.61428185 $ and 0.00536001 btc.
+2022-08-26T21:01:27.219402+00:00 app[scheduler.7035]: Added Trade to Heroku DB
+2022-08-26T21:01:27.529873+00:00 heroku[scheduler.7035]: Process exited with status 0
+2022-08-26T21:01:28.063589+00:00 heroku[scheduler.7035]: State changed from up to complete
+2022-08-26T22:00:59.562192+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T22:01:13.343517+00:00 heroku[scheduler.9247]: Starting process with command `python sentiment/trade.py`
+2022-08-26T22:01:14.078166+00:00 heroku[scheduler.9247]: State changed from starting to up
+2022-08-26T22:01:19.827787+00:00 app[scheduler.9247]: Getting data from Today
+2022-08-26T22:01:19.831055+00:00 app[scheduler.9247]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T22:01:19.831057+00:00 app[scheduler.9247]: warnings.warn(
+2022-08-26T22:01:20.187904+00:00 app[scheduler.9247]: Deleted 3157 duplicates from a total of 11896
+2022-08-26T22:01:20.212886+00:00 app[scheduler.9247]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T22:01:20.212893+00:00 app[scheduler.9247]: warnings.warn(
+2022-08-26T22:01:20.215539+00:00 app[scheduler.9247]: Check if a trade exists for 2022-08-26 22:00:00
+2022-08-26T22:01:20.215552+00:00 app[scheduler.9247]: Last Trade at: 2022-08-26 22:00:00
+2022-08-26T22:01:20.215573+00:00 app[scheduler.9247]: Trade already made for 2022-08-26 22:00:00
+2022-08-26T22:01:20.624038+00:00 heroku[scheduler.9247]: Process exited with status 0
+2022-08-26T22:01:20.694505+00:00 heroku[scheduler.9247]: State changed from up to complete
+2022-08-26T23:00:56.641698+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-26T23:01:06.895844+00:00 heroku[scheduler.9884]: Starting process with command `python sentiment/trade.py`
+2022-08-26T23:01:07.513040+00:00 heroku[scheduler.9884]: State changed from starting to up
+2022-08-26T23:01:10.603607+00:00 app[scheduler.9884]: Getting data from Today
+2022-08-26T23:01:10.605834+00:00 app[scheduler.9884]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T23:01:10.605836+00:00 app[scheduler.9884]: warnings.warn(
+2022-08-26T23:01:10.837110+00:00 app[scheduler.9884]: Deleted 3276 duplicates from a total of 12502
+2022-08-26T23:01:10.864000+00:00 app[scheduler.9884]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-26T23:01:10.865160+00:00 app[scheduler.9884]: warnings.warn(
+2022-08-26T23:01:10.865179+00:00 app[scheduler.9884]: Check if a trade exists for 2022-08-26 23:00:00
+2022-08-26T23:01:10.865180+00:00 app[scheduler.9884]: Last Trade at: 2022-08-26 22:00:00
+2022-08-26T23:01:10.865183+00:00 app[scheduler.9884]: No Trade. Starting Trade for 2022-08-26 23:00:00
+2022-08-26T23:01:11.215795+00:00 app[scheduler.9884]: Starting trade process at 2022-08-26 23:01:11.215724
+2022-08-26T23:01:11.215861+00:00 app[scheduler.9884]: Sent Avg: 0.1573371653543307
+2022-08-26T23:01:11.215887+00:00 app[scheduler.9884]: USDT Balance: 697.61428185 $
+2022-08-26T23:01:11.215899+00:00 app[scheduler.9884]: BTC Balance: 0.00536001
+2022-08-26T23:01:11.215944+00:00 app[scheduler.9884]: Selling for 0.00134
+2022-08-26T23:01:11.652981+00:00 app[scheduler.9884]: SELL ORDER executed with 0.00134 at 2022-08-26 23:01:11.652900
+2022-08-26T23:01:23.000621+00:00 app[scheduler.9884]: New Balances: 698.19124431 $ and 0.00402001 btc.
+2022-08-26T23:01:23.001644+00:00 app[scheduler.9884]: Added Trade to Heroku DB
+2022-08-26T23:01:23.306699+00:00 heroku[scheduler.9884]: Process exited with status 0
+2022-08-26T23:01:23.354137+00:00 heroku[scheduler.9884]: State changed from up to complete
+2022-08-27T00:01:42.056718+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-27T00:01:54.855943+00:00 heroku[scheduler.7179]: Starting process with command `python sentiment/trade.py`
+2022-08-27T00:01:55.477703+00:00 heroku[scheduler.7179]: State changed from starting to up
+2022-08-27T00:01:58.912241+00:00 app[scheduler.7179]: Getting data from Today
+2022-08-27T00:01:58.916662+00:00 app[scheduler.7179]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-27T00:01:58.916665+00:00 app[scheduler.7179]: warnings.warn(
+2022-08-27T00:01:59.013675+00:00 app[scheduler.7179]: Exception at 2022-08-27 00:01:59.013405: 'Float64Index' object has no attribute 'floor'
+2022-08-27T00:01:59.354198+00:00 heroku[scheduler.7179]: Process exited with status 0
+2022-08-27T00:01:59.411054+00:00 heroku[scheduler.7179]: State changed from up to complete
+2022-08-27T01:01:02.965604+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-27T01:01:14.452611+00:00 heroku[scheduler.4357]: Starting process with command `python sentiment/trade.py`
+2022-08-27T01:01:15.036166+00:00 heroku[scheduler.4357]: State changed from starting to up
+2022-08-27T01:01:17.909438+00:00 app[scheduler.4357]: Getting data from Today
+2022-08-27T01:01:17.912136+00:00 app[scheduler.4357]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-27T01:01:17.912137+00:00 app[scheduler.4357]: warnings.warn(
+2022-08-27T01:01:18.036551+00:00 app[scheduler.4357]: Exception at 2022-08-27 01:01:18.036485: 'Float64Index' object has no attribute 'floor'
+2022-08-27T01:01:18.338046+00:00 heroku[scheduler.4357]: Process exited with status 0
+2022-08-27T01:01:18.518557+00:00 heroku[scheduler.4357]: State changed from up to complete
+2022-08-27T02:00:57.512466+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-27T02:01:10.138115+00:00 heroku[scheduler.5129]: Starting process with command `python sentiment/trade.py`
+2022-08-27T02:01:10.803746+00:00 heroku[scheduler.5129]: State changed from starting to up
+2022-08-27T02:01:13.612776+00:00 app[scheduler.5129]: Getting data from Today
+2022-08-27T02:01:13.615153+00:00 app[scheduler.5129]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-27T02:01:13.615154+00:00 app[scheduler.5129]: warnings.warn(
+2022-08-27T02:01:13.921446+00:00 app[scheduler.5129]: Exception at 2022-08-27 02:01:13.921383: 'Float64Index' object has no attribute 'floor'
+2022-08-27T02:01:14.212694+00:00 heroku[scheduler.5129]: Process exited with status 0
+2022-08-27T02:01:14.718539+00:00 heroku[scheduler.5129]: State changed from up to complete
+2022-08-27T03:01:02.028702+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-27T03:01:12.497564+00:00 heroku[scheduler.2016]: Starting process with command `python sentiment/trade.py`
+2022-08-27T03:01:13.296189+00:00 heroku[scheduler.2016]: State changed from starting to up
+2022-08-27T03:01:17.357614+00:00 app[scheduler.2016]: Getting data from Today
+2022-08-27T03:01:17.360640+00:00 app[scheduler.2016]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-27T03:01:17.360641+00:00 app[scheduler.2016]: warnings.warn(
+2022-08-27T03:01:17.460345+00:00 app[scheduler.2016]: Exception at 2022-08-27 03:01:17.459834: 'Float64Index' object has no attribute 'floor'
+2022-08-27T03:01:17.845133+00:00 heroku[scheduler.2016]: Process exited with status 0
+2022-08-27T03:01:18.213622+00:00 heroku[scheduler.2016]: State changed from up to complete
+2022-08-27T04:00:29.901797+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-27T04:00:41.345391+00:00 heroku[scheduler.7002]: Starting process with command `python sentiment/trade.py`
+2022-08-27T04:00:41.967637+00:00 heroku[scheduler.7002]: State changed from starting to up
+2022-08-27T04:00:45.700059+00:00 app[scheduler.7002]: Getting data from Today
+2022-08-27T04:00:45.703008+00:00 app[scheduler.7002]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-27T04:00:45.703009+00:00 app[scheduler.7002]: warnings.warn(
+2022-08-27T04:00:45.850500+00:00 app[scheduler.7002]: Deleted 79 duplicates from a total of 575
+2022-08-27T04:00:45.867588+00:00 app[scheduler.7002]: Exception at 2022-08-27 04:00:45.867487: single positional indexer is out-of-bounds
+2022-08-27T04:00:46.155557+00:00 heroku[scheduler.7002]: Process exited with status 0
+2022-08-27T04:00:46.316673+00:00 heroku[scheduler.7002]: State changed from up to complete
+2022-08-27T05:00:57.518348+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-27T05:01:08.244018+00:00 heroku[scheduler.8283]: Starting process with command `python sentiment/trade.py`
+2022-08-27T05:01:09.076235+00:00 heroku[scheduler.8283]: State changed from starting to up
+2022-08-27T05:01:11.937437+00:00 app[scheduler.8283]: Getting data from Today
+2022-08-27T05:01:11.939642+00:00 app[scheduler.8283]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-27T05:01:11.939643+00:00 app[scheduler.8283]: warnings.warn(
+2022-08-27T05:01:12.055776+00:00 app[scheduler.8283]: Deleted 233 duplicates from a total of 1353
+2022-08-27T05:01:12.072300+00:00 app[scheduler.8283]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-27T05:01:12.078796+00:00 app[scheduler.8283]: warnings.warn(
+2022-08-27T05:01:12.078810+00:00 app[scheduler.8283]: Check if a trade exists for 2022-08-27 03:00:00
+2022-08-27T05:01:12.078810+00:00 app[scheduler.8283]: Last Trade at: 2022-08-26 23:00:00
+2022-08-27T05:01:12.078819+00:00 app[scheduler.8283]: No Trade. Starting Trade for 2022-08-27 03:00:00
+2022-08-27T05:01:12.448948+00:00 app[scheduler.8283]: Starting trade process at 2022-08-27 05:01:12.448875
+2022-08-27T05:01:12.449019+00:00 app[scheduler.8283]: Sent Avg: 0.16637158908507224
+2022-08-27T05:01:12.449047+00:00 app[scheduler.8283]: USDT Balance: 698.19124431 $
+2022-08-27T05:01:12.449064+00:00 app[scheduler.8283]: BTC Balance: 0.00402001
+2022-08-27T05:01:12.449089+00:00 app[scheduler.8283]: Selling for 0.00101
+2022-08-27T05:01:12.844303+00:00 app[scheduler.8283]: SELL ORDER executed with 0.00101 at 2022-08-27 05:01:12.844238
+2022-08-27T05:01:23.521066+00:00 app[scheduler.8283]: New Balances: 718.48637187 $ and 0.00301001 btc.
+2022-08-27T05:01:23.522160+00:00 app[scheduler.8283]: Added Trade to Heroku DB
+2022-08-27T05:01:23.823587+00:00 heroku[scheduler.8283]: Process exited with status 0
+2022-08-27T05:01:23.896083+00:00 heroku[scheduler.8283]: State changed from up to complete
+2022-08-27T06:00:44.845633+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-27T06:00:55.172158+00:00 heroku[scheduler.9418]: Starting process with command `python sentiment/trade.py`
+2022-08-27T06:00:55.856466+00:00 heroku[scheduler.9418]: State changed from starting to up
+2022-08-27T06:00:58.778827+00:00 app[scheduler.9418]: Getting data from Today
+2022-08-27T06:00:58.781112+00:00 app[scheduler.9418]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-27T06:00:58.781112+00:00 app[scheduler.9418]: warnings.warn(
+2022-08-27T06:00:58.937913+00:00 app[scheduler.9418]: Deleted 383 duplicates from a total of 1925
+2022-08-27T06:00:58.957361+00:00 app[scheduler.9418]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-27T06:00:58.957363+00:00 app[scheduler.9418]: warnings.warn(
+2022-08-27T06:00:58.960068+00:00 app[scheduler.9418]: Check if a trade exists for 2022-08-27 03:00:00
+2022-08-27T06:00:58.960081+00:00 app[scheduler.9418]: Last Trade at: 2022-08-27 03:00:00
+2022-08-27T06:00:58.960096+00:00 app[scheduler.9418]: Trade already made for 2022-08-27 03:00:00
+2022-08-27T06:00:59.254070+00:00 heroku[scheduler.9418]: Process exited with status 0
+2022-08-27T06:00:59.303163+00:00 heroku[scheduler.9418]: State changed from up to complete
+2022-08-27T07:00:53.854303+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-27T07:01:04.754622+00:00 heroku[scheduler.2275]: Starting process with command `python sentiment/trade.py`
+2022-08-27T07:01:05.351439+00:00 heroku[scheduler.2275]: State changed from starting to up
+2022-08-27T07:01:08.557530+00:00 app[scheduler.2275]: Getting data from Today
+2022-08-27T07:01:08.560225+00:00 app[scheduler.2275]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-27T07:01:08.560227+00:00 app[scheduler.2275]: warnings.warn(
+2022-08-27T07:01:08.795236+00:00 app[scheduler.2275]: Deleted 554 duplicates from a total of 2522
+2022-08-27T07:01:08.814381+00:00 app[scheduler.2275]: /app/.heroku/python/lib/python3.10/site-packages/pandas/io/sql.py:761: UserWarning: pandas only support SQLAlchemy connectable(engine/connection) ordatabase string URI or sqlite3 DBAPI2 connectionother DBAPI2 objects are not tested, please consider using SQLAlchemy
+2022-08-27T07:01:08.814494+00:00 app[scheduler.2275]: warnings.warn(
+2022-08-27T07:01:08.817193+00:00 app[scheduler.2275]: Check if a trade exists for 2022-08-27 05:00:00
+2022-08-27T07:01:08.817194+00:00 app[scheduler.2275]: Last Trade at: 2022-08-27 03:00:00
+2022-08-27T07:01:08.817204+00:00 app[scheduler.2275]: No Trade. Starting Trade for 2022-08-27 05:00:00
+2022-08-27T07:01:09.147906+00:00 app[scheduler.2275]: Starting trade process at 2022-08-27 07:01:09.147836
+2022-08-27T07:01:09.147951+00:00 app[scheduler.2275]: Sent Avg: 0.13604526315789472
+2022-08-27T07:01:09.147968+00:00 app[scheduler.2275]: USDT Balance: 718.48637187 $
+2022-08-27T07:01:09.147976+00:00 app[scheduler.2275]: BTC Balance: 0.00301001
+2022-08-27T07:01:09.147992+00:00 app[scheduler.2275]: Selling for 0.00075
+2022-08-27T07:01:09.547521+00:00 app[scheduler.2275]: SELL ORDER executed with 0.00075 at 2022-08-27 07:01:09.547443
+2022-08-27T07:01:20.554436+00:00 app[scheduler.2275]: New Balances: 733.57019794 $ and 0.00226001 btc.
+2022-08-27T07:01:20.555931+00:00 app[scheduler.2275]: Added Trade to Heroku DB
+2022-08-27T07:01:20.909191+00:00 heroku[scheduler.2275]: Process exited with status 0
+2022-08-27T07:01:20.959622+00:00 heroku[scheduler.2275]: State changed from up to complete
+
+
+2022-08-27T08:00:39.414553+00:00 app[api]: Starting process with command `python sentiment/trade.py` by user scheduler@addons.heroku.com
+2022-08-27T08:00:49.900823+00:00 heroku[scheduler.2024]: Starting process with command `python sentiment/trade.py`
+2022-08-27T08:00:51.616257+00:00 heroku[scheduler.2024]: State changed from starting to up
+
+2022-08-27T08:00:54.484250+00:00 app[scheduler.2024]: Getting data from Today
+2022-08-27T08:00:54.633523+00:00 app[scheduler.2024]: Deleted 676 duplicates from a total of 3229
+
+2022-08-27T08:00:54.654186+00:00 app[scheduler.2024]: Check if a trade exists for 2022-08-27 09:00:00
+2022-08-27T08:00:54.654195+00:00 app[scheduler.2024]: Last Trade at: 2022-08-27 05:00:00
+2022-08-27T08:00:54.654221+00:00 app[scheduler.2024]: No Trade. Starting Trade for 2022-08-27 09:00:00
+2022-08-27T08:00:54.969711+00:00 app[scheduler.2024]: Starting trade process at 2022-08-27 08:00:54.969613
+
+2022-08-27T08:00:54.969753+00:00 app[scheduler.2024]: Sent Avg: 0.24167307692307693
+2022-08-27T08:00:54.969771+00:00 app[scheduler.2024]: USDT Balance: 733.57019794 $
+2022-08-27T08:00:54.969778+00:00 app[scheduler.2024]: BTC Balance: 0.00226001
+2022-08-27T08:00:54.969789+00:00 app[scheduler.2024]: Buying for 36
+2022-08-27T08:01:06.623794+00:00 app[scheduler.2024]: New Balances: 697.53434226 $ and 0.0040339 btc.
+
+2022-08-27T08:01:06.624788+00:00 app[scheduler.2024]: Added Trade to Heroku DB
+2022-08-27T08:01:06.923963+00:00 heroku[scheduler.2024]: Process exited with status 0
+2022-08-27T08:01:06.974784+00:00 heroku[scheduler.2024]: State changed from up to complete

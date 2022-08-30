@@ -43,11 +43,12 @@ intervals = 60
 #Convert Database to Dataframe
 df, df_trades, duplicates  = loading_data_from_heroku_database()
 
-st.subheader(f"{date.today().strftime('%d-%m-%Y')} - Bitcoin Sentiment Trading")
+st.subheader(f"27.08.2022 - Bitcoin Sentiment Trading") #{date.today().strftime('%d-%m-%Y')}
 
 single_sent_scores_df,resampled_mean_tweetcount,mean_follower = resample_df(df, intervals, True, False)#(split_DF_by_time(df,lookback_timeframe),intervals,True)
 
 last_avail_tweets_1h = split_DF_by_time(df,1,resampled_mean_tweetcount.index[0]) # gets all the last tweets from the last available timestamp - 1h
+last_avail_tweets_24h = split_DF_by_time(df,24,resampled_mean_tweetcount.index[0])
 
 
 # explanation section
@@ -101,9 +102,9 @@ if not hide_sentiment:
     with col2:
         st.metric(label="Deleted Duplicates",value=f"{int(duplicates/df.shape[0]*100)} %")
     with col3:
-        st.metric(label = f"Collected Tweets", value = split_DF_by_time(df,24,False).shape[0])
+        st.metric(label = f"Collected Tweets", value = last_avail_tweets_24h.shape[0])
     with col4:
-        st.metric(label="Average Followers",value=int(mean_follower["Followers"].tail(1)))
+        st.metric(label="Average Followers",value=int(last_avail_tweets_24h["Followers"].tail(1)))
     st.write("##")
     st.write("##")
 

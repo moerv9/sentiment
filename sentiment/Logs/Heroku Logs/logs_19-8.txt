@@ -1498,3 +1498,12 @@
 2022-08-19T11:01:03.160496+00:00 app[scheduler.8875]: Trade already made for 2022-08-19 09:00:00
 2022-08-19T11:01:03.819397+00:00 heroku[scheduler.8875]: Process exited with status 0
 2022-08-19T11:01:04.006512+00:00 heroku[scheduler.8875]: State changed from up to complete
+
+
+
+
+2022-08-27T08:19:52.031816+00:00 heroku[worker.1]: Idling
+2022-08-27T08:19:52.039599+00:00 heroku[worker.1]: State changed from up to down
+2022-08-27T08:19:52.044078+00:00 heroku[worker.1]: Idling because quota is exhausted
+2022-08-27T08:19:53.099951+00:00 heroku[worker.1]: Stopping all processes with SIGTERM
+2022-08-27T08:19:53.307609+00:00 heroku[worker.1]: Process exited with status 143

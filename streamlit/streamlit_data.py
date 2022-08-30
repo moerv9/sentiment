@@ -68,7 +68,7 @@ def get_Heroku_DB(today=True):
         logger.info("Getting data from Today")
         query = f"select * from tweet_data where Tweet_Date > current_date order by id desc limit {limit};"
     else:
-        logger.info("Getting data from past Today")
+        #logger.info("Getting data from past Today")
         query = f"select * from tweet_data where Tweet_Date > current_date - interval '4' day order by id desc limit 1000000;"
     df = pd.read_sql(query, conn)
     columns = {"body": "Tweet",
