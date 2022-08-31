@@ -2,7 +2,7 @@
 </br>
 
 ## Retrieving and Processing of Tweets with the Twitter API
-The development phase starts with the acquisition of data from Twitter, as being stated in the *Must-Have*-Requirements  [[FR 10]](/2_Concept.md#must-have).
+The development phase starts with the acquisition of data from Twitter, as being stated in the *Must-Have*-Requirements  [[FR 10]](2_Concept.md#must-have).
 
 Instead of dealing with [HTTP Requests](9_Appendices.md#h), [Data Serialisation](9_Appendices.md#d) and Rate Limits it is easier to use pre-built libraries to access the Twitter API and be able to focus more on building functionality. There are hundreds of different libraries, but I've found two to be standing out and compared them: [Twint](https://github.com/twintproject/twint) and [Tweepy](https://www.tweepy.org).
 
@@ -22,7 +22,7 @@ Instead of dealing with [HTTP Requests](9_Appendices.md#h), [Data Serialisation]
 Twint seems to have the upper hand because it does not need an authentication and has good filters for tweets (even cashtag filter). Acquiring some tweets with Twint was done in a few lines of code, but a few days later this didn't work any longer. It appears that Twint wasn't retrieving any data any longer. 
 This could've been a temporary problem and may work later on, but since their GitHub hasn't been updated in more than a year and others had this issue as well, Twint no longer seemed as a good option. 
 
-Getting authorized from Twitter was easy. Login to the [Twitter Developer Portal](developer.twitter.com) and create a new Project and App. There you can generate and copy the necessary token: API Key, API Secret, Access Token and Access Secret. The Twitter API also released a Version 2 which is able to authorize using only a bearer token.
+Getting authorized from Twitter was easy. Login to the [Twitter Developer Portal](https://developer.twitter.com/en) and create a new Project and App. There you can generate and copy the necessary token: API Key, API Secret, Access Token and Access Secret. The Twitter API also released a Version 2 which is able to authorize using only a bearer token.
 
 Authorization and searching for Tweets with Tweepy is simple:
 ```
@@ -47,11 +47,11 @@ A first test with Tweepy was a simple tweet with the authors account was done wi
 
 ![tweepy one line](./img/moerv9_tweet_with_tweepy.png)
 
-##### *Figure 8: Tweet Status with Tweepy*
+##### *Figure 9: Tweet Status with Tweepy*
 </br>
 
 ![tweet from moerv9](./img/moerv9_tweet.png)
-##### *Figure 9: Tweet on Twitter*
+##### *Figure 10: Tweet on Twitter*
 </br>
 
 
@@ -112,7 +112,7 @@ I am not only collecting the tweet but some other information/metrics about the 
 
 Using the Location to filter for different time zones, so it is possible to enable the bot at different places at different times. For example, it would be more efficient to collect tweets from America, when most people there are awake and able to tweet and not asleep. The problem is that the location is not automatically read and set by Twitter, but rather manually set by the user. This means it is nearly useless to filter it since some tweets are from *"Everywhere"* or from the *"Magic Internet Bank"*, as can be seen in the table above.
 
-For the tweet the timestamp, the found keyword and the calculated sentiment are included. More about sentiment in [this](/5_Sentiment.md) section.
+For the tweet the timestamp, the found keyword and the calculated sentiment are included. More about sentiment in the [Sentiment](./5_Sentiment.md) section.
 
 The information about the user includes their follower base, when the user was created and if they are verified. No personal information with which one can conclude the identity of the person is acquired.
 
@@ -171,17 +171,17 @@ After cleaning, it looks like this:
 </br>
 
 ## Duplicates
-The next thing is to find and delete all the duplicates. As can be seen in Figure 10, the same tweet was tweeted 10 times in one minute. It is the exact same tweet, and it kept on tweeting for quite a bit. Since this is obviously a bot, a way to filter out these duplicates was needed.
+The next step is to find and delete all the duplicates. As can be seen in Figure 10, the same tweet was tweeted 10 times in one minute. It is the exact same tweet, and it kept on tweeting for quite a bit. Since this is obviously a bot, a way to filter out these duplicates was needed.
 
 <img src=./img/sentiment/duplicatetweets.png width=900/>
 
-##### *Figure 10: Duplicate Tweets in a 1 Min. time period*
+##### *Figure 11: Duplicate Tweets in a 1 Min. time period*
 </br>
 
 
 The first approach was as follows: Adding the collected tweets to a list, and after the list had 40 items, run a function that checks for duplicates and deletes them. There were about 40 collected items a minute, so it seemed like a good choice.
 
-The following function converts the list to a Pandas DataFrame and checks for duplicate Tweets with their innate `duplicated()`-method. The `keep=False`-parameter deletes the found duplicates.
+The following function converts the list to a pandas DataFrame, which is like a table. Pandas is a state-of-the-art data-analysis tool for python. It is highly flexible and has powerful methods for data manipulation, such as their innate `duplicated()`-method that checks for duplicates inside a column or row. The `keep=False`-parameter deletes the found duplicates.
 
     def check_duplicates(tweet_list):
         cols = ["Tweet", "Keyword", "Time", 

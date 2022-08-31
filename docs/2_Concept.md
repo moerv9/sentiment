@@ -73,17 +73,26 @@ The requirements are structured as functional and non-functional with three cate
 
 
 
-## Steps for Development Phase
+## Development Phase
 From the above requirements analysis, a flow diagram was derived to simplify and visualise the order of steps that are needed to be taken in the development phase. This helped to split the available time into phases for each part in this diagram. It was basically the key to time-management of this project.
 The orange bigger box are the parent steps, in which the smaller steps take place.
 
 </br>
 
 ![Concept as Flow Diagram](./img/concept.png)
-##### *Figure 7: Flow Diagram for Development Phase*
+##### *Figure 7: Flow Diagram for the Development Phase*
 </br>
 
+The following architecture overview (Figure 8) shows all interaction with the different API's and providers. The whole system works with two tables. The system gets data from the Twitter API and stores it inside a table in the Heroku Postgres Database. Heroku schedules the trading and stores the trading data in another table in the Database. All the scripts regarding trading and visualising are then requesting this data from the Database, as needed.
+Both the Binance and Kucoin API's are used to acquire price data for the cryptocurrencies and Kucoin handles the trading part.
+
+This works as a first overview over the system and will be explained in more detail throughout this documentation.
+
+![architecture overview](./img/ArchitectureOverview.png)
+##### *Figure 8: Architecture Overview*
 </br>
+
+
 
 ---
 
@@ -185,39 +194,39 @@ Runner(['btc','ada','eth'])) </br>
 
 | **main - Folder** |                            |
 |-------------------|------------------------------------------|
-| config.py         | File to get the Environment-Variables     |
-| Procfile          | A Heroku file for starting the processes |
-| docs              | Contains the ordered Documentation       |
+| [config.py](../config.py)         | File to get the Environment-Variables     |
+| [Procfile](../Procfile)          | A Heroku file for starting the processes |
+| [docs-Folder](../docs/)              | Contains the ordered Documentation       |
 
 </br>
 
 
 | **sentiment - Folder** |   |
 |------------------------|---|
-| filter.py              | Functions to filter the tweets by checking for blacklisted words, duplicates and unnecessary symbols  |
-| keywords.py            | Class to build a keyword list for coins  |
-| listener.py            | Class to listen and filter tweets     |
-| runner.py              | Main Class. Called in [Procfile](../Procfile) and starts Listener with Keywords  |
-| trade.py               | Functions for Trading. Called every hour in Heroku Scheduler.    |
-| Logs-Folder            | All Logs (Heroku, Tweepy, Excel, Json)
+| [filter.py](../sentiment/filter.py)              | Functions to filter the tweets by checking for blacklisted words, duplicates and unnecessary symbols  |
+| [keywords.py](../sentiment/keywords.py)            | Class to build a keyword list for coins  |
+| [listener.py](../sentiment/listener.py)            | Class to listen and filter tweets     |
+| [runner.py](../sentiment/runner.py)              | Main Class. Called in Procfile and starts Listener with Keywords  |
+| [trade.py](../sentiment/trade.py)               | Functions for Trading. Called every hour in Heroku Scheduler.    |
+| [Logs-Folder](../sentiment/Logs/)            | All Logs (Heroku, Tweepy, Excel, Json)
 
 </br>
 
 | **sentiment/database - Folder**           |                                                                           |
 |-------------|---------------------------------------------------------------------------|
-| database.py | SQL-Alchemy Connection with Heroku database                               |
-| exporter.py | Export Local Tweets to Json/Excel                                         |
-| Trade.py    | Trade Class to declare the Format and Type of each Column in the Database |
-| Tweet.py    | Tweet Class to declare Format and Type of each Column in the Database     |
+| [database.py](../sentiment/Database/database.py) | SQL-Alchemy Connection with Heroku database                               |
+| [exporter.py]((../sentiment/Database/exporter.py)) | Export Local Tweets to Json/Excel                                         |
+| [Trade.py](../sentiment/Database/Trade.py)    | Trade Class to declare the Format and Type of each Column in the Database |
+| [Tweet.py](../sentiment/Database/Tweet.py)    | Tweet Class to declare Format and Type of each Column in the Database     |
 
 </br>
 
 | **streamlit - Folder**      |   |
 |-------------------------|---|
-| 01_💬_Tweet-Sentiment.py | Main File to visualise all the data from tweets, sentiment and trades with Streamlit (*01...* is streamlit-notation for multiple pages) |
-| financial_data.py       | Functions to get the data from Heroku Database, get prices from Binance and for building Signals  |
-| streamlit_data.py       | Functions to edit the data from the databases: Splitting the DataFrame, calculate average and convert to signals.  |
-| visualise.py            | Functions to visualise the price chart and words.   |
+| [01_💬_Tweet-Sentiment.py](../streamlit/01_%F0%9F%92%AC_Tweet-Sentiment.py) | Main File to visualise all the data from tweets, sentiment and trades with Streamlit (*01...* is streamlit-notation for multiple pages) |
+| [financial_data.py](../streamlit/financial_data.py)       | Functions to get the data from Heroku Database, get prices from Binance and for building Signals  |
+| [streamlit_data.py](../streamlit/streamlit_data.py)       | Functions to edit the data from the databases: Splitting the DataFrame, calculate average and convert to signals.  |
+| [visualise.py](../streamlit/visualise.py)            | Functions to visualise the price chart and words.   |
 
 
 

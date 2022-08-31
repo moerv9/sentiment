@@ -1,7 +1,7 @@
 # Trading
 
 ## Choosing an API
-There are a lot of exchanges for trading cryptocurrencies. Which all have pros and so leads to a comparison of APIs with respect to this project's use case. It is important that the API has a good and easy documentation and an extensive python library/wrapper.
+There are a lot of exchanges for trading cryptocurrencies, which all have pros and cons. This lead to a comparison of APIs with respect to this project's use case. It is important that the API has a good and easy documentation and an extensive python library/wrapper.
 
 The following table shows the full comparison of five cryptocurrency API's [10]:
 
@@ -24,7 +24,7 @@ CoinBase was the first to drop because it has only five coins and no currently a
 
 Coinmarketcap was also not very intriguing because it has limited Endpoints and no historical data. Paying 29$ a month for 1 month of historical data didn't seem worth it when others offer it for free. Their python wrapper was also not very detailed.
 
-I personally use Kraken, so the ID Verification wouldn't even be a problem, but they do not offer a test/[sandbox](9_Appendices.md#s) environment. Their way of working with request limits is also very different to the others and seemed to be a limiting factor.
+I personally use Kraken, so the ID Verification wouldn't even be a problem, but they do not offer a [sandbox](9_Appendices.md#s) (test environment). Their way of working with request limits is also very different to the others and seemed to be a limiting factor.
 But the biggest problem with Kraken was that there is no recently updated python wrapper available. 
 
 Kucoin offers many currencies and the most free requests per minute, but reported some performance issues, which lead to the decision to Binance. At least at first. 
@@ -34,7 +34,7 @@ They have a very good documentation and an updated python wrapper with lots of t
 The only thing to keep in mind is the potential ban of my IP when the request limit is reached.
 
 ### The Problem with Binance 
-The verification process was long and even required to send some Bitcoin to the Binance Wallet. Afterwards, it was possible to create the API-Keys, which are needed to connect the Client with Binance.  Getting live price data from the Binance API was working perfectly, so everything seemed fine. Visualisations of Charts were made to have a better overview and make a small simulation to test the strategy (see [below](#papertrading)).
+The verification process was long and even required to send some Bitcoin to the Binance Wallet. Afterwards, it was possible to create the API-Keys, which are needed to connect the Client with Binance.  Getting live price data from the Binance API was working perfectly, so everything seemed fine. Visualisations of Charts were made to have a better overview and make a small simulation to test the strategy (see [Papertrading](#papertrading)).
 
 Then it was time to implement the trading strategy into the Binance sandbox and the problem appeared. The Sandbox Testnet didn't accept the API-Keys and even after a while of debugging the error, it wouldn't work, leaving us with no choice but to drop Binance for Kucoin. Setting up Kucoin was faster and their sandbox worked perfectly.
 
@@ -95,7 +95,7 @@ In the left table in Figure 14 you see the timestamp, sentiment score and the co
 
 ![60 min Sentiment Average and Amount of Tweets](./img/trading/60min-avg-count.png)
 
-##### *Figure 14: Sentiment for a single tweet on the left, Average Sentiment and counted Tweets for a timeperiod of 1h*
+##### *Figure 15: Sentiment for a single tweet on the left, Average Sentiment and counted Tweets for a timeperiod of 1h*
 </br>
 
 
@@ -121,13 +121,13 @@ This is why the threshold is set to 0.2.
 </br> 
 
 ## Papertrading  
-The image below shows the sentiment and Bitcoin price from August 5th till August 6th. If the sentiment is above 0.2 (positive or very positive) it is marked as a buy signal in the chart (green triangle).
-Since this looked promising it was implemented to real-time papertrading in the Kucoin Sandbox [FR 40](2_Concept.md#must-have).
+Figure 16 shows the sentiment and Bitcoin price from August 5th till August 6th. If the sentiment is above 0.2 (positive or very positive) it is marked as a buy signal in the chart (green triangle).
+Since this looked promising it was implemented to real-time papertrading in the Kucoin Sandbox [[FR 40](2_Concept.md#must-have)].
 
 </br>
 
 ![Strategy #1](./img/trading/strategy%20%231.png)
-##### *Figure 15: Charts for Bitcoin Price and Average Sentiment with corresponding signals*
+##### *Figure 16: Charts for Bitcoin Price and Average Sentiment with corresponding signals*
 </br>
 
 
@@ -176,7 +176,7 @@ These two series get concatenated together to have one table:
 
 ![last three averages](./img/trading/last_avg.png)
 
-##### *Figure 16: Last three time periods with average, total tweets and signal*
+##### *Figure 17: Last three time periods with average, total tweets and signal*
 </br>
 
 
@@ -188,13 +188,13 @@ Then, if the signal indicates buy, a market order will be created with 5% of the
 A sell order will sell a quarter of the current Bitcoin holdings.
 
 At last, some metrics from the trade are uploaded into a separate table on Heroku for a better overview of the trades and later calculation of current Profit and Loss (PNL).
-An excerpt from this table is shown below in figure 17. It contains the sentiment average and the time period, as well as information about the trade itself. The last balances are actually the balances after the trade was made. So, it is possible, to look back at all the balances without gaps. 
+An excerpt from this table is shown below in figure 18. It contains the sentiment average and the time period, as well as information about the trade itself. The last balances are actually the balances after the trade was made. So, it is possible, to look back at all the balances without gaps. 
 
 </br>
 
 ![latest trades from Heroku DB](./img/trading/last_trades_from_Heroku.png)
 
-##### *Figure 17: Last Trades with Kucoin Sub-Account*
+##### *Figure 18: Last Trades with Kucoin Sub-Account*
 </br>
 
 
@@ -207,12 +207,12 @@ An excerpt from this table is shown below in figure 17. It contains the sentimen
 ## Looking at the trades
 
 
-Figure 18 shows the Heroku Logs. At first, the runner is started, that listens to the tweets and adds them to the database. When you see the line `Listening to tweets now...`, you know, everything is working properly.
+Figure 19 shows the Heroku Logs. At first, the runner is started, that listens to the tweets and adds them to the database. When you see the line `Listening to tweets now...`, you know, everything is working properly.
 
 </br>
 
 ![Heroku Logs](./img/trading/scheduled_trading.png)
-##### *Figure 18: Logs from Heroku on scheduled trades*
+##### *Figure 19: Logs from Heroku on scheduled trades*
 </br>
 
 
@@ -235,14 +235,14 @@ Therefore, a few print statements are left in the final code.
 ### Getting false Account Balance
 
 The system was trading fine for a couple of days, but then, all of a sudden, it did not execute any trades for a couple timestamps. 
-As can be seen in figure 19 below, the USDT and BTC Balance are switched, and the system tried to buy for an amount of *0* USDT, which did not work. Interestingly, in figure 20, you can see that this was not a consistent state since there are some trades at random timestamps. The problem lay with Kucoin. When acquiring the current account balances, USDT normally came before BTC. However, this order seems to be switched at random. This unforeseen coincidence needed to be checked by the system and be acted upon.
+As can be seen in figure 20 below, the USDT and BTC Balance are switched, and the system tried to buy for an amount of *0* USDT, which did not work. Interestingly, in figure 20, you can see that this was not a consistent state since there are some trades at random timestamps. The problem lay with Kucoin. When acquiring the current account balances, USDT normally came before BTC. However, this order seems to be switched at random. This unforeseen coincidence needed to be checked by the system and be acted upon.
 
 ![no trade exec](./img/trading/No_trade_exec-fundswrong.png)
-##### *Figure 19: Logs from Heroku: No Trade was executed because the size or fund parameter was false*
+##### *Figure 20: Logs from Heroku: No Trade was executed because the size or fund parameter was false*
 </br>
 
 ![got wrong acc balance](./img/trading/got_wrong_acc_balance.png)
-##### *Figure 20: Wrong Account Balance on Kucoin*
+##### *Figure 21: Wrong Account Balance on Kucoin*
 </br>
 
 
@@ -252,10 +252,10 @@ The biggest challenge came with the sandbox. All the trading worked perfectly, b
 
 Since these different prices were not prone to Bitcoin alone, but all coins had different prices in the sandbox, the Kucoin Support was contacted.
 
-The answer (figure 21), confirmed that the prices in the sandbox are just different, and another solution was needed.
+The answer (figure 22), confirmed that the prices in the sandbox are just different, and another solution was needed.
 
 ![Kucoin Answer](./img/trading/kucoin_answer.png)
-##### *Figure 21: Email from Kucoin regarding the different Bictoin Prices*
+##### *Figure 22: Email from Kucoin regarding the different Bitcoin Prices*
 </br>
 
 The solution was to get the correct price from somewhere else and in this case: Binance.
@@ -285,10 +285,10 @@ frame
 The result looked like this:
 
 ![Binance Frame](./img/trading/binance_frame.png)
-##### *Figure 22: Prices (ohlc) and Volume for Bitcoin from Binance*
+##### *Figure 23: Prices (ohlc) and Volume for Bitcoin from Binance*
 </br>
 
-The method `get_historical_klines()` accepts arguments to look for intervals in a past time period. For example, in figure 22 we are looking for the past day ("1d") with intervals of one minute ("1m").
+The method `get_historical_klines()` accepts arguments to look for intervals in a past time period. For example, in figure 23 we are looking for the past day ("1d") with intervals of one minute ("1m").
 
 The timestamp and the closing price were then used for further calculations and [visualisations](./7_Visualisation.md#figure-27-chart-of-last-trades).
 

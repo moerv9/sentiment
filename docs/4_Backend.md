@@ -1,8 +1,6 @@
 # Backend
 </br>
 
-## Reason for Heroku
-
 Tweepy uses two ways of searching for tweets: Searching through the history or listening to real-time tweets.
 One approach would be to schedule a task, e.g. for every hour, that searches the history of tweets and does the trading afterwards. However, after looking closer into the Documentation, it was discovered that the search service with the Twitter API doesn't show all available tweets. This would lead to incomplete data, which would deflect the strategy and therefore wasn't an option.
 
@@ -11,8 +9,9 @@ When listening to real-time tweets, the python script needs to run the whole tim
 It is no option to only run it on the local machine when it is intended to run for days or weeks. When the laptop is closed, the script stops running.
 
 That is where cloud platforms as services come in handy. Today, most of the [Software-as-a-Service](9_Appendices.md#s) run in some sort of cloud since it is not very desirable for smaller companies to run and maintain servers for their clients when other bigger corporations such as Google, Amazon or Microsoft offer better, more scalable and cheaper services.
+## Heroku
 
-For this project, [Heroku](https://www.heroku.com/) was used as the cloud provider, because it works well with Python, has a free tier available and an easy-to-use Postgres Database Add-On [FR 70](2_Concept.md#should-have) and an automatic GitHub Deploy.
+For this project, [Heroku](https://www.heroku.com/) was used as the cloud provider, because it works well with Python and runs every type of script in the background. It has a free tier available, an easy-to-use Postgres Database Add-On [[FR 70](2_Concept.md#should-have)], as well as a Schedule-Add-On to repeatedly execute any type of script and an automatic GitHub Deploy.
 
 Heroku works with containerization: It automatically detects a change in the GitHub Repository and starts a new Deployment. Because this did not always work, it is still possible to manually deploy in the Heroku Dashboard or with the Heroku [CLI](9_Appendices.md#abbreviations).
 
@@ -52,7 +51,7 @@ df = pd.read_sql(query, conn)
 
 ```
 
-Heroku uses a so called Procfile to start the processes. This meant the worker script for listening to tweets and adding to the database is added to this file:
+Heroku uses a so called Procfile to start the processes. It contains only one line to start the worker script (below), in this case, the runner.py. The `runner.py` is the main file of the system and starts the process to listen for tweets and adding to the database:
 ```
 worker: python3 sentiment/runner.py
 ```
@@ -63,7 +62,7 @@ More on the trading part [here](6_Trading.md).
 </br>
 
 ![Heroku Scheduler Add-On](./img/heroku/heroku_scheduler.png)
-##### *Figure 11: Scheduler Add-On on Heroku*
+##### *Figure 12: Scheduler Add-On on Heroku*
 </br>
 
 
@@ -81,7 +80,7 @@ Heroku Dataclips offers to run SQL queries and view the output directly in the B
 </br>
 
 ![Heroku Tweet Database Dataclip](./img/heroku/heroku_tweet_dataclip.png)
-##### *Figure 12: Dataclip to view the Tweet database with SQL queries*
+##### *Figure 13: Dataclip to view the Tweet database with SQL queries*
 </br>
 
 
@@ -120,7 +119,7 @@ But nothing happened. A week passed, and the database was filling up until I got
 
 <img src=./img/heroku//heroku_email_databasefull.PNG width=300 alt="Email from Heroku: Database Full"/> 
 
-##### *Figure 13: Email from Heroku: Database Row Limit reached*
+##### *Figure 14: Email from Heroku: Database Row Limit reached*
 </br>
 
 
@@ -128,7 +127,7 @@ The Heroku Database got filled such quickly because the system was collecting Tw
 It would be very interesting to compare different coins side by side, but it made sense to only look at Bitcoin after this point to gather more Tweets.
 In the end this was a waste of time because Chainsulting was so kind and upgraded the Heroku Database Plan to a row limit of 10M, which should last for about a month of Tweets.
 Of course, this can be improved by better filters and periodically deleting tweets from the database.
-Unfortunately, when the Database is full, Heroku revokes *Writing-Privileges*, which makes it even impossible to delete single rows via a dataclip. Leaving the only solution to clear the whole database, which has been done a few times before the upgrade.
+Unfortunately, when the Database is full, Heroku revokes *Writing-Privileges*, which makes it even impossible to delete single rows via a Dataclip. Leaving the only solution to clear the whole database, which has been done a few times before the upgrade.
 
 </br>
 

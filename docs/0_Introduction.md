@@ -38,7 +38,7 @@ The amount of data social media can offer is just too big to grasp, but it can b
 
 There exists a lot of different social networks (Instagram, Twitter, Facebook, etc.) and after comparing them with respect to their user base, availability of [API’s](9_Appendices.md#a) and other factors, it will be clear which one is best for this project.
 
-To find the right cryptocurrency for this project, the top five Coins based on market capitalisation ([MCap](9_Appendices.md#m)) are compared in relation to their trading volume, user base, API Access, amount of tweets about the [cashtag]((9_Appendices.md#c))($btc, $eth, etc.).
+To find the right cryptocurrency for this project, the top five Coins based on market capitalisation ([MCap](9_Appendices.md#m)) are compared in relation to their trading volume, user base, API Access, amount of tweets about the [cashtag](9_Appendices.md#c) ($btc, $eth, etc.).
 
 If it finds a real-world use-case the costs of trading need to be considered as well. 
 As Garcia and Schweitzer [[4](9_Appendices.md#literature--bibliography)] are saying in their research: “Trading costs can potentially erode the profitability of trading strategies, especially if they require many movements.” 

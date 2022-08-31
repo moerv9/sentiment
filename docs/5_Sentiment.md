@@ -6,7 +6,7 @@ This is where *sentiment analysis* comes in handy.
 
 Sentiment analysis is a part of *Natural Language Processing (NLP)* to systematically identify and classify opinions from text. 
 For every sentence we say or word we use, we kind of know if it has a positive or negative meaning. A program can't do that. It needs validated values for each word, saying if it's positive or negative, to calculate the overall opinion in a sentence.
-This is why a lot of teams around the world have built lexicons with thousands of words in it and rated each of them with a value to either be positive or negative.
+This is why a lot of teams around the world have built lexicons containing thousands of words and rated each of them with a value to either be positive or negative.
 
 There are a lot of different tools that apply these lexicons for NLP for different use cases, such as calculating and classifying sentiment polarity (positive or negative) from text-input.
 
@@ -54,7 +54,9 @@ Output:
 > TextBlob: 0.475 </br>
 > Vader: 0.7684
 
-There is a big difference between those two values, but the sentiment scores for the whole dataset of tweets were very similar from both TextBlob and Vader. Considering, that Vader was built for social media sentiment analysis and uses special heuristics to improve the overall performance, compared to other NLP-Tools, Vader will be used to get the sentiment for each tweet in this project [FR 20](2_Concept.md#should-have).
+</br>
+
+Although there is a big difference between these two values, the sentiment scores from both TextBlob and vader for the whole dataset of tweets were very similar. Considering, that Vader was built for social media sentiment analysis and uses special heuristics to improve the overall performance compared to other NLP-Tools, Vader will be used to get the sentiment for each tweet in this project [FR 20](2_Concept.md#should-have).
 
 Vader gives sentiment score between -1 and 1 for each tweet, normally meaning, that positive values mean a positive sentiment and negative values mean a negative sentiment. To differentiate even further, the decision has been made to classify values above 0.6 to be *"Very Positive"* and values below -0.6 to be '"Very Negative"*.
 

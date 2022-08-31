@@ -4,7 +4,7 @@
 </br>
 
 ## Coin Comparison
-By the end of 2013, there were only 50 cryptocurrencies. Today (July 2022), there are over 20000 cryptocurrencies. To minimize the number of coins for comparison, it is wise to look at the biggest coins by MCap (see Figure 1). They are the most known and impactful.
+By the end of 2013, there were only 50 cryptocurrencies. Today (July 2022), there are over 20000 cryptocurrencies. To minimize the number of coins for comparison, it is wise to look at the biggest coins by MCap (see figure 1). They are the most known and impactful.
 
 ![Coinmarketcap from the 5.3.2022](./img/research/coinmcap_532022.jpeg)
 ##### *Figure 1: Snapshot from the 5th March 2022 from [Coinmarketcap](https://coinmarketcap.com)*
@@ -61,11 +61,11 @@ In July 2022, there are more than 17 social media platforms with at least 300M m
 
 They are all very different in regard of how they work. Some are focused on video (Youtube, Tik Tok, Instagram), some for Communication (Telegram, WeChat, Whatsapp), Photos (Instagram, Pinterest) and some for Writing (Twitter, Reddit, Quora). We are only interested in analysing and processing text, leaving us with Facebook, Twitter, Reddit and Quora.
 
-Facebook disallows nearly every scraping or collection of data [[6](9_Appendices.md)] and has shown to be a platform where a lot of complaints and hate exists. Moreover, well-known personalities, like Presidents or CEO's, are morenot likely to be found on Facebook, but rather on Twitter.
+Facebook disallows nearly every scraping or collection of data [[6](9_Appendices.md#literature--bibliography)] and has shown to be a platform where a lot of complaints and hate exists. Moreover, well-known personalities, like Presidents or CEO's, are most likely to be found on Facebook, but rather on Twitter.
 
 Quora does not have a public API and is primarily used as a Q&A-Forum instead of spreading quick and fast opinions.
 
-Reddit is a good choice for gathering sentiment and has gained a lot of popularity amongst traders. Especially since it made the headlines when the reddit members of the room r/wallstreetbets with their 4.8M members (in 2021, 2022: 11.8M members) organised a wild pump & dump scheme on different stocks:
+Reddit is a good choice for gathering sentiment and has gained a lot of popularity amongst traders. Especially since it made the headlines when the Reddit members of the room r/wallstreetbets with their 4.8M members (in 2021, 2022: 11.8M members) organised a wild pump & dump scheme on different stocks:
 
 > "Prompted by the information posted on social media retail investors began buying these so called “meme-stocks” including GameStop, AMC Entertainment, Blackberry, and Nokia. The activity sent their prices soaring, with the GameStop share prices climbing over 1000% in just two weeks." [[7](9_Appendices.md#literature--bibliography)]
 

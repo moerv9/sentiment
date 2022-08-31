@@ -23,18 +23,19 @@ The non-functional requirements have been successfully achieved by
 The system started the automated trading based on sentiment at the 16th of August 2022 with a balance of 5000$ USDT. 
 As can be seen in figure 31 below, the account balances didn't really work as a great overview. The Account Balance with the real Bitcoin Price from Binance lead to a way to high balance at first and Kucoin couldn't get any data for the trading times. Even after contacting the Kucoin Support, it is not clear why the Bitcoin Price in the Sandbox has such unusual behaviour. The figure 32 shows this in the column *"kucoin btc price"*. Within a day, the price moved from `431$` to `75.825$`. This doesn't make any sense.
 This has been the limiting factor when interpreting the results.
+
 However, after a small time of profits at the 20th August, the chart shows a clear downward trend for both lines. As being said before, a rather simple strategy was chosen to primarily test if everything works on the technical side and not to make big gains. Although, seeing that this type of trading is easily implemented and can run in the background, moving this system a level up by improving the filters and implementing different strategies, it would lead to better results. 
 
 There are many more strategies that could have been tested, and a few are described below in the Outlook-Section.
 
 ![acc balance chart](./img/results/chart_acc_balances.png)
 
-##### *Figure 31: Chart of Account Balance with Binance and Kucoin Prices for Bitcoin*
+##### *Figure 32: Chart of Account Balance with Binance and Kucoin Prices for Bitcoin*
 
 </br>
 
 ![](./img/results/kucoin_vs_binance_price.png)
-##### *Figure 32: Binance and Kucoin Prices for Bitcoin (in $) at Timestamps of Trades*
+##### *Figure 33: Binance and Kucoin Prices for Bitcoin (in $) at Timestamps of Trades*
 
 </br>
 
