@@ -18,7 +18,7 @@ Insights of this project, like tweets, sentiment and trade metrics have been vis
 The whole system is explained in the following video:
 
 
-[![explaning the whole system ](https://img.youtube.com/vi/f8ggft3yqsk/hqdefault.jpg)](https://youtu.be/f8ggft3yqsk)
+[![explaining the whole system ](https://img.youtube.com/vi/f8ggft3yqsk/hqdefault.jpg)](https://youtu.be/f8ggft3yqsk)
 
 </br>
 
@@ -83,7 +83,7 @@ Further explanation about the visualisation (snapshot from 24th August, 2022):
 </br>
 </br>
 
-(A PDF file containing all chapters is [here](./pdf/CryptoCurrencyTradingBasedOnSocialSignalSentiment.pdf). Unfortunately, the conversion from Markdown to PDF resulted in some faulty format and tables. Better read here.)
+(A PDF file containing all chapters is [here](./pdf/CryptoSentimentAnalysisByMarvinOttersberg.pdf). Unfortunately, the conversion from Markdown to PDF resulted in some faulty format. Better read here.)
 
 
 

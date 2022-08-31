@@ -3,7 +3,7 @@
 ## Choosing an API
 There are a lot of exchanges for trading cryptocurrencies, which all have pros and cons. This lead to a comparison of APIs with respect to this project's use case. It is important that the API has a good and easy documentation and an extensive python library/wrapper.
 
-The following table shows the full comparison of five cryptocurrency API's [10]:
+The following table shows the full comparison of five cryptocurrency API's [10](./9_Appendices.md#literature--bibliography):
 
 
 | **Platform**                                  | [Binance](https://www.binance.com/en/binance-api)                                                                                                                                                       | [CoinBase](https://www.coinbase.com/cloud)                                            | [Kucoin](https://www.kucoin.com/api)                                                                           | [Coinmarketcap](https://coinmarketcap.com/api/)                                                                               | [Kraken](https://docs.kraken.com/rest/)                                                                                                                                                                                      |
@@ -14,7 +14,7 @@ The following table shows the full comparison of five cryptocurrency API's [10]:
 | **Fees**                                   | 0.1%, but when using BNB can be lowered to 0.075%                                                                                                                                                          | 1%                                                                                       | 3-5%, when buying with FIAT</br>0.1% for crypto, 0.08% when buying with Kucoin Token                                               | not found any data                                                                                                               | 0.9% fee for any stablecoins</br>1.5% fee for any other crypto or FX pair                                                                                                                                                       |
 | **Rating of Documentation**                   | Very good                                                                                                                                                                                                  | Good                                                                                     | Very good                                                                                                         | Okay                                                                                                                             | Very good                                                                                                                                                                                                                       |
 | **Availability of Python Libraries/Wrappers** | Very good and updated.</br>https://github.com/sammchardy/python-binancehttps://github.com/binance/binance-connector-python                                                                                 | Last updated 8 years ago.</br>https://github.com/resy/coinbase_python33                  | Very good and updated.</br>https://github.com/sammchardy/python-kucoinhttps://github.com/Kucoin/kucoin-python-sdk | Not really detailed.</br>https://github.com/rsz44/python-coinmarketcap                                                           | Not updated recently. </br>https://github.com/veox/python3-krakenex                                                                                                                                                             |
-|
+
 
 
 </br>
@@ -87,7 +87,7 @@ order = kClient.create_market_order('BTC-USDT', kClient.SIDE_BUY, funds = funds)
 
 ## Strategy
 
-Building the strategy to make signals when a trade (buy or sell) should be executed, was a real challenge. There are hundreds of different strategies on different technical indicators, but now the buy or sell signal should be based on the sentiment of tweets on Twitter [FR 30](2_Concept.md#must-have).
+Building the strategy to make signals when a trade (buy or sell) should be executed, was a real challenge. There are hundreds of different strategies on different technical indicators, but now the buy or sell signal should be based on the sentiment of tweets on Twitter [[FR 30](2_Concept.md#must-have)].
 
 At first, the idea was to calculate the average of sentiment for a particular time period and if this average reaches a certain threshold, a trade should be executed.
 

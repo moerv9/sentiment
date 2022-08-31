@@ -13,7 +13,7 @@ In this project, [pandas](https://pandas.pydata.org) was used for data analysis 
 In the following section are explanations with screenshots (from the 24th August 2022) for the single parts that have been visualised on a Website [[FR 60](2_Concept.md#should-have)].
 
 
-A video was made to explain the whole visualisation in total (It is also in the [visualisation](./img/visualisation/) folder).
+A video was made to explain the whole visualisation in total (It is also in the [videos](../docs/videos/) folder).
 
 [![Watch the Video](https://img.youtube.com/vi/bHvFifWAr1A/hqdefault.jpg)](https://youtu.be/bHvFifWAr1A)
 

@@ -29,7 +29,7 @@ Subjectivity lies between [0,1]. Subjectivity quantifies the amount of personal 
 
 </br>
 
-### [Vader]((https://github.com/cjhutto/vaderSentiment)) 
+### [Vader](https://github.com/cjhutto/vaderSentiment)
 Vader (Valence Aware Dictionary and sEntiment Reasoner) does the same thing as TextBlob, but it is especially good for social media sentiment analysis, because it uses some heuristics to improve their calculations.
 They not only calculate the polarity (positive or negative), but also the intensity/valence of each sentiment on a scale from -4 to +4. Meaning, that the word "Good" has an intensity of 1.9, the word "Great" of 3.1. This value, coming from observation and experience, will be taken into account for the calculation.
 They also use intensifiers or degree modifiers to either increase or decrease the intensity. This is more accurate than models who only use a lexicon of words. They also understand emoticons like ":D" or emojis and many slang words like "kinda" (instead of "kind of").
@@ -56,7 +56,7 @@ Output:
 
 </br>
 
-Although there is a big difference between these two values, the sentiment scores from both TextBlob and vader for the whole dataset of tweets were very similar. Considering, that Vader was built for social media sentiment analysis and uses special heuristics to improve the overall performance compared to other NLP-Tools, Vader will be used to get the sentiment for each tweet in this project [FR 20](2_Concept.md#should-have).
+Although there is a big difference between these two values, the sentiment scores from both TextBlob and Vader for the whole dataset of tweets were very similar. Considering, that Vader was built for social media sentiment analysis and uses special heuristics to improve the overall performance compared to other NLP-Tools, Vader will be used to get the sentiment for each tweet in this project [[FR 20](2_Concept.md#should-have)].
 
 Vader gives sentiment score between -1 and 1 for each tweet, normally meaning, that positive values mean a positive sentiment and negative values mean a negative sentiment. To differentiate even further, the decision has been made to classify values above 0.6 to be *"Very Positive"* and values below -0.6 to be '"Very Negative"*.
 
