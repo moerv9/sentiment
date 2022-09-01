@@ -20,7 +20,7 @@ The non-functional requirements have been successfully achieved by
 </br>
 
 ## Results 
-The system started the automated trading based on sentiment at the 16th of August 2022 with a balance of 5000$ USDT. 
+The system started the automated trading based on sentiment at the 16th of August 2022 with a balance of 5000$ USDT. At this day, the 27th August, the account Balance is below 700 $ and the Bitcoin Balance is 0.004 which would equal 800$ when converting with the real-time Bitcoin Price.
 As can be seen in figure 31 below, the account balances didn't really work as a great overview. The Account Balance with the real Bitcoin Price from Binance lead to a way to high balance at first and Kucoin couldn't get any data for the trading times. Even after contacting the Kucoin Support, it is not clear why the Bitcoin Price in the Sandbox has such unusual behaviour. The figure 32 shows this in the column *"kucoin btc price"*. Within a day, the price moved from `431$` to `75.825$`. This doesn't make any sense.
 This has been the limiting factor when interpreting the results.
 
