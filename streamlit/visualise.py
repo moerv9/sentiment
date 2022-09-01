@@ -73,6 +73,11 @@ def show_trade_chart(df):
     st.pyplot(fig1)
     
 def visualise_acc_balance(df):
+    """Visualse Account Balances over Trades.
+
+    Args:
+        df (DataFrame): Trade Dataframe. 
+    """
     plt.clf()
     fig1, ax1 = plt.subplots(figsize=(8,4))
     ax1.xaxis.label.set_color('white') 

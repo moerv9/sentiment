@@ -31,6 +31,7 @@ BINANCE_API_SECRET = bconf.BINANCE_API_SECRET
 KUCOIN_SUB_KEY = kconf.KUCOIN_SUB_KEY
 KUCOIN_SUB_SECRET = kconf.KUCOIN_SUB_SECRET
 KUCOIN_SUB_PASS = kconf.KUCOIN_SUB_PASS
+
 #Init Binance Client
 binance_client = bClient(BINANCE_API_KEY, BINANCE_API_SECRET)
 kSubClient = kucoinClient(KUCOIN_SUB_KEY, KUCOIN_SUB_SECRET, KUCOIN_SUB_PASS,sandbox=True)
@@ -136,6 +137,11 @@ def getDateData(symbol,interval, start_str, end_str):
 #df = getDateData(asset,"1m","12 July, 2022 20:00:00","12 July,2022 22:00:00")
 
 def get_kucoin_klines():
+    """Get historical price data for BTC-USDT from Kucoin
+
+    Returns:
+        frame (DataFrame): contains timestamps from 16 august til now... and gets klines for every hour
+    """
     start_time = pd.Timestamp('2022-08-16 12:00:00').timestamp()
     end_time = pd.Timestamp(datetime.now().strftime("%d %B, %Y")).timestamp()
     klines = kSubClient.get_kline_data(symbol="BTC-USDT",kline_type="1hour",start=int(start_time),end=int(end_time))
@@ -194,6 +200,15 @@ def get_signal_by_keywords(df):
 
 
 def calc_pnl(df):
+    """Calculate Profit and Loss. Gets the Account Balances and prices from Kucoin and Binance 
+    for the trade timestamps.
+
+    Args:
+        df (DataFrame): Trade Dataframe
+
+    Returns:
+        temp_df (DataFrame): Trade Timestamps with corresponding btc prices and account balances.
+    """
     trade_timeperiods = df.filter(items=["funds","side","fee","usdt_balance","btc_balance"]) 
     temp_df_time = trade_timeperiods.index
     # Binance

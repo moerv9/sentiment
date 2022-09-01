@@ -17,15 +17,15 @@ st.set_page_config(
 
 count = st_autorefresh(interval=1000*60*5, key="sent")
 
+# Loading and Caching the Database from Heroku 
 @st.experimental_memo(show_spinner=True,suppress_st_warning=True,ttl=5*60)
-#@st.cache(ttl=60*5,allow_output_mutation=True,show_spinner=True,suppress_st_warning=True)
 def loading_data_from_heroku_database():
     df, df_trades, duplicates = get_Heroku_DB(today=False)
     df_trades.replace(df_trades[df_trades["id"]== 59]["usdt_balance"][0],2524.543209,inplace=True)
     df_trades.replace(df_trades[df_trades["id"]== 59]["btc_balance"][0],0.05575778,inplace=True)
     return df,df_trades, duplicates
 
-
+# Sidebar on the left to adapt visibility of different metrics
 with st.sidebar:
     st.write("Change Visibility")
     hide_explanation = st.checkbox(label="Hide Explanation",value=False)
@@ -39,16 +39,22 @@ with st.sidebar:
     st.info("Press 'R', if any error occurs.")
 intervals = 60 
 
-#Get Dataframes
+#Get Dataframes (DF)
 #Convert Database to Dataframe
 df, df_trades, duplicates  = loading_data_from_heroku_database()
 
-st.subheader(f"27.08.2022 - Bitcoin Sentiment Trading") #{date.today().strftime('%d-%m-%Y')}
+st.subheader(f"{date.today().strftime('%d-%m-%Y')} - Bitcoin Sentiment Trading") 
 
-single_sent_scores_df,resampled_mean_tweetcount,mean_follower = resample_df(df, intervals, True, False)#(split_DF_by_time(df,lookback_timeframe),intervals,True)
+'''
+Split Dataframe into 3 DFs: 
+single sent scores: All single tweets with timestamp and sent scores,
+resampled_mean_tweetcount: for a specified interval (60 = 1h) resample/group the tweets and calculate the average/mean
+mean_follower= average followers
+'''
+single_sent_scores_df,resampled_mean_tweetcount,mean_follower = resample_df(df, intervals, True, False)
 
 last_avail_tweets_1h = split_DF_by_time(df,1,resampled_mean_tweetcount.index[0]) # gets all the last tweets from the last available timestamp - 1h
-last_avail_tweets_24h = split_DF_by_time(df,24,resampled_mean_tweetcount.index[0])
+last_avail_tweets_24h = split_DF_by_time(df,24,resampled_mean_tweetcount.index[0]) # gets all the last tweets from the last available timestamp - 24h
 
 
 # explanation section
@@ -80,7 +86,7 @@ if not hide_most_important_metrics:
     st.markdown("---")
 
 
-# section with dataframe for last collected tweets
+# section with DataFrame for last collected tweets
 if not hide_single_tweets:
     st.subheader("Last collected Tweets")
     st.text("The table below shows all the data that is collected with the Twitter API.")
@@ -139,6 +145,7 @@ if not hide_Wordcloud_and_TweetSent:
     
 st.write("#")
 # section for trades
+#showing important metrics, table and chart
 if not hide_trades:
     last_trade_time = df_trades["tradeAt"][0]#df_trades.index[0]
     second_last_avg = resampled_mean_tweetcount.head(2).iloc[1]
@@ -190,6 +197,7 @@ if not hide_trades:
 
 st.write("#")
 
+#section for account balance table and chart
 if not hide_acc_balance:
     st.subheader("Account Balance over time")
     pnl_df = calc_pnl(df_trades)
