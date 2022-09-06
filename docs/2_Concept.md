@@ -192,6 +192,8 @@ Runner(['btc','ada','eth'])) </br>
 
 </br>
 
+The folders are structured as follows to prevent that the different development phases conflict each other. The **sentiment** folder contains all the heroku, database and trade parts. The **streamlit** folder contains all the visualisations, ensuring that nothing here can influence the heroku background scripts.
+
 | **main - Folder** |                            |
 |-------------------|------------------------------------------|
 | [config.py](../config.py)         | File to get the Environment-Variables     |
