@@ -17,8 +17,7 @@ Insights of this project, like tweets, sentiment and trade metrics have been vis
 ## Live-Demo
 The whole system is explained in the following video:
 
-
-[![explaining the whole system ](https://img.youtube.com/vi/f8ggft3yqsk/hqdefault.jpg)](https://youtu.be/f8ggft3yqsk)
+[![explaining the whole system ](https://img.youtube.com/vi/2HbdgG6KS_s/hqdefault.jpg)](https://youtu.be/2HbdgG6KS_s)
 
 </br>
 
