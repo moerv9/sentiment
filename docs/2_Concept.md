@@ -28,7 +28,7 @@ The requirements are structured as functional and non-functional with three cate
 | [FR 20] | The system delivers a sentiment for each tweet            |
 | [FR 30] | The system builds trade-signals based on sentiment |
 | [FR 40] | The system trades based on these signals                  |
-|
+
 
 
 </br>
@@ -40,7 +40,7 @@ The requirements are structured as functional and non-functional with three cate
 | [FR 60] | The system visualises metrics of tweets, sentiment and trades|
 | [FR 70] | The system stores the data in a database                            |
 | [FR 80] | The system can run in the background                      |
-|
+
 
 </br>
 
@@ -49,7 +49,7 @@ The requirements are structured as functional and non-functional with three cate
 |---------|-----------------------------------------------------------|
 | [FR 90] | The system uses different trading strategies at the same time|
 | [FR 100] | The system uses Machine-Learning to improve the strategy|
-|
+
 
 </br>
 
@@ -63,7 +63,7 @@ The requirements are structured as functional and non-functional with three cate
 |---------|-----------------------------------------------------------|
 | [NFR 10]| The project must contain research on used cryptocurrencies and social-media platform    |
 | [NFR 20]| The project will be published open-sourced on GitHub      |
-|
+
 
 </br>
 
